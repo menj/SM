@@ -17,9 +17,10 @@
 	--sm-placeholder: #d9d9d9;
 	--sm-serif: var(--wp--preset--font-family--lora);
 	--sm-sans: var(--wp--preset--font-family--manrope);
-	--sm-radius-s: 6px;
-	--sm-radius-m: 12px;
-	--sm-radius-l: 20px;
+	--sm-radius-s: 12px;
+	--sm-radius-m: 16px;
+	--sm-radius-l: 24px;
+	--sm-pill: 999px;
 	--sm-gap: clamp(20px, 3vw, 32px);
 	--sm-on-primary: #ffffff;
 	--sm-on-tag: #202124;
@@ -303,3 +304,52 @@ body { -webkit-font-smoothing: antialiased; }
 /* Utility */
 .sm-constrain { max-width: var(--wp--style--global--wide-size, 1200px); margin-inline: auto; padding-inline: var(--wp--style--root--padding-left, 20px); }
 .screen-reader-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+/* ---------- Shape: rounded corners and pills ---------- */
+.sm-tag, .is-style-sm-tag a, .wp-block-post-terms.is-style-sm-tag a { border-radius: var(--sm-pill); padding: 6px 14px; }
+.sm-card__media, .sm-archive .wp-block-post-featured-image, .sm-single .wp-block-post-featured-image,
+.sm-single .wp-block-post-content figure img, .sm-hero__main { border-radius: var(--sm-radius-l); }
+.sm-card__media, .sm-archive .wp-block-post-featured-image { border-radius: var(--sm-radius-m); }
+.sm-hero__overlay { border-radius: 0 0 var(--sm-radius-l) var(--sm-radius-l); }
+.sm-hero { border-bottom-width: 1px; }
+
+.sm-catbar__inner { padding-block: 10px; }
+.sm-catbar .wp-block-navigation { gap: 6px; }
+.sm-catbar .wp-block-navigation a { padding: 8px 16px; border: 0; border-radius: var(--sm-pill); transition: background .15s ease; }
+.sm-catbar .wp-block-navigation a:hover,
+.sm-catbar .wp-block-navigation .current-menu-item > a { background: rgba(255,255,255,.2); border: 0; }
+.sm-search-toggle { background: rgba(255,255,255,.14); padding: 10px; }
+
+.sm-section-heading__rule, .sm-section-heading__rule::before { border-radius: var(--sm-pill); }
+.sm-section-heading__all { border: 1px solid var(--sm-line); border-radius: var(--sm-pill); padding: 4px 12px; }
+.sm-section-heading__all:hover { border-color: var(--sm-primary); }
+
+.sm-search-panel .wp-block-search__input, .sm-search-page .wp-block-search__input,
+.sm-search-panel .wp-block-search__button, .sm-search-page .wp-block-search__button { border-radius: var(--sm-pill); }
+.sm-search-panel .wp-block-search__inside-wrapper, .sm-search-page .wp-block-search__inside-wrapper { border-radius: var(--sm-pill); }
+
+.sm-contact-form input, .sm-contact-form select { border-radius: var(--sm-pill); padding-inline: 20px; }
+.sm-contact-form textarea { border-radius: var(--sm-radius-l); padding: 14px 20px; }
+.sm-contact-form__submit { border-radius: var(--sm-pill); padding: 13px 32px; }
+
+.sm-donate select, .sm-donate__custom { border-radius: var(--sm-pill); padding-inline: 18px; }
+.sm-pill { border-radius: var(--sm-pill); padding-inline: 18px; }
+.sm-donate__actions .wp-element-button { border-radius: var(--sm-pill); }
+.sm-donate-page__visual { border-radius: var(--sm-radius-l); }
+.wp-element-button, .wp-block-button__link { border-radius: var(--sm-pill); }
+
+.sm-single .wp-block-post-content blockquote,
+.sm-single .wp-block-post-content .wp-block-pullquote { border-radius: var(--sm-radius-l); }
+.sm-single .wp-block-post-terms:not(.is-style-sm-tag) a { border: 1px solid var(--sm-line); border-radius: var(--sm-pill); padding: 4px 12px; }
+
+.sm-archive .wp-block-query-pagination-numbers a, .sm-archive .wp-block-query-pagination-numbers .current,
+.sm-archive .wp-block-query-pagination-previous, .sm-archive .wp-block-query-pagination-next { border-radius: var(--sm-pill); padding: 6px 14px; border: 1px solid var(--sm-line); }
+.sm-archive .wp-block-query-pagination-numbers .current { background: var(--sm-primary); color: var(--sm-on-primary); border-color: var(--sm-primary); }
+
+.sm-social--boxed a { border-radius: 10px; }
+.sm-totop { border-radius: 50%; width: 40px; height: 40px; }
+.sm-footer__bottom { border-radius: var(--sm-pill); border: 1px solid var(--sm-line); padding-inline: 24px; }
+.sm-newsletter { border-radius: 32px; }
+.is-style-sm-rounded img, .sm-about__collage img, .sm-about__collage figure { border-radius: var(--sm-radius-l); }
+.sm-progress__bar { border-radius: 0 var(--sm-pill) var(--sm-pill) 0; }
+.lightbox .lb-image { border-radius: var(--sm-radius-s); }
