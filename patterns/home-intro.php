@@ -11,28 +11,17 @@
 ?>
 <!-- wp:group {"align":"wide","className":"sm-intro","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide sm-intro">
-	<!-- wp:group {"className":"sm-intro__lead","layout":{"type":"default"}} -->
-	<div class="wp-block-group sm-intro__lead">
-		<!-- wp:paragraph {"className":"sm-intro__eyebrow"} -->
-		<p class="sm-intro__eyebrow"><?php esc_html_e( 'About us', 'sm' ); ?></p>
-		<!-- /wp:paragraph -->
-		<!-- wp:heading {"level":2,"className":"sm-intro__tagline"} -->
-		<h2 class="wp-block-heading sm-intro__tagline"><?php esc_html_e( 'Social commentary webzine on Malaysian issues.', 'sm' ); ?></h2>
-		<!-- /wp:heading -->
-	</div>
-	<!-- /wp:group -->
+	<!-- wp:heading {"level":2,"className":"sm-intro__tagline"} -->
+	<h2 class="wp-block-heading sm-intro__tagline"><?php esc_html_e( 'Social commentary webzine on Malaysian issues.', 'sm' ); ?></h2>
+	<!-- /wp:heading -->
 	<!-- wp:group {"className":"sm-intro__body","layout":{"type":"default"}} -->
 	<div class="wp-block-group sm-intro__body">
 		<!-- wp:paragraph {"className":"sm-intro__text"} -->
 		<p class="sm-intro__text"><strong><?php esc_html_e( 'Suara Malaysia', 'sm' ); ?></strong> <?php esc_html_e( 'is a dedicated online platform where you can access a wealth of insightful and thought-provoking Malaysian social commentary. Our mission is to engage and empower individuals like you in meaningful discussions that contribute to creating a Better Malaysia for all.', 'sm' ); ?></p>
 		<!-- /wp:paragraph -->
-		<!-- wp:buttons -->
-		<div class="wp-block-buttons">
-			<!-- wp:button {"className":"sm-intro__more"} -->
-			<div class="wp-block-button sm-intro__more"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'Learn more about us', 'sm' ); ?></a></div>
-			<!-- /wp:button -->
-		</div>
-		<!-- /wp:buttons -->
+		<!-- wp:paragraph {"className":"sm-intro__more"} -->
+		<p class="sm-intro__more"><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'Learn more about us', 'sm' ); ?> <span aria-hidden="true">&#8599;</span></a></p>
+		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
 </div>
