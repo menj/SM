@@ -136,7 +136,7 @@ function sm_seed_import( $overwrite = false ) {
 		if ( ! empty( $p['seo_title'] ) ) {
 			update_post_meta( $id, '_sm_seo_title', $p['seo_title'] );
 		}
-		if ( ! empty( $p['featured_image'] ) && ! has_post_thumbnail( $id ) ) {
+		if ( ! empty( $p['featured_image'] ) && ( $overwrite || ! has_post_thumbnail( $id ) ) ) {
 			$att = sm_seed_sideload( $p['featured_image'], $p['featured_image_alt'] ?? $p['title'], $id );
 			if ( $att ) {
 				set_post_thumbnail( $id, $att );
@@ -259,10 +259,19 @@ function sm_seed_import( $overwrite = false ) {
  * @return int Attachment ID or 0.
  */
 function sm_seed_sideload( $file, $alt = '', $parent = 0 ) {
-	$path = SM_DIR . 'seed/images/' . basename( $file );
+	$wanted = basename( $file );
+	$path   = SM_DIR . 'seed/images/' . $wanted;
+	// Seed images ship as AVIF with a WebP twin. Use the twin when the server cannot make AVIF sizes.
+	if ( preg_match( '/\.avif$/i', $wanted ) && ! sm_image_format_supported( 'avif' ) ) {
+		$twin = SM_DIR . 'seed/images/' . preg_replace( '/\.avif$/i', '.webp', $wanted );
+		if ( is_readable( $twin ) ) {
+			$path = $twin;
+		}
+	}
 	if ( ! is_readable( $path ) ) {
 		return 0;
 	}
+	$file = $wanted;
 	$found = get_posts(
 		array(
 			'post_type'      => 'attachment',
@@ -277,7 +286,7 @@ function sm_seed_sideload( $file, $alt = '', $parent = 0 ) {
 	}
 	$tmp = wp_tempnam( basename( $file ) );
 	copy( $path, $tmp );
-	$id = media_handle_sideload( array( 'name' => basename( $file ), 'tmp_name' => $tmp ), $parent, $alt );
+	$id = media_handle_sideload( array( 'name' => basename( $path ), 'tmp_name' => $tmp ), $parent, $alt );
 	if ( is_wp_error( $id ) ) {
 		@unlink( $tmp ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 		return 0;

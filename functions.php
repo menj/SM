@@ -27,6 +27,7 @@ require_once SM_DIR . 'inc/features/progress-bar.php';
 require_once SM_DIR . 'inc/features/lightbox.php';
 require_once SM_DIR . 'inc/features/dropcaps.php';
 require_once SM_DIR . 'inc/features/views.php';
+require_once SM_DIR . 'inc/features/images.php';
 require_once SM_DIR . 'inc/features/search-permalinks.php';
 require_once SM_DIR . 'inc/features/hide-login.php';
 require_once SM_DIR . 'inc/favicon.php';
