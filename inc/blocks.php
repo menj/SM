@@ -189,8 +189,11 @@ function sm_render_hero( $attrs ) {
 	if ( $posts ) {
 		$html .= '<ol class="sm-hero__list" aria-label="' . esc_attr__( 'More top stories', 'sm' ) . '">';
 		foreach ( $posts as $p ) {
+			$cats  = get_the_category( $p );
+			$color = $cats ? sm_cat_color( $cats[0] ) : 'var(--sm-primary)';
+			$label = $cats ? '<span class="sm-hero__cat">' . esc_html( $cats[0]->name ) . '</span>' : '';
 			$thumb = has_post_thumbnail( $p ) ? get_the_post_thumbnail( $p, 'sm-thumb', array( 'loading' => 'lazy' ) ) : sm_placeholder_html( $p );
-			$html .= '<li class="sm-hero__item"><a class="sm-hero__thumb" href="' . esc_url( get_permalink( $p ) ) . '" tabindex="-1" aria-hidden="true">' . $thumb . '</a><a class="sm-hero__item-title" href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a></li>';
+			$html .= '<li class="sm-hero__item" style="--sm-cat:' . esc_attr( $color ) . '"><a class="sm-hero__thumb" href="' . esc_url( get_permalink( $p ) ) . '" tabindex="-1" aria-hidden="true">' . $thumb . '</a><div class="sm-hero__item-body">' . $label . '<a class="sm-hero__item-title" href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a></div></li>';
 		}
 		$html .= '</ol>';
 	}
@@ -423,8 +426,8 @@ function sm_render_editors_picks( $attrs ) {
 	$html = '<ol class="sm-pick-list">';
 	foreach ( $posts as $p ) {
 		$cats  = get_the_category( $p );
-		$label = $cats ? '<a class="sm-pick__cat" style="--sm-cat:' . esc_attr( sm_cat_color( $cats[0] ) ) . '" href="' . esc_url( get_category_link( $cats[0] ) ) . '">' . esc_html( $cats[0]->name ) . '</a>' : '';
-		$html .= '<li class="sm-pick">' . $label . '<a class="sm-pick__title" href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a><time class="sm-pick__date" datetime="' . esc_attr( get_the_date( 'c', $p ) ) . '">' . esc_html( get_the_date( '', $p ) ) . '</time></li>';
+		$label = $cats ? '<a class="sm-pick__cat" href="' . esc_url( get_category_link( $cats[0] ) ) . '">' . esc_html( $cats[0]->name ) . '</a>' : '';
+		$html .= '<li class="sm-pick" style="--sm-cat:' . esc_attr( $cats ? sm_cat_color( $cats[0] ) : 'var(--sm-primary)' ) . '">' . $label . '<a class="sm-pick__title" href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a><time class="sm-pick__date" datetime="' . esc_attr( get_the_date( 'c', $p ) ) . '">' . esc_html( get_the_date( '', $p ) ) . '</time></li>';
 	}
 	return sm_aside_module( $attrs['title'] ?: __( 'Editor’s Picks', 'sm' ), $html . '</ol>', $attrs );
 }
@@ -465,8 +468,8 @@ function sm_render_most_read( $attrs ) {
 	$html = '<ol class="sm-rank-list">';
 	foreach ( $posts as $i => $p ) {
 		$cats  = get_the_category( $p );
-		$label = $cats ? '<span class="sm-rank__cat" style="--sm-cat:' . esc_attr( sm_cat_color( $cats[0] ) ) . '">' . esc_html( $cats[0]->name ) . '</span>' : '';
-		$html .= '<li class="sm-rank"><span class="sm-rank__num" aria-hidden="true">' . (int) ( $i + 1 ) . '</span><div class="sm-rank__body">' . $label . '<a class="sm-rank__title" href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a></div></li>';
+		$label = $cats ? '<span class="sm-rank__cat">' . esc_html( $cats[0]->name ) . '</span>' : '';
+		$html .= '<li class="sm-rank" style="--sm-cat:' . esc_attr( $cats ? sm_cat_color( $cats[0] ) : 'var(--sm-primary)' ) . '"><span class="sm-rank__num" aria-hidden="true">' . (int) ( $i + 1 ) . '</span><div class="sm-rank__body">' . $label . '<a class="sm-rank__title" href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a></div></li>';
 	}
 	return sm_aside_module( $attrs['title'] ?: __( 'Most Read', 'sm' ), $html . '</ol>', $attrs );
 }

@@ -220,10 +220,15 @@ function sm_post_card( $post, $args = array() ) {
 			'heading'      => 'h3',
 		)
 	);
-	$link = get_permalink( $post );
-	$html = '<article class="sm-card ' . esc_attr( $args['class'] ) . '">';
+	$link  = get_permalink( $post );
+	$cats  = get_the_category( $post );
+	$color = $cats ? sm_cat_color( $cats[0] ) : 'var(--sm-primary)';
+	$html  = '<article class="sm-card ' . esc_attr( $args['class'] ) . '" style="--sm-cat:' . esc_attr( $color ) . '">';
 	if ( $args['show_image'] ) {
 		$html .= '<a class="sm-card__media" href="' . esc_url( $link ) . '" aria-hidden="true" tabindex="-1">';
+		if ( $cats ) {
+			$html .= '<span class="sm-card__tab">' . esc_html( $cats[0]->name ) . '</span>';
+		}
 		if ( has_post_thumbnail( $post ) ) {
 			$html .= get_the_post_thumbnail( $post, $args['image_size'], array( 'loading' => 'lazy' ) );
 		} else {
@@ -303,4 +308,27 @@ add_action(
 		update_option( 'sm_settings_repaired', 1, false );
 	},
 	1
+);
+
+/**
+ * Give every category link its brand colour and a tab class, so core Query Loop and
+ * Post Terms blocks show the same coloured tabs as the theme's own cards.
+ */
+add_filter(
+	'term_links-category',
+	function ( $links ) {
+		return array_map(
+			function ( $link ) {
+				if ( ! preg_match( '#/category/(?:[^"/]+/)*([^"/]+)/?"#', $link, $m ) ) {
+					return $link;
+				}
+				$term = get_category_by_slug( $m[1] );
+				if ( ! $term ) {
+					return $link;
+				}
+				return preg_replace( '#<a #', '<a class="sm-cat-tab" style="--sm-cat:' . esc_attr( sm_cat_color( $term ) ) . '" ', $link, 1 );
+			},
+			(array) $links
+		);
+	}
 );
