@@ -11,14 +11,46 @@
 		"logo_alt": "Suara Malaysia"
 	},
 	"categories": [
-		{ "name": "Op-Ed", "slug": "op-ed", "description": "Opinion and editorial pieces from Suara Malaysia writers and guest contributors." },
-		{ "name": "Politics", "slug": "politics", "description": "Analysis of Malaysian parties, coalitions, government and the people who shape them." },
-		{ "name": "Society", "slug": "society", "description": "Race, religion, education and the everyday fabric of Malaysian life." },
-		{ "name": "Economy", "slug": "economy", "description": "Jobs, trade, investment and the cost of living in Malaysia." },
-		{ "name": "World", "slug": "world", "description": "International affairs seen through a Malaysian lens." },
-		{ "name": "Elections", "slug": "elections", "description": "General elections, by-elections, electoral reform and voter rights." },
-		{ "name": "Special Reports", "slug": "special-reports", "description": "Long-form reporting and historical perspectives." },
-		{ "name": "Culture & Sports", "slug": "culture-sports", "description": "Arts, heritage, entertainment and Malaysian sport." }
+		{
+			"name": "Op-Ed",
+			"slug": "op-ed",
+			"description": "Opinion and editorial pieces from Suara Malaysia writers and guest contributors."
+		},
+		{
+			"name": "Politics",
+			"slug": "politics",
+			"description": "Analysis of Malaysian parties, coalitions, government and the people who shape them."
+		},
+		{
+			"name": "Society",
+			"slug": "society",
+			"description": "Race, religion, education and the everyday fabric of Malaysian life."
+		},
+		{
+			"name": "Economy",
+			"slug": "economy",
+			"description": "Jobs, trade, investment and the cost of living in Malaysia."
+		},
+		{
+			"name": "World",
+			"slug": "world",
+			"description": "International affairs seen through a Malaysian lens."
+		},
+		{
+			"name": "Elections",
+			"slug": "elections",
+			"description": "General elections, by-elections, electoral reform and voter rights."
+		},
+		{
+			"name": "Special Reports",
+			"slug": "special-reports",
+			"description": "Long-form reporting and historical perspectives."
+		},
+		{
+			"name": "Culture & Sports",
+			"slug": "culture-sports",
+			"description": "Arts, heritage, entertainment and Malaysian sport."
+		}
 	],
 	"posts": [
 		{
@@ -26,8 +58,14 @@
 			"title": "The Winds of Change for the Palestine Cause Are Blowing Their Way",
 			"seo_title": "Winds of Change for the Palestine Cause | Suara Malaysia",
 			"date": "2023-10-11 02:44:02",
-			"categories": [ "world" ],
-			"tags": [ "Palestine", "Gaza", "Middle East" ],
+			"categories": [
+				"world"
+			],
+			"tags": [
+				"Palestine",
+				"Gaza",
+				"Middle East"
+			],
 			"excerpt": "How Operation Al-Aqsa Flood reshaped the Palestine question overnight, and why Malaysians should pay close attention to what comes next.",
 			"content": "<!-- wp:paragraph --><p>Hamas launched a sophisticated assault on Israel dubbed “Operation Al-Aqsa Flood,” capitalising on Israel’s redeployment of troops to the West Bank.</p><!-- /wp:paragraph -->",
 			"featured_image": null,
@@ -39,96 +77,413 @@
 			"title": "DAP Wishes for the Demise of UMNO",
 			"seo_title": "DAP Wishes for the Demise of UMNO | Suara Malaysia",
 			"date": "2023-09-04 07:17:56",
-			"categories": [ "politics" ],
-			"tags": [ "DAP", "UMNO", "Unity Government", "Malay rights" ],
+			"categories": [
+				"politics"
+			],
+			"tags": [
+				"DAP",
+				"UMNO",
+				"Unity Government",
+				"Malay rights"
+			],
 			"excerpt": "UMNO sits in the coalition government but can no longer safeguard Malay rights. Suara Malaysia examines a party reduced to an ornamental vase.",
 			"content": "<!-- wp:paragraph --><p>UMNO’s presence in the coalition government is incapable of safeguarding Malay rights; it merely serves as an ornamental vase.</p><!-- /wp:paragraph -->",
 			"featured_image": "UMNO-Malaysia.png",
 			"featured_image_alt": "UMNO flags flying at a party gathering in Malaysia"
 		},
 		{
-			"slug": "asia360-news-interview-dato-seri-anwar-ibrahim",
-			"title": "Asia360 News: Interview with Dato’ Seri Anwar Ibrahim",
-			"seo_title": "Asia360 News Interview with Anwar Ibrahim | Suara Malaysia",
-			"date": "2012-04-17 15:49:11",
-			"categories": [ "politics", "special-reports" ],
-			"tags": [ "Anwar Ibrahim", "Interview", "Asia360" ],
-			"excerpt": "An Asia360 News interview with Anwar Ibrahim on how a diverse upbringing shaped his worldview and an ambitious political career.",
-			"content": "<!-- wp:paragraph --><p>Anwar Ibrahim’s diverse upbringing shapes his expansive worldview and ambitious political career.</p><!-- /wp:paragraph -->",
-			"featured_image": "asia360_dsai.jpg",
-			"featured_image_alt": "Dato’ Seri Anwar Ibrahim during the Asia360 News interview"
-		},
-		{
-			"slug": "chinese-chauvinism-racist-eugenics-porn-star-wannabe",
-			"title": "Chinese Chauvinism, Racist Eugenics and a Porn Star Wannabe",
-			"seo_title": "Chinese Chauvinism and Racist Eugenics in Malaysia | Suara Malaysia",
-			"date": "2014-10-16 11:41:50",
-			"categories": [ "society", "op-ed" ],
-			"tags": [ "Race relations", "Education", "Vernacular schools" ],
-			"excerpt": "Chinese-based parties cry ‘racist’ at dissenters while voicing racial sentiments on single-stream education. A look at an unresolved national tension.",
-			"content": "<!-- wp:paragraph --><p>The critique targets Chinese-based political parties and groups in Malaysia, accusing them of labelling dissenters as ‘racist’ or ‘anti-Chinese’, while expressing racial sentiments on issues like single stream education. This paradox reveals an unresolved national tension.</p><!-- /wp:paragraph -->",
-			"featured_image": "mice.png",
-			"featured_image_alt": "Illustration accompanying the commentary on Chinese chauvinism in Malaysia"
-		},
-		{
-			"slug": "13th-general-elections-free-media",
-			"title": "13th General Elections and a Free Media",
-			"seo_title": "GE13 and a Free Media in Malaysia | Suara Malaysia",
-			"date": "2013-04-04 04:10:17",
-			"categories": [ "elections" ],
-			"tags": [ "GE13", "Press freedom", "Barisan Nasional", "Pakatan Rakyat" ],
-			"excerpt": "With Parliament dissolved for GE13, Suara Malaysia asks whether Barisan Nasional, Pakatan Rakyat and regional parties will fight fair in a free media.",
-			"content": "<!-- wp:paragraph --><p>As every Malaysian would have known by now, the Prime Minister announced the dissolution of Parliament and hence paved the way for the nation’s thirteenth general elections. With that in mind, it is hoped that both the major political coalitions (Barisan Nasional and Pakatan Rakyat) as well as regional parties will engage their opponents in a fair contest of ideas.</p><!-- /wp:paragraph -->",
-			"featured_image": "Electoral-Reforms.jpg",
-			"featured_image_alt": "Electoral reforms poster ahead of Malaysia’s 13th general election"
-		},
-		{
-			"slug": "blackout-elections",
-			"title": "Blackout Elections!",
-			"seo_title": "Blackout Elections: Standing with Malaysians after GE13 | Suara Malaysia",
-			"date": "2013-05-10 16:09:52",
-			"categories": [ "elections" ],
-			"tags": [ "GE13", "Electoral fraud", "Gerrymandering", "Black 505" ],
-			"excerpt": "In solidarity with Malaysians who wanted change after GE13 but were denied it by widespread fraud and gerrymandering.",
-			"content": "<!-- wp:paragraph --><p>In solidarity with fellow Malaysians who wanted change after GE13 but were robbed of it due to widespread fraud and gerrymandering.</p><!-- /wp:paragraph -->",
-			"featured_image": "blackout.jpg",
-			"featured_image_alt": "Black square symbolising the post-GE13 blackout protest"
-		},
-		{
-			"slug": "free-brave-response-alvin-tan",
-			"title": "Neither Free nor Brave: A Response to Alvin Tan",
-			"seo_title": "Neither Free nor Brave: A Response to Alvin Tan | Suara Malaysia",
-			"date": "2014-12-16 09:08:10",
-			"categories": [ "op-ed" ],
-			"tags": [ "Alvin Tan", "Youth", "Free speech" ],
-			"excerpt": "Academic prowess is no substitute for wisdom or courage. A response to Alvin Tan that honours the Malaysian youth working for a shared destiny.",
-			"content": "<!-- wp:paragraph --><p>Criticism is levelled at perceived selfish cowardice and lack of wisdom, despite academic prowess. This overlooks the sacrifices of Malaysian youth committed to a shared destiny, a higher calling for national improvement.</p><!-- /wp:paragraph -->",
-			"featured_image": "CryBaby.jpg",
-			"featured_image_alt": "Crying baby illustration used for the response to Alvin Tan"
+			"slug": "asadullah-ali-al-andalusi",
+			"title": "Asadullah Ali al-Andalusi",
+			"seo_title": "Asadullah Ali al-Andalusi: Muslim Apologetics and Atheism | Suara Malaysia",
+			"date": "2019-01-03 17:42:32",
+			"categories": [
+				"society"
+			],
+			"tags": [
+				"Asadullah Ali al-Andalusi",
+				"Apologetics",
+				"Comparative religion",
+				"Atheism"
+			],
+			"excerpt": "A profile of Asadullah Ali al-Andalusi, a leading voice in Muslim apologetics and comparative religion who examines atheism in Muslim communities.",
+			"content": "<!-- wp:paragraph --><p>Asadullah Ali al-Andalusi is a prominent figure in Muslim apologetics and comparative religion, particularly focusing on Atheism, a rarely examined ideology in Muslim communities.</p><!-- /wp:paragraph -->",
+			"featured_image": "Asadullah-Ali.png",
+			"featured_image_alt": "Asadullah Ali al-Andalusi speaking at a public engagement"
 		},
 		{
 			"slug": "monarchy-nations-foundations",
 			"title": "Monarchy at Our Nation’s Foundations",
 			"seo_title": "Monarchy at Our Nation’s Foundations | Suara Malaysia",
 			"date": "2017-08-11 15:41:50",
-			"categories": [ "special-reports", "society" ],
-			"tags": [ "Monarchy", "Malay Rulers", "History", "Feudalism" ],
+			"categories": [
+				"special-reports",
+				"society"
+			],
+			"tags": [
+				"Monarchy",
+				"Malay Rulers",
+				"History",
+				"Feudalism"
+			],
 			"excerpt": "Like a palace built without nails, ruler and people in Malay history were inseparable. A historical perspective that challenges the ‘absolute feudal’ label.",
 			"content": "<!-- wp:paragraph --><p>The concept of ‘monarchy as the nation’s foundations’ recalls a palace built without nails, emphasising the inseparable nature of rulers and people. It contests the common misconception that past Rajas’ rule was absolute, challenging oversimplified feudal labels.</p><!-- /wp:paragraph -->",
 			"featured_image": "Malaysia-Royalty.jpg",
 			"featured_image_alt": "Malaysian royalty in ceremonial dress"
 		},
 		{
-			"slug": "asadullah-ali-al-andalusi",
-			"title": "Asadullah Ali al-Andalusi",
-			"seo_title": "Asadullah Ali al-Andalusi: Muslim Apologetics and Atheism | Suara Malaysia",
-			"date": "2019-01-03 17:42:32",
-			"categories": [ "society" ],
-			"tags": [ "Asadullah Ali al-Andalusi", "Apologetics", "Comparative religion", "Atheism" ],
-			"excerpt": "A profile of Asadullah Ali al-Andalusi, a leading voice in Muslim apologetics and comparative religion who examines atheism in Muslim communities.",
-			"content": "<!-- wp:paragraph --><p>Asadullah Ali al-Andalusi is a prominent figure in Muslim apologetics and comparative religion, particularly focusing on Atheism, a rarely examined ideology in Muslim communities.</p><!-- /wp:paragraph -->",
-			"featured_image": "Asadullah-Ali.png",
-			"featured_image_alt": "Asadullah Ali al-Andalusi speaking at a public engagement"
+			"slug": "free-brave-response-alvin-tan",
+			"title": "Neither Free nor Brave: A Response to Alvin Tan",
+			"seo_title": "Neither Free nor Brave: A Response to Alvin Tan | Suara Malaysia",
+			"date": "2014-12-16 09:08:10",
+			"categories": [
+				"op-ed"
+			],
+			"tags": [
+				"Alvin Tan",
+				"Youth",
+				"Free speech"
+			],
+			"excerpt": "Academic prowess is no substitute for wisdom or courage. A response to Alvin Tan that honours the Malaysian youth working for a shared destiny.",
+			"content": "<!-- wp:paragraph --><p>Criticism is levelled at perceived selfish cowardice and lack of wisdom, despite academic prowess. This overlooks the sacrifices of Malaysian youth committed to a shared destiny, a higher calling for national improvement.</p><!-- /wp:paragraph -->",
+			"featured_image": "CryBaby.jpg",
+			"featured_image_alt": "Crying baby illustration used for the response to Alvin Tan"
+		},
+		{
+			"slug": "chinese-chauvinism-racist-eugenics-porn-star-wannabe",
+			"title": "Chinese Chauvinism, Racist Eugenics and a Porn Star Wannabe",
+			"seo_title": "Chinese Chauvinism and Racist Eugenics in Malaysia | Suara Malaysia",
+			"date": "2014-10-16 11:41:50",
+			"categories": [
+				"society",
+				"op-ed"
+			],
+			"tags": [
+				"Race relations",
+				"Education",
+				"Vernacular schools"
+			],
+			"excerpt": "Chinese-based parties cry ‘racist’ at dissenters while voicing racial sentiments on single-stream education. A look at an unresolved national tension.",
+			"content": "<!-- wp:paragraph --><p>The critique targets Chinese-based political parties and groups in Malaysia, accusing them of labelling dissenters as ‘racist’ or ‘anti-Chinese’, while expressing racial sentiments on issues like single stream education. This paradox reveals an unresolved national tension.</p><!-- /wp:paragraph -->",
+			"featured_image": "mice.png",
+			"featured_image_alt": "Illustration accompanying the commentary on Chinese chauvinism in Malaysia"
+		},
+		{
+			"slug": "blackout-elections",
+			"title": "Blackout Elections!",
+			"seo_title": "Blackout Elections: Standing with Malaysians after GE13 | Suara Malaysia",
+			"date": "2013-05-10 16:09:52",
+			"categories": [
+				"elections"
+			],
+			"tags": [
+				"GE13",
+				"Electoral fraud",
+				"Gerrymandering",
+				"Black 505"
+			],
+			"excerpt": "In solidarity with Malaysians who wanted change after GE13 but were denied it by widespread fraud and gerrymandering.",
+			"content": "<!-- wp:paragraph --><p>In solidarity with fellow Malaysians who wanted change after GE13 but were robbed of it due to widespread fraud and gerrymandering.</p><!-- /wp:paragraph -->",
+			"featured_image": "blackout.jpg",
+			"featured_image_alt": "Black square symbolising the post-GE13 blackout protest"
+		},
+		{
+			"slug": "13th-general-elections-free-media",
+			"title": "13th General Elections and a Free Media",
+			"seo_title": "GE13 and a Free Media in Malaysia | Suara Malaysia",
+			"date": "2013-04-04 04:10:17",
+			"categories": [
+				"elections"
+			],
+			"tags": [
+				"GE13",
+				"Press freedom",
+				"Barisan Nasional",
+				"Pakatan Rakyat"
+			],
+			"excerpt": "With Parliament dissolved for GE13, Suara Malaysia asks whether Barisan Nasional, Pakatan Rakyat and regional parties will fight fair in a free media.",
+			"content": "<!-- wp:paragraph --><p>As every Malaysian would have known by now, the Prime Minister announced the dissolution of Parliament and hence paved the way for the nation’s thirteenth general elections. With that in mind, it is hoped that both the major political coalitions (Barisan Nasional and Pakatan Rakyat) as well as regional parties will engage their opponents in a fair contest of ideas.</p><!-- /wp:paragraph -->",
+			"featured_image": "Electoral-Reforms.jpg",
+			"featured_image_alt": "Electoral reforms poster ahead of Malaysia’s 13th general election"
+		},
+		{
+			"slug": "abolishing-ppsmi-answer",
+			"title": "Is Abolishing PPSMI Not the Answer?",
+			"seo_title": "Is Abolishing PPSMI Not the Answer? Science and Maths in English",
+			"date": "2012-09-11 12:28:33",
+			"categories": [
+				"society",
+				"op-ed"
+			],
+			"tags": [
+				"PPSMI",
+				"Education",
+				"Language policy",
+				"Science policy"
+			],
+			"excerpt": "A rebuttal of the claim that abolishing PPSMI is wrong, challenging its arguments on science policy and the teaching of science and maths in English.",
+			"content": "<!-- wp:paragraph --><p>We read with interest the article entitled “Abolishing PPSMI is not the answer” by Datin Noor Azimah Abdul Rahim (September 10, 2012), in particular, the fallacious arguments made in the name of science policy. Before going into the details of the argument, it is best to remind oneself what the term “PPSMI” means: Pengajaran dan Pembelajaran Sains dan Matematik dalam Bahasa Inggeris.</p><!-- /wp:paragraph -->",
+			"featured_image": "is-abolishing-ppsmi-not-the-answer.jpg",
+			"featured_image_alt": "Students in a classroom, illustrating the PPSMI debate"
+		},
+		{
+			"slug": "malayan-proclamation-independence",
+			"title": "Malayan Proclamation of Independence",
+			"seo_title": "The Malayan Proclamation of Independence, 31 August 1957",
+			"date": "2012-08-31 01:09:21",
+			"categories": [
+				"special-reports",
+				"society"
+			],
+			"tags": [
+				"Merdeka",
+				"Tunku Abdul Rahman",
+				"History",
+				"Independence"
+			],
+			"excerpt": "The text of Tunku Abdul Rahman’s proclamation of Malayan independence, made on behalf of the Rulers of the Malay States on Merdeka Day.",
+			"content": "<!-- wp:paragraph --><p>In the name of God the Compassionate, the Merciful, I TUNKU ABDUL RAHMAN PUTRA ibni AL-MARHUM SULTAN ABDUL HAMID HALIMSHAH, Prime Minister of the Persekutuan Tanah Melayu, with the concurrence and approval of Their Highnesses the Rulers of the Malay States, do hereby proclaim and declare on behalf of the people of the Persekutuan Tanah Melayu.</p><!-- /wp:paragraph -->",
+			"featured_image": "Merdeka.jpg",
+			"featured_image_alt": "Tunku Abdul Rahman proclaiming independence at Merdeka Stadium"
+		},
+		{
+			"slug": "malay-mail-stop-hijacking-merdeka",
+			"title": "The Malay Mail: Stop Hijacking Merdeka",
+			"seo_title": "Stop Hijacking Merdeka: A Response to The Malay Mail",
+			"date": "2012-08-04 13:05:36",
+			"categories": [
+				"op-ed",
+				"society"
+			],
+			"tags": [
+				"Merdeka",
+				"Tunku Abdul Rahman",
+				"Malay Mail",
+				"Janji Ditepati"
+			],
+			"excerpt": "As politicians fight over the “naming rights” of the 55th Merdeka Day, a reader asks what Tunku Abdul Rahman would make of the tug-of-war.",
+			"content": "<!-- wp:paragraph --><p>If the father of the nation was alive today, one wonders what he would make over the present tug-of-war over the “naming rights” of our 55th Merdeka Day celebration. What would the late Tunku Abdul Rahman say of the words and actions of some so-called leaders who have soiled Merdeka Day and the memory of the nation’s founding?</p><!-- /wp:paragraph -->",
+			"featured_image": "Janji-Ditepati.jpg",
+			"featured_image_alt": "“Janji Ditepati” slogan for the 55th Merdeka Day"
+		},
+		{
+			"slug": "asia360-news-interview-dato-seri-anwar-ibrahim",
+			"title": "Asia360 News: Interview with Dato’ Seri Anwar Ibrahim",
+			"seo_title": "Asia360 News Interview with Anwar Ibrahim | Suara Malaysia",
+			"date": "2012-04-17 15:49:11",
+			"categories": [
+				"politics",
+				"special-reports"
+			],
+			"tags": [
+				"Anwar Ibrahim",
+				"Interview",
+				"Asia360"
+			],
+			"excerpt": "An Asia360 News interview with Anwar Ibrahim on how a diverse upbringing shaped his worldview and an ambitious political career.",
+			"content": "<!-- wp:paragraph --><p>Anwar Ibrahim’s diverse upbringing shapes his expansive worldview and ambitious political career.</p><!-- /wp:paragraph -->",
+			"featured_image": "asia360_dsai.jpg",
+			"featured_image_alt": "Dato’ Seri Anwar Ibrahim during the Asia360 News interview"
+		},
+		{
+			"slug": "failure-meritocracy-policy-singapore",
+			"title": "The Failure of the “Meritocracy” Policy of Singapore",
+			"seo_title": "The Failure of Singapore’s “Meritocracy” Policy | Suara Malaysia",
+			"date": "2012-04-02 21:30:57",
+			"categories": [
+				"world",
+				"op-ed"
+			],
+			"tags": [
+				"Singapore",
+				"Meritocracy",
+				"Article 153",
+				"Malay special rights"
+			],
+			"excerpt": "Singapore’s “meritocracy” is held up against Malaysia’s Article 153. A Malaysian writer argues the comparison ignores the reality of race and politics.",
+			"content": "<!-- wp:paragraph --><p>Many Sino-Singaporeans who try to criticize the Malaysian formula due to their ignorance of the reality of Malaysian politics of race duly claim superiority with the implementation of their so-called “meritocracy” system. It is also claimed that by the enforcement of the Malay special rights as provided for in Article 153 of the Malaysian Constitution, Malaysia is the poorer for it.</p><!-- /wp:paragraph -->",
+			"featured_image": "singapore-coat-of-arms.png",
+			"featured_image_alt": "Coat of arms of Singapore"
+		},
+		{
+			"slug": "seksualiti-merdeka-freedom-sexuality",
+			"title": "“Seksualiti Merdeka” Is Not Freedom of Sexuality",
+			"seo_title": "Seksualiti Merdeka Is Not Freedom of Sexuality | Suara Malaysia",
+			"date": "2012-02-28 03:24:06",
+			"categories": [
+				"society",
+				"op-ed"
+			],
+			"tags": [
+				"Seksualiti Merdeka",
+				"LGBT",
+				"Freedom of expression",
+				"Malaysian society"
+			],
+			"excerpt": "A critical take on the cancelled Seksualiti Merdeka festival in Kuala Lumpur, and on what “freedom of sexuality” means in a Malaysian context.",
+			"content": "<!-- wp:paragraph --><p>The nation was abuzz several months ago with the provocative attempts of LGBT (Lesbian, Gay, Bisexual and Transgender) activists in holding a festival celebrating homosexuality via a programme called “Sexualiti Merdeka” (Freedom of Sexuality). Scheduled to be held at The Annexe in Kuala Lumpur on November 11th, the event was eventually cancelled.</p><!-- /wp:paragraph -->",
+			"featured_image": "Seksualiti-Merdeka.jpg",
+			"featured_image_alt": "Seksualiti Merdeka festival poster"
+		},
+		{
+			"slug": "hasan-ali-sacked-pas",
+			"title": "Why Hasan Ali Was Sacked from PAS",
+			"seo_title": "Why Hasan Ali Was Sacked from PAS | Suara Malaysia",
+			"date": "2012-01-25 09:11:21",
+			"categories": [
+				"politics"
+			],
+			"tags": [
+				"Hasan Ali",
+				"PAS",
+				"Pakatan Rakyat",
+				"UMNO",
+				"Selangor"
+			],
+			"excerpt": "The Selangor PAS commissioner’s dismissal explained: his clashes with party leaders, his closeness to UMNO and what it means for Pakatan Rakyat.",
+			"content": "<!-- wp:paragraph --><p>Much has been said about Datuk Dr. Hasan Ali, the former Selangor state commissioner of the party and (previously) a state Exco in the Pakatan Rakyat state government, in the past few weeks. Some had claimed that the reason for the decision to sack him was because of outside pressure from PAS&#8217; partners, DAP and PKR and that the PAS leadership had bowed down to others. Others have said that the reason Hasan Ali was sacked was because of his so-called &#8220;activism&#8221; against apostasy and the set-up of a counter-apostasy unit borne by the department under his portfolio (religious affairs) and therefore Hasan Ali&#8217;s sacking is a detriment to the cause of Islam itself. Even more ludicrous is the claim by Hasan Ali himself that he was sacked on the orders of Anwar Ibrahim!</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>It truly befuddles me that despite the gains PAS has made in Election 2008, many still fail to understand the &#8220;PAS political culture&#8221; which is totally distinct from UMNO, the current ruling party at Federal level. Many of the folk who make such assumptions and claims are ignorant of the Islamic concept of working in a <em>jamaah</em>, which PAS believes in and fully espouses. Unlike the UMNO political culture, the Islamic movement as enshrined by PAS is not dependent on the &#8220;aura&#8221; of a single individual. Anyone and everyone are both indispensable and at the same time, also dispensable in for the cause of Islam via the party. PAS has seen leaders who were once influential come and go like the tide; and yet the party marches on. Difference of opinions are fine for as long as they do not contradict the overall political direction as decided by PAS&#8217; central working committee.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Unfortunately this was what Dr. Hasan Ali failed to understand, that he is not <em>ma&#8217;sum</em> and that PAS is not him and he is not PAS. For several days up to the day the party&#8217;s CWC decided to sack him, Hasan Ali has done nothing but attack the party&#8217;s <em>tahalluf siyasi</em> in Pakatan Rakyat, while at the same time tooting his own horn of the &#8220;deeds&#8221; he has done for the cause of the party (despite the fact that he <a href=\"http://www.malaysiawaves.com/2012/01/hasan-ali-tidak-pernah-bentang-program.html\">had never presented his pet project for review to the PAS leadership</a> and kept the party in the dark). Worse still, he had done it by granting interviews to pro-UMNO newspapers which were more than happy to publish such sensational stories at the detriment of PAS&#8217; image. Furthermore, he appeared on TV3 lambasting the <em>Negara Berkebajikan</em> concept and leaves little room in mind of the viewer that he believes PAS has &#8220;strayed&#8221; from its Islamic path. I personally watched this interview on air and could only shake my head in dismay at the attitude of Hasan Ali, who had clearly become a poison in the body of the <em>jamaah</em>. The more he made his views known in pro-UMNO media, the more he sounded like an UMNO man.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Therefore when it was announced by the party that Hasan Ali was now sacked, I heaved my breath in relief. It was probably the best thing for both Hasan Ali and PAS; the party has got rid of the poison to continue its relationship with Pakatan Rakyat, and Hasan Ali is now free to join UMNO with no strings attached. Hasan Ali was not sacked because of his strong aversion to apostasy; he was sacked because of his strong aversion to PAS!</p><!-- /wp:paragraph -->",
+			"featured_image": "hasan_ali.jpg",
+			"featured_image_alt": "Hasan Ali, former Selangor PAS commissioner"
+		},
+		{
+			"slug": "police-barking-wrong-tree-student-prank-case",
+			"title": "Police Barking Up the Wrong Tree in Student Prank Case?",
+			"seo_title": "Student Prank Case: Are Malaysian Police Barking Up the Wrong Tree?",
+			"date": "2012-01-17 13:52:57",
+			"categories": [
+				"society"
+			],
+			"tags": [
+				"Malaysian police",
+				"Social media",
+				"Student prank",
+				"Facebook"
+			],
+			"excerpt": "Did police overreact to a student’s Facebook prank? Suara Malaysia questions the response and asks how online jokes should be treated under the law.",
+			"content": "<!-- wp:paragraph --><p>Anyone who sees this Facebook profile would know that this is nothing more than a prank. Someone who is really serious in assassinating the Prime Minister would not have announced his or her intentions publicly, much less have a Facebook profile declaring such an aim in their status. However the Malaysian police, being the dumb-asses and utter morons that they already are, saw it fit to regard this prank as a &#8220;threat&#8221; and <a href=\"http://www.themalaysianinsider.com/litee/malaysia/article/in-penang-student-held-over-web-threat-against-pm/\">arrested this student</a> over this particular remark.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Honestly, I think this is simply a case of the police being over-zealous on a non-issue. That being said, this does not mean I condone the student&#8217;s prank at all. However, the issue could be handled in a much &#8220;quieter&#8221; way (such as calling up the student for counselling or contacting his parents to advise them of the consequences of making such threats online) and certainly with much less publicity than it is due for the past few days or so. Was it really necessary to make such a huge brouhaha by arresting the poor guy, harassing him during interrogation and later stuffing him in the lock-up over a Facebook profile status?</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>The real crimes are happening on the streets, you stupid policemen. Why don&#8217;t you chase after the real criminals instead of wasting our public funds on an obvious student prank?</p><!-- /wp:paragraph -->",
+			"featured_image": "bomb_helicopter.jpg",
+			"featured_image_alt": "Police helicopter in a mock bomb scare image"
+		},
+		{
+			"slug": "al-jazeera-101-east-anwar-ibrahim-trial",
+			"title": "Al Jazeera 101 East: Anwar Ibrahim After the Trial",
+			"seo_title": "Anwar Ibrahim After the Trial: Al Jazeera 101 East | Suara Malaysia",
+			"date": "2012-01-13 16:33:23",
+			"categories": [
+				"politics"
+			],
+			"tags": [
+				"Anwar Ibrahim",
+				"Al Jazeera",
+				"Opposition",
+				"General elections"
+			],
+			"excerpt": "Cleared of sodomy charges, Anwar Ibrahim says they were meant to end his career. Al Jazeera’s 101 East asks if his coalition can now win.",
+			"content": "<!-- wp:paragraph --><p>Malaysian opposition leader Datuk Seri Anwar Ibrahim has been cleared of sodomy charges, which he says were meant to kill off his political career. Will his coalition be able to mount its strongest political challenge in this year&#8217;s general elections?</p><!-- /wp:paragraph -->\n\n<!-- wp:embed {\"url\":\"https://www.youtube.com/watch?v=CRACMa4eu04\",\"type\":\"video\",\"providerNameSlug\":\"youtube\",\"responsive\":true} --><figure class=\"wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube\"><div class=\"wp-block-embed__wrapper\">https://www.youtube.com/watch?v=CRACMa4eu04</div></figure><!-- /wp:embed -->",
+			"featured_image": "901.jpg",
+			"featured_image_alt": "Al Jazeera 101 East programme graphic on Anwar Ibrahim"
+		},
+		{
+			"slug": "pas-dr-dzuls",
+			"title": "Why PAS Needs More Dr Dzuls",
+			"seo_title": "Why PAS Needs More Dr Dzuls | Islamist Politics in Malaysia",
+			"date": "2011-12-26 15:24:56",
+			"categories": [
+				"politics"
+			],
+			"tags": [
+				"PAS",
+				"Islamism",
+				"Muslim Brotherhood",
+				"Ennahda",
+				"Dzulkefly Ahmad"
+			],
+			"excerpt": "Drawing on Ennahda and the Muslim Brotherhood, an argument for why PAS needs more reform-minded leaders in the mould of Dr Dzulkefly Ahmad.",
+			"content": "<!-- wp:paragraph --><p><strong>Maszlee Malik and Musa Mohd Nordin</strong></p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>It is rather surprising that the Western media started to call Ennahda party in Tunisia as a ‘moderate Islamist party’. The same label has been used to describe the Muslim Brotherhood in Egypt, to differentiate them from the ‘radical’ Salafi parties. It was not the case a couple of years ago and unimaginable by many considering we are just ten years post-911; the tragic bombing of the WTC in New York. ‘Moderate’ Islamists appears to be a new jargon to describe the ‘not so bad’ Muslim guys who were previously designated with a plethora of Islamphobic labels by the same media which included among others ‘the radical Islamists’, ‘extremist banned group’, “radical Islamic fundamentalist”, “jihadist militants”, etc.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Finally, there is now hope that the many self proclaimed political Islam experts in the western media would awaken to the fact that the term ‘Islamist’ is not a monolithic one. It is most unfortunate that J.L. Esposito’s piece, ‘Islamic threat: Myth or Reality’ was never given much attention to many to better understand this phenomenon. Esposito’s thoughts might be seen as an outlier when contrasted against the tsunami of islamophobic writings published post-911. However, it is an excellent beginner’s book to better understand the wide parameters of the much varied global-Islamism phenomenon and trends.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>In surah Al-Baqarah verse 143 Allah says “Thus have We made of you an ummah (nation) justly balanced, that you might be witnesses upon mankind…” Interestingly, this verse resides smack in the middle of the surah which contains 286 verses, further emphasizing the concept of the middle nation (ummatan wasata); justly balanced and embracing moderation in its clarion call for change and reformation. I am thus convinced that in the midst of the many loosely defined “Islamists” there exists the “moderate and justly balanced Islamist”. This immediately begs the question, “how does one define one?”</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>This calls to mind Karim Raslan’s foreword to Dr Dzulkefly Ahmad’s new book “Striving for Change”. After admitting his historical ‘stereotyping’ of all Islamists, it eventually dawned upon him that there are such persons or movements that can be described as moderate Islamists. I could not agree more with Karim Raslan and think that there are many who share similar analyses and sentiments. In this respect, I can vouch that friends and foes of Dr Dzulkefly better known as Dr Dzul, would unanimously echo that this Dr Dzul guy is truly a universal persona of a moderate Islamist.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>His Islamic activism dates back to his student days in Birmingham, UK in the mid 70s. His excellence in academia landed him a doctorate in the medical sciences (toxicology) from Imperial College, London and he taught both medical sciences and Islamic civilization in USM. Very much a self taught economist he has proven his mettle by jointly spearheading the Pakatan shadow cabinet on financial matters besetting the nation. A prolific writer and an orator of substance he has all the makings of a credible and iconic politician to represent the professional group amongst Malaysian Islamists. His added and rare asset is his ability to master the Arabic language and his invaluable training in the skills and competence to understand, reflect and contextualize the meaning of the Quran and traditions of the Prophet, which makes him a new symbol of transfomative Muslim leadership in Malaysia. His brand of down to earth, facilitative, hands-on and savvy Islamic leadership is being increasingly accepted not only within the ranks of his party, his constituents in Kuala Selangor, his colleagues in Pakatan but also the lay public both Muslims and non-Muslim alike.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Having read <a href=\"http://blog.drdzul.com/\">his blog</a>, analysed his writings in the various on-line news portals, watched his many interviews, listened to his public ceramahs (talks) ( ) and viewed his parliamentary sessions as a lawmaker, Dr Dzul in our opinion embodies a breakthrough, a new hope for the “izzah”, an honourable and noble positioning of Islam within the landscape of Malaysian politics unlike that adulterated and tarnished by the parochial and racist representation of Islam in the past 50 years post-Independence. As friends of Dr Dzul since prior to his political debut, we might be ruled to be jaundiced in our assessment of his performance but you are at liberty to seek the opinions of others on Dr Dzul, the “Islamic democrat”.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Furthermore, as a PAS central committee member and think tank maestro, it is kind of difficult to fathom that this same pious guy has his own musical choir consisting of his wife, children and in-laws which they have labelled ‘the Wayfarers’. They blasted a few “hot numbers” among others Il Divo’s “I believe in you” and an Arabic version of the original Leonard Cohen’s “Hallelujah” at the recent fund-raiser in Kelab Shah Alam on the 18th December 2011, attended by a micorsosm of the Malaysia populace.Dr Dzul’s willingness to engage and embrace others in crystallizing his vison and his commitments to “memberikan yang terbaik untuk agama, rakyat dan gegara” (nothing less than the best for his religion, people and nation) sets new and enviable benchmarks for the Muslim politican in multi-ethnic and multi-religious Malaysia.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>If PAS is seriously hoping and planning on the long walk to Putrajaya as part of an engaging, and trusted partner in a PR led federal government, then they should be seriously considering cloning the Dr Dzul template in their rank and file and not fear losing one or more Hasans or Nashas. The Dr Dzul aura represents the contemporary best of PAS political culture in the PR band wagon for change towards a new and better Malaysia.</p><!-- /wp:paragraph -->",
+			"featured_image": "PAS.jpg",
+			"featured_image_alt": "PAS party flag"
+		},
+		{
+			"slug": "himpunan-sejuta-umat-apostasy-malaysia",
+			"title": "Himpunan Sejuta Umat and Apostasy in Malaysia",
+			"seo_title": "Himpunan Sejuta Umat and Apostasy in Malaysia | Suara Malaysia",
+			"date": "2011-10-18 11:59:47",
+			"categories": [
+				"society",
+				"special-reports"
+			],
+			"tags": [
+				"Apostasy",
+				"Islam",
+				"Sharia",
+				"Shah Alam",
+				"Himpunan Sejuta Umat"
+			],
+			"excerpt": "What the Himpunan Sejuta Umat rally at Shah Alam stadium said about apostasy, federal law and Islamic criminal jurisprudence in Malaysia.",
+			"content": "<!-- wp:paragraph --><p>The war drums are beating again. Several purportedly &#8220;Islamic&#8221; NGOs have banded together and decided to do something about apostasy in the country. The organisers are holding a &#8220;Himpunan Sejuta Umat&#8221; (&#8220;Gathering of a Million Faithful&#8221;) or simply known as <a href=\"http://himpun.org/\">HIMPUN</a>, at Stadium Shah Alam this weekend as a &#8220;show of strength&#8221; to openly oppose non-Muslim proselytisation towards the Muslim community and apostasy in general. The gathering will later produce a declaration calling for the enactment of a law to punish individuals guilty of proselytisation.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>It is important that we explain why apostasy is such a huge concern among Muslims, not just in Malaysia but all over the Muslim world in general. Apostasy is <a href=\"http://www.beautifulislam.net/articles/apostacy_blasphemy_islam.htm#concise\">defined</a> as <em>&#8220;the public abandoning of a religious faith for another ideology or religion&#8221;</em>.  The technical <a href=\"http://www.beautifulislam.net/articles/apostacy_blasphemy_islam.htm#abing\">Arabic terms</a> in Islam are <em>Irtidad</em> and <em>Ridda</em>, and an apostate is referred to as a <em>murtadd</em> (&#8220;one who turns back [on the religion]&#8221;).</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>As for the punishment of apostasy in Islam, the famous hadith recorded by Bukhari: <em>&#8220;man baddala deenahu faqthuluhu&#8221;</em> (&#8220;Whoever leaves his religion, kill him&#8221;) is so well-known that it requires no further apologetics for the statement. Suffice it to say that the <em>shari&#8217;ah</em> is very clear on the Islamic position regarding the <em>murtadd</em> and the hadith cited has been the legal basis of all four of the major Sunni madhaab which exists today. There is no compromise regarding this and even the claims of apostasy being a &#8220;human right&#8221; can be easily disproved when we look into the Western legal system and see that the punishment for treason is death, and that Islam <a href=\"http://www.ismailfaruqi.com/articles/islam-and-human-rights/#footnote_28_27\">equates</a> apostasy with treason of the highest order.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Once the issue of apostasy in the Islamic legal system is understood, then one will realise that asking questions such as <em>&#8220;do we really think the way to show our religion is great is by using law to force people to stay in our religion?&#8221;</em> is silly and borders on the ridiculous for the believer. How can one be given the &#8220;choice&#8221; to leave Islam when the right was never theirs to make in the first place according to the <em>shari&#8217;ah</em>? And who gives the right to non-Muslims to interfere in  what is clearly an Islamic affair and display their pompous arrogance and ignorance on the matter by being insensitive to this Islamic legality from the <em>shari&#8217;ah</em>? Such is the influence of Western materialism and decadence that it has, sadly, coerced people into believing that only &#8220;human rights&#8221; (or what is perceived to be as &#8220;human rights&#8221;) reign supreme, but they forgot about God&#8217;s Rights and their rights and obligations to the One Who Created All!</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Some liberal Muslims will also claim that there is an &#8220;apparent contradiction&#8221; between Qur&#8217;an, 2:256 which mentioned &#8220;no compulsion in religion&#8221; and the <em>shari&#8217;ah</em> injunction against apostasy. The answer to this age-old polemic is that <strong>the contexts are totally different</strong>, and that it refers to people who are already not Muslims in the first place and not bound by the shari&#8217;ah injunction regarding apostates! Ibn Kathir explains this in his <em>tafsir</em> of the verse in question as follows:</p><!-- /wp:paragraph -->\n\n<!-- wp:quote --><blockquote class=\"wp-block-quote\"><!-- wp:paragraph --><p>Allah said, <strong>{There is no compulsion in religion}</strong>, meaning, “Do not force anyone to become Muslim, for Islam is plain and clear. and its proofs and evidence are plain and clear. Therefore, there is no need to force anyone to embrace Islam. Rather, whoever Allah directs to Islam, opens his heart for it and enlightens his mind, will embrace Islam with certainty. Whoever Allah blinds his heart and seals his hearing and sight, then he will not benefit from being forced to embrace Islam.</p><!-- /wp:paragraph --></blockquote><!-- /wp:quote -->\n\n<!-- wp:paragraph --><p>Thus it is plain for all to see that Qur&#8217;an, 2:256 has nothing whatsoever to do with the issue of apostasy, and this is simply an attempt by those who try to dilute Islam by ignoring other statements of the Qur&#8217;an which clearly does not allow for apostasy at all.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Now that the Islamic position regarding apostasy has been made clear, let me say what I think about the proposed &#8220;Himpunan Sejuta Umat&#8221; this weekend against proselytisation and apostasy. While on principle I do support the purpose and aim of this community movement to issue an open statement calling for the legal enforcement of barring proselytisation, I do believe that this gathering is moving in the wrong direction and that it will do little to impact the situation on the ground, if this is the only thing that they will proclaim during the gathering.  While the <a href=\"http://confinder.richmond.edu/admin/docs/malaysia.pdf\">Federal Constitution of Malaysia</a>&#8216;s Article 11(4) is very clear on the issue of proselytisation among Muslims and states: <em>&#8220;State law and in respect of the Federal Territories of Kuala Lumpur and Labuan, federal law may control or restrict the propagation of any religious doctrine or belief among persons professing the religion of Islam&#8221;</em>, there has been literally no enforcement at all in this regard. Of all the religions in Malaysia, none has been more active in proselytisation as those of the Christian faith. I am personally and painfully aware of Christian missionary activities and their proselytisation material are freely available and distributed with impunity. A planned &#8220;Christian convention centre&#8221; <a href=\"http://www.ibnjuferi.us/christian-calgary-convention-centre-bukit-jalil/\">to be build</a> at Bukit Jalil is yet another glaring display of how daring those of other faiths are in their zealousness to propagate the worship of a half-naked, Roman criminal who was left crucified on a cross.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Yet, nothing concrete has been done by the authorities concerned to put a stop to such activities. The threat to Islam in Malaysia are not from the Christians alone. As of late, the rise of a certain brand of &#8220;militant atheism&#8221; is rearing its ugly head in Malaysia and it has influenced a lot of people to apostatise from Islam. It is a worrying trend, particularly since militant atheism also advocates a certain type of proselytisation where its &#8220;adherents&#8221; (if that is an apt description of these disbelievers) actively promote their own ideology while at the same time insult and debase Islam in the most heinous of descriptions.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Perhaps the solution to this dilemma of proselytisation towards Muslims and apostasy in Malaysia is not just to make gatherings and declarations which are not heeded to by the authorities and the government of the day, but a total revamp from ground up regarding religious education and total empowerment of the law and religious officials. What I propose is that a separate subject (or at least, a component of Islamic Studies) be taught in schools for Muslim students called &#8220;Comparative Religion Studies&#8221;. A syllabus can be drawn up where Muslim students are exposed to the various religions in Malaysia, study specific chapters of each religion&#8217;s holy scriptures and the Islamic view regarding each religion&#8217;s doctrines and <em>Weltanschaaung</em>. This, I feel, will equip the student with the proper tools to counter the arguments made from the adherents of other religions who try to proselytise their religion to Muslims.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Apart from this, a more solid legislation regarding apostasy and a uniform, legal enforcement of Article 11(4) to be shouldered by not only the understaffed religious authorities in the various states, but also the relevant government apparatus such as the police and civil authorities involving the  auxillary police and RELA. This is something which unfortunately I do not foresee happening at the moment, unless and until a new government with PAS as a major component of the coalition takes over Putrajaya.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Apostasy in Malaysia has been a long-drawn battle between the Muslims and the disbelievers. I hope that HIMPUN would at the very least get the ball rolling towards the final objective of banning all forms of proselytisation towards Muslims and arrest the alarming rise of apostasy cases in the country, despite my skepticism that it will meet its intended objectives.</p><!-- /wp:paragraph -->",
+			"featured_image": "sejuta_perangi_murtad.jpg",
+			"featured_image_alt": "Banner for the Himpunan Sejuta Umat rally against apostasy"
+		},
+		{
+			"slug": "son-hope-malaysia",
+			"title": "My Son and the Hope for a Better Malaysia",
+			"seo_title": "My Son and the Hope for a Better Malaysia | Suara Malaysia",
+			"date": "2011-10-17 00:02:13",
+			"categories": [
+				"op-ed",
+				"politics"
+			],
+			"tags": [
+				"Better Malaysia",
+				"Reformasi",
+				"Fatherhood",
+				"Barisan Nasional",
+				"Indonesia"
+			],
+			"excerpt": "On becoming a father, one writer weighs decades of one-party rule and asks what a Better Malaysia could look like for his newborn son.",
+			"content": "<!-- wp:paragraph --><p>Perhaps it was by the stroke of fate that I became a father two weeks earlier than expected. My son, Mu&#8217;awiyah Rayyan Nieshaem, was born on the 12th of October 2011 at around 5.45pm and from that point of time onward, I shoulder the additional responsibility of the care and well-being of my offspring, which includes education. As I hold my sleeping son in my hands hours after the delivery, I ponder upon aspects of my struggle thus far and how I can ensure a Better Malaysia for my newborn son.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>As it stands currently, Malaysia is at a critical turning point. Decades of political domination by one-party rule (although it claim to have a semblance of &#8220;democracy&#8221;, no matter how handicapped that may be) has stagnated the country from a social, economical and educational aspect to such a degree that countries in the region are going far ahead of us. Indonesia, for example, have seen much growth and advancement in their lifestyle since the <em>Reformasi</em> movement ended the Suharto era in 1998. Freedom that had never been tasted before in Indonesia have helped propelled the country to further heights, although with that unbridled freedom comes the price of irresponsibility among Indonesians, chief among them is the antagonistic attitude which Indonesians have lately directed against Malaysians, allegedly for &#8220;stealing&#8221; their cultural heritage. I will discuss that problem at another time for I believe that deserves a treatment of its own.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Nonetheless, the March 2008 elections have certainly changed the mentality of Malaysians. Already people are starting to see that it is possible to initiate change, when the desire for reform and for a Better Malaysia goes beyond the selfish needs of the individual. Recently my father had the opportunity to meet an old friend, who was once an elected State Representative (ADUN) for UMNO/Barisan Nasional and a former Exco member of the Johore state government. When probed about what he thought about UMNO, whether the party had a chance to regain its lost seats in the coming 13th General Elections, I was told that my father&#8217;s friends simply replied that he did not know, and that it is hard to predict that will happen in the present climate. This is certainly a far cry from the past attitudes of previous BN candidates, who had in the past assumed that once you are standing as a candidate for Barisan Nasional, an electoral victory is assured and you will win your seat.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>What I am saying here is that the momentum that started in March 2008 should not end here. The push for a change of government in Putrajaya, which will only happen with the ouster of Barisan Nasional and the ushering of Pakatan Rakyat, must continue and it can only begin with oneself. So as I look upon the face of my son, I realise that my hope for a Better Malaysia must not just be based on simply awaiting for change to come along by itself, but I must also work towards it and participate directly in the political process. Not for just the sake of my political beliefs and the ideology which I have struggled for so long, but for the Better Malaysia that I wish to entrust upon my son, so that he will inherit the fruits of this struggle from his father. Towards that end, all I can say is that may God help us through the times for a Better Malaysia.</p><!-- /wp:paragraph -->",
+			"featured_image": "101320112433.jpg",
+			"featured_image_alt": "Mu’awiyah Rayyan Nieshaem, the author’s newborn son"
+		},
+		{
+			"slug": "father-reality-shows-islam-malaysia",
+			"title": "My Father, Reality Shows and Islam in Malaysia",
+			"seo_title": "Reality Shows, Islam and Politics in Malaysia: A Personal Essay",
+			"date": "2011-10-03 03:08:13",
+			"categories": [
+				"society",
+				"op-ed"
+			],
+			"tags": [
+				"Islam",
+				"Reality television",
+				"Barisan Nasional",
+				"PAS",
+				"Syed Muhammad Naquib al-Attas"
+			],
+			"excerpt": "A personal essay on a father, reality television and Islam, tracing how the Malaysian state and its elections shape the way faith is lived.",
+			"content": "<!-- wp:paragraph --><p>I have always shown a keen interest in Malaysian politics ever since I was ten. As far as I am concerned, someone who is not interested in or has apathy towards the Malaysian political situation is simply being unpatriotic to the highest degree, which is unthinkable to me. Patriotism towards the country, however, is not to be confused with <em>asabiyyah</em>, or tribal inclinations which the Prophet Muhammad (peace be upon him) and Islam has abolished. Neither is blind patriotism allowed to gain precedence over the principles of the deen, as this would invariably lead to fundamentalist secularism, something which we have already seen rearing its ugly head in France and Singapore during the uproar on the hijab and its ban in public schools.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>It is perhaps this blind “patriotism” which had led my dear father to ask me the question when I will eventually join UMNO ad nauseam. My father is apolitical, this much I can vouch for. He has many times expressed the need for a strong Opposition. Yet I cannot help but notice the bias that is apparent within him. He quietly believes that a person who enters the foray of politics should simply join the ruling Barisan Nasional to succeed in life. Being born in the post-Merdeka period when UMNO was the name of the game, perhaps it is no wonder as to why he adopted this view. Seriously, however, this has come across my mind for years before the 1998 sacking of then-Deputy Prime Minister, Datuk Seri Anwar Ibrahim. So I joined the Reformasi movement. I deluded myself into thinking, “Oh, I&#8217;ll rejoin UMNO once Dr. M leaves the party”. Or so I thought.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p><strong>Goodbye UMNO</strong></p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Now looking back fondly upon those years, I realized that I cannot help but renegade on my personal vow to return to UMNO. The party has denigrated so badly in the Mahathir era during the last decade that it is no longer fighting what it claims to fight for. How could I ever thought of returning to a party which promotes a separation of religion and state and calls it “Islam”, or as Pak Lah would put it, “Islam Hadhari”? That UMNO is simply making use of Islam to entice gullible Muslims is obvious when you can see the emphasis the party puts on fard kifayah (collective duty) instead of maintaining a balance between <em>fard ayn</em> (necessary duty) and <em>fard kifayah</em> as it should be.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>For a party which claims to fight for Islam to the extent of belittling another party which does, even in spite of the fact that the <em>deen </em>was never part of its <em>raison d’etre</em>, I wonder how it could miscalculated so much when it comes to a discussion about <em>fard ayn</em> and <em>fard kifayah</em>. This was discussed by Syed Muhammad Naquib al-Attas who says in his book (<em>“Islam and Secularism”</em>, ABIM: 1978) that the current rulers of the Muslim world over-stressed the goal towards <em>fard kifayah</em> and ignored <em>fard ayn</em> completely in their administration. Maybe a de-emphasis on <em>fard kifayah</em> over fard ayn would actually instill some sanity in a party whose leadership is corrupted with money-politics, but I am not holding my breath for it to happen.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Incidentally, Syed Muhammad Naquib al-Attas is perhaps the only internationally-renown Islamic scholar in contemporary times who is a local boy. Yet this same person is not given credit where it is due. Compare the times you hear his name mentioned to the regular TV appearances which his brother, Professor Syed Hussein al-Attas, enjoys and you will immediately see what I mean. All this was because Syed Naquib al-Attas was critical of the previous Prime Minister’s policies.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>But I am digressing. In any case, I no longer feel that I should seek my political destiny in UMNO, no matter how “established” it is and no matter how &#8220;Islamic&#8221; it purports itself to be. What more so with unruly characters such as Zaid Ibrahim and Zainuddin Maidin (ZAM), one cannot help but <em>ipso fact</em>o be repulsed by the sight of such fools entering UMNO (for precisely the same reason my dad is asking me to join it) in droves, ending up with destroying the nation we all love. Perhaps it is precisely because of my patriotism and new-found religious love for my country that I have chosen the Opposition, and not UMNO, as my political wasilah. This decision, I hope my dad would respect.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p><strong>The reality of reality shows</strong></p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>As a young man, I am not impervious to entertainment. I enjoy watching television, I enjoy good films, but the current excessive slew of entertainment-based reality TV shows flooding the local channels provokes concern in those who are aware of the sad state of affairs in this country. Programmes such as Akademi Fantasia, Malaysian Idol or Audition present scantily clad young men and women who dream of becoming stars and their talents (or sometimes, even the lack of it) are broadcasted nationwide. Individuals such as Jaclyn Victor and Mawi who are born out of such hedonistic programmes are given widespread publicity and the masses are whipped into a fawning frenzy over such individuals. People who are supposed to represent the future of our country are being fed with mindless entertainment! In contrast to this, you can find recent reports of murders, rape and snatch thieves in the mainstream media. How all these could be validly reflected in Pak Lah’s “Islam Hadhari” is mind-boggling, to say the least.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>For the matter of record, the writer is not against entertainment per se. It is not wrong or forbidden in Islam to have entertainment within reason and Islam, being the pragmatic religion it is, allows for entertainment, which comes with the times. There is currently an ongoing debate (<em>khilaaf</em>) among the scholars as to whether music is permissible or otherwise, with the majority of the scholars going for the former. This is certainly an unavoidable reality; music is part of our lifestyle and no civilized human being can live without the world of music which appeals to his better <em>fitrah</em> (nature) of being a human. Rejecting music in our lives is as good as rejecting food and sleep in our lives.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Having said this, however, it is clear that pointless or excessive entertainment, which distracts or inhibits one from pursuing his duties as a Muslim is universally condemned. Such condemnation is not totally unfounded. Excessive entertainment in a society has seen the downfall of several civilizations in history. The pagan Arabs of Makkah were known for their lewdness and their engagement into excessive entertainment. So were the Babylonians, Greeks and Romans. All these civilizations mentioned have met their doom. Even the Ottoman Caliphate saw its downfall due to the distraction of the Caliphs in its later days because of the providence of excessive entertainment in dancing, singing and concubinage.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Going back to the earlier points that has been raised, we are left with one fact: Pak Lah has promised the rakyat an “Islam Hadhari”, an Islam which he says pushes for “modernised Islam” to counteract Pas’ DNI (Dokumen Negara Islam). It was this promise, coupled together with his vow to take a tough stance on corruption in the administration as well as a very cooperative Election Commission, which has brought about his victory. However, what has Pak Lah’s “Islam Hadhari” brought since the last general election in March 2004? Has the <em>rakyat</em> seen any significant change in Pak Lah’s administration?</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>The writer, for one, does not. Cosmetic sacking of small-time ministers or officials for corruption does not really count for much. Apparently Pak Lah is trying to distract the people from seeing the bigger picture. Will his late grandfather approve of such decadence? Pak Lah should ask himself that question. Then again, perhaps this is in accordance with Barisan Nasional&#8217;s self-interest to see the whole society drown in the rush to SMS their votes and forget all about their basic rights as citizens of this country.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Until this current sad state of affairs change, we will have to raise the level of awareness in the <em>rakyat</em> and call for measures to restrict the current slew of entertainment reality-TV shows. Once is okay, twice is tolerable, but more than two is a bit too much!</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p><em>This article was <a href=\"http://web.archive.org/web/20060618153343/http://www.malaysiakini.com/rentakini/51039\">published</a> in <strong>Rentakini</strong> (now defunct) in May 2006.</em></p><!-- /wp:paragraph -->",
+			"featured_image": "Jata-Negara.gif",
+			"featured_image_alt": "Jata Negara, the Malaysian coat of arms"
+		},
+		{
+			"slug": "tolerance-apostasy",
+			"title": "Have Zero Tolerance for Apostasy",
+			"seo_title": "Zero Tolerance for Apostasy: A Muslim Reader’s Reply | Suara Malaysia",
+			"date": "2011-10-02 00:20:39",
+			"categories": [
+				"society",
+				"op-ed"
+			],
+			"tags": [
+				"Apostasy",
+				"Islam",
+				"Freedom of religion",
+				"Sharia"
+			],
+			"excerpt": "A reader answers a Malaysiakini letter on apostates and argues that legitimising apostasy would harm Islamic values as practised in Malaysia.",
+			"content": "<!-- wp:paragraph --><p>I refer to the letter:<em> &#8220;Apostates angry with Islam or government?&#8221;</em></p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>I, for one, am aware of the website that Shairul Fazleena is referring to. Although she asserts that she is not endorsing the apostates&#8217; cause, let us state here very clearly that her suggestion that the Malaysian government should ‘review’ their policy with regard to apostates is tantamount to mocking the Deen itself.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>It is without a doubt that apostasy is a very serious offence in Islam, and there are no ‘ifs’ and ‘buts’ about it. However, individuals like Shairul are from the flock of ‘liberal Muslims’ who prefer to abandon the Qur&#8217;an and Sunnah injunction with regard to apostates in favour of their ‘values’ from the West concerning freedom of religion.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>True, Islam does espouses the freedom of religion (Quran, 2:256). Freedom of religion, however, is not to be confused with freedom to simply leave the religion and put the Muslim ‘ummah’ in jeopardy.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Let&#8217;s put it this way. Singapore is not Malaysia. If Muslims in Singapore want to tolerate apostasy at their whim and fancy, it is their business. That they are so far apart from the practice of Islam speaks for itself.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>Shairul’s whimsical fancies about Islamic laws not being ‘relevant’ anymore in this day and age is a sign of how the liberal Muslims think. And just because there is no implementation of these laws is not an excuse to do away with them in totality. They claim that they accept the Qur&#8217;an as a Divine Book and yet they attempt to insult its laws at every juncture. It certainly sounds very hypocritical to me.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>As a Muslim living and residing in Malaysia and one who believe in the implementation of Islamic values as a way of life, legitimising apostasy would be detrimental to the Islamic values as practiced by Muslims in Malaysia.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p>There should be zero tolerance to apostates and apostasy from Islam, and this should remain the official policy of the government of Malaysia.</p><!-- /wp:paragraph -->\n\n<!-- wp:paragraph --><p><em>This letter was <a href=\"http://m.malaysiakini.com/letters/31978\">published</a> in <strong>Malaysiakini</strong>, December 2004.</em></p><!-- /wp:paragraph -->",
+			"featured_image": "Masjid_Nabawi.jpg",
+			"featured_image_alt": "Masjid Nabawi in Medina"
 		}
 	],
 	"pages": [
@@ -178,42 +533,108 @@
 		"sm-primary": {
 			"title": "Primary (category bar)",
 			"items": [
-				{ "type": "category", "slug": "op-ed" },
-				{ "type": "category", "slug": "politics" },
-				{ "type": "category", "slug": "society" },
-				{ "type": "category", "slug": "economy" },
-				{ "type": "category", "slug": "world" },
-				{ "type": "category", "slug": "elections" },
-				{ "type": "category", "slug": "special-reports" },
-				{ "type": "category", "slug": "culture-sports" }
+				{
+					"type": "category",
+					"slug": "op-ed"
+				},
+				{
+					"type": "category",
+					"slug": "politics"
+				},
+				{
+					"type": "category",
+					"slug": "society"
+				},
+				{
+					"type": "category",
+					"slug": "economy"
+				},
+				{
+					"type": "category",
+					"slug": "world"
+				},
+				{
+					"type": "category",
+					"slug": "elections"
+				},
+				{
+					"type": "category",
+					"slug": "special-reports"
+				},
+				{
+					"type": "category",
+					"slug": "culture-sports"
+				}
 			]
 		},
 		"sm-utility": {
 			"title": "Utility (About, Contact, Donate)",
 			"items": [
-				{ "type": "page", "slug": "about", "label": "About" },
-				{ "type": "page", "slug": "contact", "label": "Contact" },
-				{ "type": "page", "slug": "donate", "label": "Donate" }
+				{
+					"type": "page",
+					"slug": "about",
+					"label": "About"
+				},
+				{
+					"type": "page",
+					"slug": "contact",
+					"label": "Contact"
+				},
+				{
+					"type": "page",
+					"slug": "donate",
+					"label": "Donate"
+				}
 			]
 		},
 		"sm-sitemap": {
 			"title": "Footer site map",
 			"items": [
-				{ "type": "category", "slug": "op-ed" },
-				{ "type": "category", "slug": "politics" },
-				{ "type": "category", "slug": "society" },
-				{ "type": "category", "slug": "economy" },
-				{ "type": "category", "slug": "world" },
-				{ "type": "category", "slug": "elections" },
-				{ "type": "category", "slug": "special-reports" },
-				{ "type": "category", "slug": "culture-sports" }
+				{
+					"type": "category",
+					"slug": "op-ed"
+				},
+				{
+					"type": "category",
+					"slug": "politics"
+				},
+				{
+					"type": "category",
+					"slug": "society"
+				},
+				{
+					"type": "category",
+					"slug": "economy"
+				},
+				{
+					"type": "category",
+					"slug": "world"
+				},
+				{
+					"type": "category",
+					"slug": "elections"
+				},
+				{
+					"type": "category",
+					"slug": "special-reports"
+				},
+				{
+					"type": "category",
+					"slug": "culture-sports"
+				}
 			]
 		},
 		"sm-legal": {
 			"title": "Footer legal",
 			"items": [
-				{ "type": "page", "slug": "privacy-policy" },
-				{ "type": "page", "slug": "editorial-policy" }
+				{
+					"type": "page",
+					"slug": "privacy-policy"
+				},
+				{
+					"type": "page",
+					"slug": "editorial-policy"
+				}
 			]
 		}
 	}

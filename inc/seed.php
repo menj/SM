@@ -101,6 +101,15 @@ function sm_seed_import( $overwrite = false ) {
 		if ( $existing && ! $overwrite ) {
 			continue;
 		}
+		// Inline seed images: {{seed:file.jpg}} becomes the media library URL.
+		$p['content'] = preg_replace_callback(
+			'/\{\{seed:([^}]+)\}\}/',
+			function ( $m ) use ( $p ) {
+				$att = sm_seed_sideload( $m[1], $p['title'] );
+				return $att ? wp_get_attachment_url( $att ) : '';
+			},
+			(string) ( $p['content'] ?? '' )
+		);
 		$args = array(
 			'post_type'     => 'post',
 			'post_status'   => 'publish',
