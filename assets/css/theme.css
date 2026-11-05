@@ -43,7 +43,7 @@ body { -webkit-font-smoothing: antialiased; }
 
 /* ---------- Header ---------- */
 .sm-header { background: var(--sm-base); }
-.sm-header__top { display: flex; align-items: center; justify-content: space-between; gap: var(--sm-gap); padding: clamp(18px, 3vw, 34px) 0; }
+.sm-header__top { display: flex; align-items: center; justify-content: space-between; gap: var(--sm-gap); padding: clamp(10px, 1.4vw, 14px) 0; }
 .sm-header__brand .wp-block-site-title { margin: 0; }
 .sm-header__brand .wp-block-site-title, .sm-footer__brand .wp-block-site-title { white-space: nowrap; }
 .sm-header__brand .wp-block-site-title a { display: inline-block; text-decoration: none; }
@@ -548,4 +548,33 @@ body { -webkit-font-smoothing: antialiased; }
 @media (max-width: 560px) {
 	.sm-footer__links .wp-block-navigation { column-gap: 18px; }
 	.sm-footer__links .wp-block-navigation-item + .wp-block-navigation-item::before { display: none; }
+}
+
+/* Compact header */
+.sm-header .sm-catbar { margin-top: 0; }
+.sm-header .sm-catbar__inner { padding-block: 4px; min-height: 52px; }
+.sm-header__brand { gap: 12px; }
+.sm-intro { margin-top: 0; padding-top: clamp(26px, 3.2vw, 40px); }
+.sm-intro::before { margin-bottom: 2px; }
+@media (max-width: 640px) {
+	.sm-header__top { flex-wrap: nowrap; gap: 12px; padding-block: 10px; }
+	.sm-header__brand { min-width: 0; gap: 10px; }
+	.sm-header__brand .wp-block-site-logo img { width: 40px; height: auto; }
+	.sm-header__brand .wp-block-site-title { font-size: 1.125rem; }
+	.sm-header__utility .wp-block-navigation-item:not(:last-child) { display: none; }
+	.sm-header__utility .wp-block-navigation li:last-child a { padding: 8px 16px; font-size: .875rem; }
+}
+@media (max-width: 360px) {
+	.sm-header__brand .wp-block-site-logo img { width: 32px; }
+	.sm-header__brand { gap: 8px; }
+	.sm-header__brand .wp-block-site-title { font-size: .9375rem; letter-spacing: 0; }
+	.sm-header__utility .wp-block-navigation li:last-child a { padding: 7px 12px; font-size: .8125rem; }
+	.sm-header__top { gap: 8px; }
+}
+@media (max-width: 900px) { .sm-home { grid-template-columns: minmax(0, 1fr); } }
+.sm-sections__item, .sm-home__main, .sm-home__aside { min-width: 0; }
+@media (max-width: 560px) {
+	.sm-section-heading { gap: 10px; }
+	.sm-section-heading__title { white-space: normal; }
+	.sm-section-heading__rule { min-width: 12px; }
 }
