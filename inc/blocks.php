@@ -63,7 +63,7 @@ function sm_block_attributes( $name ) {
 	);
 	switch ( $name ) {
 		case 'hero':
-			return $common + array( 'sideCount' => array( 'type' => 'number', 'default' => 3 ) );
+			return $common + array( 'sideCount' => array( 'type' => 'number', 'default' => 5 ) );
 		case 'sections':
 			return $common + array(
 				'columns' => array( 'type' => 'number', 'default' => 3 ),
@@ -150,7 +150,7 @@ function sm_render_section_heading_block( $attrs ) {
  * Hero: one big story with overlay plus side stories.
  */
 function sm_render_hero( $attrs ) {
-	$side_count = max( 0, (int) ( $attrs['sideCount'] ?? 3 ) );
+	$side_count = max( 0, (int) ( $attrs['sideCount'] ?? 4 ) );
 	$args       = array(
 		'post_type'           => 'post',
 		'posts_per_page'      => 1 + $side_count,
@@ -174,26 +174,24 @@ function sm_render_hero( $attrs ) {
 	}
 	$main = array_shift( $posts );
 	$html = '<section ' . sm_block_wrap( $attrs, 'sm-hero' ) . ' aria-label="' . esc_attr__( 'Featured stories', 'sm' ) . '">';
-	$html .= '<article class="sm-hero__main">';
+	$html .= '<div class="sm-hero__lead"><article class="sm-hero__main">';
 	$html .= '<a class="sm-hero__media" href="' . esc_url( get_permalink( $main ) ) . '" tabindex="-1" aria-hidden="true">';
 	$html .= has_post_thumbnail( $main ) ? get_the_post_thumbnail( $main, 'sm-hero', array( 'fetchpriority' => 'high' ) ) : sm_placeholder_html( $main );
 	$html .= '</a><div class="sm-hero__overlay">' . sm_category_tag( $main );
 	$html .= '<h2 class="sm-hero__title"><a href="' . esc_url( get_permalink( $main ) ) . '">' . esc_html( get_the_title( $main ) ) . '</a></h2>';
-	$excerpt = has_excerpt( $main ) ? get_the_excerpt( $main ) : wp_trim_words( wp_strip_all_tags( $main->post_content ), 22 );
-	if ( $excerpt ) {
-		$html .= '<p class="sm-hero__excerpt">' . esc_html( $excerpt ) . '</p>';
-	}
-	$html .= '<p class="sm-hero__meta"><time datetime="' . esc_attr( get_the_date( 'c', $main ) ) . '">' . esc_html( get_the_date( '', $main ) ) . '</time><span aria-hidden="true">·</span>' . esc_html( sprintf( /* translators: minutes */ __( '%d min read', 'sm' ), sm_reading_minutes( $main ) ) ) . '</p>';
 	$html .= '</div></article>';
+	$credit = has_post_thumbnail( $main ) ? wp_strip_all_tags( (string) get_the_post_thumbnail_caption( $main ) ) : '';
+	if ( $credit ) {
+		$html .= '<p class="sm-hero__credit">' . esc_html( $credit ) . '</p>';
+	}
+	$html .= '</div>';
 	if ( $posts ) {
-		$html .= '<aside class="sm-hero__side" aria-label="' . esc_attr__( 'Top stories', 'sm' ) . '"><h2 class="sm-hero__side-title">' . esc_html__( 'Top Stories', 'sm' ) . '</h2><ol class="sm-hero__list">';
+		$html .= '<ol class="sm-hero__list" aria-label="' . esc_attr__( 'More top stories', 'sm' ) . '">';
 		foreach ( $posts as $p ) {
-			$cats  = get_the_category( $p );
-			$label = $cats ? '<span class="sm-hero__cat" style="--sm-cat:' . esc_attr( sm_cat_color( $cats[0] ) ) . '">' . esc_html( $cats[0]->name ) . '</span>' : '';
 			$thumb = has_post_thumbnail( $p ) ? get_the_post_thumbnail( $p, 'sm-thumb', array( 'loading' => 'lazy' ) ) : sm_placeholder_html( $p );
-			$html .= '<li class="sm-hero__item"><a class="sm-hero__thumb" href="' . esc_url( get_permalink( $p ) ) . '" tabindex="-1" aria-hidden="true">' . $thumb . '</a><div class="sm-hero__item-body">' . $label . '<a class="sm-hero__item-title" href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a><time class="sm-hero__date" datetime="' . esc_attr( get_the_date( 'c', $p ) ) . '">' . esc_html( get_the_date( '', $p ) ) . '</time></div></li>';
+			$html .= '<li class="sm-hero__item"><a class="sm-hero__thumb" href="' . esc_url( get_permalink( $p ) ) . '" tabindex="-1" aria-hidden="true">' . $thumb . '</a><a class="sm-hero__item-title" href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a></li>';
 		}
-		$html .= '</ol></aside>';
+		$html .= '</ol>';
 	}
 	return $html . '</section>';
 }

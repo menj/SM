@@ -47,7 +47,7 @@
 
 	serverBlock('hero', __('Featured stories', 'sm'), __('The sticky (or latest) story with two side stories.', 'sm'), function (p) {
 		return el(RangeControl, { label: __('Side stories', 'sm'), min: 0, max: 4, value: p.attributes.sideCount, onChange: function (v) { p.setAttributes({ sideCount: v }); } });
-	}, { sideCount: { type: 'number', default: 3 } });
+	}, { sideCount: { type: 'number', default: 4 } });
 
 	serverBlock('sections', __('Homepage sections', 'sm'), __('One block per category chosen in Appearance → SM Theme → Homepage.', 'sm'), function (p) {
 		return [
