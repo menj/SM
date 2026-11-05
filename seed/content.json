@@ -70,8 +70,7 @@
 			"excerpt": "How Operation Al-Aqsa Flood reshaped the Palestine question overnight, and why Malaysians should pay close attention to what comes next.",
 			"content": "<!-- wp:paragraph --><p>Hamas launched a sophisticated assault on Israel dubbed “Operation Al-Aqsa Flood,” capitalising on Israel’s redeployment of troops to the West Bank.</p><!-- /wp:paragraph -->",
 			"featured_image": null,
-			"featured_image_alt": "",
-			"sticky": true
+			"featured_image_alt": ""
 		},
 		{
 			"slug": "dap-wishes-for-the-demise-of-umno",
@@ -130,7 +129,8 @@
 			"excerpt": "Like a palace built without nails, ruler and people in Malay history were inseparable. A historical perspective that challenges the ‘absolute feudal’ label.",
 			"content": "<!-- wp:paragraph --><p>The concept of ‘monarchy as the nation’s foundations’ recalls a palace built without nails, emphasising the inseparable nature of rulers and people. It contests the common misconception that past Rajas’ rule was absolute, challenging oversimplified feudal labels.</p><!-- /wp:paragraph -->",
 			"featured_image": "Malaysia-Royalty.jpg",
-			"featured_image_alt": "Malaysian royalty in ceremonial dress"
+			"featured_image_alt": "Malaysian royalty in ceremonial dress",
+			"sticky": true
 		},
 		{
 			"slug": "free-brave-response-alvin-tan",
@@ -592,46 +592,22 @@
 				}
 			]
 		},
-		"sm-sitemap": {
-			"title": "Footer site map",
+		"sm-footer": {
+			"title": "Footer links",
 			"items": [
 				{
-					"type": "category",
-					"slug": "op-ed"
+					"type": "page",
+					"slug": "about",
+					"label": "About Us"
 				},
 				{
-					"type": "category",
-					"slug": "politics"
+					"type": "page",
+					"slug": "contact"
 				},
 				{
-					"type": "category",
-					"slug": "society"
+					"type": "page",
+					"slug": "donate"
 				},
-				{
-					"type": "category",
-					"slug": "economy"
-				},
-				{
-					"type": "category",
-					"slug": "world"
-				},
-				{
-					"type": "category",
-					"slug": "elections"
-				},
-				{
-					"type": "category",
-					"slug": "special-reports"
-				},
-				{
-					"type": "category",
-					"slug": "culture-sports"
-				}
-			]
-		},
-		"sm-legal": {
-			"title": "Footer legal",
-			"items": [
 				{
 					"type": "page",
 					"slug": "privacy-policy"
@@ -639,6 +615,11 @@
 				{
 					"type": "page",
 					"slug": "editorial-policy"
+				},
+				{
+					"type": "custom",
+					"label": "RSS",
+					"url": "/feed/"
 				}
 			]
 		}

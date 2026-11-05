@@ -11,8 +11,8 @@
 $sm_email = (string) sm_get( 'email' );
 $sm_phone = (string) sm_get( 'phone' );
 ?>
-<!-- wp:heading {"level":1,"className":"sm-page-title"} -->
-<h1 class="wp-block-heading sm-page-title"><?php esc_html_e( 'Contact Us', 'sm' ); ?></h1>
+<!-- wp:heading {"level":1,"align":"wide","className":"sm-page-title"} -->
+<h1 class="wp-block-heading alignwide sm-page-title"><?php esc_html_e( 'Contact Us', 'sm' ); ?></h1>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"wide","className":"sm-contact","layout":{"type":"default"}} -->

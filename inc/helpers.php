@@ -33,7 +33,7 @@ function sm_default_settings() {
 		// Homepage.
 		'hero_source'       => 'sticky',
 		'home_sections'     => array(),
-		'section_posts'     => 1,
+		'section_posts'     => 2,
 		'show_excerpt'      => 0,
 		// Newsletter.
 		'nl_heading'        => "Subscribe To Our\nLatest News & Update",

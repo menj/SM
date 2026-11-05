@@ -34,6 +34,7 @@ add_action(
 			'editors-picks'   => 'sm_render_editors_picks',
 			'active-topics'   => 'sm_render_active_topics',
 			'most-read'       => 'sm_render_most_read',
+			'footer-sections' => 'sm_render_footer_sections',
 			'reading-time'    => 'sm_render_reading_time_block',
 		);
 		foreach ( $blocks as $name => $cb ) {
@@ -321,7 +322,9 @@ function sm_render_donate_block( $attrs ) {
 	$html .= '<div class="sm-donate__actions"><a class="wp-element-button is-style-sm-outline" href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Cancel', 'sm' ) . '</a>';
 	$html .= '<button type="submit" class="wp-element-button">' . esc_html__( 'Go to checkout', 'sm' ) . '</button></div>';
 	if ( ! $url ) {
-		$html .= '<p class="sm-form__message is-error">' . esc_html__( 'No checkout URL has been configured yet (Appearance → SM Theme → Donate).', 'sm' ) . '</p>';
+		$html .= current_user_can( 'manage_options' )
+			? '<p class="sm-form__message is-error">' . esc_html__( 'Admins only: no checkout URL is set yet (Appearance → SM Theme → Donate).', 'sm' ) . '</p>'
+			: '<p class="sm-form__message">' . esc_html__( 'Online donations are opening soon. To support us in the meantime, please contact the editors.', 'sm' ) . '</p>';
 	}
 	return $html . '</form>';
 }
@@ -465,4 +468,44 @@ function sm_render_most_read( $attrs ) {
 		$html .= '<li class="sm-rank"><span class="sm-rank__num" aria-hidden="true">' . (int) ( $i + 1 ) . '</span><div class="sm-rank__body">' . $label . '<a class="sm-rank__title" href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a></div></li>';
 	}
 	return sm_aside_module( $attrs['title'] ?: __( 'Most Read', 'sm' ), $html . '</ol>', $attrs );
+}
+
+/**
+ * Footer sitemap: top sections with their latest stories, plus site links.
+ */
+function sm_render_footer_sections( $attrs ) {
+	$terms = get_terms(
+		array(
+			'taxonomy'   => 'category',
+			'orderby'    => 'count',
+			'order'      => 'DESC',
+			'number'     => 4,
+			'hide_empty' => true,
+			'exclude'    => array( (int) get_option( 'default_category' ) ),
+		)
+	);
+	$html = '<nav class="sm-fcols" aria-label="' . esc_attr__( 'Sitemap', 'sm' ) . '">';
+	if ( ! is_wp_error( $terms ) ) {
+		foreach ( $terms as $t ) {
+			$posts = get_posts( array( 'post_type' => 'post', 'posts_per_page' => 3, 'cat' => $t->term_id, 'no_found_rows' => true ) );
+			$html .= '<div class="sm-fcol" style="--sm-cat:' . esc_attr( sm_cat_color( $t ) ) . '"><h3 class="sm-fcol__title"><a href="' . esc_url( get_category_link( $t ) ) . '">' . esc_html( $t->name ) . '</a></h3><ul>';
+			foreach ( $posts as $p ) {
+				$html .= '<li><a href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a></li>';
+			}
+			$html .= '</ul></div>';
+		}
+	}
+	$links = array();
+	foreach ( array( 'about' => __( 'About', 'sm' ), 'contact' => __( 'Contact', 'sm' ), 'donate' => __( 'Donate', 'sm' ), 'privacy-policy' => __( 'Privacy Policy', 'sm' ), 'editorial-policy' => __( 'Editorial Policy', 'sm' ) ) as $slug => $label ) {
+		$pg = get_page_by_path( $slug );
+		if ( $pg ) {
+			$links[] = '<li><a href="' . esc_url( get_permalink( $pg ) ) . '">' . esc_html( $label ) . '</a></li>';
+		}
+	}
+	$html .= '<div class="sm-fcol"><h3 class="sm-fcol__title">' . esc_html( get_bloginfo( 'name' ) ) . '</h3><ul>' . implode( '', $links ) . '<li><a href="' . esc_url( get_feed_link() ) . '">RSS</a></li></ul>';
+	$donate = get_page_by_path( 'donate' );
+	if ( $donate ) {
+		$html .= '<a class="sm-fcta" href="' . esc_url( get_permalink( $donate ) ) . '">' . esc_html__( 'Support us', 'sm' ) . ' <span aria-hidden="true">&rarr;</span></a>';
+	}
+	return $html . '</div></nav>';
 }

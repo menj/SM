@@ -57,6 +57,21 @@
 		"typography": {
 			"fontFamilies": [
 				{
+					"name": "Manrope",
+					"slug": "manrope",
+					"fontFamily": "Manrope, system-ui, sans-serif",
+					"fontFace": [
+						{
+							"src": [
+								"file:./assets/fonts/manrope/Manrope-VariableFont_wght.woff2"
+							],
+							"fontWeight": "200 800",
+							"fontStyle": "normal",
+							"fontFamily": "Manrope"
+						}
+					]
+				},
+				{
 					"name": "Sabon Next LT",
 					"slug": "sabon-next",
 					"fontFamily": "\"Sabon Next LT\", Georgia, \"Times New Roman\", serif",

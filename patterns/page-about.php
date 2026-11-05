@@ -37,16 +37,19 @@ $sm_phone = (string) sm_get( 'phone' );
 	<!-- /wp:group -->
 
 	<!-- wp:group {"className":"sm-about__collage","layout":{"type":"default"}} -->
-	<div class="wp-block-group sm-about__collage">
-		<!-- wp:image {"className":"is-style-sm-rounded"} -->
-		<figure class="wp-block-image is-style-sm-rounded"><img alt="" /></figure>
-		<!-- /wp:image -->
-		<!-- wp:image {"className":"is-style-sm-rounded"} -->
-		<figure class="wp-block-image is-style-sm-rounded"><img alt="" /></figure>
-		<!-- /wp:image -->
-		<!-- wp:image {"className":"is-style-sm-rounded"} -->
-		<figure class="wp-block-image is-style-sm-rounded"><img alt="" /></figure>
-		<!-- /wp:image -->
+	<div class="wp-block-group sm-about__collage" aria-hidden="true">
+		<!-- wp:group {"className":"sm-about__tile sm-about__tile--navy"} -->
+		<div class="wp-block-group sm-about__tile sm-about__tile--navy"></div>
+		<!-- /wp:group -->
+		<!-- wp:group {"className":"sm-about__tile sm-about__tile--yellow"} -->
+		<div class="wp-block-group sm-about__tile sm-about__tile--yellow"></div>
+		<!-- /wp:group -->
+		<!-- wp:group {"className":"sm-about__tile sm-about__tile--red"} -->
+		<div class="wp-block-group sm-about__tile sm-about__tile--red"></div>
+		<!-- /wp:group -->
+		<!-- wp:group {"className":"sm-about__tile sm-about__tile--blue"} -->
+		<div class="wp-block-group sm-about__tile sm-about__tile--blue"></div>
+		<!-- /wp:group -->
 	</div>
 	<!-- /wp:group -->
 </div>

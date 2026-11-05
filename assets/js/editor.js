@@ -95,6 +95,7 @@
 	};
 	var countAttrs = { title: { type: 'string', default: '' }, count: { type: 'number', default: 5 } };
 	serverBlock('editors-picks', __('Editor’s Picks', 'sm'), __('Posts tagged “editors-pick”, topped up with the latest stories.', 'sm'), countTitle, countAttrs);
+	serverBlock('footer-sections', __('Footer sitemap', 'sm'), __('Top sections with their latest stories, plus site links.', 'sm'), null, {});
 	serverBlock('most-read', __('Most Read', 'sm'), __('Ranked list of the most read stories.', 'sm'), countTitle, countAttrs);
 	serverBlock('active-topics', __('Active Topics', 'sm'), __('Categories with the most stories.', 'sm'), countTitle, countAttrs);
 	serverBlock('share', __('Share buttons', 'sm'), __('WhatsApp, Facebook, X and copy-link buttons for the current article.', 'sm'), null, {});

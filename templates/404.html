@@ -2,14 +2,26 @@
 
 <!-- wp:group {"tagName":"main","className":"sm-404","layout":{"type":"constrained"}} -->
 <main class="wp-block-group sm-404">
-	<!-- wp:heading {"level":1,"textAlign":"center"} -->
-	<h1 class="wp-block-heading has-text-align-center">404</h1>
-	<!-- /wp:heading -->
-	<!-- wp:paragraph {"align":"center"} -->
-	<p class="has-text-align-center">The page you are looking for has moved or never existed. Try a search, or head back to the latest stories.</p>
+	<!-- wp:paragraph {"className":"sm-404__code"} -->
+	<p class="sm-404__code" aria-hidden="true">404</p>
 	<!-- /wp:paragraph -->
-	<!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search Suara Malaysia…","buttonText":"Search","buttonPosition":"button-inside","align":"center"} /-->
-	<!-- wp:sm/newsletter {"align":"wide"} /-->
+	<!-- wp:heading {"level":1,"textAlign":"center","className":"sm-404__title"} -->
+	<h1 class="wp-block-heading has-text-align-center sm-404__title">Alamak! This page dah lari.</h1>
+	<!-- /wp:heading -->
+	<!-- wp:paragraph {"align":"center","className":"sm-404__text"} -->
+	<p class="has-text-align-center sm-404__text">We checked the mamak, the pasar malam and even under the sofa. Nothing. Maybe it went for teh tarik and forgot to come back. Don’t stress lah, there are plenty more stories. Try a search, or go back to the front page.</p>
+	<!-- /wp:paragraph -->
+	<!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search Suara Malaysia…","buttonText":"Cari","buttonPosition":"button-inside","align":"center"} /-->
+	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+	<div class="wp-block-buttons">
+		<!-- wp:button {"className":"sm-404__home"} -->
+		<div class="wp-block-button sm-404__home"><a class="wp-block-button__link wp-element-button" href="/">Balik homepage</a></div>
+		<!-- /wp:button -->
+	</div>
+	<!-- /wp:buttons -->
+	<!-- wp:paragraph {"align":"center","className":"sm-404__note"} -->
+	<p class="has-text-align-center sm-404__note">Error 404. Page tak jumpa, tapi cerita lain banyak lagi.</p>
+	<!-- /wp:paragraph -->
 </main>
 <!-- /wp:group -->
 

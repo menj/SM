@@ -159,7 +159,9 @@ function sm_seed_import( $overwrite = false ) {
 		} elseif ( ! empty( $pg['content'] ) ) {
 			$content = $pg['content'];
 		}
-		if ( $existing && ! $overwrite ) {
+		// WordPress ships a draft Privacy Policy page. Treat any unpublished page as a placeholder to replace.
+		$is_placeholder = $existing && 'publish' !== $existing->post_status;
+		if ( $existing && ! $overwrite && ! $is_placeholder ) {
 			$page_ids[ $pg['slug'] ] = $existing->ID;
 			continue;
 		}
@@ -194,6 +196,16 @@ function sm_seed_import( $overwrite = false ) {
 		$count++;
 	}
 	$log[] = sprintf( /* translators: count */ __( '%d pages imported.', 'sm' ), $count );
+
+	/* Remove WordPress's untouched demo content so it does not appear in lists. */
+	$demo_post = get_page_by_path( 'hello-world', OBJECT, 'post' );
+	if ( $demo_post && 'Hello world!' === $demo_post->post_title && false !== strpos( $demo_post->post_content, 'Welcome to WordPress' ) ) {
+		wp_trash_post( $demo_post->ID );
+	}
+	$demo_page = get_page_by_path( 'sample-page', OBJECT, 'page' );
+	if ( $demo_page && 'Sample Page' === $demo_page->post_title && false !== strpos( $demo_page->post_content, 'This is an example page' ) ) {
+		wp_trash_post( $demo_page->ID );
+	}
 
 	/* Navigation menus (block navigation posts referenced by slug in the parts). */
 	foreach ( (array) ( $data['menus'] ?? array() ) as $slug => $menu ) {

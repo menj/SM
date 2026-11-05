@@ -9,8 +9,8 @@
  */
 
 ?>
-<!-- wp:heading {"level":1,"className":"sm-page-title"} -->
-<h1 class="wp-block-heading sm-page-title"><?php esc_html_e( 'Editorial Policy', 'sm' ); ?></h1>
+<!-- wp:heading {"level":1,"align":"wide","className":"sm-page-title"} -->
+<h1 class="wp-block-heading alignwide sm-page-title"><?php esc_html_e( 'Editorial Policy', 'sm' ); ?></h1>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"wide","className":"sm-legal","layout":{"type":"default"}} -->
