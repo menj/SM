@@ -79,16 +79,17 @@ function sm_seed_import( $overwrite = false ) {
 	/* Categories. */
 	$cat_ids = array();
 	foreach ( (array) ( $data['categories'] ?? array() ) as $c ) {
-		$term = get_term_by( 'slug', $c['slug'], 'category' );
+		$term      = get_term_by( 'slug', $c['slug'], 'category' );
+		$parent_id = ! empty( $c['parent'] ) ? (int) ( $cat_ids[ $c['parent'] ] ?? 0 ) : 0;
 		if ( ! $term ) {
-			$r = wp_insert_term( $c['name'], 'category', array( 'slug' => $c['slug'], 'description' => $c['description'] ?? '' ) );
+			$r = wp_insert_term( $c['name'], 'category', array( 'slug' => $c['slug'], 'description' => $c['description'] ?? '', 'parent' => $parent_id ) );
 			if ( ! is_wp_error( $r ) ) {
 				$cat_ids[ $c['slug'] ] = (int) $r['term_id'];
 			}
 		} else {
 			$cat_ids[ $c['slug'] ] = (int) $term->term_id;
 			if ( $overwrite ) {
-				wp_update_term( $term->term_id, 'category', array( 'name' => $c['name'], 'description' => $c['description'] ?? '' ) );
+				wp_update_term( $term->term_id, 'category', array( 'name' => $c['name'], 'description' => $c['description'] ?? '', 'parent' => $parent_id ) );
 			}
 		}
 	}
@@ -211,31 +212,7 @@ function sm_seed_import( $overwrite = false ) {
 	foreach ( (array) ( $data['menus'] ?? array() ) as $slug => $menu ) {
 		$blocks = '';
 		foreach ( (array) $menu['items'] as $item ) {
-			if ( 'category' === $item['type'] ) {
-				$term = get_term_by( 'slug', $item['slug'], 'category' );
-				if ( ! $term ) {
-					continue;
-				}
-				$blocks .= sprintf(
-					'<!-- wp:navigation-link {"label":"%1$s","type":"category","id":%2$d,"url":"%3$s","kind":"taxonomy"} /-->',
-					esc_attr( $item['label'] ?? $term->name ),
-					(int) $term->term_id,
-					esc_url( get_category_link( $term ) )
-				) . "\n";
-			} elseif ( 'page' === $item['type'] ) {
-				$pid = $page_ids[ $item['slug'] ] ?? 0;
-				if ( ! $pid ) {
-					continue;
-				}
-				$blocks .= sprintf(
-					'<!-- wp:navigation-link {"label":"%1$s","type":"page","id":%2$d,"url":"%3$s","kind":"post-type"} /-->',
-					esc_attr( $item['label'] ?? get_the_title( $pid ) ),
-					(int) $pid,
-					esc_url( get_permalink( $pid ) )
-				) . "\n";
-			} elseif ( 'custom' === $item['type'] ) {
-				$blocks .= sprintf( '<!-- wp:navigation-link {"label":"%1$s","url":"%2$s","kind":"custom"} /-->', esc_attr( $item['label'] ), esc_url( $item['url'] ) ) . "\n";
-			}
+			$blocks .= sm_seed_nav_item( $item, $page_ids );
 		}
 		$existing = get_page_by_path( $slug, OBJECT, 'wp_navigation' );
 		$args     = array(
@@ -258,7 +235,14 @@ function sm_seed_import( $overwrite = false ) {
 
 	/* Homepage sections follow the seeded category order. */
 	$settings                  = (array) get_option( 'sm_settings', array() );
-	$settings['home_sections'] = array_values( $cat_ids );
+	$top_level                 = array();
+	foreach ( $cat_ids as $cslug => $cid ) {
+		$t = get_term( $cid, 'category' );
+		if ( $t && ! is_wp_error( $t ) && 0 === (int) $t->parent ) {
+			$top_level[] = $cid;
+		}
+	}
+	$settings['home_sections'] = $top_level;
 	update_option( 'sm_settings', $settings );
 
 	update_option( 'sm_seed_imported', time() );
@@ -332,3 +316,39 @@ add_action(
 		echo '<div class="notice notice-success is-dismissible"><p><strong>' . esc_html__( 'Seed content imported.', 'sm' ) . '</strong> ' . esc_html( implode( ' ', (array) $log ) ) . '</p></div>';
 	}
 );
+
+/**
+ * Build the block markup for one navigation item, with nested children as a submenu.
+ *
+ * @param array $item     Menu item from the seed file.
+ * @param array $page_ids Map of page slug to ID.
+ * @return string
+ */
+function sm_seed_nav_item( $item, $page_ids ) {
+	$children = '';
+	foreach ( (array) ( $item['children'] ?? array() ) as $child ) {
+		$children .= sm_seed_nav_item( $child, $page_ids );
+	}
+	$attrs = null;
+	if ( 'category' === $item['type'] ) {
+		$term = get_term_by( 'slug', $item['slug'], 'category' );
+		if ( $term ) {
+			$attrs = array( 'label' => $item['label'] ?? $term->name, 'type' => 'category', 'id' => (int) $term->term_id, 'url' => get_category_link( $term ), 'kind' => 'taxonomy' );
+		}
+	} elseif ( 'page' === $item['type'] ) {
+		$pid = $page_ids[ $item['slug'] ] ?? 0;
+		if ( $pid ) {
+			$attrs = array( 'label' => $item['label'] ?? get_the_title( $pid ), 'type' => 'page', 'id' => (int) $pid, 'url' => get_permalink( $pid ), 'kind' => 'post-type' );
+		}
+	} elseif ( 'custom' === $item['type'] ) {
+		$attrs = array( 'label' => $item['label'], 'url' => $item['url'], 'kind' => 'custom' );
+	}
+	if ( ! $attrs ) {
+		return '';
+	}
+	$json = wp_json_encode( $attrs, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+	if ( $children ) {
+		return '<!-- wp:navigation-submenu ' . $json . " -->\n" . $children . "<!-- /wp:navigation-submenu -->\n";
+	}
+	return '<!-- wp:navigation-link ' . $json . " /-->\n";
+}

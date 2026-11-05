@@ -173,6 +173,7 @@ function sm_home_section_terms() {
 	$terms = get_terms(
 		array(
 			'taxonomy'   => 'category',
+			'parent'     => 0,
 			'hide_empty' => true,
 			'exclude'    => array( (int) get_option( 'default_category' ) ),
 			'orderby'    => 'name',

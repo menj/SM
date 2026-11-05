@@ -436,6 +436,7 @@ function sm_render_active_topics( $attrs ) {
 	$terms = get_terms(
 		array(
 			'taxonomy'   => 'category',
+			'parent'     => 0,
 			'orderby'    => 'count',
 			'order'      => 'DESC',
 			'number'     => max( 1, (int) ( $attrs['count'] ?? 5 ) ),
@@ -477,6 +478,7 @@ function sm_render_footer_sections( $attrs ) {
 	$terms = get_terms(
 		array(
 			'taxonomy'   => 'category',
+			'parent'     => 0,
 			'orderby'    => 'count',
 			'order'      => 'DESC',
 			'number'     => 4,

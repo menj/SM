@@ -50,6 +50,24 @@
 			"name": "Culture & Sports",
 			"slug": "culture-sports",
 			"description": "Arts, heritage, entertainment and Malaysian sport."
+		},
+		{
+			"name": "Religion",
+			"slug": "religion",
+			"parent": "society",
+			"description": "Faith, apostasy and religious law in Malaysian public life."
+		},
+		{
+			"name": "Education",
+			"slug": "education",
+			"parent": "society",
+			"description": "Schools, language policy and learning in Malaysia."
+		},
+		{
+			"name": "History",
+			"slug": "history",
+			"parent": "special-reports",
+			"description": "Malaysia's past, from the Malay Rulers to Merdeka."
 		}
 	],
 	"posts": [
@@ -98,7 +116,8 @@
 			"seo_title": "Asadullah Ali al-Andalusi: Muslim Apologetics and Atheism | Suara Malaysia",
 			"date": "2019-01-03 17:42:32",
 			"categories": [
-				"society"
+				"society",
+				"religion"
 			],
 			"tags": [
 				"Asadullah Ali al-Andalusi",
@@ -118,7 +137,8 @@
 			"date": "2017-08-11 15:41:50",
 			"categories": [
 				"special-reports",
-				"society"
+				"society",
+				"history"
 			],
 			"tags": [
 				"Monarchy",
@@ -215,7 +235,8 @@
 			"date": "2012-09-11 12:28:33",
 			"categories": [
 				"society",
-				"op-ed"
+				"op-ed",
+				"education"
 			],
 			"tags": [
 				"PPSMI",
@@ -235,7 +256,8 @@
 			"date": "2012-08-31 01:09:21",
 			"categories": [
 				"special-reports",
-				"society"
+				"society",
+				"history"
 			],
 			"tags": [
 				"Merdeka",
@@ -413,7 +435,8 @@
 			"date": "2011-10-18 11:59:47",
 			"categories": [
 				"society",
-				"special-reports"
+				"special-reports",
+				"religion"
 			],
 			"tags": [
 				"Apostasy",
@@ -456,7 +479,8 @@
 			"date": "2011-10-03 03:08:13",
 			"categories": [
 				"society",
-				"op-ed"
+				"op-ed",
+				"religion"
 			],
 			"tags": [
 				"Islam",
@@ -477,7 +501,8 @@
 			"date": "2011-10-02 00:20:39",
 			"categories": [
 				"society",
-				"op-ed"
+				"op-ed",
+				"religion"
 			],
 			"tags": [
 				"Apostasy",
@@ -548,7 +573,17 @@
 				},
 				{
 					"type": "category",
-					"slug": "society"
+					"slug": "society",
+					"children": [
+						{
+							"type": "category",
+							"slug": "religion"
+						},
+						{
+							"type": "category",
+							"slug": "education"
+						}
+					]
 				},
 				{
 					"type": "category",
@@ -564,7 +599,13 @@
 				},
 				{
 					"type": "category",
-					"slug": "special-reports"
+					"slug": "special-reports",
+					"children": [
+						{
+							"type": "category",
+							"slug": "history"
+						}
+					]
 				},
 				{
 					"type": "category",

@@ -47,6 +47,10 @@ These replace plugins the site previously relied on. No plugin is required.
 
 Available under the **Theme** category in the editor: Featured stories, Homepage sections, Section heading, You may be interested, Newsletter panel, Contact form, Donate form, Social icons. Shortcodes `[sm_newsletter]`, `[sm_contact_form]` and `[sm_social]` render the same output.
 
+## Menus and hierarchy
+
+The primary menu supports two levels. Add child categories (Posts → Categories → choose a parent) and nest them under their parent in Appearance → Editor → Navigation. On desktop (1101px and wider) children open as a dropdown on hover, focus or Enter; below that the hamburger overlay shows them as an indented list. Homepage sections, the footer sitemap and Active Topics list top-level categories only, and a parent's archive includes its children's stories. The seed ships three examples: Religion and Education under Society, History under Special Reports.
+
 ## Structure
 
 ```
