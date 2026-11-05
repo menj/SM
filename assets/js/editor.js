@@ -47,7 +47,7 @@
 
 	serverBlock('hero', __('Featured stories', 'sm'), __('The sticky (or latest) story with two side stories.', 'sm'), function (p) {
 		return el(RangeControl, { label: __('Side stories', 'sm'), min: 0, max: 4, value: p.attributes.sideCount, onChange: function (v) { p.setAttributes({ sideCount: v }); } });
-	}, { sideCount: { type: 'number', default: 2 } });
+	}, { sideCount: { type: 'number', default: 3 } });
 
 	serverBlock('sections', __('Homepage sections', 'sm'), __('One block per category chosen in Appearance → SM Theme → Homepage.', 'sm'), function (p) {
 		return [
@@ -95,6 +95,7 @@
 	};
 	var countAttrs = { title: { type: 'string', default: '' }, count: { type: 'number', default: 5 } };
 	serverBlock('editors-picks', __('Editor’s Picks', 'sm'), __('Posts tagged “editors-pick”, topped up with the latest stories.', 'sm'), countTitle, countAttrs);
+	serverBlock('most-read', __('Most Read', 'sm'), __('Ranked list of the most read stories.', 'sm'), countTitle, countAttrs);
 	serverBlock('active-topics', __('Active Topics', 'sm'), __('Categories with the most stories.', 'sm'), countTitle, countAttrs);
 	serverBlock('share', __('Share buttons', 'sm'), __('WhatsApp, Facebook, X and copy-link buttons for the current article.', 'sm'), null, {});
 	serverBlock('reading-time', __('Reading time', 'sm'), __('Estimated minutes to read the current article.', 'sm'), null, {});
