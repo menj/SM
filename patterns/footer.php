@@ -17,7 +17,7 @@ $sm_copyright = str_replace( '{year}', gmdate( 'Y' ), (string) sm_get( 'copyrigh
 	<div class="wp-block-group alignwide sm-footer__main">
 		<!-- wp:group {"className":"sm-footer__brand","layout":{"type":"default"}} -->
 		<div class="wp-block-group sm-footer__brand">
-			<!-- wp:site-logo {"width":48,"shouldSyncIcon":true} /-->
+			<!-- wp:site-logo {"width":64,"shouldSyncIcon":true} /-->
 			<!-- wp:site-title {"level":0} /-->
 		</div>
 		<!-- /wp:group -->
