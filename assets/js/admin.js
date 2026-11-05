@@ -68,6 +68,12 @@
 			var on = $('#sm-lb_enabled').is(':checked');
 			$('[data-field="lb_wrap"], [data-field="lb_captions"]').toggle(on);
 		}
+		function syncDropcap() {
+			var on = $('#sm-dc_enabled').is(':checked');
+			$('[data-field="dc_variant"], [data-field="dc_lines"]').toggle(on);
+		}
+		$('#sm-dc_enabled').on('change', syncDropcap);
+		syncDropcap();
 		$('#sm-lb_enabled').on('change', syncLightbox);
 		syncLightbox();
 	});

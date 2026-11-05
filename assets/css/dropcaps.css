@@ -1,0 +1,32 @@
+/*
+ * Drop caps for article openings, using the Dropcaps font (OFL, derived from Almendra).
+ * Uppercase letters render as framed initials; the "open" variant uses lowercase glyphs.
+ * Applied automatically to the first paragraph of an article (Appearance → SM Theme → Reading),
+ * or to any paragraph with the "Drop cap" block style.
+ */
+@font-face {
+	font-family: "Dropcaps";
+	src: url("../fonts/dropcaps/Dropcaps-Regular.woff2") format("woff2");
+	font-display: swap;
+}
+
+.sm-dropcaps-on .sm-single .wp-block-post-content > p:first-child::first-letter,
+.wp-block-paragraph.is-style-sm-dropcap::first-letter,
+p.is-style-sm-dropcap::first-letter {
+	font-family: "Dropcaps";
+	font-weight: normal;
+	font-style: normal;
+	color: var(--dc-color, var(--sm-primary, currentColor));
+	text-transform: uppercase;
+	float: left;
+	font-size: calc(var(--dc-lines, 3) * 1lh - 0.3em);
+	line-height: 1;
+	margin: 0.08em 0.12em 0 0;
+}
+.sm-dropcaps-open .sm-single .wp-block-post-content > p:first-child::first-letter,
+p.is-style-sm-dropcap.is-open::first-letter { text-transform: lowercase; }
+
+@supports not (height: 1lh) {
+	.sm-dropcaps-on .sm-single .wp-block-post-content > p:first-child::first-letter,
+	p.is-style-sm-dropcap::first-letter { font-size: calc(var(--dc-lines, 3) * 1.6em - 0.3em); }
+}

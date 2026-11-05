@@ -6,6 +6,7 @@
 | Kagnue | Display: site title, section and page headings | `kagnue/` (Regular, Outline) |
 | Special Elite | Press labels: tags, dates, bylines, footer | `special-elite/` |
 | Ferments | Script accent: donate visual, quote credits | `ferments/` (Regular, Slant) |
+| Dropcaps | Illuminated initials for article openings | `dropcaps/` (SIL OFL, letter outlines derived from Almendra) |
 
 Converted from the supplied TTF files to WOFF2. Licences:
 
