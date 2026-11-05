@@ -12,6 +12,7 @@
 <div class="wp-block-query alignwide">
 	<!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
 		<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/10"} /-->
+		<!-- wp:post-terms {"term":"category","separator":" ","className":"sm-card-tab"} /-->
 		<!-- wp:post-title {"isLink":true,"level":2} /-->
 		<!-- wp:post-excerpt {"moreText":"","excerptLength":20} /-->
 	<!-- /wp:post-template -->

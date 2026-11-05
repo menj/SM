@@ -36,7 +36,7 @@
 	<div class="wp-block-group alignfull sm-catbar">
 		<!-- wp:group {"align":"wide","className":"sm-catbar__inner","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
 		<div class="wp-block-group alignwide sm-catbar__inner">
-			<!-- wp:navigation {"smMenu":"sm-primary","overlayMenu":"mobile","overlayBackgroundColor":"accent-1","overlayTextColor":"base","layout":{"type":"flex","justifyContent":"left","flexWrap":"wrap"}} /-->
+			<!-- wp:navigation {"smMenu":"sm-primary","overlayMenu":"always","overlayBackgroundColor":"accent-1","overlayTextColor":"base","layout":{"type":"flex","justifyContent":"left","flexWrap":"wrap"}} /-->
 			<!-- wp:html -->
 			<div class="sm-catbar__tools">
 				<button class="sm-search-toggle" type="button" aria-expanded="false" aria-controls="sm-search-panel" aria-label="<?php esc_attr_e( 'Open search', 'sm' ); ?>">

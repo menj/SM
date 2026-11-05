@@ -173,6 +173,7 @@ function sm_home_section_terms() {
 	$terms = get_terms(
 		array(
 			'taxonomy'   => 'category',
+			'parent'     => 0,
 			'hide_empty' => true,
 			'exclude'    => array( (int) get_option( 'default_category' ) ),
 			'orderby'    => 'name',
@@ -219,10 +220,15 @@ function sm_post_card( $post, $args = array() ) {
 			'heading'      => 'h3',
 		)
 	);
-	$link = get_permalink( $post );
-	$html = '<article class="sm-card ' . esc_attr( $args['class'] ) . '">';
+	$link  = get_permalink( $post );
+	$cats  = get_the_category( $post );
+	$color = $cats ? sm_cat_color( $cats[0] ) : 'var(--sm-primary)';
+	$html  = '<article class="sm-card ' . esc_attr( $args['class'] ) . '" style="--sm-cat:' . esc_attr( $color ) . '">';
 	if ( $args['show_image'] ) {
 		$html .= '<a class="sm-card__media" href="' . esc_url( $link ) . '" aria-hidden="true" tabindex="-1">';
+		if ( $cats ) {
+			$html .= '<span class="sm-card__tab">' . esc_html( $cats[0]->name ) . '</span>';
+		}
 		if ( has_post_thumbnail( $post ) ) {
 			$html .= get_the_post_thumbnail( $post, $args['image_size'], array( 'loading' => 'lazy' ) );
 		} else {
@@ -277,3 +283,52 @@ function sm_cat_color( $term ) {
 	$id = is_object( $term ) ? (int) $term->term_id : (int) $term;
 	return 'var(--sm-c' . ( ( $id % 4 ) + 1 ) . ')';
 }
+
+/**
+ * One-time repair: earlier versions blanked every setting whenever one value was saved
+ * programmatically (for example by the demo importer). If the tell-tale blanks are
+ * present, drop the blanked keys so the defaults apply again. Runs once.
+ */
+add_action(
+	'init',
+	function () {
+		if ( get_option( 'sm_settings_repaired' ) ) {
+			return;
+		}
+		$s = get_option( 'sm_settings', null );
+		if ( is_array( $s ) && isset( $s['nl_heading'], $s['phone'], $s['copyright'] ) && '' === $s['nl_heading'] && '' === $s['phone'] && '' === $s['copyright'] ) {
+			$keep = array();
+			foreach ( array( 'home_sections' ) as $k ) {
+				if ( isset( $s[ $k ] ) ) {
+					$keep[ $k ] = $s[ $k ];
+				}
+			}
+			update_option( 'sm_settings', $keep );
+		}
+		update_option( 'sm_settings_repaired', 1, false );
+	},
+	1
+);
+
+/**
+ * Give every category link its brand colour and a tab class, so core Query Loop and
+ * Post Terms blocks show the same coloured tabs as the theme's own cards.
+ */
+add_filter(
+	'term_links-category',
+	function ( $links ) {
+		return array_map(
+			function ( $link ) {
+				if ( ! preg_match( '#/category/(?:[^"/]+/)*([^"/]+)/?"#', $link, $m ) ) {
+					return $link;
+				}
+				$term = get_category_by_slug( $m[1] );
+				if ( ! $term ) {
+					return $link;
+				}
+				return preg_replace( '#<a #', '<a class="sm-cat-tab" style="--sm-cat:' . esc_attr( sm_cat_color( $term ) ) . '" ', $link, 1 );
+			},
+			(array) $links
+		);
+	}
+);
