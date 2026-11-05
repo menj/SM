@@ -43,7 +43,9 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-header__brand { gap: 14px; align-items: center; }
 .sm-header__brand .wp-block-site-logo, .sm-footer__brand .wp-block-site-logo { line-height: 0; flex: none; }
 .sm-header__brand .wp-block-site-logo img, .sm-footer__brand .wp-block-site-logo img { height: auto; display: block; }
-.sm-footer__brand { display: flex; align-items: center; gap: 14px; }
+.sm-footer__brand { display: block; }
+.sm-footer__lockup { display: flex; align-items: center; gap: 14px; }
+.sm-footer__tagline { margin: 14px 0 0; max-width: 36ch; text-wrap: balance; font-size: .8125rem; line-height: 1.6; color: var(--sm-muted); }
 .sm-footer__brand .wp-block-site-title { margin: 0; }
 .sm-header__utility .wp-block-navigation { font-family: var(--sm-serif); font-size: 1.125rem; gap: clamp(16px, 3vw, 44px); }
 .sm-header__utility .wp-block-navigation a { color: var(--sm-text); text-decoration: none; }
