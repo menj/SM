@@ -1,0 +1,220 @@
+{
+	"$comment": "Seed content for suaramalaysia.online. Imported once on theme activation by inc/seed.php, or again from Appearance → SM Theme → General → Import seed content. Dates are the original publication dates recovered from the suaramalaysia.com archive. Article bodies in the archive were summaries only; the `content` field holds that summary as the lead paragraph and can be extended in the editor.",
+	"version": 1,
+	"site": {
+		"blogname": "Suara Malaysia",
+		"blogdescription": "Independent social commentary on Malaysian politics, society and public life",
+		"meta_description": "Suara Malaysia publishes independent, thought-provoking commentary on Malaysian politics, elections, society, the economy and the world. Join the conversation for a better Malaysia.",
+		"timezone_string": "Asia/Kuala_Lumpur",
+		"permalink_structure": "/%postname%/",
+		"logo": "suara_malaysia_logo.png",
+		"logo_alt": "Suara Malaysia"
+	},
+	"categories": [
+		{ "name": "Op-Ed", "slug": "op-ed", "description": "Opinion and editorial pieces from Suara Malaysia writers and guest contributors." },
+		{ "name": "Politics", "slug": "politics", "description": "Analysis of Malaysian parties, coalitions, government and the people who shape them." },
+		{ "name": "Society", "slug": "society", "description": "Race, religion, education and the everyday fabric of Malaysian life." },
+		{ "name": "Economy", "slug": "economy", "description": "Jobs, trade, investment and the cost of living in Malaysia." },
+		{ "name": "World", "slug": "world", "description": "International affairs seen through a Malaysian lens." },
+		{ "name": "Elections", "slug": "elections", "description": "General elections, by-elections, electoral reform and voter rights." },
+		{ "name": "Special Reports", "slug": "special-reports", "description": "Long-form reporting and historical perspectives." },
+		{ "name": "Culture & Sports", "slug": "culture-sports", "description": "Arts, heritage, entertainment and Malaysian sport." }
+	],
+	"posts": [
+		{
+			"slug": "winds-of-change-for-the-palestine-cause",
+			"title": "The Winds of Change for the Palestine Cause Are Blowing Their Way",
+			"seo_title": "Winds of Change for the Palestine Cause | Suara Malaysia",
+			"date": "2023-10-11 02:44:02",
+			"categories": [ "world" ],
+			"tags": [ "Palestine", "Gaza", "Middle East" ],
+			"excerpt": "How Operation Al-Aqsa Flood reshaped the Palestine question overnight, and why Malaysians should pay close attention to what comes next.",
+			"content": "<!-- wp:paragraph --><p>Hamas launched a sophisticated assault on Israel dubbed “Operation Al-Aqsa Flood,” capitalising on Israel’s redeployment of troops to the West Bank.</p><!-- /wp:paragraph -->",
+			"featured_image": null,
+			"featured_image_alt": "",
+			"sticky": true
+		},
+		{
+			"slug": "dap-wishes-for-the-demise-of-umno",
+			"title": "DAP Wishes for the Demise of UMNO",
+			"seo_title": "DAP Wishes for the Demise of UMNO | Suara Malaysia",
+			"date": "2023-09-04 07:17:56",
+			"categories": [ "politics" ],
+			"tags": [ "DAP", "UMNO", "Unity Government", "Malay rights" ],
+			"excerpt": "UMNO sits in the coalition government but can no longer safeguard Malay rights. Suara Malaysia examines a party reduced to an ornamental vase.",
+			"content": "<!-- wp:paragraph --><p>UMNO’s presence in the coalition government is incapable of safeguarding Malay rights; it merely serves as an ornamental vase.</p><!-- /wp:paragraph -->",
+			"featured_image": "UMNO-Malaysia.png",
+			"featured_image_alt": "UMNO flags flying at a party gathering in Malaysia"
+		},
+		{
+			"slug": "asia360-news-interview-dato-seri-anwar-ibrahim",
+			"title": "Asia360 News: Interview with Dato’ Seri Anwar Ibrahim",
+			"seo_title": "Asia360 News Interview with Anwar Ibrahim | Suara Malaysia",
+			"date": "2012-04-17 15:49:11",
+			"categories": [ "politics", "special-reports" ],
+			"tags": [ "Anwar Ibrahim", "Interview", "Asia360" ],
+			"excerpt": "An Asia360 News interview with Anwar Ibrahim on how a diverse upbringing shaped his worldview and an ambitious political career.",
+			"content": "<!-- wp:paragraph --><p>Anwar Ibrahim’s diverse upbringing shapes his expansive worldview and ambitious political career.</p><!-- /wp:paragraph -->",
+			"featured_image": "asia360_dsai.jpg",
+			"featured_image_alt": "Dato’ Seri Anwar Ibrahim during the Asia360 News interview"
+		},
+		{
+			"slug": "chinese-chauvinism-racist-eugenics-porn-star-wannabe",
+			"title": "Chinese Chauvinism, Racist Eugenics and a Porn Star Wannabe",
+			"seo_title": "Chinese Chauvinism and Racist Eugenics in Malaysia | Suara Malaysia",
+			"date": "2014-10-16 11:41:50",
+			"categories": [ "society", "op-ed" ],
+			"tags": [ "Race relations", "Education", "Vernacular schools" ],
+			"excerpt": "Chinese-based parties cry ‘racist’ at dissenters while voicing racial sentiments on single-stream education. A look at an unresolved national tension.",
+			"content": "<!-- wp:paragraph --><p>The critique targets Chinese-based political parties and groups in Malaysia, accusing them of labelling dissenters as ‘racist’ or ‘anti-Chinese’, while expressing racial sentiments on issues like single stream education. This paradox reveals an unresolved national tension.</p><!-- /wp:paragraph -->",
+			"featured_image": "mice.png",
+			"featured_image_alt": "Illustration accompanying the commentary on Chinese chauvinism in Malaysia"
+		},
+		{
+			"slug": "13th-general-elections-free-media",
+			"title": "13th General Elections and a Free Media",
+			"seo_title": "GE13 and a Free Media in Malaysia | Suara Malaysia",
+			"date": "2013-04-04 04:10:17",
+			"categories": [ "elections" ],
+			"tags": [ "GE13", "Press freedom", "Barisan Nasional", "Pakatan Rakyat" ],
+			"excerpt": "With Parliament dissolved for GE13, Suara Malaysia asks whether Barisan Nasional, Pakatan Rakyat and regional parties will fight fair in a free media.",
+			"content": "<!-- wp:paragraph --><p>As every Malaysian would have known by now, the Prime Minister announced the dissolution of Parliament and hence paved the way for the nation’s thirteenth general elections. With that in mind, it is hoped that both the major political coalitions (Barisan Nasional and Pakatan Rakyat) as well as regional parties will engage their opponents in a fair contest of ideas.</p><!-- /wp:paragraph -->",
+			"featured_image": "Electoral-Reforms.jpg",
+			"featured_image_alt": "Electoral reforms poster ahead of Malaysia’s 13th general election"
+		},
+		{
+			"slug": "blackout-elections",
+			"title": "Blackout Elections!",
+			"seo_title": "Blackout Elections: Standing with Malaysians after GE13 | Suara Malaysia",
+			"date": "2013-05-10 16:09:52",
+			"categories": [ "elections" ],
+			"tags": [ "GE13", "Electoral fraud", "Gerrymandering", "Black 505" ],
+			"excerpt": "In solidarity with Malaysians who wanted change after GE13 but were denied it by widespread fraud and gerrymandering.",
+			"content": "<!-- wp:paragraph --><p>In solidarity with fellow Malaysians who wanted change after GE13 but were robbed of it due to widespread fraud and gerrymandering.</p><!-- /wp:paragraph -->",
+			"featured_image": "blackout.jpg",
+			"featured_image_alt": "Black square symbolising the post-GE13 blackout protest"
+		},
+		{
+			"slug": "free-brave-response-alvin-tan",
+			"title": "Neither Free nor Brave: A Response to Alvin Tan",
+			"seo_title": "Neither Free nor Brave: A Response to Alvin Tan | Suara Malaysia",
+			"date": "2014-12-16 09:08:10",
+			"categories": [ "op-ed" ],
+			"tags": [ "Alvin Tan", "Youth", "Free speech" ],
+			"excerpt": "Academic prowess is no substitute for wisdom or courage. A response to Alvin Tan that honours the Malaysian youth working for a shared destiny.",
+			"content": "<!-- wp:paragraph --><p>Criticism is levelled at perceived selfish cowardice and lack of wisdom, despite academic prowess. This overlooks the sacrifices of Malaysian youth committed to a shared destiny, a higher calling for national improvement.</p><!-- /wp:paragraph -->",
+			"featured_image": "CryBaby.jpg",
+			"featured_image_alt": "Crying baby illustration used for the response to Alvin Tan"
+		},
+		{
+			"slug": "monarchy-nations-foundations",
+			"title": "Monarchy at Our Nation’s Foundations",
+			"seo_title": "Monarchy at Our Nation’s Foundations | Suara Malaysia",
+			"date": "2017-08-11 15:41:50",
+			"categories": [ "special-reports", "society" ],
+			"tags": [ "Monarchy", "Malay Rulers", "History", "Feudalism" ],
+			"excerpt": "Like a palace built without nails, ruler and people in Malay history were inseparable. A historical perspective that challenges the ‘absolute feudal’ label.",
+			"content": "<!-- wp:paragraph --><p>The concept of ‘monarchy as the nation’s foundations’ recalls a palace built without nails, emphasising the inseparable nature of rulers and people. It contests the common misconception that past Rajas’ rule was absolute, challenging oversimplified feudal labels.</p><!-- /wp:paragraph -->",
+			"featured_image": "Malaysia-Royalty.jpg",
+			"featured_image_alt": "Malaysian royalty in ceremonial dress"
+		},
+		{
+			"slug": "asadullah-ali-al-andalusi",
+			"title": "Asadullah Ali al-Andalusi",
+			"seo_title": "Asadullah Ali al-Andalusi: Muslim Apologetics and Atheism | Suara Malaysia",
+			"date": "2019-01-03 17:42:32",
+			"categories": [ "society" ],
+			"tags": [ "Asadullah Ali al-Andalusi", "Apologetics", "Comparative religion", "Atheism" ],
+			"excerpt": "A profile of Asadullah Ali al-Andalusi, a leading voice in Muslim apologetics and comparative religion who examines atheism in Muslim communities.",
+			"content": "<!-- wp:paragraph --><p>Asadullah Ali al-Andalusi is a prominent figure in Muslim apologetics and comparative religion, particularly focusing on Atheism, a rarely examined ideology in Muslim communities.</p><!-- /wp:paragraph -->",
+			"featured_image": "Asadullah-Ali.png",
+			"featured_image_alt": "Asadullah Ali al-Andalusi speaking at a public engagement"
+		}
+	],
+	"pages": [
+		{
+			"slug": "about",
+			"title": "About Suara Malaysia",
+			"seo_title": "About Suara Malaysia | Independent Malaysian Commentary",
+			"excerpt": "Who we are, what we publish and how to reach the Suara Malaysia editorial team.",
+			"template": "page-about",
+			"pattern": "sm/page-about"
+		},
+		{
+			"slug": "contact",
+			"title": "Contact Us",
+			"seo_title": "Contact Suara Malaysia",
+			"excerpt": "Send Suara Malaysia a story tip, a correction or a letter to the editor.",
+			"template": "page-contact",
+			"pattern": "sm/page-contact"
+		},
+		{
+			"slug": "donate",
+			"title": "Donate",
+			"seo_title": "Support Independent Journalism | Donate to Suara Malaysia",
+			"excerpt": "Help keep Suara Malaysia independent and free to read with a one-time or monthly donation.",
+			"template": "page-donate",
+			"pattern": "sm/page-donate"
+		},
+		{
+			"slug": "privacy-policy",
+			"title": "Privacy Policy",
+			"seo_title": "Privacy Policy | Suara Malaysia",
+			"excerpt": "How Suara Malaysia collects, uses and protects your personal data.",
+			"template": "page-legal",
+			"pattern": "sm/page-privacy",
+			"privacy_page": true
+		},
+		{
+			"slug": "editorial-policy",
+			"title": "Editorial Policy",
+			"seo_title": "Editorial Policy | Suara Malaysia",
+			"excerpt": "The standards of accuracy, independence and fairness that guide Suara Malaysia.",
+			"template": "page-legal",
+			"pattern": "sm/page-editorial"
+		}
+	],
+	"menus": {
+		"sm-primary": {
+			"title": "Primary (category bar)",
+			"items": [
+				{ "type": "category", "slug": "op-ed" },
+				{ "type": "category", "slug": "politics" },
+				{ "type": "category", "slug": "society" },
+				{ "type": "category", "slug": "economy" },
+				{ "type": "category", "slug": "world" },
+				{ "type": "category", "slug": "elections" },
+				{ "type": "category", "slug": "special-reports" },
+				{ "type": "category", "slug": "culture-sports" }
+			]
+		},
+		"sm-utility": {
+			"title": "Utility (About, Contact, Donate)",
+			"items": [
+				{ "type": "page", "slug": "about", "label": "About" },
+				{ "type": "page", "slug": "contact", "label": "Contact" },
+				{ "type": "page", "slug": "donate", "label": "Donate" }
+			]
+		},
+		"sm-sitemap": {
+			"title": "Footer site map",
+			"items": [
+				{ "type": "category", "slug": "op-ed" },
+				{ "type": "category", "slug": "politics" },
+				{ "type": "category", "slug": "society" },
+				{ "type": "category", "slug": "economy" },
+				{ "type": "category", "slug": "world" },
+				{ "type": "category", "slug": "elections" },
+				{ "type": "category", "slug": "special-reports" },
+				{ "type": "category", "slug": "culture-sports" }
+			]
+		},
+		"sm-legal": {
+			"title": "Footer legal",
+			"items": [
+				{ "type": "page", "slug": "privacy-policy" },
+				{ "type": "page", "slug": "editorial-policy" }
+			]
+		}
+	}
+}

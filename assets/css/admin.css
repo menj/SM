@@ -1,0 +1,55 @@
+/* Appearance → SM Theme settings screen. */
+.sm-settings { max-width: 1100px; }
+.sm-settings__title { display: flex; align-items: baseline; gap: 10px; font-weight: 600; }
+.sm-settings__title span { font-size: 12px; color: #646970; font-weight: 400; }
+.sm-settings__layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; margin-top: 16px; }
+@media (max-width: 782px) { .sm-settings__layout { grid-template-columns: 1fr; } }
+
+.sm-tabs { display: flex; flex-direction: column; gap: 4px; background: #fff; border: 1px solid #dcdcde; border-radius: 8px; padding: 8px; align-self: start; position: sticky; top: 48px; }
+@media (max-width: 782px) { .sm-tabs { flex-direction: row; flex-wrap: wrap; position: static; } }
+.sm-tabs__tab { appearance: none; background: none; border: 0; border-radius: 6px; text-align: left; padding: 9px 10px; display: flex; align-items: center; gap: 8px; color: #1d2327; font-size: 13px; cursor: pointer; }
+.sm-tabs__tab .dashicons { color: #646970; font-size: 18px; width: 18px; height: 18px; }
+.sm-tabs__tab:hover { background: #f0f0f1; }
+.sm-tabs__tab.is-active { background: #1d2327; color: #fff; }
+.sm-tabs__tab.is-active .dashicons { color: #fff; }
+
+.sm-panels { background: #fff; border: 1px solid #dcdcde; border-radius: 8px; padding: 8px 24px 24px; }
+.sm-panel[hidden] { display: none; }
+.sm-panel__title { font-size: 16px; font-weight: 600; margin: 16px 0 8px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f1; }
+
+.sm-field { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-bottom: 1px solid #f0f0f1; align-items: start; }
+.sm-field:last-child { border-bottom: 0; }
+@media (max-width: 782px) { .sm-field { grid-template-columns: 1fr; gap: 6px; } }
+.sm-field__label { font-weight: 600; font-size: 13px; padding-top: 6px; display: flex; align-items: center; gap: 8px; }
+.sm-field__icon svg { width: 16px; height: 16px; fill: #1d2327; }
+.sm-field__help { margin: 6px 0 0; color: #646970; font-size: 12px; }
+.sm-field--heading { grid-template-columns: 1fr; }
+.sm-field--heading h3 { margin: 8px 0 4px; font-size: 14px; }
+.sm-field--heading p { margin: 0; color: #646970; }
+.sm-field textarea.code { font-family: Menlo, Consolas, monospace; font-size: 12px; }
+
+.sm-toggle { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+.sm-toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+.sm-toggle__track { width: 38px; height: 22px; border-radius: 11px; background: #c3c4c7; position: relative; transition: background .15s ease; flex: none; }
+.sm-toggle__track::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .15s ease; }
+.sm-toggle input:checked + .sm-toggle__track { background: #ff0007; }
+.sm-toggle input:checked + .sm-toggle__track::after { transform: translateX(16px); }
+.sm-toggle input:focus-visible + .sm-toggle__track { outline: 2px solid #2271b1; outline-offset: 2px; }
+.sm-toggle__text { font-size: 13px; color: #646970; }
+
+.sm-swatches { display: flex; gap: 8px; margin-top: 10px; }
+.sm-swatch { appearance: none; border: 1px solid #dcdcde; background: #fff; border-radius: 6px; padding: 4px; display: inline-flex; gap: 3px; cursor: pointer; }
+.sm-swatch span { width: 18px; height: 18px; border-radius: 3px; display: block; }
+.sm-swatch:hover { border-color: #1d2327; }
+
+.sm-checklist { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.sm-sortable { margin: 0; padding: 0; list-style: none; max-width: 420px; }
+.sm-sortable li { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid #dcdcde; border-radius: 6px; background: #fff; margin-bottom: 6px; }
+.sm-sortable li label { flex: 1; }
+.sm-sortable__handle { cursor: grab; color: #a7aaad; }
+.sm-sortable__count { font-size: 11px; color: #646970; background: #f0f0f1; padding: 2px 8px; border-radius: 10px; }
+.sm-sortable .ui-sortable-helper { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.sm-sortable .ui-sortable-placeholder { visibility: visible !important; border: 1px dashed #c3c4c7; background: #f6f7f7; height: 36px; }
+
+.sm-settings__actions { padding-top: 20px; }
+.sm-entry-table th { width: 160px; }

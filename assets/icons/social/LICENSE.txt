@@ -1,0 +1,26 @@
+
+LICENSE
+-------
+This pack — the compiled set, the 24x24 single-path/black-white
+convention, and every redrawn or traced mark (GTribe, Fiverr, Suno,
+VIAF, ISNI) — is released under the GNU General Public License
+(GPL). 36 of the 43 icons started from CC0 (public-domain) source
+material, which carries no attribution requirement and imposes no
+restriction on relicensing the combined work under GPL. The
+remaining 7 (GTribe, Fiverr, Suno, VIAF, ISNI, plus the two Font
+Awesome exceptions below) are simple text/glyph marks traced or
+redrawn from the brand's own logo file, below the threshold most
+jurisdictions require for copyright protection on a logo of that
+simplicity — the same reasoning under which Wikimedia Commons hosts
+the ISNI wordmark itself as public domain.
+
+EXCEPTION — LinkedIn and Scribd:
+These two icons originate from Font Awesome Free, licensed CC BY
+4.0. That license's attribution condition is a term of the license
+itself, not a courtesy — it can't be dropped and these two files
+can't be relicensed under GPL without Font Awesome's terms
+following them. So, for linkedin.svg/png and scribd.svg/png only:
+  Icons by Font Awesome (https://fontawesome.com), CC BY 4.0.
+Keep that credit somewhere on the site (a footer or credits page
+covering just those two files is enough) if you use them. Everything
+else in the pack is unaffected.

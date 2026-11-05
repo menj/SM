@@ -1,0 +1,7 @@
+/* Editor-only styles so block previews match the front end. */
+.editor-styles-wrapper .sm-section-heading__title,
+.editor-styles-wrapper .sm-hero__title,
+.editor-styles-wrapper .sm-card__title { font-family: var(--wp--preset--font-family--lora); }
+.editor-styles-wrapper .sm-newsletter { border-radius: 20px; padding: 40px 24px; text-align: center; background: var(--wp--preset--color--accent-3); color: #fff; }
+.editor-styles-wrapper .sm-tag { background: var(--wp--preset--color--accent-2); padding: 6px 10px; font-weight: 700; font-size: .8125rem; }
+.editor-styles-wrapper .sm-block-placeholder { border: 1px dashed var(--wp--preset--color--accent-6); border-radius: 8px; padding: 24px; text-align: center; color: #677390; font-size: .9rem; }

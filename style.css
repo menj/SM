@@ -1,0 +1,22 @@
+/*
+Theme Name: SM
+Theme URI: https://suaramalaysia.online/
+Description: SM is the Suara Malaysia news theme, built as a block child theme of Twenty Twenty-Five. It implements the Suara Malaysia design system: a serif masthead, a red category bar, yellow category tags, a featured-story hero, per-section story grids, a rose newsletter panel and a minimalist footer. Colours are configurable from Appearance → SM Theme.
+Author: Suara Malaysia
+Author URI: https://suaramalaysia.online/
+Template: twentytwentyfive
+Requires at least: 6.7
+Tested up to: 6.8
+Requires PHP: 7.4
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: sm
+Tags: news, block-patterns, full-site-editing, custom-colors, custom-logo, featured-images, wide-blocks, three-columns
+*/
+
+/*
+ * This file carries the theme header only.
+ * All front-end styles live in assets/css/ and all scripts in assets/js/,
+ * enqueued from functions.php. Do not add CSS rules here.
+ */
