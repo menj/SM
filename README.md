@@ -51,9 +51,13 @@ Available under the **Theme** category in the editor: Featured stories, Homepage
 
 The primary menu supports two levels. Add child categories (Posts → Categories → choose a parent) and nest them under their parent in Appearance → Editor → Navigation. On desktop (1101px and wider) children open as a dropdown on hover, focus or Enter; below that the hamburger overlay shows them as an indented list. Homepage sections, the footer sitemap and Active Topics list top-level categories only, and a parent's archive includes its children's stories. The seed ships three examples: Religion and Education under Society, History under Special Reports.
 
+## Demo content
+
+The importer records every post, page, menu, image, category and tag it creates. With "Delete demo content on deactivation" on (the default, under General), activating another theme permanently deletes exactly those items and the settings that pointed at them. Anything you added yourself is never touched. "Delete demo content now" does the same on demand. Form entries and newsletter subscribers are your data and are kept.
+
 ## Image formats
 
-Seed featured images ship as AVIF with a WebP twin (about 80% smaller than the original JPEG and PNG files). On activation the importer uses AVIF when the server can generate AVIF sizes and the WebP twin when it cannot. New uploads follow Appearance → SM Theme → Reading → Image format: AVIF where supported, otherwise WebP, otherwise the original. Originals are always kept.
+Seed featured images ship as AVIF (about 80% smaller than the original JPEG and PNG files). New uploads and every generated size are also written as AVIF (Appearance → SM Theme → Reading → Image format). The server needs AVIF support in GD (PHP 8.1 or newer with libavif) or Imagick; the settings screen warns if it is missing. Originals are kept. The logo and favicons stay PNG and ICO, since browsers do not reliably show AVIF favicons.
 
 ## Structure
 

@@ -49,6 +49,7 @@ function sm_settings_tabs() {
 				array( 'id' => 'copyright', 'label' => __( 'Copyright line', 'sm' ), 'type' => 'text', 'help' => __( 'Use {year} to insert the current year.', 'sm' ) ),
 				array( 'id' => 'back_to_top', 'label' => __( 'Back-to-top button', 'sm' ), 'type' => 'toggle', 'help' => __( 'Show the small red scroll-to-top button in the footer.', 'sm' ) ),
 				array( 'id' => 'meta_description', 'label' => __( 'Homepage meta description', 'sm' ), 'type' => 'textarea', 'help' => __( 'Shown to search engines for the homepage. Aim for 150 to 160 characters.', 'sm' ) ),
+				array( 'id' => 'autodelete_demo', 'label' => __( 'Delete demo content on deactivation', 'sm' ), 'type' => 'toggle', 'help' => __( 'When another theme is activated, the demo posts, pages, categories, menus and images this theme imported are deleted permanently. Content you added yourself is never touched.', 'sm' ) ),
 				array( 'id' => 'seed_import', 'label' => __( 'Seed content', 'sm' ), 'type' => 'seed' ),
 			),
 		),
@@ -120,7 +121,7 @@ function sm_settings_tabs() {
 				array( 'id' => 'lb_enabled', 'label' => __( 'Image lightbox', 'sm' ), 'type' => 'toggle', 'help' => __( 'Open images that link to their full-size file in an overlay (Lightbox2). Galleries become slideshows.', 'sm' ) ),
 				array( 'id' => 'lb_wrap', 'label' => __( 'Wrap around at the end of a gallery', 'sm' ), 'type' => 'toggle' ),
 				array( 'id' => 'lb_captions', 'label' => __( 'Show captions', 'sm' ), 'type' => 'toggle' ),
-				array( 'id' => 'image_format', 'label' => __( 'Image format', 'sm' ), 'type' => 'select', 'options' => array( 'avif' => __( 'AVIF (smallest, falls back to WebP)', 'sm' ), 'webp' => __( 'WebP', 'sm' ), 'original' => __( 'Keep original format', 'sm' ) ), 'help' => __( 'New uploads and their sizes are converted for faster pages. Originals are kept.', 'sm' ) ),
+				array( 'id' => 'image_format', 'label' => __( 'Image format', 'sm' ), 'type' => 'select', 'options' => array( 'avif' => __( 'AVIF', 'sm' ), 'original' => __( 'Keep original format', 'sm' ) ), 'help' => __( 'New uploads and their sizes are written as AVIF for much smaller files. Originals are kept.', 'sm' ) ),
 				array( 'id' => 'dc_enabled', 'label' => __( 'Drop cap on article openings', 'sm' ), 'type' => 'toggle', 'help' => __( 'Sets the first letter of an article in the Dropcaps illuminated-initial font. You can also apply the "Drop cap" style to any paragraph.', 'sm' ) ),
 				array( 'id' => 'dc_variant', 'label' => __( 'Drop cap style', 'sm' ), 'type' => 'select', 'options' => array( 'framed' => __( 'Framed initial', 'sm' ), 'open' => __( 'Open initial', 'sm' ) ) ),
 				array( 'id' => 'dc_lines', 'label' => __( 'Drop cap height (lines)', 'sm' ), 'type' => 'number', 'min' => 2, 'max' => 5 ),
@@ -173,6 +174,7 @@ add_filter(
 			'lb_wrap'         => 1,
 			'lb_captions'     => 1,
 			'image_format'    => 'avif',
+			'autodelete_demo' => 1,
 			'dc_enabled'      => 1,
 			'dc_variant'      => 'framed',
 			'dc_lines'        => 3,
@@ -399,6 +401,8 @@ function sm_render_field( $f ) {
 		echo '<div class="sm-field"><div class="sm-field__label">' . esc_html( $f['label'] ) . '</div><div class="sm-field__control">';
 		echo '<p>' . ( $when ? sprintf( /* translators: date */ esc_html__( 'Last imported %s.', 'sm' ), esc_html( wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $when ) ) ) : esc_html__( 'Not imported yet.', 'sm' ) ) . '</p>';
 		echo '<a class="button" href="' . esc_url( $run ) . '">' . esc_html__( 'Import missing items', 'sm' ) . '</a> ';
+		$rm = wp_nonce_url( admin_url( 'admin-post.php?action=sm_seed_remove' ), 'sm_seed_remove' );
+		echo '<a class="button" href="' . esc_url( $rm ) . '" onclick="return confirm(\'' . esc_js( __( 'Delete all demo content imported by this theme? This cannot be undone.', 'sm' ) ) . '\')">' . esc_html__( 'Delete demo content now', 'sm' ) . '</a> ';
 		echo '<a class="button" href="' . esc_url( $over ) . '" onclick="return confirm(\'' . esc_js( __( 'This overwrites the seeded posts, pages and menus with the versions in seed/content.json. Continue?', 'sm' ) ) . '\')">' . esc_html__( 'Re-import and overwrite', 'sm' ) . '</a>';
 		echo '<p class="sm-field__help">' . esc_html__( 'Seed content lives in seed/content.json inside the theme. Posts, pages and menus are matched by slug, so importing never creates duplicates.', 'sm' ) . '</p>';
 		echo '</div></div>';

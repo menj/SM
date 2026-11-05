@@ -68,11 +68,11 @@ function sm_seed_import( $overwrite = false ) {
 		$settings['meta_description'] = $site['meta_description'];
 		update_option( 'sm_settings', $settings );
 	}
-	if ( ! empty( $site['logo'] ) && ! get_theme_mod( 'custom_logo' ) ) {
+	$current_logo = (int) get_theme_mod( 'custom_logo' );
+	if ( ! empty( $site['logo'] ) && ( ! $current_logo || 'attachment' !== get_post_type( $current_logo ) ) ) {
 		$logo_id = sm_seed_sideload( $site['logo'], $site['logo_alt'] ?? '' );
 		if ( $logo_id ) {
 			set_theme_mod( 'custom_logo', $logo_id );
-			update_option( 'site_icon', $logo_id );
 		}
 	}
 
@@ -85,6 +85,7 @@ function sm_seed_import( $overwrite = false ) {
 			$r = wp_insert_term( $c['name'], 'category', array( 'slug' => $c['slug'], 'description' => $c['description'] ?? '', 'parent' => $parent_id ) );
 			if ( ! is_wp_error( $r ) ) {
 				$cat_ids[ $c['slug'] ] = (int) $r['term_id'];
+				sm_seed_track_term( (int) $r['term_id'], 'category' );
 			}
 		} else {
 			$cat_ids[ $c['slug'] ] = (int) $term->term_id;
@@ -123,6 +124,12 @@ function sm_seed_import( $overwrite = false ) {
 			'post_category' => array_values( array_filter( array_map( function ( $s ) use ( $cat_ids ) { return $cat_ids[ $s ] ?? 0; }, (array) ( $p['categories'] ?? array() ) ) ) ),
 			'tags_input'    => (array) ( $p['tags'] ?? array() ),
 		);
+		$new_tags = array();
+		foreach ( (array) ( $p['tags'] ?? array() ) as $tag_name ) {
+			if ( ! term_exists( $tag_name, 'post_tag' ) ) {
+				$new_tags[] = $tag_name;
+			}
+		}
 		if ( $existing ) {
 			$args['ID'] = $existing->ID;
 			$id         = wp_update_post( $args, true );
@@ -132,6 +139,15 @@ function sm_seed_import( $overwrite = false ) {
 		if ( is_wp_error( $id ) ) {
 			$log[] = $p['slug'] . ': ' . $id->get_error_message();
 			continue;
+		}
+		if ( ! $existing ) {
+			sm_seed_track( $id );
+		}
+		foreach ( $new_tags as $tag_name ) {
+			$tt = get_term_by( 'name', $tag_name, 'post_tag' );
+			if ( $tt ) {
+				sm_seed_track_term( (int) $tt->term_id, 'post_tag' );
+			}
 		}
 		if ( ! empty( $p['seo_title'] ) ) {
 			update_post_meta( $id, '_sm_seo_title', $p['seo_title'] );
@@ -184,6 +200,9 @@ function sm_seed_import( $overwrite = false ) {
 			$log[] = $pg['slug'] . ': ' . $id->get_error_message();
 			continue;
 		}
+		if ( ! $existing || $is_placeholder ) {
+			sm_seed_track( $id );
+		}
 		$page_ids[ $pg['slug'] ] = $id;
 		if ( ! empty( $pg['template'] ) ) {
 			update_post_meta( $id, '_wp_page_template', $pg['template'] );
@@ -228,7 +247,10 @@ function sm_seed_import( $overwrite = false ) {
 				wp_update_post( $args );
 			}
 		} else {
-			wp_insert_post( $args );
+			$nav_id = wp_insert_post( $args );
+			if ( $nav_id && ! is_wp_error( $nav_id ) ) {
+				sm_seed_track( $nav_id );
+			}
 		}
 	}
 	$log[] = __( 'Navigation menus ready.', 'sm' );
@@ -259,19 +281,10 @@ function sm_seed_import( $overwrite = false ) {
  * @return int Attachment ID or 0.
  */
 function sm_seed_sideload( $file, $alt = '', $parent = 0 ) {
-	$wanted = basename( $file );
-	$path   = SM_DIR . 'seed/images/' . $wanted;
-	// Seed images ship as AVIF with a WebP twin. Use the twin when the server cannot make AVIF sizes.
-	if ( preg_match( '/\.avif$/i', $wanted ) && ! sm_image_format_supported( 'avif' ) ) {
-		$twin = SM_DIR . 'seed/images/' . preg_replace( '/\.avif$/i', '.webp', $wanted );
-		if ( is_readable( $twin ) ) {
-			$path = $twin;
-		}
-	}
+	$path = SM_DIR . 'seed/images/' . basename( $file );
 	if ( ! is_readable( $path ) ) {
 		return 0;
 	}
-	$file = $wanted;
 	$found = get_posts(
 		array(
 			'post_type'      => 'attachment',
@@ -292,6 +305,7 @@ function sm_seed_sideload( $file, $alt = '', $parent = 0 ) {
 		return 0;
 	}
 	update_post_meta( $id, '_sm_seed_file', basename( $file ) );
+	sm_seed_track( $id );
 	if ( $alt ) {
 		update_post_meta( $id, '_wp_attachment_image_alt', $alt );
 	}
@@ -361,3 +375,100 @@ function sm_seed_nav_item( $item, $page_ids ) {
 	}
 	return '<!-- wp:navigation-link ' . $json . " /-->\n";
 }
+
+/* ---------- Demo content tracking and automatic removal ---------- */
+
+/**
+ * Remember a post, page, menu or attachment that the importer created.
+ *
+ * @param int $id Post ID.
+ */
+function sm_seed_track( $id ) {
+	$m          = (array) get_option( 'sm_seed_manifest', array() );
+	$m['posts'] = array_values( array_unique( array_merge( (array) ( $m['posts'] ?? array() ), array( (int) $id ) ) ) );
+	update_option( 'sm_seed_manifest', $m, false );
+}
+
+/**
+ * Remember a term that the importer created.
+ *
+ * @param int    $id       Term ID.
+ * @param string $taxonomy Taxonomy.
+ */
+function sm_seed_track_term( $id, $taxonomy ) {
+	$m          = (array) get_option( 'sm_seed_manifest', array() );
+	$m['terms'] = (array) ( $m['terms'] ?? array() );
+	$key        = (int) $id . ':' . $taxonomy;
+	if ( ! in_array( $key, $m['terms'], true ) ) {
+		$m['terms'][] = $key;
+	}
+	update_option( 'sm_seed_manifest', $m, false );
+}
+
+/**
+ * Permanently delete everything the importer created, and nothing else.
+ *
+ * @return string[] Log lines.
+ */
+function sm_seed_remove() {
+	$m       = (array) get_option( 'sm_seed_manifest', array() );
+	$posts   = array_map( 'intval', (array) ( $m['posts'] ?? array() ) );
+	$deleted = 0;
+	foreach ( $posts as $id ) {
+		if ( get_post( $id ) && wp_delete_post( $id, true ) ) {
+			$deleted++;
+		}
+	}
+	$terms_deleted = 0;
+	foreach ( (array) ( $m['terms'] ?? array() ) as $key ) {
+		list( $tid, $tax ) = array_pad( explode( ':', $key, 2 ), 2, 'category' );
+		if ( term_exists( (int) $tid, $tax ) && (int) $tid !== (int) get_option( 'default_category' ) ) {
+			wp_delete_term( (int) $tid, $tax );
+			$terms_deleted++;
+		}
+	}
+	// Options and theme mods that pointed at deleted content.
+	if ( in_array( (int) get_theme_mod( 'custom_logo' ), $posts, true ) ) {
+		remove_theme_mod( 'custom_logo' );
+	}
+	if ( in_array( (int) get_option( 'site_icon' ), $posts, true ) ) {
+		delete_option( 'site_icon' );
+	}
+	if ( in_array( (int) get_option( 'wp_page_for_privacy_policy' ), $posts, true ) ) {
+		delete_option( 'wp_page_for_privacy_policy' );
+	}
+	update_option( 'sticky_posts', array_values( array_diff( array_map( 'intval', (array) get_option( 'sticky_posts', array() ) ), $posts ) ) );
+	$settings = (array) get_option( 'sm_settings', array() );
+	unset( $settings['home_sections'] );
+	update_option( 'sm_settings', $settings );
+	delete_option( 'sm_unlisted_ids' );
+	delete_option( 'sm_seed_manifest' );
+	delete_option( 'sm_seed_imported' );
+	set_transient( 'sm_flush_rewrite', 1, 60 );
+	return array( sprintf( /* translators: 1: items, 2: terms */ __( 'Deleted %1$d demo items and %2$d categories and tags.', 'sm' ), $deleted, $terms_deleted ) );
+}
+
+// Switching to another theme removes the demo content (if the setting is on).
+add_action(
+	'switch_theme',
+	function ( $new_name, $new_theme, $old_theme ) {
+		if ( $old_theme instanceof WP_Theme && 'SM' === $old_theme->get_stylesheet() && sm_get( 'autodelete_demo' ) ) {
+			sm_seed_remove();
+		}
+	},
+	10,
+	3
+);
+
+add_action(
+	'admin_post_sm_seed_remove',
+	function () {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'Not allowed.', 'sm' ) );
+		}
+		check_admin_referer( 'sm_seed_remove' );
+		set_transient( 'sm_seed_log', sm_seed_remove(), 60 );
+		wp_safe_redirect( admin_url( 'themes.php?page=sm-settings&tab=general' ) );
+		exit;
+	}
+);
