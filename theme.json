@@ -10,10 +10,10 @@
 			"palette": [
 				{ "color": "#FFFFFF", "name": "Base", "slug": "base" },
 				{ "color": "#202124", "name": "Contrast", "slug": "contrast" },
-				{ "color": "#FF0007", "name": "Primary (Red)", "slug": "accent-1" },
-				{ "color": "#FDCB30", "name": "Tag (Yellow)", "slug": "accent-2" },
-				{ "color": "#FF9797", "name": "Newsletter (Rose)", "slug": "accent-3" },
-				{ "color": "#162955", "name": "Link (Navy)", "slug": "accent-4" },
+				{ "color": "#CE2127", "name": "Primary (Red)", "slug": "accent-1" },
+				{ "color": "#FECD07", "name": "Tag (Yellow)", "slug": "accent-2" },
+				{ "color": "#EF9A9D", "name": "Newsletter (Rose)", "slug": "accent-3" },
+				{ "color": "#211F60", "name": "Link (Navy)", "slug": "accent-4" },
 				{ "color": "#F4F4F4", "name": "Surface (Light grey)", "slug": "accent-5" },
 				{ "color": "#D2D2D2", "name": "Line (Grey)", "slug": "accent-6" }
 			]

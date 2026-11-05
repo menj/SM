@@ -18,7 +18,7 @@
 		<div class="wp-block-group alignwide sm-header__top">
 			<!-- wp:group {"className":"sm-header__brand","layout":{"type":"flex","flexWrap":"nowrap"}} -->
 			<div class="wp-block-group sm-header__brand">
-				<!-- wp:site-logo {"width":200,"shouldSyncIcon":true} /-->
+				<!-- wp:site-logo {"width":64,"shouldSyncIcon":true} /-->
 				<!-- wp:site-title {"level":0} /-->
 			</div>
 			<!-- /wp:group -->

@@ -24,10 +24,10 @@ function sm_default_settings() {
 		'back_to_top'       => 1,
 		// Colours.
 		'scheme'            => 'suara',
-		'color_primary'     => '#ff0007',
-		'color_tag'         => '#fdcb30',
-		'color_newsletter'  => '#ff9797',
-		'color_link'        => '#162955',
+		'color_primary'     => '#ce2127',
+		'color_tag'         => '#fecd07',
+		'color_newsletter'  => '#ef9a9d',
+		'color_link'        => '#211f60',
 		'color_text'        => '#202124',
 		'color_surface'     => '#f4f4f4',
 		// Homepage.
@@ -73,7 +73,16 @@ function sm_get( $key ) {
 function sm_color_schemes() {
 	return array(
 		'suara'  => array(
-			'label'            => __( 'Suara Red (default)', 'sm' ),
+			'label'            => __( 'Suara Brand (default, from the logo)', 'sm' ),
+			'color_primary'    => '#ce2127',
+			'color_tag'        => '#fecd07',
+			'color_newsletter' => '#ef9a9d',
+			'color_link'       => '#211f60',
+			'color_text'       => '#202124',
+			'color_surface'    => '#f4f4f4',
+		),
+		'mockup' => array(
+			'label'            => __( 'Mockup Red (brighter)', 'sm' ),
 			'color_primary'    => '#ff0007',
 			'color_tag'        => '#fdcb30',
 			'color_newsletter' => '#ff9797',
