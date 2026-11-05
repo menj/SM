@@ -357,11 +357,19 @@ body { -webkit-font-smoothing: antialiased; }
 .lightbox .lb-image { border-radius: var(--sm-radius-s); }
 
 /* ---------- Homepage intro ---------- */
-.sm-intro { margin-top: clamp(28px, 4vw, 48px); max-width: 860px; margin-inline: auto; margin-left: 0; }
-.sm-intro__tagline { font-family: var(--sm-serif); font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; margin: 0 0 12px; color: var(--sm-text); }
-.sm-intro__text { margin: 0; font-size: 1.0625rem; line-height: 1.7; color: var(--sm-text); }
-.sm-intro__text a { color: var(--sm-link); }
-.sm-intro__text strong a { text-decoration: none; }
-.sm-intro__more { display: inline-block; margin-left: 4px; padding: 2px 14px; border: 1px solid var(--sm-line); border-radius: var(--sm-pill); font-size: .875rem; text-decoration: none; white-space: nowrap; }
-.sm-intro__more:hover { border-color: var(--sm-primary); color: var(--sm-primary); }
-.sm-intro + .sm-hero { margin-top: clamp(20px, 3vw, 32px); }
+.sm-intro {
+	display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(20px, 4vw, 56px); align-items: center;
+	margin-top: clamp(24px, 3vw, 40px); padding: clamp(24px, 4vw, 44px) clamp(24px, 4vw, 48px);
+	background: var(--sm-surface); border-radius: var(--sm-radius-l); position: relative; overflow: hidden;
+}
+.sm-intro::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--sm-primary); }
+.sm-intro__lead, .sm-intro__body { margin: 0; }
+.sm-intro__eyebrow { display: inline-block; margin: 0 0 14px; padding: 5px 14px; background: var(--sm-tag); color: var(--sm-on-tag); border-radius: var(--sm-pill); font-family: var(--sm-serif); font-weight: 700; font-size: .8125rem; line-height: 1; }
+.sm-intro__tagline { margin: 0; font-family: var(--sm-serif); font-weight: 400; font-size: clamp(1.5rem, 2.8vw, 2.125rem); line-height: 1.2; color: var(--sm-text); text-wrap: balance; }
+.sm-intro__text { margin: 0 0 20px; font-size: 1rem; line-height: 1.75; color: var(--sm-text); }
+.sm-intro__text strong { font-family: var(--sm-serif); font-weight: 700; color: var(--sm-link); }
+.sm-intro .wp-block-buttons { margin: 0; }
+.sm-intro__more .wp-block-button__link { background: var(--sm-primary); color: var(--sm-on-primary); padding: 11px 26px; font-size: .875rem; font-weight: 600; border-radius: var(--sm-pill); text-decoration: none; }
+.sm-intro__more .wp-block-button__link:hover { background: var(--sm-text); color: #fff; }
+.sm-intro + .sm-hero { margin-top: clamp(24px, 3vw, 40px); }
+@media (max-width: 760px) { .sm-intro { grid-template-columns: 1fr; } }
