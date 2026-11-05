@@ -278,3 +278,29 @@ function sm_cat_color( $term ) {
 	$id = is_object( $term ) ? (int) $term->term_id : (int) $term;
 	return 'var(--sm-c' . ( ( $id % 4 ) + 1 ) . ')';
 }
+
+/**
+ * One-time repair: earlier versions blanked every setting whenever one value was saved
+ * programmatically (for example by the demo importer). If the tell-tale blanks are
+ * present, drop the blanked keys so the defaults apply again. Runs once.
+ */
+add_action(
+	'init',
+	function () {
+		if ( get_option( 'sm_settings_repaired' ) ) {
+			return;
+		}
+		$s = get_option( 'sm_settings', null );
+		if ( is_array( $s ) && isset( $s['nl_heading'], $s['phone'], $s['copyright'] ) && '' === $s['nl_heading'] && '' === $s['phone'] && '' === $s['copyright'] ) {
+			$keep = array();
+			foreach ( array( 'home_sections' ) as $k ) {
+				if ( isset( $s[ $k ] ) ) {
+					$keep[ $k ] = $s[ $k ];
+				}
+			}
+			update_option( 'sm_settings', $keep );
+		}
+		update_option( 'sm_settings_repaired', 1, false );
+	},
+	1
+);

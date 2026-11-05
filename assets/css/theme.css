@@ -686,3 +686,15 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-catbar .is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item__content { font-size: 1.0625rem; font-weight: 500; opacity: .92; padding: 7px 0; }
 .sm-catbar .is-menu-open .wp-block-navigation__submenu-container::before { display: none; }
 .sm-catbar .is-menu-open .current-menu-item > .wp-block-navigation-item__content { text-decoration: underline; text-underline-offset: .25em; }
+
+/* ---------- Homepage: full-width sections, modules in a row beneath (no empty column) ---------- */
+.sm-home { display: block; }
+.sm-home .sm-sections { margin-block: clamp(28px, 4vw, 48px) 0; }
+.sm-home__aside { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sm-gap); align-items: start; position: static; margin-top: clamp(36px, 5vw, 64px); }
+@media (max-width: 960px) { .sm-home__aside { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .sm-home__aside { grid-template-columns: 1fr; } }
+.sm-home__aside > * { margin-block: 0 !important; }
+.sm-section-heading { gap: 10px; min-width: 0; }
+.sm-section-heading__title { min-width: 0; }
+.sm-section-heading__rule { min-width: 12px; }
+.sm-section-heading__all { flex: none; }

@@ -227,7 +227,14 @@ add_action(
 function sm_sanitize_settings( $input ) {
 	$input   = (array) $input;
 	$current = (array) get_option( 'sm_settings', array() );
-	$clean   = $current;
+
+	// Programmatic saves (importer, cleanup, other code) only send the keys they change.
+	// Merge them over what is stored and never treat a missing field as cleared.
+	if ( empty( $input['__form'] ) ) {
+		return array_merge( $current, $input );
+	}
+	unset( $input['__form'] );
+	$clean = $current;
 
 	foreach ( sm_settings_tabs() as $tab ) {
 		foreach ( $tab['fields'] as $f ) {
@@ -352,6 +359,7 @@ function sm_render_settings_page() {
 		<?php settings_errors( 'sm_settings' ); ?>
 		<form method="post" action="options.php" class="sm-settings__form">
 			<?php settings_fields( 'sm_settings_group' ); ?>
+			<input type="hidden" name="sm_settings[__form]" value="1" />
 			<input type="hidden" name="_wp_http_referer" value="<?php echo esc_attr( admin_url( 'themes.php?page=sm-settings&tab=' . $active ) ); ?>" />
 			<div class="sm-settings__layout">
 				<nav class="sm-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Settings sections', 'sm' ); ?>">
