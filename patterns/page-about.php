@@ -18,7 +18,7 @@ $sm_phone = (string) sm_get( 'phone' );
 		<h1 class="wp-block-heading sm-page-title"><?php esc_html_e( 'About Us', 'sm' ); ?></h1>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph {"className":"sm-about__text"} -->
-		<p class="sm-about__text"><?php esc_html_e( 'Suara Malaysia is an independent online magazine of social commentary on Malaysia. Since 2012 we have published analysis and opinion on politics, elections, society, the economy and Malaysia’s place in the world, written for readers who want more than the headlines.', 'sm' ); ?></p>
+		<p class="sm-about__text"><?php esc_html_e( 'Suara Malaysia is a dedicated online platform where you can access a wealth of insightful and thought-provoking Malaysian social commentary. Our mission is to engage and empower individuals like you in meaningful discussions that contribute to creating a Better Malaysia for all.', 'sm' ); ?></p>
 		<!-- /wp:paragraph -->
 		<!-- wp:paragraph {"className":"sm-about__text"} -->
 		<p class="sm-about__text"><?php esc_html_e( 'We are not aligned with any party or coalition. Our writers argue from evidence, name their sources and welcome rebuttal. If you think we got something wrong, tell us and we will look again.', 'sm' ); ?></p>

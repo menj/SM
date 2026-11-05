@@ -355,3 +355,13 @@ body { -webkit-font-smoothing: antialiased; }
 .is-style-sm-rounded img, .sm-about__collage img, .sm-about__collage figure { border-radius: var(--sm-radius-l); }
 .sm-progress__bar { border-radius: 0 var(--sm-pill) var(--sm-pill) 0; }
 .lightbox .lb-image { border-radius: var(--sm-radius-s); }
+
+/* ---------- Homepage intro ---------- */
+.sm-intro { margin-top: clamp(28px, 4vw, 48px); max-width: 860px; margin-inline: auto; margin-left: 0; }
+.sm-intro__tagline { font-family: var(--sm-serif); font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; margin: 0 0 12px; color: var(--sm-text); }
+.sm-intro__text { margin: 0; font-size: 1.0625rem; line-height: 1.7; color: var(--sm-text); }
+.sm-intro__text a { color: var(--sm-link); }
+.sm-intro__text strong a { text-decoration: none; }
+.sm-intro__more { display: inline-block; margin-left: 4px; padding: 2px 14px; border: 1px solid var(--sm-line); border-radius: var(--sm-pill); font-size: .875rem; text-decoration: none; white-space: nowrap; }
+.sm-intro__more:hover { border-color: var(--sm-primary); color: var(--sm-primary); }
+.sm-intro + .sm-hero { margin-top: clamp(20px, 3vw, 32px); }
