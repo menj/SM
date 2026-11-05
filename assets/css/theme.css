@@ -386,3 +386,19 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-footer__heading { font-size: .8125rem; }
 .sm-donate-page__visual-text, .wp-block-quote cite, .wp-block-pullquote cite { font-family: var(--sm-script); font-weight: 400; font-style: normal; font-synthesis: none; }
 .sm-donate-page__visual-text { font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; }
+
+/* ---------- Fallback image, reading time, share ---------- */
+.sm-card__placeholder { display: flex; align-items: center; justify-content: center; min-height: 100%; aspect-ratio: 16 / 10; width: 100%; background: linear-gradient(135deg, var(--sm-link) 0%, var(--sm-primary) 100%); color: #fff; text-align: center; padding: 16px; box-sizing: border-box; }
+.sm-card__placeholder-label { font-family: var(--sm-display); font-size: clamp(1.125rem, 2vw, 1.5rem); line-height: 1.2; letter-spacing: .02em; text-transform: uppercase; opacity: .92; }
+.sm-hero__media .sm-card__placeholder { min-height: 320px; height: 100%; }
+.sm-reading-time { font-family: var(--sm-mono); font-size: .8125rem; color: var(--sm-muted); }
+.sm-reading-time::before { content: "·"; margin-right: 12px; }
+.sm-share { display: flex; align-items: center; gap: 14px; margin-top: clamp(20px, 3vw, 32px); }
+.sm-share__label { font-family: var(--sm-mono); font-size: .8125rem; color: var(--sm-muted); }
+.sm-share__list { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; }
+.sm-share__list a, .sm-share__copy { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border: 1px solid var(--sm-line); border-radius: 10px; background: transparent; color: var(--sm-text); cursor: pointer; padding: 0; transition: color .15s ease, border-color .15s ease; }
+.sm-share__list a:hover, .sm-share__copy:hover { color: var(--sm-primary); border-color: var(--sm-primary); }
+.sm-share__list svg { width: 17px; height: 17px; fill: currentColor; }
+.sm-share__copy svg { fill: none; }
+.sm-share__status { font-size: .8125rem; color: var(--sm-muted); }
+.sm-hero .sm-card__placeholder-label { display: none; }

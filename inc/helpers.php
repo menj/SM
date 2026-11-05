@@ -217,7 +217,7 @@ function sm_post_card( $post, $args = array() ) {
 		if ( has_post_thumbnail( $post ) ) {
 			$html .= get_the_post_thumbnail( $post, $args['image_size'], array( 'loading' => 'lazy' ) );
 		} else {
-			$html .= '<span class="sm-card__placeholder"></span>';
+			$html .= sm_placeholder_html( $post );
 		}
 		$html .= '</a>';
 	}
@@ -232,4 +232,28 @@ function sm_post_card( $post, $args = array() ) {
 	}
 	$html .= '</div></article>';
 	return $html;
+}
+
+/**
+ * Branded fallback shown where a story has no featured image.
+ *
+ * @param int|WP_Post $post Post.
+ * @return string
+ */
+function sm_placeholder_html( $post ) {
+	$cats  = get_the_category( $post );
+	$label = $cats ? $cats[0]->name : get_bloginfo( 'name' );
+	return '<span class="sm-card__placeholder"><span class="sm-card__placeholder-label">' . esc_html( $label ) . '</span></span>';
+}
+
+/**
+ * Estimated reading time in minutes.
+ *
+ * @param int|WP_Post $post Post.
+ * @return int
+ */
+function sm_reading_minutes( $post = null ) {
+	$post  = get_post( $post );
+	$words = $post ? str_word_count( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ) ) : 0;
+	return max( 1, (int) ceil( $words / 220 ) );
 }

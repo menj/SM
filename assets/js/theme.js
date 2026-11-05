@@ -145,6 +145,16 @@
 		});
 	});
 
+	/* Copy link button */
+	qsa('.sm-share__copy').forEach(function (btn) {
+		btn.addEventListener('click', function () {
+			var status = qs('.sm-share__status', btn.closest('.sm-share'));
+			var done = function () { if (status) { status.textContent = btn.dataset.done; setTimeout(function () { status.textContent = ''; }, 2000); } };
+			if (navigator.clipboard) { navigator.clipboard.writeText(btn.dataset.url).then(done); }
+			else { var t = document.createElement('textarea'); t.value = btn.dataset.url; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(t); }
+		});
+	});
+
 	/* Legal page nav: highlight the section in view */
 	var legalNav = qs('.sm-legal__nav');
 	if (legalNav && 'IntersectionObserver' in window) {

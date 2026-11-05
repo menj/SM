@@ -30,6 +30,8 @@ add_action(
 			'donate-form'     => 'sm_render_donate_block',
 			'social-icons'    => 'sm_render_social_block',
 			'section-heading' => 'sm_render_section_heading_block',
+			'share'           => 'sm_render_share_block',
+			'reading-time'    => 'sm_render_reading_time_block',
 		);
 		foreach ( $blocks as $name => $cb ) {
 			register_block_type(
@@ -159,7 +161,7 @@ function sm_render_hero( $attrs ) {
 	$html = '<section ' . sm_block_wrap( $attrs, 'sm-hero' ) . ' aria-label="' . esc_attr__( 'Featured stories', 'sm' ) . '">';
 	$html .= '<article class="sm-hero__main">';
 	$html .= '<a class="sm-hero__media" href="' . esc_url( get_permalink( $main ) ) . '">';
-	$html .= has_post_thumbnail( $main ) ? get_the_post_thumbnail( $main, 'sm-hero', array( 'fetchpriority' => 'high' ) ) : '<span class="sm-card__placeholder"></span>';
+	$html .= has_post_thumbnail( $main ) ? get_the_post_thumbnail( $main, 'sm-hero', array( 'fetchpriority' => 'high' ) ) : sm_placeholder_html( $main );
 	$html .= '</a><div class="sm-hero__overlay">' . sm_category_tag( $main );
 	$html .= '<h2 class="sm-hero__title"><a href="' . esc_url( get_permalink( $main ) ) . '">' . esc_html( get_the_title( $main ) ) . '</a></h2>';
 	$excerpt = has_excerpt( $main ) ? get_the_excerpt( $main ) : wp_trim_words( wp_strip_all_tags( $main->post_content ), 16 );
@@ -328,3 +330,37 @@ add_action(
 		);
 	}
 );
+
+/**
+ * Reading time label.
+ */
+function sm_render_reading_time_block( $attrs ) {
+	$post = get_post();
+	if ( ! $post ) {
+		return '';
+	}
+	return '<span ' . sm_block_wrap( array_merge( $attrs, array( 'align' => '' ) ), 'sm-reading-time' ) . '>' . esc_html( sprintf( /* translators: minutes */ _n( '%d min read', '%d min read', sm_reading_minutes( $post ), 'sm' ), sm_reading_minutes( $post ) ) ) . '</span>';
+}
+
+/**
+ * Share buttons: WhatsApp, Facebook, X and copy link.
+ */
+function sm_render_share_block( $attrs ) {
+	$post = get_post();
+	if ( ! $post ) {
+		return '';
+	}
+	$url   = rawurlencode( get_permalink( $post ) );
+	$title = rawurlencode( get_the_title( $post ) );
+	$items = array(
+		'whatsapp' => array( 'WhatsApp', 'https://wa.me/?text=' . $title . '%20' . $url ),
+		'facebook' => array( 'Facebook', 'https://www.facebook.com/sharer/sharer.php?u=' . $url ),
+		'x'        => array( 'X', 'https://twitter.com/intent/tweet?text=' . $title . '&url=' . $url ),
+	);
+	$html = '<div ' . sm_block_wrap( array_merge( $attrs, array( 'align' => '' ) ), 'sm-share' ) . '><span class="sm-share__label">' . esc_html__( 'Share', 'sm' ) . '</span><ul class="sm-share__list">';
+	foreach ( $items as $slug => $it ) {
+		$html .= '<li><a href="' . esc_url( $it[1] ) . '" target="_blank" rel="noopener noreferrer" aria-label="' . esc_attr( sprintf( /* translators: network */ __( 'Share on %s', 'sm' ), $it[0] ) ) . '">' . sm_social_icon_svg( $slug ) . '</a></li>';
+	}
+	$html .= '<li><button type="button" class="sm-share__copy" data-url="' . esc_url( get_permalink( $post ) ) . '" data-done="' . esc_attr__( 'Link copied', 'sm' ) . '" aria-label="' . esc_attr__( 'Copy link', 'sm' ) . '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></button></li>';
+	return $html . '</ul><span class="sm-share__status" role="status" aria-live="polite"></span></div>';
+}

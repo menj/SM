@@ -87,6 +87,9 @@
 		];
 	}, { title: { type: 'string', default: '' }, link: { type: 'string', default: '' }, level: { type: 'number', default: 2 } });
 
+	serverBlock('share', __('Share buttons', 'sm'), __('WhatsApp, Facebook, X and copy-link buttons for the current article.', 'sm'), null, {});
+	serverBlock('reading-time', __('Reading time', 'sm'), __('Estimated minutes to read the current article.', 'sm'), null, {});
+
 	/* Unlisted toggle in the document sidebar */
 	if (wp.plugins && wp.editPost && wp.data && cfg.unlistMeta) {
 		var PluginPostStatusInfo = wp.editPost.PluginPostStatusInfo || (wp.editor && wp.editor.PluginPostStatusInfo);
