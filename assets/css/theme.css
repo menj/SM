@@ -13,8 +13,8 @@
 	--sm-line: var(--wp--preset--color--accent-6);
 	--sm-text: var(--wp--preset--color--contrast);
 	--sm-base: var(--wp--preset--color--base);
-	--sm-muted: #5d6385;
-	--sm-placeholder: #d9d9d9;
+	--sm-muted: #5b5f86;
+	--sm-placeholder: #dcdde8;
 	--sm-serif: var(--wp--preset--font-family--sabon-next);
 	--sm-display: var(--wp--preset--font-family--kagnue);
 	--sm-mono: var(--wp--preset--font-family--special-elite);
@@ -249,8 +249,8 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-newsletter__heading { font-family: var(--sm-sans); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; margin: 0 0 24px; color: inherit; }
 .sm-newsletter__form { display: flex; flex-direction: column; gap: 14px; max-width: 420px; margin: 0 auto; }
 .sm-newsletter__form input[type="text"], .sm-newsletter__form input[type="email"] { width: 100%; border: 0; border-radius: 999px; padding: 15px 22px; font: inherit; font-size: .9375rem; background: var(--sm-base); color: var(--sm-text); }
-.sm-newsletter__submit { align-self: center; background: var(--sm-base); color: var(--sm-primary); border: 0; border-radius: 999px; padding: 14px 44px; font: inherit; font-weight: 700; font-size: .9375rem; cursor: pointer; margin-top: 6px; }
-.sm-newsletter__submit:hover { background: var(--sm-text); color: #fff; }
+.sm-newsletter__submit { align-self: center; background: var(--sm-tag); color: var(--sm-on-tag); border: 0; border-radius: 999px; padding: 14px 44px; font: inherit; font-weight: 700; font-size: .9375rem; cursor: pointer; margin-top: 6px; }
+.sm-newsletter__submit:hover { background: var(--sm-base); color: var(--sm-text); }
 .sm-newsletter .sm-form__message.is-success { color: inherit; }
 
 /* ---------- Footer ---------- */

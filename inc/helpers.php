@@ -26,10 +26,10 @@ function sm_default_settings() {
 		'scheme'            => 'suara',
 		'color_primary'     => '#ce2127',
 		'color_tag'         => '#fecd07',
-		'color_newsletter'  => '#ef9a9d',
+		'color_newsletter'  => '#211f60',
 		'color_link'        => '#211f60',
-		'color_text'        => '#202124',
-		'color_surface'     => '#f4f4f4',
+		'color_text'        => '#1b1a40',
+		'color_surface'     => '#f2f3f9',
 		// Homepage.
 		'hero_source'       => 'sticky',
 		'home_sections'     => array(),
@@ -73,13 +73,22 @@ function sm_get( $key ) {
 function sm_color_schemes() {
 	return array(
 		'suara'  => array(
-			'label'            => __( 'Suara Brand (default, from the logo)', 'sm' ),
+			'label'            => __( 'Suara Brand (default, from the SM logo)', 'sm' ),
+			'color_primary'    => '#ce2127',
+			'color_tag'        => '#fecd07',
+			'color_newsletter' => '#211f60',
+			'color_link'       => '#211f60',
+			'color_text'       => '#1b1a40',
+			'color_surface'    => '#f2f3f9',
+		),
+		'rose'   => array(
+			'label'            => __( 'Brand with rose panel', 'sm' ),
 			'color_primary'    => '#ce2127',
 			'color_tag'        => '#fecd07',
 			'color_newsletter' => '#ef9a9d',
 			'color_link'       => '#211f60',
-			'color_text'       => '#202124',
-			'color_surface'    => '#f4f4f4',
+			'color_text'       => '#1b1a40',
+			'color_surface'    => '#f2f3f9',
 		),
 		'mockup' => array(
 			'label'            => __( 'Mockup Red (brighter)', 'sm' ),

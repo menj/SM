@@ -14,7 +14,7 @@
 					"slug": "base"
 				},
 				{
-					"color": "#202124",
+					"color": "#1B1A40",
 					"name": "Contrast",
 					"slug": "contrast"
 				},
@@ -29,8 +29,8 @@
 					"slug": "accent-2"
 				},
 				{
-					"color": "#EF9A9D",
-					"name": "Newsletter (Rose)",
+					"color": "#211F60",
+					"name": "Newsletter panel (Navy)",
 					"slug": "accent-3"
 				},
 				{
@@ -39,13 +39,13 @@
 					"slug": "accent-4"
 				},
 				{
-					"color": "#F4F4F4",
+					"color": "#F2F3F9",
 					"name": "Surface (Light grey)",
 					"slug": "accent-5"
 				},
 				{
-					"color": "#D2D2D2",
-					"name": "Line (Grey)",
+					"color": "#DCDDE8",
+					"name": "Line",
 					"slug": "accent-6"
 				}
 			]
