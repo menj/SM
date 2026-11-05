@@ -101,7 +101,7 @@ function sm_ajax_subscribe() {
 		array(
 			'post_type'   => 'sm_subscriber',
 			'post_status' => 'publish',
-			'post_title'  => $name ? $name . ' <' . $email . '>' : $email,
+			'post_title'  => $name ? $name . ' (' . $email . ')' : $email,
 		),
 		true
 	);
