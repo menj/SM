@@ -38,9 +38,11 @@
 		<div class="wp-block-group alignwide sm-catbar__inner">
 			<!-- wp:navigation {"smMenu":"sm-primary","overlayMenu":"mobile","overlayBackgroundColor":"accent-1","overlayTextColor":"base","layout":{"type":"flex","justifyContent":"left","flexWrap":"wrap"}} /-->
 			<!-- wp:html -->
-			<button class="sm-search-toggle" type="button" aria-expanded="false" aria-controls="sm-search-panel" aria-label="<?php esc_attr_e( 'Open search', 'sm' ); ?>">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7"/><path d="M21 21l-5.2-5.2"/></svg>
-			</button>
+			<div class="sm-catbar__tools">
+				<button class="sm-search-toggle" type="button" aria-expanded="false" aria-controls="sm-search-panel" aria-label="<?php esc_attr_e( 'Open search', 'sm' ); ?>">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7"/><path d="M21 21l-5.2-5.2"/></svg>
+				</button>
+			</div>
 			<!-- /wp:html -->
 		</div>
 		<!-- /wp:group -->

@@ -266,3 +266,14 @@ function sm_reading_minutes( $post = null ) {
 	$words = $post ? str_word_count( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ) ) : 0;
 	return max( 1, (int) ceil( $words / 220 ) );
 }
+
+/**
+ * Brand colour assigned to a category, cycling through four logo-derived hues.
+ *
+ * @param int|WP_Term $term Category.
+ * @return string CSS colour (a custom property).
+ */
+function sm_cat_color( $term ) {
+	$id = is_object( $term ) ? (int) $term->term_id : (int) $term;
+	return 'var(--sm-c' . ( ( $id % 4 ) + 1 ) . ')';
+}

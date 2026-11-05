@@ -87,6 +87,15 @@
 		];
 	}, { title: { type: 'string', default: '' }, link: { type: 'string', default: '' }, level: { type: 'number', default: 2 } });
 
+	var countTitle = function (p) {
+		return [
+			el(TextControl, { key: 't', label: __('Title', 'sm'), value: p.attributes.title, onChange: function (v) { p.setAttributes({ title: v }); } }),
+			el(RangeControl, { key: 'c', label: __('Items', 'sm'), min: 1, max: 10, value: p.attributes.count, onChange: function (v) { p.setAttributes({ count: v }); } })
+		];
+	};
+	var countAttrs = { title: { type: 'string', default: '' }, count: { type: 'number', default: 5 } };
+	serverBlock('editors-picks', __('Editor’s Picks', 'sm'), __('Posts tagged “editors-pick”, topped up with the latest stories.', 'sm'), countTitle, countAttrs);
+	serverBlock('active-topics', __('Active Topics', 'sm'), __('Categories with the most stories.', 'sm'), countTitle, countAttrs);
 	serverBlock('share', __('Share buttons', 'sm'), __('WhatsApp, Facebook, X and copy-link buttons for the current article.', 'sm'), null, {});
 	serverBlock('reading-time', __('Reading time', 'sm'), __('Estimated minutes to read the current article.', 'sm'), null, {});
 

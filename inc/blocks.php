@@ -31,6 +31,8 @@ add_action(
 			'social-icons'    => 'sm_render_social_block',
 			'section-heading' => 'sm_render_section_heading_block',
 			'share'           => 'sm_render_share_block',
+			'editors-picks'   => 'sm_render_editors_picks',
+			'active-topics'   => 'sm_render_active_topics',
 			'reading-time'    => 'sm_render_reading_time_block',
 		);
 		foreach ( $blocks as $name => $cb ) {
@@ -79,6 +81,16 @@ function sm_block_attributes( $name ) {
 				'size'  => array( 'type' => 'number', 'default' => 0 ),
 				'label' => array( 'type' => 'string', 'default' => '' ),
 			);
+		case 'editors-picks':
+			return $common + array(
+				'title' => array( 'type' => 'string', 'default' => '' ),
+				'count' => array( 'type' => 'number', 'default' => 5 ),
+			);
+		case 'active-topics':
+			return $common + array(
+				'title' => array( 'type' => 'string', 'default' => '' ),
+				'count' => array( 'type' => 'number', 'default' => 5 ),
+			);
 		case 'section-heading':
 			return $common + array(
 				'title' => array( 'type' => 'string', 'default' => '' ),
@@ -116,9 +128,10 @@ function sm_block_wrap( $attrs, $class ) {
  * @param int    $level Heading level.
  * @return string
  */
-function sm_section_heading_html( $title, $link = '', $level = 2 ) {
+function sm_section_heading_html( $title, $link = '', $level = 2, $color = '' ) {
 	$tag  = 'h' . max( 1, min( 6, (int) $level ) );
-	$html = '<div class="sm-section-heading"><' . $tag . ' class="sm-section-heading__title">';
+	$dot  = $color ? ' style="--sm-cat:' . esc_attr( $color ) . '"' : '';
+	$html = '<div class="sm-section-heading' . ( $color ? ' has-dot' : '' ) . '"' . $dot . '><' . $tag . ' class="sm-section-heading__title">';
 	$html .= $link ? '<a href="' . esc_url( $link ) . '">' . esc_html( $title ) . '</a>' : esc_html( $title );
 	$html .= '</' . $tag . '><span class="sm-section-heading__rule" aria-hidden="true"></span>';
 	if ( $link ) {
@@ -204,7 +217,7 @@ function sm_render_sections( $attrs ) {
 			continue;
 		}
 		$html .= '<section class="sm-sections__item" aria-labelledby="sm-sec-' . (int) $term->term_id . '">';
-		$html .= str_replace( '<h2 class="sm-section-heading__title">', '<h2 class="sm-section-heading__title" id="sm-sec-' . (int) $term->term_id . '">', sm_section_heading_html( $term->name, get_category_link( $term ) ) );
+		$html .= str_replace( '<h2 class="sm-section-heading__title">', '<h2 class="sm-section-heading__title" id="sm-sec-' . (int) $term->term_id . '">', sm_section_heading_html( $term->name, get_category_link( $term ), 2, sm_cat_color( $term ) ) );
 		foreach ( $posts as $p ) {
 			$html .= sm_post_card( $p, array( 'show_excerpt' => $excerpt ) );
 		}
@@ -363,4 +376,72 @@ function sm_render_share_block( $attrs ) {
 	}
 	$html .= '<li><button type="button" class="sm-share__copy" data-url="' . esc_url( get_permalink( $post ) ) . '" data-done="' . esc_attr__( 'Link copied', 'sm' ) . '" aria-label="' . esc_attr__( 'Copy link', 'sm' ) . '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></button></li>';
 	return $html . '</ul><span class="sm-share__status" role="status" aria-live="polite"></span></div>';
+}
+
+/**
+ * Aside module wrapper with a red-ruled heading.
+ */
+function sm_aside_module( $title, $inner, $attrs ) {
+	return '<section ' . sm_block_wrap( array_merge( (array) $attrs, array( 'align' => '' ) ), 'sm-module' ) . '><h2 class="sm-module__title">' . esc_html( $title ) . '</h2>' . $inner . '</section>';
+}
+
+/**
+ * Editor's picks: posts tagged "editors-pick", topped up with the latest stories.
+ */
+function sm_render_editors_picks( $attrs ) {
+	$count = max( 1, (int) ( $attrs['count'] ?? 5 ) );
+	$posts = get_posts(
+		array(
+			'post_type'           => 'post',
+			'posts_per_page'      => $count,
+			'tag'                 => 'editors-pick',
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
+		)
+	);
+	if ( count( $posts ) < $count ) {
+		$more  = get_posts(
+			array(
+				'post_type'      => 'post',
+				'posts_per_page' => $count - count( $posts ),
+				'post__not_in'   => wp_list_pluck( $posts, 'ID' ),
+				'no_found_rows'  => true,
+			)
+		);
+		$posts = array_merge( $posts, $more );
+	}
+	if ( ! $posts ) {
+		return '';
+	}
+	$html = '<ol class="sm-pick-list">';
+	foreach ( $posts as $p ) {
+		$cats  = get_the_category( $p );
+		$label = $cats ? '<a class="sm-pick__cat" style="--sm-cat:' . esc_attr( sm_cat_color( $cats[0] ) ) . '" href="' . esc_url( get_category_link( $cats[0] ) ) . '">' . esc_html( $cats[0]->name ) . '</a>' : '';
+		$html .= '<li class="sm-pick">' . $label . '<a class="sm-pick__title" href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a><time class="sm-pick__date" datetime="' . esc_attr( get_the_date( 'c', $p ) ) . '">' . esc_html( get_the_date( '', $p ) ) . '</time></li>';
+	}
+	return sm_aside_module( $attrs['title'] ?: __( 'Editor’s Picks', 'sm' ), $html . '</ol>', $attrs );
+}
+
+/**
+ * Active topics: categories with the most stories.
+ */
+function sm_render_active_topics( $attrs ) {
+	$terms = get_terms(
+		array(
+			'taxonomy'   => 'category',
+			'orderby'    => 'count',
+			'order'      => 'DESC',
+			'number'     => max( 1, (int) ( $attrs['count'] ?? 5 ) ),
+			'hide_empty' => true,
+			'exclude'    => array( (int) get_option( 'default_category' ) ),
+		)
+	);
+	if ( is_wp_error( $terms ) || ! $terms ) {
+		return '';
+	}
+	$html = '<ul class="sm-topic-list">';
+	foreach ( $terms as $t ) {
+		$html .= '<li><a href="' . esc_url( get_category_link( $t ) ) . '" style="--sm-cat:' . esc_attr( sm_cat_color( $t ) ) . '"><span class="sm-topic__name">' . esc_html( $t->name ) . '</span><span class="sm-topic__count">' . (int) $t->count . '</span></a></li>';
+	}
+	return sm_aside_module( $attrs['title'] ?: __( 'Active Topics', 'sm' ), $html . '</ul>', $attrs );
 }
