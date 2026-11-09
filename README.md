@@ -35,7 +35,7 @@ These replace plugins the site previously relied on. No plugin is required.
 | --- | --- |
 | Contact form with stored entries and CSV export | `inc/forms.php`, Appearance → Form entries |
 | Newsletter sign-up with subscriber list and CSV export | `inc/newsletter.php`, Appearance → Subscribers |
-| Image lightbox (own script, no jQuery) | `inc/features/lightbox.php`, `assets/js/lightbox.js`, `assets/css/lightbox.css` |
+| Image lightbox (Lightbox2 2.12.0, MIT) | `inc/features/lightbox.php`, `assets/vendor/lightbox2` |
 | Reading progress bar | `inc/features/progress-bar.php` |
 | Unlisted posts and pages | `inc/features/unlist.php` — toggle in the editor sidebar |
 | Pretty search permalinks | `inc/features/search-permalinks.php` |

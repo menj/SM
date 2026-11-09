@@ -1,6 +1,6 @@
 <?php
 /**
- * Image lightbox (own dependency-free script, assets/js/lightbox.js).
+ * Image lightbox (bundles the official Lightbox2 2.12.0 by Lokesh Dhakar, MIT licence).
  *
  * Images and galleries whose links point at an image file get the
  * data-lightbox attribute automatically, so editors need to do nothing.
@@ -16,31 +16,31 @@ add_action(
 		if ( ! sm_get( 'lb_enabled' ) || ! is_singular() ) {
 			return;
 		}
-		wp_enqueue_style( 'sm-lightbox', SM_URI . 'assets/css/lightbox.css', array(), SM_VERSION );
-		wp_enqueue_script(
-			'sm-lightbox',
-			SM_URI . 'assets/js/lightbox.js',
-			array(),
-			SM_VERSION,
-			array(
-				'strategy' => 'defer',
-				'in_footer' => true,
-			)
-		);
+		wp_enqueue_style( 'sm-lightbox', SM_URI . 'assets/vendor/lightbox2/css/lightbox.min.css', array(), '2.12.0' );
+		// Lightbox2 needs jQuery; WordPress core's copy is used, and only on pages that can show a lightbox.
+		wp_enqueue_script( 'sm-lightbox', SM_URI . 'assets/vendor/lightbox2/js/lightbox.min.js', array( 'jquery' ), '2.12.0', array( 'strategy' => 'defer', 'in_footer' => true ) );
 		wp_add_inline_script(
 			'sm-lightbox',
-			'window.smLightboxCfg = ' . wp_json_encode(
+			'window.lightbox && lightbox.option(' . wp_json_encode(
 				array(
-					'wrap'     => (bool) sm_get( 'lb_wrap' ),
-					'captions' => (bool) sm_get( 'lb_captions' ),
-					'i18n'     => array(
-						'label' => __( 'Image viewer', 'sm' ),
-						'close' => __( 'Close', 'sm' ),
-						'prev'  => __( 'Previous image', 'sm' ),
-						'next'  => __( 'Next image', 'sm' ),
-						/* translators: 1: current image number, 2: total images */
-						'count' => __( 'Image %1 of %2', 'sm' ),
-					),
+					'resizeDuration'       => 200,
+					'fadeDuration'         => 200,
+					'wrapAround'           => (bool) sm_get( 'lb_wrap' ),
+					/* translators: 1 and 2 are placeholders replaced by the current and total image numbers; keep them as written. */
+					'albumLabel'           => __( 'Image %1 of %2', 'sm' ),
+					'disableScrolling'     => true,
+					'showImageNumberLabel' => true,
+				)
+			) . ');'
+		);
+		wp_enqueue_script( 'sm-lightbox-a11y', SM_URI . 'assets/js/lightbox-a11y.js', array( 'sm-lightbox' ), SM_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+		wp_add_inline_script(
+			'sm-lightbox-a11y',
+			'window.smLightboxA11y = ' . wp_json_encode(
+				array(
+					'close' => __( 'Close', 'sm' ),
+					'prev'  => __( 'Previous image', 'sm' ),
+					'next'  => __( 'Next image', 'sm' ),
 				)
 			) . ';',
 			'before'
