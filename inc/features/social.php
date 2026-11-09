@@ -4,7 +4,7 @@
  *
  * The 44 single-path SVG glyphs live in /assets/icons/social and inherit
  * `currentColor`, so they follow the theme colour scheme. Profiles are
- * entered under Appearance → SM Theme → Social and rendered through the
+ * entered under Appearance → Theme Options → Social and rendered through the
  * [sm_social] shortcode or the "Social icons" block.
  *
  * @package SM

@@ -64,7 +64,7 @@ function sm_request_path() {
 	$uri  = isset( $_SERVER['REQUEST_URI'] ) ? rawurldecode( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '/'; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	$path = (string) wp_parse_url( $uri, PHP_URL_PATH );
 	$home = (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH );
-	if ( $home && $home !== '/' && 0 === strpos( $path, $home ) ) {
+	if ( $home && '/' !== $home && 0 === strpos( $path, $home ) ) {
 		$path = substr( $path, strlen( $home ) - 1 );
 	}
 	return untrailingslashit( $path );

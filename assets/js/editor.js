@@ -49,7 +49,7 @@
 		return el(RangeControl, { label: __('Side stories', 'sm'), min: 0, max: 4, value: p.attributes.sideCount, onChange: function (v) { p.setAttributes({ sideCount: v }); } });
 	}, { sideCount: { type: 'number', default: 4 } });
 
-	serverBlock('sections', __('Homepage sections', 'sm'), __('One block per category chosen in Appearance → SM Theme → Homepage.', 'sm'), function (p) {
+	serverBlock('sections', __('Homepage sections', 'sm'), __('One block per category chosen in Appearance → Theme Options → Homepage.', 'sm'), function (p) {
 		return [
 			el(RangeControl, { key: 'c', label: __('Columns', 'sm'), min: 1, max: 4, value: p.attributes.columns, onChange: function (v) { p.setAttributes({ columns: v }); } }),
 			el(RangeControl, { key: 'p', label: __('Stories per section (0 = use setting)', 'sm'), min: 0, max: 6, value: p.attributes.perSection, onChange: function (v) { p.setAttributes({ perSection: v }); } })
@@ -67,10 +67,10 @@
 		return el(TextControl, { label: __('Heading (leave empty for the setting)', 'sm'), value: p.attributes.heading, onChange: function (v) { p.setAttributes({ heading: v }); } });
 	}, { heading: { type: 'string', default: '' } });
 
-	serverBlock('contact-form', __('Contact form', 'sm'), __('Form fields are configured under Appearance → SM Theme → Contact form.', 'sm'), null, {});
+	serverBlock('contact-form', __('Contact form', 'sm'), __('Form fields are configured under Appearance → Theme Options → Contact form.', 'sm'), null, {});
 	serverBlock('donate-form', __('Donate form', 'sm'), __('Amount, type and frequency chooser that hands off to your checkout URL.', 'sm'), null, {});
 
-	serverBlock('social-icons', __('Social icons', 'sm'), __('Icons for the profiles set under Appearance → SM Theme → Social.', 'sm'), function (p) {
+	serverBlock('social-icons', __('Social icons', 'sm'), __('Icons for the profiles set under Appearance → Theme Options → Social.', 'sm'), function (p) {
 		var styles = Object.keys(cfg.socialStyles || {}).map(function (k) { return { value: k, label: cfg.socialStyles[k] }; });
 		return [
 			el(SelectControl, { key: 's', label: __('Style', 'sm'), value: p.attributes.style, options: [{ value: '', label: __('Use setting', 'sm') }].concat(styles), onChange: function (v) { p.setAttributes({ style: v }); } }),

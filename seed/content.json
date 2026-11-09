@@ -1,5 +1,5 @@
 {
-	"$comment": "Seed content for suaramalaysia.online. Imported once on theme activation by inc/seed.php, or again from Appearance → SM Theme → General → Import seed content. Dates are the original publication dates recovered from the suaramalaysia.com archive. Article bodies in the archive were summaries only; the `content` field holds that summary as the lead paragraph and can be extended in the editor.",
+	"$comment": "Seed content for suaramalaysia.online. Imported once on theme activation by inc/seed.php, or again from Appearance → Theme Options → General → Import seed content. Dates are the original publication dates recovered from the suaramalaysia.com archive. Article bodies in the archive were summaries only; the `content` field holds that summary as the lead paragraph and can be extended in the editor.",
 	"version": 1,
 	"site": {
 		"blogname": "Suara Malaysia",

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ruleset name="SM theme">
+	<description>Checks for the SM theme: WordPress security and standards, PHP 7.4 compatibility.</description>
+	<file>functions.php</file>
+	<file>inc</file>
+	<file>patterns</file>
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<rule ref="WordPress-Extra"/>
+	<rule ref="PHPCompatibilityWP"/>
+	<config name="testVersion" value="7.4-"/>
+	<config name="minimum_wp_version" value="6.7"/>
+	<rule ref="WordPress.WP.I18n">
+		<properties><property name="text_domain" type="array"><element value="sm"/></property></properties>
+	</rule>
+	<!-- Style-only rules that fight the compact layout used in this theme. -->
+	<rule ref="Generic.Formatting.MultipleStatementAlignment"><severity>0</severity></rule>
+	<rule ref="WordPress.Arrays.MultipleStatementAlignment"><severity>0</severity></rule>
+	<rule ref="Squiz.Commenting.FileComment"><severity>0</severity></rule>
+	<!-- The public contact and newsletter handlers deliberately carry no nonce: a nonce is frozen into
+	     page-cached HTML and then fails. They use a honeypot plus sm_rate_limited() instead. -->
+	<rule ref="WordPress.Security.NonceVerification.Missing">
+		<exclude-pattern>inc/forms\.php</exclude-pattern>
+		<exclude-pattern>inc/newsletter\.php</exclude-pattern>
+	</rule>
+	<rule ref="Universal.Operators.DisallowShortTernary"><severity>0</severity></rule>
+</ruleset>

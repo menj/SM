@@ -109,11 +109,11 @@ function sm_block_attributes( $name ) {
  * Wrapper attributes helper.
  *
  * @param array  $attrs Block attributes.
- * @param string $class Extra class.
+ * @param string $base_class Base class.
  * @return string
  */
-function sm_block_wrap( $attrs, $class ) {
-	$classes = array( $class );
+function sm_block_wrap( $attrs, $base_class ) {
+	$classes = array( $base_class );
 	if ( ! empty( $attrs['align'] ) ) {
 		$classes[] = 'align' . $attrs['align'];
 	}
@@ -242,7 +242,7 @@ function sm_render_sections( $attrs ) {
  */
 function sm_render_related( $attrs ) {
 	$post = get_post();
-	if ( ! $post || ! is_singular( 'post' ) && ! defined( 'REST_REQUEST' ) ) {
+	if ( ! $post || ( ! is_singular( 'post' ) && ! defined( 'REST_REQUEST' ) ) ) {
 		return '';
 	}
 	$count = max( 1, (int) ( $attrs['count'] ?? 3 ) );
@@ -329,7 +329,7 @@ function sm_render_donate_block( $attrs ) {
 	$html .= '<button type="submit" class="wp-element-button">' . esc_html__( 'Go to checkout', 'sm' ) . '</button></div>';
 	if ( ! $url ) {
 		$html .= current_user_can( 'manage_options' )
-			? '<p class="sm-form__message is-error">' . esc_html__( 'Admins only: no checkout URL is set yet (Appearance → SM Theme → Donate).', 'sm' ) . '</p>'
+			? '<p class="sm-form__message is-error">' . esc_html__( 'Admins only: no checkout URL is set yet (Appearance → Theme Options → Donate).', 'sm' ) . '</p>'
 			: '<p class="sm-form__message">' . esc_html__( 'Online donations are opening soon. To support us in the meantime, please contact the editors.', 'sm' ) . '</p>';
 	}
 	return $html . '</form>';
@@ -481,7 +481,7 @@ function sm_render_most_read( $attrs ) {
 /**
  * Footer sitemap: top sections with their latest stories, plus site links.
  */
-function sm_render_footer_sections( $attrs ) {
+function sm_render_footer_sections() {
 	$terms = get_terms(
 		array(
 			'taxonomy'   => 'category',

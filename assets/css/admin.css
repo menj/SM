@@ -1,4 +1,4 @@
-/* Appearance → SM Theme settings screen. */
+/* Appearance → Theme Options settings screen. */
 .sm-settings { max-width: 1100px; }
 .sm-settings__title { display: flex; align-items: baseline; gap: 10px; font-weight: 600; }
 .sm-settings__title span { font-size: 12px; color: #646970; font-weight: 400; }

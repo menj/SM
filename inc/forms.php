@@ -3,7 +3,7 @@
  * Contact form with stored submissions.
  *
  * Replaces Contact Form 7 + CFDB7 for this site: a configurable field list
- * (Appearance → SM Theme → Contact form), AJAX submission with nonce and
+ * (Appearance → Theme Options → Contact form), AJAX submission with nonce and
  * honeypot, email delivery, an entries list in the admin and CSV export.
  *
  * @package SM

@@ -4,7 +4,7 @@
  *
  * Reads seed/content.json and creates categories, posts (with original dates,
  * featured images and SEO fields), pages, navigation menus and site options.
- * Runs once on activation; can be re-run from Appearance → SM Theme.
+ * Runs once on activation; can be re-run from Appearance → Theme Options.
  * Items are matched by slug, so re-running never duplicates content.
  *
  * @package SM
@@ -286,10 +286,10 @@ function sm_seed_import( $overwrite = false ) {
  *
  * @param string $file   File name inside seed/images.
  * @param string $alt    Alt text.
- * @param int    $parent Parent post.
+ * @param int    $post_id Parent post.
  * @return int Attachment ID or 0.
  */
-function sm_seed_sideload( $file, $alt = '', $parent = 0 ) {
+function sm_seed_sideload( $file, $alt = '', $post_id = 0 ) {
 	$path = SM_DIR . 'seed/images/' . basename( $file );
 	if ( ! is_readable( $path ) ) {
 		return 0;
@@ -308,9 +308,9 @@ function sm_seed_sideload( $file, $alt = '', $parent = 0 ) {
 	}
 	$tmp = wp_tempnam( basename( $file ) );
 	copy( $path, $tmp );
-	$id = media_handle_sideload( array( 'name' => basename( $path ), 'tmp_name' => $tmp ), $parent, $alt );
+	$id = media_handle_sideload( array( 'name' => basename( $path ), 'tmp_name' => $tmp ), $post_id, $alt );
 	if ( is_wp_error( $id ) ) {
-		@unlink( $tmp ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		wp_delete_file( $tmp );
 		return 0;
 	}
 	update_post_meta( $id, '_sm_seed_file', basename( $file ) );
@@ -431,7 +431,7 @@ function sm_seed_remove() {
 	$terms_deleted = 0;
 	foreach ( (array) ( $m['terms'] ?? array() ) as $key ) {
 		list( $tid, $tax ) = array_pad( explode( ':', $key, 2 ), 2, 'category' );
-		if ( term_exists( (int) $tid, $tax ) && (int) $tid !== (int) get_option( 'default_category' ) ) {
+		if ( term_exists( (int) $tid, $tax ) && (int) get_option( 'default_category' ) !== (int) $tid ) {
 			wp_delete_term( (int) $tid, $tax );
 			$terms_deleted++;
 		}

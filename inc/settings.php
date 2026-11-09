@@ -1,6 +1,6 @@
 <?php
 /**
- * Appearance → SM Theme: tabbed settings page built on the Settings API.
+ * Appearance → Theme Options: tabbed settings page built on the Settings API.
  *
  * All options are stored in one array option `sm_settings`.
  *
@@ -195,8 +195,8 @@ add_action(
 	'admin_menu',
 	function () {
 		add_theme_page(
-			__( 'SM Theme', 'sm' ),
-			__( 'SM Theme', 'sm' ),
+			__( 'SM Theme Options', 'sm' ),
+			__( 'Theme Options', 'sm' ),
 			'manage_options',
 			'sm-settings',
 			'sm_render_settings_page'
@@ -355,7 +355,7 @@ function sm_render_settings_page() {
 	}
 	?>
 	<div class="wrap sm-settings">
-		<h1 class="sm-settings__title"><?php esc_html_e( 'SM Theme', 'sm' ); ?> <span><?php echo esc_html( SM_VERSION ); ?></span></h1>
+		<h1 class="sm-settings__title"><?php esc_html_e( 'SM Theme Options', 'sm' ); ?> <span><?php echo esc_html( SM_VERSION ); ?></span></h1>
 		<?php settings_errors( 'sm_settings' ); ?>
 		<form method="post" action="options.php" class="sm-settings__form">
 			<?php settings_fields( 'sm_settings_group' ); ?>
@@ -543,3 +543,24 @@ function sm_render_field( $f ) {
 	echo $help; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '</div></div>';
 }
+
+/**
+ * Shortcut to the options screen from the admin bar (front end and admin).
+ */
+add_action(
+	'admin_bar_menu',
+	function ( $bar ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+		$bar->add_node(
+			array(
+				'id'     => 'sm-theme-options',
+				'parent' => 'site-name',
+				'title'  => __( 'Theme Options', 'sm' ),
+				'href'   => admin_url( 'themes.php?page=sm-settings' ),
+			)
+		);
+	},
+	80
+);

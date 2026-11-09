@@ -1,7 +1,7 @@
 /*
  * Drop caps for article openings, using the Dropcaps font (OFL, derived from Almendra).
  * Uppercase letters render as framed initials; the "open" variant uses lowercase glyphs.
- * Applied automatically to the first paragraph of an article (Appearance → SM Theme → Reading),
+ * Applied automatically to the first paragraph of an article (Appearance → Theme Options → Reading),
  * or to any paragraph with the "Drop cap" block style.
  */
 @font-face {

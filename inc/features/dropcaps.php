@@ -3,7 +3,7 @@
  * Drop caps (bundles the Dropcaps font by its author, SIL OFL licence).
  *
  * Adds a drop cap to the first paragraph of articles, controlled from
- * Appearance → SM Theme → Reading, plus a "Drop cap" paragraph block style.
+ * Appearance → Theme Options → Reading, plus a "Drop cap" paragraph block style.
  *
  * @package SM
  */
