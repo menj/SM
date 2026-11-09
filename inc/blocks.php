@@ -37,7 +37,12 @@ add_action(
 			'footer-sections' => 'sm_render_footer_sections',
 			'reading-time'    => 'sm_render_reading_time_block',
 		);
+		// Blocks whose output only changes when content changes are cached briefly.
+		$cached = array( 'hero', 'sections', 'editors-picks', 'active-topics', 'most-read', 'footer-sections' );
 		foreach ( $blocks as $name => $cb ) {
+			if ( in_array( $name, $cached, true ) ) {
+				$cb = sm_cached_block( $name, $cb );
+			}
 			register_block_type(
 				'sm/' . $name,
 				array(
@@ -50,6 +55,66 @@ add_action(
 		}
 	}
 );
+
+/**
+ * Wrap a block renderer in a short-lived cache.
+ *
+ * The homepage blocks de-duplicate stories through sm_shown_ids(), which is a side effect of
+ * rendering. The cache therefore (a) keys on the IDs already shown, and (b) stores and replays
+ * the IDs each block adds. Entries are dropped when posts, terms or settings change (see
+ * sm_cache_bump) and expire after ten minutes so "Most read" stays fresh.
+ *
+ * @param string   $name Block short name.
+ * @param callable $cb   Original render callback.
+ * @return callable
+ */
+function sm_cached_block( $name, $cb ) {
+	return function ( $attrs = array(), $content = '', $block = null ) use ( $name, $cb ) {
+		if ( defined( 'REST_REQUEST' ) || is_preview() || is_customize_preview() || is_admin() || sm_cache_disabled() ) {
+			return call_user_func( $cb, $attrs, $content, $block );
+		}
+		$before_all  = sm_shown_ids();
+		$before_hero = sm_shown_ids( array(), 'hero' );
+		$key         = 'sm_bc_' . md5( $name . '|' . wp_json_encode( $attrs ) . '|' . get_option( 'sm_cache_gen', '0' ) . '|' . implode( ',', $before_all ) . '|' . implode( ',', $before_hero ) . '|' . get_locale() . '|' . SM_VERSION );
+		$hit         = get_transient( $key );
+		if ( is_array( $hit ) && isset( $hit['html'] ) ) {
+			sm_shown_ids( $hit['all'], 'all' );
+			sm_shown_ids( $hit['hero'], 'hero' );
+			return $hit['html'];
+		}
+		$html = call_user_func( $cb, $attrs, $content, $block );
+		set_transient(
+			$key,
+			array(
+				'html' => $html,
+				'all'  => array_values( array_diff( sm_shown_ids(), $before_all ) ),
+				'hero' => array_values( array_diff( sm_shown_ids( array(), 'hero' ), $before_hero ) ),
+			),
+			10 * MINUTE_IN_SECONDS
+		);
+		return $html;
+	};
+}
+
+/**
+ * Turn the block cache off with define( 'SM_NO_BLOCK_CACHE', true ) or the sm_block_cache filter.
+ *
+ * @return bool
+ */
+function sm_cache_disabled() {
+	return ( defined( 'SM_NO_BLOCK_CACHE' ) && SM_NO_BLOCK_CACHE ) || ! apply_filters( 'sm_block_cache', true );
+}
+
+/**
+ * Invalidate every cached block by changing the generation number in the cache key.
+ */
+function sm_cache_bump() {
+	update_option( 'sm_cache_gen', (string) microtime( true ) );
+}
+foreach ( array( 'save_post', 'deleted_post', 'trashed_post', 'untrashed_post', 'set_object_terms', 'created_term', 'edited_term', 'delete_term', 'update_option_sm_settings', 'add_option_sm_settings', 'switch_theme', 'wp_update_nav_menu' ) as $sm_hook ) {
+	add_action( $sm_hook, 'sm_cache_bump' );
+}
+unset( $sm_hook );
 
 /**
  * Attribute schema per block.
