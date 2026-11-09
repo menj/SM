@@ -872,3 +872,4 @@ html { scroll-padding-top: 48px; scroll-padding-bottom: 72px; }
 .sm-pdf-copy, .sm-pdf-copy * { max-width: 100% !important; box-sizing: border-box; }
 .sm-pdf-copy .wp-block-post-content > *, .sm-pdf-copy .wp-block-post-featured-image { margin-inline: 0 !important; padding-inline: 0 !important; width: 100% !important; }
 .sm-pdf-copy img { height: auto !important; border-radius: 0; }
+.sm-share, .sm-share__list { flex-wrap: wrap; }
