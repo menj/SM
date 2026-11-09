@@ -112,6 +112,15 @@ function sm_seed_import( $overwrite = false ) {
 			},
 			(string) ( $p['content'] ?? '' )
 		);
+		// Mark each inline image with its attachment ID so WordPress adds responsive sizes (srcset).
+		$p['content'] = preg_replace_callback(
+			'#<img src="([^"]+)" alt="([^"]*)"/>#',
+			function ( $m ) {
+				$aid = attachment_url_to_postid( html_entity_decode( $m[1] ) );
+				return $aid ? '<img src="' . $m[1] . '" alt="' . $m[2] . '" class="wp-image-' . (int) $aid . '"/>' : $m[0];
+			},
+			$p['content']
+		);
 		$args = array(
 			'post_type'     => 'post',
 			'post_status'   => 'publish',

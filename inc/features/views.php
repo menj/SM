@@ -43,6 +43,7 @@ function sm_most_read_posts( $count = 5 ) {
 			'orderby'             => 'meta_value_num',
 			'order'               => 'DESC',
 			'ignore_sticky_posts' => true,
+			'post__not_in'        => sm_shown_ids( array(), 'hero' ),
 			'no_found_rows'       => true,
 			'meta_query'          => array( array( 'key' => SM_VIEWS_META, 'value' => 0, 'compare' => '>', 'type' => 'NUMERIC' ) ), // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 		)
@@ -52,7 +53,7 @@ function sm_most_read_posts( $count = 5 ) {
 			array(
 				'post_type'           => 'post',
 				'posts_per_page'      => $count - count( $posts ),
-				'post__not_in'        => wp_list_pluck( $posts, 'ID' ),
+				'post__not_in'        => array_merge( wp_list_pluck( $posts, 'ID' ), sm_shown_ids( array(), 'hero' ) ),
 				'ignore_sticky_posts' => true,
 				'no_found_rows'       => true,
 			)

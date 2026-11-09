@@ -46,7 +46,7 @@ function sm_default_settings() {
 		'donate_url'        => '',
 		'donate_amounts'    => '25,50,100',
 		'donate_currency'   => 'RM',
-		'donate_types'      => "General support\nInvestigative reporting\nCost of education",
+		'donate_types'      => 'General support',
 	);
 }
 
@@ -332,3 +332,23 @@ add_filter(
 		);
 	}
 );
+
+/**
+ * Stories already shown on this page, so one block never repeats another's stories.
+ *
+ * @param int[]  $add   IDs to record (omit to just read).
+ * @param string $scope 'all' for everything shown so far, 'hero' for the lead block only.
+ * @return int[]
+ */
+function sm_shown_ids( $add = array(), $scope = 'all' ) {
+	static $all  = array();
+	static $hero = array();
+	$add = array_map( 'intval', (array) $add );
+	if ( $add ) {
+		$all = array_values( array_unique( array_merge( $all, $add ) ) );
+		if ( 'hero' === $scope ) {
+			$hero = array_values( array_unique( array_merge( $hero, $add ) ) );
+		}
+	}
+	return 'hero' === $scope ? $hero : $all;
+}

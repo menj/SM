@@ -17,41 +17,41 @@
 <div class="wp-block-group alignwide sm-legal">
 	<!-- wp:html -->
 	<nav class="sm-legal__nav" aria-label="<?php esc_attr_e( 'Sections', 'sm' ); ?>">
-		<a href="#independence"><?php esc_html_e( 'Independence', 'sm' ); ?></a>
-		<a href="#accuracy"><?php esc_html_e( 'Accuracy', 'sm' ); ?></a>
+		<a href="#what-we-publish"><?php esc_html_e( 'What we publish', 'sm' ); ?></a>
 		<a href="#opinion"><?php esc_html_e( 'Opinion', 'sm' ); ?></a>
+		<a href="#contributions"><?php esc_html_e( 'Contributions', 'sm' ); ?></a>
 		<a href="#corrections"><?php esc_html_e( 'Corrections', 'sm' ); ?></a>
 	</nav>
 	<!-- /wp:html -->
 
 	<!-- wp:group {"className":"sm-legal__content","layout":{"type":"default"}} -->
 	<div class="wp-block-group sm-legal__content">
-		<!-- wp:heading {"level":2,"anchor":"independence"} -->
-		<h2 class="wp-block-heading" id="independence"><?php esc_html_e( 'Independence', 'sm' ); ?></h2>
+		<!-- wp:heading {"level":2,"anchor":"what-we-publish"} -->
+		<h2 class="wp-block-heading" id="what-we-publish"><?php esc_html_e( 'What we publish', 'sm' ); ?></h2>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph -->
-		<p><?php esc_html_e( 'Suara Malaysia accepts no funding from political parties, candidates or government agencies. Reader donations never buy influence over what we publish.', 'sm' ); ?></p>
-		<!-- /wp:paragraph -->
-
-		<!-- wp:heading {"level":2,"anchor":"accuracy"} -->
-		<h2 class="wp-block-heading" id="accuracy"><?php esc_html_e( 'Accuracy', 'sm' ); ?></h2>
-		<!-- /wp:heading -->
-		<!-- wp:paragraph -->
-		<p><?php esc_html_e( 'Claims of fact are checked against primary sources before publication. Where a source cannot be named we say so and explain why.', 'sm' ); ?></p>
+		<p><?php esc_html_e( 'Suara Malaysia is an online magazine of social commentary about Malaysia and Malaysian issues, owned and edited by MENJ.', 'sm' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:heading {"level":2,"anchor":"opinion"} -->
 		<h2 class="wp-block-heading" id="opinion"><?php esc_html_e( 'Opinion', 'sm' ); ?></h2>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph -->
-		<p><?php esc_html_e( 'Pieces in the Op-Ed section represent the views of their authors. We publish a range of perspectives and welcome considered responses.', 'sm' ); ?></p>
+		<p><?php esc_html_e( 'Articles express the views of their authors. Guest pieces appear under the author’s name and do not necessarily reflect the views of the editor.', 'sm' ); ?></p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:heading {"level":2,"anchor":"contributions"} -->
+		<h2 class="wp-block-heading" id="contributions"><?php esc_html_e( 'Contributions', 'sm' ); ?></h2>
+		<!-- /wp:heading -->
+		<!-- wp:paragraph -->
+		<p><?php esc_html_e( 'We publish guest articles that support our objectives for a better Malaysia, and contributions are welcome. Use the contact page for details.', 'sm' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:heading {"level":2,"anchor":"corrections"} -->
 		<h2 class="wp-block-heading" id="corrections"><?php esc_html_e( 'Corrections', 'sm' ); ?></h2>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph -->
-		<p><?php esc_html_e( 'Errors are corrected promptly and noted at the foot of the article. Use the contact page to report one.', 'sm' ); ?></p>
+		<p><?php esc_html_e( 'If you believe something we published is inaccurate, please tell us through the contact page.', 'sm' ); ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->

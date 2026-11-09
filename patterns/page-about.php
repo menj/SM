@@ -18,10 +18,13 @@ $sm_phone = (string) sm_get( 'phone' );
 		<h1 class="wp-block-heading sm-page-title"><?php esc_html_e( 'About Us', 'sm' ); ?></h1>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph {"className":"sm-about__text"} -->
-		<p class="sm-about__text"><?php esc_html_e( 'Suara Malaysia is a dedicated online platform where you can access a wealth of insightful and thought-provoking Malaysian social commentary. Our mission is to engage and empower individuals like you in meaningful discussions that contribute to creating a Better Malaysia for all.', 'sm' ); ?></p>
+		<p class="sm-about__text"><strong>SuaraMalaysia.com</strong> is an online magazine initiative developed to provide social commentary about Malaysia and Malaysian issues. Our goal is to not only share our vision for a better Malaysia with Islam (as the religion of the Federation) at its core principle and guidance, but to also educate the public as to why we believe that <strong>our</strong> <em>Weltanshaaung</em> is the best alternative, compared to the various streams of political thought struggling for a <em>gay</em> Malaysia, a <em>feminist</em> Malaysia, a <em>secular</em> Malaysia, or even worse….a <em>godless</em> Malaysia.</p>
 		<!-- /wp:paragraph -->
 		<!-- wp:paragraph {"className":"sm-about__text"} -->
-		<p class="sm-about__text"><?php esc_html_e( 'We are not aligned with any party or coalition. Our writers argue from evidence, name their sources and welcome rebuttal. If you think we got something wrong, tell us and we will look again.', 'sm' ); ?></p>
+		<p class="sm-about__text">The owner and executive editor of <strong>SuaraMalaysia.com</strong> is MENJ. We will also publish guest articles that strengthen our objectives for a better Malaysia from time to time….and we do welcome contributions as well.</p>
+		<!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"sm-about__text"} -->
+		<p class="sm-about__text"><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact us</a> for the details.</p>
 		<!-- /wp:paragraph -->
 		<!-- wp:group {"className":"sm-about__contact","layout":{"type":"default"}} -->
 		<div class="wp-block-group sm-about__contact">

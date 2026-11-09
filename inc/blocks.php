@@ -173,6 +173,7 @@ function sm_render_hero( $attrs ) {
 	if ( ! $posts ) {
 		return '';
 	}
+	sm_shown_ids( wp_list_pluck( $posts, 'ID' ), 'hero' );
 	$main = array_shift( $posts );
 	$html = '<section ' . sm_block_wrap( $attrs, 'sm-hero' ) . ' aria-label="' . esc_attr__( 'Featured stories', 'sm' ) . '">';
 	$html .= '<div class="sm-hero__lead"><article class="sm-hero__main">';
@@ -218,12 +219,14 @@ function sm_render_sections( $attrs ) {
 				'post_type'      => 'post',
 				'posts_per_page' => $per,
 				'cat'            => $term->term_id,
+				'post__not_in'   => sm_shown_ids(),
 				'no_found_rows'  => true,
 			)
 		);
 		if ( ! $posts ) {
 			continue;
 		}
+		sm_shown_ids( wp_list_pluck( $posts, 'ID' ) );
 		$html .= '<section class="sm-sections__item" aria-labelledby="sm-sec-' . (int) $term->term_id . '">';
 		$html .= str_replace( '<h2 class="sm-section-heading__title">', '<h2 class="sm-section-heading__title" id="sm-sec-' . (int) $term->term_id . '">', sm_section_heading_html( $term->name, get_category_link( $term ), 2, sm_cat_color( $term ) ) );
 		foreach ( $posts as $p ) {
@@ -405,6 +408,7 @@ function sm_render_editors_picks( $attrs ) {
 			'post_type'           => 'post',
 			'posts_per_page'      => $count,
 			'tag'                 => 'editors-pick',
+			'post__not_in'        => sm_shown_ids( array(), 'hero' ),
 			'ignore_sticky_posts' => true,
 			'no_found_rows'       => true,
 		)
@@ -414,7 +418,7 @@ function sm_render_editors_picks( $attrs ) {
 			array(
 				'post_type'      => 'post',
 				'posts_per_page' => $count - count( $posts ),
-				'post__not_in'   => wp_list_pluck( $posts, 'ID' ),
+				'post__not_in'   => array_merge( wp_list_pluck( $posts, 'ID' ), sm_shown_ids( array(), 'hero' ) ),
 				'no_found_rows'  => true,
 			)
 		);
