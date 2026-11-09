@@ -118,10 +118,11 @@ function sm_settings_tabs() {
 		'donate'     => array(
 			'label'  => __( 'Donate', 'sm' ),
 			'icon'   => 'heart',
-			'desc'   => __( '1. Paste your PayPal.Me link (or another checkout URL). 2. Set the currency symbol shown on the buttons and the three-letter PayPal currency code (MYR). 3. Set the preset amounts. Donation types and frequency apply to non-PayPal.Me checkouts only.', 'sm' ),
+			'desc'   => __( '1. Paste your PayPal.Me link (or another checkout URL). 2. Set the currency symbol shown on the buttons and the three-letter PayPal currency code (MYR). 3. Set the preset amounts. Donation types apply to non-PayPal.Me checkouts only; add a monthly gift link to offer monthly giving.', 'sm' ),
 			'fields' => array(
 				array( 'id' => 'card_checkout', 'type' => 'card', 'label' => __( 'Checkout', 'sm' ), 'text' => __( 'Where the Donate button sends readers.', 'sm' ) ),
 				array( 'id' => 'donate_url', 'label' => __( 'Checkout URL', 'sm' ), 'type' => 'url', 'help' => __( 'A PayPal.Me link (for example https://www.paypal.com/paypalme/yourname) sends the reader to PayPal with the chosen amount filled in; PayPal.Me gifts are one-time, so the type and frequency choices are hidden. Any other URL gets the amount, type and frequency as query parameters.', 'sm' ) ),
+				array( 'id' => 'donate_monthly_url', 'label' => __( 'Monthly gift link (optional)', 'sm' ), 'type' => 'url', 'help' => __( 'A PayPal subscription or hosted-button link. When set, readers can choose One time (PayPal.Me, amount filled in) or Monthly (this link). Create it in PayPal: Pay & Get Paid, Subscriptions, Create plan.', 'sm' ) ),
 				array( 'id' => 'donate_currency_code', 'label' => __( 'PayPal currency code', 'sm' ), 'type' => 'text', 'help' => __( 'Three letters, for example MYR. Used with PayPal.Me links.', 'sm' ) ),
 				array( 'id' => 'donate_currency', 'label' => __( 'Currency symbol', 'sm' ), 'type' => 'text' ),
 				array( 'id' => 'card_choices_on_offer', 'type' => 'card', 'label' => __( 'Choices on offer', 'sm' ), 'text' => __( 'The amounts and types readers can pick from.', 'sm' ) ),

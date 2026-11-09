@@ -318,9 +318,10 @@ function sm_render_donate_block( $attrs ) {
 	$code     = strtoupper( preg_replace( '/[^A-Za-z]/', '', (string) sm_get( 'donate_currency_code' ) ) );
 	$code     = 3 === strlen( $code ) ? $code : 'MYR';
 	$url      = $paypal ?: $url;
+	$monthly  = $paypal ? esc_url_raw( (string) sm_get( 'donate_monthly_url' ), array( 'https' ) ) : '';
 	$uid      = wp_unique_id( 'sm-donate-' );
 
-	$html  = '<form class="sm-donate ' . esc_attr( $attrs['className'] ?? '' ) . '" method="get" action="' . esc_url( $url ?: home_url( '/' ) ) . '" data-sm-form="donate"' . ( $url ? '' : ' data-no-checkout="1"' ) . ( $paypal ? ' data-paypalme="' . esc_attr( $code ) . '"' : '' ) . '>';
+	$html  = '<form class="sm-donate ' . esc_attr( $attrs['className'] ?? '' ) . '" method="get" action="' . esc_url( $url ?: home_url( '/' ) ) . '" data-sm-form="donate"' . ( $url ? '' : ' data-no-checkout="1"' ) . ( $paypal ? ' data-paypalme="' . esc_attr( $code ) . '"' : '' ) . ( $monthly ? ' data-monthly="' . esc_url( $monthly ) . '"' : '' ) . '>';
 	// PayPal.Me takes an amount only: it is one-time and cannot carry a donation type.
 	if ( $types && ! $paypal ) {
 		$html .= '<div class="sm-donate__group"><label for="' . $uid . '-type">' . esc_html__( 'Choose a donation type', 'sm' ) . '</label><select id="' . $uid . '-type" name="type">';
@@ -329,7 +330,7 @@ function sm_render_donate_block( $attrs ) {
 		}
 		$html .= '</select></div>';
 	}
-	$html .= '<fieldset class="sm-donate__group"><legend>' . esc_html__( 'Choose a donation amount', 'sm' ) . '</legend><div class="sm-donate__amounts">';
+	$html .= '<fieldset class="sm-donate__group sm-donate__group--amount"><legend>' . esc_html__( 'Choose a donation amount', 'sm' ) . '</legend><div class="sm-donate__amounts">';
 	$i = 0;
 	foreach ( $amounts as $a ) {
 		$html .= '<label class="sm-radio"><input type="radio" name="amount" value="' . (int) $a . '"' . ( 0 === $i ? ' checked' : '' ) . ' /><span>' . esc_html( $currency . $a ) . '</span></label>';
@@ -338,13 +339,13 @@ function sm_render_donate_block( $attrs ) {
 	$html .= '<label class="sm-radio sm-radio--custom"><input type="radio" name="amount" value="custom" /><span>' . esc_html__( 'Enter a custom donation amount', 'sm' ) . '</span></label>';
 	$html .= '<input class="sm-donate__custom" type="number" name="custom_amount" min="1" step="1" placeholder="' . esc_attr( $currency ) . '" aria-label="' . esc_attr__( 'Custom amount', 'sm' ) . '" hidden />';
 	$html .= '</div></fieldset>';
-	if ( ! $paypal ) {
+	if ( ! $paypal || $monthly ) {
 		$html .= '<fieldset class="sm-donate__group"><legend>' . esc_html__( 'Choose a donation frequency', 'sm' ) . '</legend><div class="sm-donate__freq">';
-		$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="monthly" checked /><span>' . esc_html__( 'Monthly', 'sm' ) . '</span></label>';
-		$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="once" /><span>' . esc_html__( 'One time', 'sm' ) . '</span></label>';
+		$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="monthly"' . ( $monthly ? '' : ' checked' ) . ' /><span>' . esc_html__( 'Monthly', 'sm' ) . '</span></label>';
+		$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="once"' . ( $monthly ? ' checked' : '' ) . ' /><span>' . esc_html__( 'One time', 'sm' ) . '</span></label>';
 		$html .= '</div></fieldset>';
 	}
-	$html .= '<p class="sm-donate__note">' . esc_html( $paypal ? __( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to PayPal to complete your one-time gift. No PayPal account is needed to pay by card.', 'sm' ) : __( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to our secure payment partner to complete your gift.', 'sm' ) ) . '</p>';
+	$html .= '<p class="sm-donate__note">' . esc_html( $paypal ? __( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to PayPal to complete your gift. No PayPal account is needed to pay one-time gifts by card.', 'sm' ) : __( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to our secure payment partner to complete your gift.', 'sm' ) ) . '</p>';
 	$html .= '<div class="sm-donate__actions"><a class="wp-element-button is-style-sm-outline" href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Cancel', 'sm' ) . '</a>';
 	$html .= '<button type="submit" class="wp-element-button">' . esc_html( $paypal ? __( 'Donate with PayPal', 'sm' ) : __( 'Go to checkout', 'sm' ) ) . '</button></div>';
 	if ( ! $url ) {

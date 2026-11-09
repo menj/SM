@@ -45,6 +45,7 @@ function sm_default_settings() {
 		'contact_intro'     => 'Have a story, a tip or a correction? Send us a message and we will get back to you.',
 		'donate_url'        => 'https://www.paypal.com/paypalme/menj',
 		'donate_currency_code' => 'MYR',
+		'donate_monthly_url' => '',
 		'donate_amounts'    => '25,50,100',
 		'donate_currency'   => 'RM',
 		'donate_types'      => 'General support',
