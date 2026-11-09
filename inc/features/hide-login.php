@@ -64,7 +64,7 @@ function sm_request_path() {
 	$uri  = isset( $_SERVER['REQUEST_URI'] ) ? rawurldecode( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '/'; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	$path = (string) wp_parse_url( $uri, PHP_URL_PATH );
 	$home = (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH );
-	if ( $home && $home !== '/' && 0 === strpos( $path, $home ) ) {
+	if ( $home && '/' !== $home && 0 === strpos( $path, $home ) ) {
 		$path = substr( $path, strlen( $home ) - 1 );
 	}
 	return untrailingslashit( $path );
@@ -117,6 +117,13 @@ add_action(
 			return;
 		}
 		global $pagenow;
+
+		// Logged-out visitors never get sent to the login page from the dashboard: that redirect would reveal the hidden address.
+		// AJAX and admin-post stay open because the front-end forms use them.
+		if ( is_admin() && ! is_user_logged_in() && ! wp_doing_ajax() && ! in_array( $pagenow, array( 'admin-post.php', 'admin-ajax.php' ), true ) ) {
+			wp_safe_redirect( sm_login_blocked_url(), 302 );
+			exit;
+		}
 
 		$path     = sm_request_path();
 		$is_login = ( 'wp-login.php' === $pagenow ) || false !== strpos( $path, 'wp-login.php' ) || '/wp-login' === $path;
@@ -235,7 +242,7 @@ add_action(
 			return;
 		}
 		printf(
-			'<div class="notice notice-info"><p>%s <code>%s</code></p></div>',
+			'<div class="notice notice-info is-dismissible"><p>%s <code>%s</code></p></div>',
 			esc_html__( 'Your login page is now at:', 'sm' ),
 			esc_html( sm_login_url() )
 		);

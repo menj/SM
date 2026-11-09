@@ -43,10 +43,11 @@ function sm_default_settings() {
 		// Contact and donate.
 		'contact_to'        => '',
 		'contact_intro'     => 'Have a story, a tip or a correction? Send us a message and we will get back to you.',
-		'donate_url'        => '',
+		'donate_url'        => 'https://www.paypal.com/paypalme/menj',
+		'donate_currency_code' => 'MYR',
 		'donate_amounts'    => '25,50,100',
 		'donate_currency'   => 'RM',
-		'donate_types'      => "General support\nInvestigative reporting\nCost of education",
+		'donate_types'      => 'General support',
 	);
 }
 
@@ -311,6 +312,25 @@ add_action(
 );
 
 /**
+ * One-time: sites that have no checkout URL yet get the PayPal.Me link. Runs once, so clearing
+ * the field later is respected.
+ */
+add_action(
+	'init',
+	function () {
+		if ( get_option( 'sm_paypal_default_set' ) ) {
+			return;
+		}
+		$s = (array) get_option( 'sm_settings', array() );
+		if ( empty( $s['donate_url'] ) ) {
+			update_option( 'sm_settings', array( 'donate_url' => 'https://www.paypal.com/paypalme/menj', 'donate_currency_code' => 'MYR' ) );
+		}
+		update_option( 'sm_paypal_default_set', 1, false );
+	},
+	2
+);
+
+/**
  * Give every category link its brand colour and a tab class, so core Query Loop and
  * Post Terms blocks show the same coloured tabs as the theme's own cards.
  */
@@ -332,3 +352,45 @@ add_filter(
 		);
 	}
 );
+
+/**
+ * Stories already shown on this page, so one block never repeats another's stories.
+ *
+ * @param int[]  $add   IDs to record (omit to just read).
+ * @param string $scope 'all' for everything shown so far, 'hero' for the lead block only.
+ * @return int[]
+ */
+function sm_shown_ids( $add = array(), $scope = 'all' ) {
+	static $all  = array();
+	static $hero = array();
+	$add = array_map( 'intval', (array) $add );
+	if ( $add ) {
+		$all = array_values( array_unique( array_merge( $all, $add ) ) );
+		if ( 'hero' === $scope ) {
+			$hero = array_values( array_unique( array_merge( $hero, $add ) ) );
+		}
+	}
+	return 'hero' === $scope ? $hero : $all;
+}
+
+/**
+ * Simple per-visitor rate limit for the public forms.
+ *
+ * Page caches freeze nonces into the HTML, which breaks forms after the nonce expires,
+ * and an anonymous nonce adds no real protection. A honeypot plus this limit does the job.
+ *
+ * @param string $bucket Name of the form.
+ * @param int    $max    Submissions allowed per window.
+ * @param int    $window Window in seconds.
+ * @return bool True when the visitor has sent too many.
+ */
+function sm_rate_limited( $bucket, $max = 5, $window = 600 ) {
+	$ip  = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
+	$key = 'sm_rl_' . md5( $bucket . '|' . $ip );
+	$n   = (int) get_transient( $key );
+	if ( $n >= $max ) {
+		return true;
+	}
+	set_transient( $key, $n + 1, $window );
+	return false;
+}

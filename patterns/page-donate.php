@@ -25,7 +25,7 @@
 		<h1 class="wp-block-heading sm-donate-page__title"><?php esc_html_e( 'Donate', 'sm' ); ?></h1>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph {"className":"sm-donate-page__intro"} -->
-		<p class="sm-donate-page__intro"><?php esc_html_e( 'Suara Malaysia is reader-funded and carries no party money. Your gift pays for reporting, research and the people who do it.', 'sm' ); ?></p>
+		<p class="sm-donate-page__intro"><?php esc_html_e( 'Support Suara Malaysia. Your gift helps keep the magazine online and publishing.', 'sm' ); ?></p>
 		<!-- /wp:paragraph -->
 		<!-- wp:sm/donate-form {"align":""} /-->
 	</div>

@@ -10,8 +10,8 @@
  */
 
 ?>
-<!-- wp:group {"tagName":"header","align":"full","className":"sm-header","layout":{"type":"default"}} -->
-<header class="wp-block-group alignfull sm-header">
+<!-- wp:group {"align":"full","className":"sm-header","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull sm-header">
 	<!-- wp:group {"layout":{"type":"constrained"}} -->
 	<div class="wp-block-group">
 		<!-- wp:group {"align":"wide","className":"sm-header__top","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
@@ -24,7 +24,7 @@
 			<!-- /wp:group -->
 			<!-- wp:group {"className":"sm-header__utility","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"}} -->
 			<div class="wp-block-group sm-header__utility">
-				<!-- wp:navigation {"smMenu":"sm-utility","overlayMenu":"never","layout":{"type":"flex","justifyContent":"right","flexWrap":"wrap"}} /-->
+				<!-- wp:navigation {"smMenu":"sm-utility","ariaLabel":"Utility","overlayMenu":"never","layout":{"type":"flex","justifyContent":"right","flexWrap":"wrap"}} /-->
 			</div>
 			<!-- /wp:group -->
 		</div>
@@ -36,7 +36,7 @@
 	<div class="wp-block-group alignfull sm-catbar">
 		<!-- wp:group {"align":"wide","className":"sm-catbar__inner","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
 		<div class="wp-block-group alignwide sm-catbar__inner">
-			<!-- wp:navigation {"smMenu":"sm-primary","overlayMenu":"always","overlayBackgroundColor":"accent-1","overlayTextColor":"base","layout":{"type":"flex","justifyContent":"left","flexWrap":"wrap"}} /-->
+			<!-- wp:navigation {"smMenu":"sm-primary","ariaLabel":"Primary","overlayMenu":"always","overlayBackgroundColor":"accent-1","overlayTextColor":"base","layout":{"type":"flex","justifyContent":"left","flexWrap":"wrap"}} /-->
 			<!-- wp:html -->
 			<div class="sm-catbar__tools">
 				<button class="sm-search-toggle" type="button" aria-expanded="false" aria-controls="sm-search-panel" aria-label="<?php esc_attr_e( 'Open search', 'sm' ); ?>">
@@ -54,5 +54,5 @@
 		<!-- wp:search {"label":"<?php esc_attr_e( 'Search', 'sm' ); ?>","showLabel":false,"placeholder":"<?php esc_attr_e( 'Search Suara Malaysia…', 'sm' ); ?>","buttonText":"<?php esc_attr_e( 'Search', 'sm' ); ?>","buttonPosition":"button-inside"} /-->
 	</div>
 	<!-- /wp:group -->
-</header>
+</div>
 <!-- /wp:group -->

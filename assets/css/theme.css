@@ -1,7 +1,7 @@
 /*
  * SM theme — front-end styles.
  * Colours come from theme.json presets, overridden at runtime by the
- * Appearance → SM Theme colour scheme (see inc/assets.php).
+ * Appearance → Theme Options colour scheme (see inc/assets.php).
  */
 
 :root {
@@ -69,7 +69,8 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-catbar .wp-block-navigation__responsive-container.is-menu-open a { font-size: 1.25rem; }
 
 .sm-search-toggle { appearance: none; background: none; border: 0; color: inherit; cursor: pointer; padding: 8px; display: inline-flex; border-radius: 50%; }
-.sm-search-toggle:hover, .sm-search-toggle:focus-visible { background: rgba(255,255,255,.18); outline: 0; }
+.sm-search-toggle:hover, .sm-search-toggle:focus-visible { background: rgba(255,255,255,.18); }
+.sm-search-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .sm-search-toggle svg { width: 22px; height: 22px; }
 .sm-search-panel { background: var(--sm-surface); }
 .sm-search-panel[hidden] { display: none; }
@@ -104,7 +105,6 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-card__title a { color: var(--sm-link); text-decoration: none; }
 .sm-card__title a:hover { color: var(--sm-primary); }
 .sm-card__excerpt { margin: 0; font-size: .9rem; color: var(--sm-muted); }
-.sm-card--side .sm-card__body { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
 
 .sm-grid { display: grid; gap: var(--sm-gap); }
 .sm-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -362,7 +362,6 @@ body { -webkit-font-smoothing: antialiased; }
 .is-style-sm-section-heading::after { content: ""; flex: 1 1 auto; height: 2px; background: linear-gradient(90deg, var(--sm-primary) 0 28px, var(--sm-line) 28px); }
 
 /* Utility */
-.sm-constrain { max-width: var(--wp--style--global--wide-size, 1200px); margin-inline: auto; padding-inline: var(--wp--style--root--padding-left, 20px); }
 .screen-reader-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 
 /* ---------- Shape: rounded corners and pills ---------- */
@@ -430,11 +429,10 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-hero__title, .sm-donate-page__title, .sm-404 h1, .wp-block-query-title { font-family: var(--sm-display); font-weight: 400; font-synthesis: none; }
 .wp-block-site-title { letter-spacing: .02em; font-size: 1.5rem; }
 .sm-tag, .is-style-sm-tag a, .wp-block-post-terms.is-style-sm-tag a,
-.sm-section-heading__all, .sm-byline, .sm-byline *, .sm-post-footer .wp-block-post-date, .sm-footer__bottom p, .sm-footer__heading {
+.sm-section-heading__all, .sm-byline, .sm-byline *, .sm-post-footer .wp-block-post-date {
 	font-family: var(--sm-mono); font-weight: 400; font-synthesis: none; letter-spacing: .02em;
 }
 .sm-tag, .is-style-sm-tag a { font-size: .75rem; }
-.sm-footer__heading { font-size: .8125rem; }
 .sm-donate-page__visual-text, .wp-block-quote cite, .wp-block-pullquote cite { font-family: var(--sm-script); font-weight: 400; font-style: normal; font-synthesis: none; }
 .sm-donate-page__visual-text { font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; }
 
@@ -621,7 +619,7 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-header__utility .wp-block-navigation li:not(:last-child) a:hover,
 .sm-header__utility .wp-block-navigation li:not(:last-child) a:focus-visible { background-size: 100% 2px; color: var(--sm-primary); }
 .sm-header__utility .wp-block-navigation li:last-child a { transition: background-color .18s ease, transform .18s ease, box-shadow .18s ease; }
-.sm-brand-link, .sm-header__brand a { transition: opacity .18s ease; }
+.sm-header__brand a { transition: opacity .18s ease; }
 .sm-header__brand a:hover { opacity: .78; }
 
 /* Links and titles */
@@ -766,3 +764,101 @@ body { -webkit-font-smoothing: antialiased; }
 }
 .sm-card-tab a:not(:first-child) { display: none; }
 .sm-card-tab + .wp-block-post-title { margin-top: 10px; }
+
+/* ==========================================================================
+   Touch targets and small type (mobile-first audit)
+   Additive and scoped: coarse pointers get 44px targets, desktop is untouched.
+   ========================================================================== */
+.sm-hero__cat, .sm-cat-tab, .sm-card__tab { font-size: max(.75rem, 12px); }
+
+@media (pointer: coarse), (max-width: 820px) {
+	.sm-catbar .wp-block-navigation__responsive-container-open,
+	.sm-search-toggle { min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
+	.custom-logo-link, .sm-header__brand .wp-block-site-title a { display: inline-flex; align-items: center; min-height: 44px; }
+	.sm-header__utility .wp-block-navigation li:last-child a { display: inline-flex; align-items: center; min-height: 40px; }
+	.sm-social a { min-width: 44px; min-height: 44px; }
+	.sm-footer__base .sm-social a { width: 44px; height: 44px; }
+	.sm-hero__item-title, .sm-card__title a, .sm-pick__title, .sm-rank__title { display: inline-block; padding-block: 4px; }
+	.sm-cat-tab, .sm-tag, .sm-section-heading__all { display: inline-flex; align-items: center; min-height: 32px; }
+	.sm-footer__links a, .sm-fcol li a, .sm-topic-list a { display: inline-block; padding-block: 8px; }
+}
+
+@media (pointer: coarse), (max-width: 820px) {
+	.custom-logo-link { min-width: 44px; justify-content: center; }
+	.sm-share__copy, .sm-share__list a { min-height: 44px; min-width: 44px; }
+	.page-numbers, .wp-block-query-pagination-next, .wp-block-query-pagination-previous { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; }
+	.sm-pick__cat, .sm-footer__links a, .sm-footer__links .wp-block-navigation-item__content, .sm-topic-list a, .sm-tags a, .wp-block-post-terms a { display: inline-flex; align-items: center; min-height: 32px; }
+}
+
+/* ==========================================================================
+   Malaysian identity: tumpal (pucuk rebung) band, songket lattice, KL skyline.
+   Motifs are SVG files in assets/images/motifs/; the photo is AVIF in assets/images/malaysia/.
+   Everything is decorative (CSS backgrounds), so it never affects content or tab order.
+   ========================================================================== */
+:root {
+	--sm-tumpal: url("../images/motifs/tumpal.svg");
+	--sm-songket: url("../images/motifs/songket.svg");
+	--sm-skyline: url("../images/motifs/skyline.svg");
+}
+.sm-header { position: relative; }
+.sm-header::before { content: ""; display: block; height: 10px; background: var(--sm-tumpal) 0 0 / auto 10px repeat-x; }
+.sm-catbar { position: relative; }
+.sm-catbar::after { content: ""; position: absolute; inset: auto 0 -8px; height: 8px; background: var(--sm-tumpal) 0 0 / auto 8px repeat-x; z-index: 3; pointer-events: none; }
+
+/* Intro: tagline, mission text, photo */
+.sm-intro::before { width: 56px; height: 8px; background: var(--sm-tumpal) 0 0 / auto 8px repeat-x; }
+.sm-intro__visual { margin: 0; position: relative; overflow: hidden; border-radius: var(--sm-radius-l); order: 5; aspect-ratio: 16 / 9; background: var(--sm-link); }
+.sm-intro__visual::before { content: ""; position: absolute; inset: 0 0 auto; height: 8px; background: var(--sm-tumpal) 0 0 / auto 8px repeat-x; z-index: 2; }
+.sm-intro__visual img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.sm-intro__visual figcaption { position: absolute; inset: auto 0 0; margin: 0; padding: 28px 14px 10px; font-size: .75rem; font-weight: 600; line-height: 1.3; color: #fff; background: linear-gradient(transparent, rgba(0, 0, 0, .62)); }
+@media (min-width: 821px) {
+	.sm-intro { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, .9fr); }
+	.sm-intro__visual { grid-column: 3; grid-row: 2; order: 0; aspect-ratio: auto; align-self: stretch; min-height: 220px; }
+}
+
+/* Songket lattice behind the newsletter, donate visual and 404 */
+.sm-newsletter { background-image: var(--sm-songket); background-size: 36px 36px; }
+.sm-donate-page__visual { background-image: var(--sm-songket), linear-gradient(180deg, #9b4b4b 0%, #a37a7a 100%); background-size: 36px 36px, auto; }
+.sm-404 { background: var(--sm-songket) 0 0 / 36px 36px; border-radius: var(--sm-radius-l); padding-inline: clamp(16px, 5vw, 56px); }
+
+/* Footer: skyline above the brand band, tumpal along the bottom edge */
+.sm-footer__base { position: relative; padding-top: clamp(76px, 9vw, 116px); padding-bottom: 40px; }
+.sm-footer__base::before { content: ""; position: absolute; inset: 0 0 auto; height: clamp(60px, 9vw, 110px); background: var(--sm-skyline) center bottom / cover no-repeat; pointer-events: none; }
+/* ::after is already the outline watermark, so the tumpal band is a second background layer. */
+.sm-footer__base { background: var(--sm-tumpal) 0 100% / auto 10px repeat-x, var(--sm-link); }
+
+/* ==========================================================================
+   WCAG 2.2 AA baseline
+   ========================================================================== */
+/* Visible labels for the public forms (placeholders are no longer the only label). */
+.sm-label { display: block; margin: 0 0 6px; font-size: .875rem; font-weight: 600; line-height: 1.4; text-align: left; }
+.sm-label__req { font-weight: 400; opacity: .85; }
+.sm-field-wrap { text-align: left; }
+.sm-newsletter .sm-label { color: var(--sm-on-newsletter); padding-inline: 6px; }
+.sm-contact-form .is-invalid, .sm-newsletter__form .is-invalid { outline: 3px solid var(--sm-primary); outline-offset: 1px; }
+.sm-newsletter__form .is-invalid { outline-color: #fff; }
+.sm-form__message.is-error::before { content: "Error: "; font-weight: 700; }
+
+/* Pill search fields hide the native outline, so the wrapper carries the focus ring. */
+.wp-block-search__inside-wrapper:focus-within { outline: 2px solid var(--sm-link); outline-offset: 2px; }
+.sm-catbar .wp-block-search__inside-wrapper:focus-within, .sm-footer .wp-block-search__inside-wrapper:focus-within { outline-color: #fff; }
+
+/* Links inside body and comment content are underlined, not distinguished by colour alone. */
+.wp-block-post-content a:not(.wp-element-button):not(.wp-block-button__link):not(.sm-tag):not(.sm-cat-tab),
+.wp-block-comment-content a { text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: from-font; }
+
+/* Focused elements are never hidden behind the fixed back-to-top button or admin bar. */
+html { scroll-padding-top: 48px; scroll-padding-bottom: 72px; }
+@media (pointer: coarse) { .sm-totop { width: 44px; height: 44px; } }
+
+/* Text spacing (1.4.12): text containers grow with their content. */
+.sm-card__title, .sm-hero__title, .sm-hero__item-title, .sm-pick__title, .sm-rank__title { height: auto; max-height: none; }
+
+/* Hero: the headline overlay grows with its text instead of being clipped (1.4.4, 1.4.12). */
+.sm-hero__main { display: flex; }
+.sm-hero__overlay { position: relative; inset: auto; width: 100%; min-height: inherit; }
+.sm-newsletter .sm-form__message.is-error { color: #fff; background: rgba(0, 0, 0, .28); border-radius: 8px; padding: 8px 12px; }
+.sm-newsletter .sm-form__message.is-error::before { color: #ffd4d6; }
+
+/* The custom-amount choice reads as a normal option, not a link. */
+.sm-radio--custom span { color: inherit; text-decoration: none; font-size: inherit; }

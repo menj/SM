@@ -109,11 +109,11 @@ function sm_block_attributes( $name ) {
  * Wrapper attributes helper.
  *
  * @param array  $attrs Block attributes.
- * @param string $class Extra class.
+ * @param string $base_class Base class.
  * @return string
  */
-function sm_block_wrap( $attrs, $class ) {
-	$classes = array( $class );
+function sm_block_wrap( $attrs, $base_class ) {
+	$classes = array( $base_class );
 	if ( ! empty( $attrs['align'] ) ) {
 		$classes[] = 'align' . $attrs['align'];
 	}
@@ -173,6 +173,7 @@ function sm_render_hero( $attrs ) {
 	if ( ! $posts ) {
 		return '';
 	}
+	sm_shown_ids( wp_list_pluck( $posts, 'ID' ), 'hero' );
 	$main = array_shift( $posts );
 	$html = '<section ' . sm_block_wrap( $attrs, 'sm-hero' ) . ' aria-label="' . esc_attr__( 'Featured stories', 'sm' ) . '">';
 	$html .= '<div class="sm-hero__lead"><article class="sm-hero__main">';
@@ -218,12 +219,14 @@ function sm_render_sections( $attrs ) {
 				'post_type'      => 'post',
 				'posts_per_page' => $per,
 				'cat'            => $term->term_id,
+				'post__not_in'   => sm_shown_ids(),
 				'no_found_rows'  => true,
 			)
 		);
 		if ( ! $posts ) {
 			continue;
 		}
+		sm_shown_ids( wp_list_pluck( $posts, 'ID' ) );
 		$html .= '<section class="sm-sections__item" aria-labelledby="sm-sec-' . (int) $term->term_id . '">';
 		$html .= str_replace( '<h2 class="sm-section-heading__title">', '<h2 class="sm-section-heading__title" id="sm-sec-' . (int) $term->term_id . '">', sm_section_heading_html( $term->name, get_category_link( $term ), 2, sm_cat_color( $term ) ) );
 		foreach ( $posts as $p ) {
@@ -239,7 +242,7 @@ function sm_render_sections( $attrs ) {
  */
 function sm_render_related( $attrs ) {
 	$post = get_post();
-	if ( ! $post || ! is_singular( 'post' ) && ! defined( 'REST_REQUEST' ) ) {
+	if ( ! $post || ( ! is_singular( 'post' ) && ! defined( 'REST_REQUEST' ) ) ) {
 		return '';
 	}
 	$count = max( 1, (int) ( $attrs['count'] ?? 3 ) );
@@ -293,15 +296,33 @@ function sm_render_social_block( $attrs ) {
 /**
  * Donate form: type, amount, frequency → checkout URL with query args.
  */
+/**
+ * Is this a PayPal.Me link? Returns the normalised base URL, or '' when it is something else.
+ *
+ * @param string $url Checkout URL from the settings.
+ * @return string
+ */
+function sm_paypalme_base( $url ) {
+	if ( preg_match( '~^https?://(?:www\.)?paypal\.(?:com/paypalme|me)/([A-Za-z0-9]{1,20})/?$~i', trim( (string) $url ), $m ) ) {
+		return 'https://www.paypal.com/paypalme/' . $m[1];
+	}
+	return '';
+}
+
 function sm_render_donate_block( $attrs ) {
 	$amounts  = array_filter( array_map( 'intval', explode( ',', (string) sm_get( 'donate_amounts' ) ) ) );
 	$types    = array_filter( array_map( 'trim', explode( "\n", (string) sm_get( 'donate_types' ) ) ) );
 	$currency = sm_get( 'donate_currency' );
 	$url      = sm_get( 'donate_url' );
+	$paypal   = sm_paypalme_base( $url );
+	$code     = strtoupper( preg_replace( '/[^A-Za-z]/', '', (string) sm_get( 'donate_currency_code' ) ) );
+	$code     = 3 === strlen( $code ) ? $code : 'MYR';
+	$url      = $paypal ?: $url;
 	$uid      = wp_unique_id( 'sm-donate-' );
 
-	$html  = '<form class="sm-donate ' . esc_attr( $attrs['className'] ?? '' ) . '" method="get" action="' . esc_url( $url ?: home_url( '/' ) ) . '" data-sm-form="donate"' . ( $url ? '' : ' data-no-checkout="1"' ) . '>';
-	if ( $types ) {
+	$html  = '<form class="sm-donate ' . esc_attr( $attrs['className'] ?? '' ) . '" method="get" action="' . esc_url( $url ?: home_url( '/' ) ) . '" data-sm-form="donate"' . ( $url ? '' : ' data-no-checkout="1"' ) . ( $paypal ? ' data-paypalme="' . esc_attr( $code ) . '"' : '' ) . '>';
+	// PayPal.Me takes an amount only: it is one-time and cannot carry a donation type.
+	if ( $types && ! $paypal ) {
 		$html .= '<div class="sm-donate__group"><label for="' . $uid . '-type">' . esc_html__( 'Choose a donation type', 'sm' ) . '</label><select id="' . $uid . '-type" name="type">';
 		foreach ( $types as $t ) {
 			$html .= '<option value="' . esc_attr( $t ) . '">' . esc_html( $t ) . '</option>';
@@ -317,16 +338,18 @@ function sm_render_donate_block( $attrs ) {
 	$html .= '<label class="sm-radio sm-radio--custom"><input type="radio" name="amount" value="custom" /><span>' . esc_html__( 'Enter a custom donation amount', 'sm' ) . '</span></label>';
 	$html .= '<input class="sm-donate__custom" type="number" name="custom_amount" min="1" step="1" placeholder="' . esc_attr( $currency ) . '" aria-label="' . esc_attr__( 'Custom amount', 'sm' ) . '" hidden />';
 	$html .= '</div></fieldset>';
-	$html .= '<fieldset class="sm-donate__group"><legend>' . esc_html__( 'Choose a donation frequency', 'sm' ) . '</legend><div class="sm-donate__freq">';
-	$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="monthly" checked /><span>' . esc_html__( 'Monthly', 'sm' ) . '</span></label>';
-	$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="once" /><span>' . esc_html__( 'One time', 'sm' ) . '</span></label>';
-	$html .= '</div></fieldset>';
-	$html .= '<p class="sm-donate__note">' . esc_html__( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to our secure payment partner to complete your gift.', 'sm' ) . '</p>';
+	if ( ! $paypal ) {
+		$html .= '<fieldset class="sm-donate__group"><legend>' . esc_html__( 'Choose a donation frequency', 'sm' ) . '</legend><div class="sm-donate__freq">';
+		$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="monthly" checked /><span>' . esc_html__( 'Monthly', 'sm' ) . '</span></label>';
+		$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="once" /><span>' . esc_html__( 'One time', 'sm' ) . '</span></label>';
+		$html .= '</div></fieldset>';
+	}
+	$html .= '<p class="sm-donate__note">' . esc_html( $paypal ? __( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to PayPal to complete your one-time gift. No PayPal account is needed to pay by card.', 'sm' ) : __( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to our secure payment partner to complete your gift.', 'sm' ) ) . '</p>';
 	$html .= '<div class="sm-donate__actions"><a class="wp-element-button is-style-sm-outline" href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Cancel', 'sm' ) . '</a>';
-	$html .= '<button type="submit" class="wp-element-button">' . esc_html__( 'Go to checkout', 'sm' ) . '</button></div>';
+	$html .= '<button type="submit" class="wp-element-button">' . esc_html( $paypal ? __( 'Donate with PayPal', 'sm' ) : __( 'Go to checkout', 'sm' ) ) . '</button></div>';
 	if ( ! $url ) {
 		$html .= current_user_can( 'manage_options' )
-			? '<p class="sm-form__message is-error">' . esc_html__( 'Admins only: no checkout URL is set yet (Appearance → SM Theme → Donate).', 'sm' ) . '</p>'
+			? '<p class="sm-form__message is-error">' . esc_html__( 'Admins only: no checkout URL is set yet (Appearance → Theme Options → Donate).', 'sm' ) . '</p>'
 			: '<p class="sm-form__message">' . esc_html__( 'Online donations are opening soon. To support us in the meantime, please contact the editors.', 'sm' ) . '</p>';
 	}
 	return $html . '</form>';
@@ -405,6 +428,7 @@ function sm_render_editors_picks( $attrs ) {
 			'post_type'           => 'post',
 			'posts_per_page'      => $count,
 			'tag'                 => 'editors-pick',
+			'post__not_in'        => sm_shown_ids( array(), 'hero' ),
 			'ignore_sticky_posts' => true,
 			'no_found_rows'       => true,
 		)
@@ -414,7 +438,7 @@ function sm_render_editors_picks( $attrs ) {
 			array(
 				'post_type'      => 'post',
 				'posts_per_page' => $count - count( $posts ),
-				'post__not_in'   => wp_list_pluck( $posts, 'ID' ),
+				'post__not_in'   => array_merge( wp_list_pluck( $posts, 'ID' ), sm_shown_ids( array(), 'hero' ) ),
 				'no_found_rows'  => true,
 			)
 		);
@@ -477,7 +501,7 @@ function sm_render_most_read( $attrs ) {
 /**
  * Footer sitemap: top sections with their latest stories, plus site links.
  */
-function sm_render_footer_sections( $attrs ) {
+function sm_render_footer_sections() {
 	$terms = get_terms(
 		array(
 			'taxonomy'   => 'category',

@@ -11,9 +11,9 @@ A block child theme of **Twenty Twenty-Five** built for [suaramalaysia.online](h
 
 1. Upload this folder as `wp-content/themes/SM` (or zip it and upload under Appearance → Themes).
 2. Activate **SM**. On first activation the theme imports `seed/content.json`: categories, the nine archived articles with their original dates and featured images, the About, Contact, Donate, Privacy and Editorial pages, and the four navigation menus.
-3. Open **Appearance → SM Theme** to review the tabbed settings.
+3. Open **Appearance → Theme Options** to review the tabbed settings.
 
-## Settings (Appearance → SM Theme)
+## Settings (Appearance → Theme Options)
 
 | Tab | What it controls |
 | --- | --- |
@@ -57,7 +57,7 @@ The importer records every post, page, menu, image, category and tag it creates.
 
 ## Image formats
 
-Seed featured images ship as AVIF (about 80% smaller than the original JPEG and PNG files). New uploads and every generated size are also written as AVIF (Appearance → SM Theme → Reading → Image format). The server needs AVIF support in GD (PHP 8.1 or newer with libavif) or Imagick; the settings screen warns if it is missing. Originals are kept. The logo and favicons stay PNG and ICO, since browsers do not reliably show AVIF favicons.
+Seed featured images ship as AVIF (about 80% smaller than the original JPEG and PNG files). New uploads and every generated size are also written as AVIF (Appearance → Theme Options → Reading → Image format). The server needs AVIF support in GD (PHP 8.1 or newer with libavif) or Imagick; the settings screen warns if it is missing. Originals are kept. The logo and favicons stay PNG and ICO, since browsers do not reliably show AVIF favicons.
 
 ## Structure
 
@@ -81,8 +81,17 @@ SM/
 
 ## Seed content
 
-`seed/content.json` is plain JSON. Posts, pages and menus are matched by slug, so re-importing from Appearance → SM Theme → General never creates duplicates. The "Re-import and overwrite" button pushes the JSON versions over edited copies. Article bodies in the source archive were summaries only; each seeded post carries that summary as its lead paragraph and can be extended in the editor.
+`seed/content.json` is plain JSON. Posts, pages and menus are matched by slug, so re-importing from Appearance → Theme Options → General never creates duplicates. The "Re-import and overwrite" button pushes the JSON versions over edited copies. Article bodies in the source archive were summaries only; each seeded post carries that summary as its lead paragraph and can be extended in the editor.
 
 ## Licences
 
 Theme code: GPL v2 or later. Lora: SIL Open Font License 1.1. Lightbox2: MIT. Social icons: GPL / CC0, except LinkedIn and Scribd which are Font Awesome CC BY 4.0 (credit is emitted in the page footer when either is shown).
+
+## Malaysian identity
+
+- **Tumpal (pucuk rebung) band**: top of the header, under the red menu bar, above the intro heading and along the footer edge.
+- **Songket lattice**: faint background on the newsletter panel, donate visual and 404 page.
+- **KL skyline**: silhouette above the footer brand band (Masjid Negara, KL Tower, Petronas Towers, Merdeka 118, Sultan Abdul Samad).
+- **Photo**: the homepage intro uses a CC0 photo of Bangunan Sultan Abdul Samad. See `assets/images/malaysia/CREDITS.md`.
+
+Motifs are SVG files in `assets/images/motifs/` and are applied with CSS custom properties (`--sm-tumpal`, `--sm-songket`, `--sm-skyline`) in `assets/css/theme.css`, so they can be swapped without touching templates. All are decorative and hidden from assistive technology.

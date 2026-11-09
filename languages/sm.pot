@@ -1,0 +1,1462 @@
+# Copyright (C) 2026 Suara Malaysia
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: SM 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-09T00:30:50+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: sm\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "SM"
+msgstr ""
+
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css
+msgid "https://suaramalaysia.online/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "SM is the Suara Malaysia news theme, built as a block child theme of Twenty Twenty-Five. It implements the Suara Malaysia design system: a serif masthead, a red category bar, yellow category tags, a featured-story hero, per-section story grids, a rose newsletter panel and a minimalist footer. Colours are configurable from Appearance → Theme Options."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+#: inc/setup.php:30
+#: patterns/home-intro.php:20
+msgid "Suara Malaysia"
+msgstr ""
+
+#: inc/assets.php:58
+msgid "Sending…"
+msgstr ""
+
+#: inc/assets.php:59
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: inc/blocks.php:141
+msgid "View All"
+msgstr ""
+
+#: inc/blocks.php:147
+msgid "Section"
+msgstr ""
+
+#: inc/blocks.php:178
+#: assets/js/editor.js:48
+msgid "Featured stories"
+msgstr ""
+
+#: inc/blocks.php:191
+msgid "More top stories"
+msgstr ""
+
+#: inc/blocks.php:267
+msgid "You may be interested…"
+msgstr ""
+
+#: inc/blocks.php:308
+msgid "Choose a donation type"
+msgstr ""
+
+#: inc/blocks.php:314
+msgid "Choose a donation amount"
+msgstr ""
+
+#: inc/blocks.php:320
+msgid "Enter a custom donation amount"
+msgstr ""
+
+#: inc/blocks.php:321
+msgid "Custom amount"
+msgstr ""
+
+#: inc/blocks.php:323
+msgid "Choose a donation frequency"
+msgstr ""
+
+#: inc/blocks.php:324
+msgid "Monthly"
+msgstr ""
+
+#: inc/blocks.php:325
+msgid "One time"
+msgstr ""
+
+#: inc/blocks.php:327
+msgid "Donations help us keep independent Malaysian journalism free for everyone. You will be taken to our secure payment partner to complete your gift."
+msgstr ""
+
+#: inc/blocks.php:328
+msgid "Cancel"
+msgstr ""
+
+#: inc/blocks.php:329
+msgid "Go to checkout"
+msgstr ""
+
+#: inc/blocks.php:332
+msgid "Admins only: no checkout URL is set yet (Appearance → Theme Options → Donate)."
+msgstr ""
+
+#: inc/blocks.php:333
+msgid "Online donations are opening soon. To support us in the meantime, please contact the editors."
+msgstr ""
+
+#: inc/blocks.php:353
+msgid "Plain"
+msgstr ""
+
+#: inc/blocks.php:353
+msgid "Boxed"
+msgstr ""
+
+#: inc/blocks.php:353
+#: inc/settings.php:145
+msgid "Round"
+msgstr ""
+
+#. translators: minutes
+#: inc/blocks.php:368
+#, php-format
+msgid "%d min read"
+msgid_plural "%d min read"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/blocks.php:386
+msgid "Share"
+msgstr ""
+
+#. translators: network
+#: inc/blocks.php:388
+#, php-format
+msgid "Share on %s"
+msgstr ""
+
+#: inc/blocks.php:390
+msgid "Link copied"
+msgstr ""
+
+#: inc/blocks.php:390
+msgid "Copy link"
+msgstr ""
+
+#: inc/blocks.php:436
+#: assets/js/editor.js:97
+msgid "Editor’s Picks"
+msgstr ""
+
+#: inc/blocks.php:461
+#: assets/js/editor.js:100
+msgid "Active Topics"
+msgstr ""
+
+#: inc/blocks.php:478
+#: assets/js/editor.js:99
+msgid "Most Read"
+msgstr ""
+
+#: inc/blocks.php:496
+msgid "Sitemap"
+msgstr ""
+
+#: inc/blocks.php:508
+msgid "About"
+msgstr ""
+
+#: inc/blocks.php:508
+#: patterns/page-privacy.php:24
+#: patterns/page-privacy.php:59
+msgid "Contact"
+msgstr ""
+
+#: inc/blocks.php:508
+#: inc/settings.php:103
+#: patterns/page-donate.php:25
+msgid "Donate"
+msgstr ""
+
+#: inc/blocks.php:508
+#: patterns/page-privacy.php:13
+msgid "Privacy Policy"
+msgstr ""
+
+#: inc/blocks.php:508
+#: patterns/page-editorial.php:13
+msgid "Editorial Policy"
+msgstr ""
+
+#: inc/blocks.php:517
+msgid "Support us"
+msgstr ""
+
+#: inc/features/dropcaps.php:45
+msgid "Drop cap"
+msgstr ""
+
+#: inc/features/hide-login.php:246
+msgid "Your login page is now at:"
+msgstr ""
+
+#: inc/features/images.php:69
+msgid "AVIF is selected but this server cannot write AVIF images. Enable AVIF in GD (PHP 8.1 or newer with libavif) or Imagick, or choose \"Keep original format\"."
+msgstr ""
+
+#: inc/features/lightbox.php:28
+msgid "Image %1 of %2"
+msgstr ""
+
+#: inc/features/progress-bar.php:35
+msgid "Reading progress"
+msgstr ""
+
+#: inc/features/search-permalinks.php:55
+msgid "Search base"
+msgstr ""
+
+#: inc/features/unlist.php:143
+msgid "Listing"
+msgstr ""
+
+#: inc/features/unlist.php:147
+msgid "Unlisted: hide from lists, search and feeds. Reachable by direct link only."
+msgstr ""
+
+#: inc/features/unlist.php:179
+#: assets/js/editor.js:114
+msgid "Unlisted"
+msgstr ""
+
+#: inc/forms.php:21
+#: inc/forms.php:23
+#: inc/forms.php:24
+msgid "Form entries"
+msgstr ""
+
+#: inc/forms.php:22
+msgid "Form entry"
+msgstr ""
+
+#: inc/forms.php:114
+msgid "Send message"
+msgstr ""
+
+#: inc/forms.php:133
+#: inc/newsletter.php:77
+msgid "Too many attempts. Please wait a few minutes and try again."
+msgstr ""
+
+#: inc/forms.php:147
+#: inc/newsletter.php:86
+msgid "Please enter a valid email address."
+msgstr ""
+
+#. translators: field label
+#: inc/forms.php:163
+#, php-format
+msgid "%s is required."
+msgstr ""
+
+#: inc/forms.php:172
+msgid "Visitor"
+msgstr ""
+
+#: inc/forms.php:191
+msgid "New contact message"
+msgstr ""
+
+#. translators: page url
+#: inc/forms.php:196
+#, php-format
+msgid "Sent from: %s"
+msgstr ""
+
+#: inc/forms.php:216
+msgid "Entry"
+msgstr ""
+
+#: inc/forms.php:217
+#: inc/newsletter.php:139
+msgid "Email"
+msgstr ""
+
+#: inc/forms.php:218
+msgid "Message"
+msgstr ""
+
+#: inc/forms.php:219
+msgid "Received"
+msgstr ""
+
+#: inc/forms.php:241
+msgid "Submission"
+msgstr ""
+
+#: inc/forms.php:249
+msgid "Page"
+msgstr ""
+
+#: inc/helpers.php:76
+msgid "Suara Brand (default, from the SM logo)"
+msgstr ""
+
+#: inc/helpers.php:85
+msgid "Brand with rose panel"
+msgstr ""
+
+#: inc/helpers.php:94
+msgid "Mockup Red (brighter)"
+msgstr ""
+
+#: inc/helpers.php:103
+msgid "Navy"
+msgstr ""
+
+#: inc/helpers.php:112
+msgid "Forest"
+msgstr ""
+
+#: inc/helpers.php:121
+msgid "Monochrome"
+msgstr ""
+
+#: inc/helpers.php:129
+msgid "Custom"
+msgstr ""
+
+#: inc/newsletter.php:17
+#: inc/newsletter.php:19
+#: inc/newsletter.php:20
+#: inc/settings.php:87
+msgid "Subscribers"
+msgstr ""
+
+#: inc/newsletter.php:18
+#: inc/newsletter.php:138
+msgid "Subscriber"
+msgstr ""
+
+#: inc/newsletter.php:51
+#: inc/newsletter.php:52
+#: inc/newsletter.php:140
+msgid "Name"
+msgstr ""
+
+#: inc/newsletter.php:53
+#: inc/newsletter.php:54
+msgid "E-mail"
+msgstr ""
+
+#: inc/newsletter.php:58
+msgid "Submit"
+msgstr ""
+
+#: inc/newsletter.php:100
+msgid "You are already subscribed. Thank you!"
+msgstr ""
+
+#: inc/newsletter.php:112
+msgid "Could not save your subscription. Please try again."
+msgstr ""
+
+#: inc/newsletter.php:121
+msgid "New newsletter subscriber"
+msgstr ""
+
+#: inc/newsletter.php:141
+msgid "Subscribed"
+msgstr ""
+
+#: inc/newsletter.php:163
+msgid "Export CSV"
+msgstr ""
+
+#: inc/newsletter.php:172
+#: inc/seed.php:329
+#: inc/seed.php:476
+msgid "Not allowed."
+msgstr ""
+
+#: inc/newsletter.php:177
+msgid "Unknown export."
+msgstr ""
+
+#: inc/seed.php:50
+msgid "seed/content.json is missing or invalid."
+msgstr ""
+
+#. translators: count
+#: inc/seed.php:97
+#, php-format
+msgid "%d categories ready."
+msgstr ""
+
+#. translators: count
+#: inc/seed.php:175
+#, php-format
+msgid "%d posts imported."
+msgstr ""
+
+#. translators: count
+#: inc/seed.php:227
+#, php-format
+msgid "%d pages imported."
+msgstr ""
+
+#: inc/seed.php:265
+msgid "Navigation menus ready."
+msgstr ""
+
+#: inc/seed.php:348
+msgid "Seed content imported."
+msgstr ""
+
+#. translators: 1: items, 2: terms
+#: inc/seed.php:457
+#, php-format
+msgid "Deleted %1$d demo items and %2$d categories and tags."
+msgstr ""
+
+#. translators: term name
+#: inc/seo.php:44
+#, php-format
+msgid "The latest %s stories from Suara Malaysia."
+msgstr ""
+
+#: inc/settings.php:44
+msgid "General"
+msgstr ""
+
+#: inc/settings.php:47
+msgid "Phone number"
+msgstr ""
+
+#: inc/settings.php:47
+msgid "Shown on the About and Contact pages."
+msgstr ""
+
+#: inc/settings.php:48
+msgid "Public email"
+msgstr ""
+
+#: inc/settings.php:49
+msgid "Copyright line"
+msgstr ""
+
+#: inc/settings.php:49
+msgid "Use {year} to insert the current year."
+msgstr ""
+
+#: inc/settings.php:50
+msgid "Back-to-top button"
+msgstr ""
+
+#: inc/settings.php:50
+msgid "Show the small red scroll-to-top button in the footer."
+msgstr ""
+
+#: inc/settings.php:51
+msgid "Homepage meta description"
+msgstr ""
+
+#: inc/settings.php:51
+msgid "Shown to search engines for the homepage. Aim for 150 to 160 characters."
+msgstr ""
+
+#: inc/settings.php:52
+msgid "Delete demo content on deactivation"
+msgstr ""
+
+#: inc/settings.php:52
+msgid "When another theme is activated, the demo posts, pages, categories, menus and images this theme imported are deleted permanently. Content you added yourself is never touched."
+msgstr ""
+
+#: inc/settings.php:53
+msgid "Seed content"
+msgstr ""
+
+#: inc/settings.php:57
+msgid "Colours"
+msgstr ""
+
+#: inc/settings.php:60
+msgid "Colour scheme"
+msgstr ""
+
+#: inc/settings.php:60
+msgid "Pick a preset, or choose Custom and set each colour below."
+msgstr ""
+
+#: inc/settings.php:61
+msgid "Primary (category bar, buttons)"
+msgstr ""
+
+#: inc/settings.php:62
+msgid "Category tag"
+msgstr ""
+
+#: inc/settings.php:63
+#: assets/js/editor.js:66
+msgid "Newsletter panel"
+msgstr ""
+
+#: inc/settings.php:64
+msgid "Headline links"
+msgstr ""
+
+#: inc/settings.php:65
+msgid "Body text"
+msgstr ""
+
+#: inc/settings.php:66
+msgid "Surface (quotes, placeholders)"
+msgstr ""
+
+#: inc/settings.php:70
+msgid "Homepage"
+msgstr ""
+
+#: inc/settings.php:73
+msgid "Hero story"
+msgstr ""
+
+#: inc/settings.php:73
+msgid "Sticky post, otherwise latest"
+msgstr ""
+
+#: inc/settings.php:73
+msgid "Always the latest post"
+msgstr ""
+
+#: inc/settings.php:74
+msgid "Sections and order"
+msgstr ""
+
+#: inc/settings.php:74
+msgid "Tick the categories to show as homepage sections and drag to reorder. Leave all unticked to show every non-empty category."
+msgstr ""
+
+#: inc/settings.php:75
+msgid "Stories per section"
+msgstr ""
+
+#: inc/settings.php:76
+msgid "Show excerpts on cards"
+msgstr ""
+
+#: inc/settings.php:80
+msgid "Newsletter"
+msgstr ""
+
+#: inc/settings.php:83
+msgid "Heading"
+msgstr ""
+
+#: inc/settings.php:83
+msgid "Line breaks are kept."
+msgstr ""
+
+#: inc/settings.php:84
+#: inc/settings.php:97
+msgid "Success message"
+msgstr ""
+
+#: inc/settings.php:85
+msgid "External form action URL"
+msgstr ""
+
+#: inc/settings.php:85
+msgid "Optional. Paste a Mailchimp, Brevo or similar form action URL to post subscribers there instead of storing them in WordPress."
+msgstr ""
+
+#: inc/settings.php:86
+msgid "Email the admin on each new subscriber"
+msgstr ""
+
+#: inc/settings.php:87
+msgid "View and export subscribers"
+msgstr ""
+
+#: inc/settings.php:91
+#: assets/js/editor.js:70
+msgid "Contact form"
+msgstr ""
+
+#: inc/settings.php:94
+msgid "Send messages to"
+msgstr ""
+
+#: inc/settings.php:94
+msgid "Leave empty to use the site admin email."
+msgstr ""
+
+#: inc/settings.php:95
+msgid "Intro text beside the form"
+msgstr ""
+
+#: inc/settings.php:96
+msgid "Fields"
+msgstr ""
+
+#: inc/settings.php:96
+msgid "One field per line: type|name|label|required. Types: text, email, tel, textarea, select (options separated by commas after a colon, e.g. select|topic|Topic|yes:Tip,Correction,Other)."
+msgstr ""
+
+#: inc/settings.php:98
+msgid "Store submissions in the database"
+msgstr ""
+
+#: inc/settings.php:99
+msgid "Submissions"
+msgstr ""
+
+#: inc/settings.php:99
+msgid "View and export submissions"
+msgstr ""
+
+#: inc/settings.php:106
+msgid "Checkout URL"
+msgstr ""
+
+#: inc/settings.php:106
+msgid "Where \"Go to checkout\" sends the reader. The chosen amount, type and frequency are appended as query parameters."
+msgstr ""
+
+#: inc/settings.php:107
+msgid "Currency symbol"
+msgstr ""
+
+#: inc/settings.php:108
+msgid "Preset amounts"
+msgstr ""
+
+#: inc/settings.php:108
+msgid "Comma separated, e.g. 25,50,100"
+msgstr ""
+
+#: inc/settings.php:109
+msgid "Donation types"
+msgstr ""
+
+#: inc/settings.php:109
+msgid "One per line."
+msgstr ""
+
+#: inc/settings.php:113
+msgid "Reading"
+msgstr ""
+
+#: inc/settings.php:116
+msgid "Reading progress bar"
+msgstr ""
+
+#: inc/settings.php:116
+msgid "A thin bar that fills as the reader scrolls."
+msgstr ""
+
+#: inc/settings.php:117
+msgid "Position"
+msgstr ""
+
+#: inc/settings.php:117
+msgid "Top of page"
+msgstr ""
+
+#: inc/settings.php:117
+msgid "Bottom of page"
+msgstr ""
+
+#: inc/settings.php:118
+msgid "Height (px)"
+msgstr ""
+
+#: inc/settings.php:119
+msgid "Bar colour"
+msgstr ""
+
+#: inc/settings.php:119
+msgid "Leave empty to use the primary colour."
+msgstr ""
+
+#: inc/settings.php:120
+msgid "Show on"
+msgstr ""
+
+#: inc/settings.php:121
+msgid "Image lightbox"
+msgstr ""
+
+#: inc/settings.php:121
+msgid "Open images that link to their full-size file in an overlay (Lightbox2). Galleries become slideshows."
+msgstr ""
+
+#: inc/settings.php:122
+msgid "Wrap around at the end of a gallery"
+msgstr ""
+
+#: inc/settings.php:123
+msgid "Show captions"
+msgstr ""
+
+#: inc/settings.php:124
+msgid "Image format"
+msgstr ""
+
+#: inc/settings.php:124
+msgid "AVIF"
+msgstr ""
+
+#: inc/settings.php:124
+msgid "Keep original format"
+msgstr ""
+
+#: inc/settings.php:124
+msgid "New uploads and their sizes are written as AVIF for much smaller files. Originals are kept."
+msgstr ""
+
+#: inc/settings.php:125
+msgid "Drop cap on article openings"
+msgstr ""
+
+#: inc/settings.php:125
+msgid "Sets the first letter of an article in the Dropcaps illuminated-initial font. You can also apply the \"Drop cap\" style to any paragraph."
+msgstr ""
+
+#: inc/settings.php:126
+msgid "Drop cap style"
+msgstr ""
+
+#: inc/settings.php:126
+msgid "Framed initial"
+msgstr ""
+
+#: inc/settings.php:126
+msgid "Open initial"
+msgstr ""
+
+#: inc/settings.php:127
+msgid "Drop cap height (lines)"
+msgstr ""
+
+#: inc/settings.php:131
+msgid "Search & Login"
+msgstr ""
+
+#: inc/settings.php:134
+msgid "Search permalink base"
+msgstr ""
+
+#: inc/settings.php:134
+msgid "Search URLs become /base/your-terms/ instead of ?s=your-terms. Default: search."
+msgstr ""
+
+#: inc/settings.php:135
+msgid "Hide the login page"
+msgstr ""
+
+#: inc/settings.php:135
+msgid "Blocks wp-login.php and wp-admin for visitors who are not logged in, and serves the login form at the slug below. Bookmark the new URL before enabling."
+msgstr ""
+
+#: inc/settings.php:136
+msgid "Login slug"
+msgstr ""
+
+#: inc/settings.php:136
+msgid "The login form will be at /slug/. Default: login."
+msgstr ""
+
+#: inc/settings.php:137
+msgid "Redirect blocked requests to"
+msgstr ""
+
+#: inc/settings.php:137
+msgid "Path visitors are sent to when they hit the hidden pages. Default: 404."
+msgstr ""
+
+#: inc/settings.php:141
+msgid "Social"
+msgstr ""
+
+#: inc/settings.php:145
+msgid "Icon style"
+msgstr ""
+
+#: inc/settings.php:145
+msgid "Plain glyph"
+msgstr ""
+
+#: inc/settings.php:145
+msgid "Boxed (as in the design)"
+msgstr ""
+
+#: inc/settings.php:146
+msgid "Icon size (px)"
+msgstr ""
+
+#: inc/settings.php:147
+msgid "Profiles"
+msgstr ""
+
+#: inc/settings.php:147
+msgid "Enter a URL for each profile you want shown. Empty profiles are hidden. Use the \"Social icons\" block or [sm_social] shortcode to place them anywhere."
+msgstr ""
+
+#: inc/settings.php:166
+msgid "Thank you. Your message has been sent."
+msgstr ""
+
+#: inc/settings.php:198
+#: inc/settings.php:199
+#: inc/settings.php:358
+msgid "SM Theme Options"
+msgstr ""
+
+#: inc/settings.php:294
+msgid "That login slug is reserved. Reverted to \"login\"."
+msgstr ""
+
+#: inc/settings.php:365
+msgid "Settings sections"
+msgstr ""
+
+#: inc/settings.php:381
+msgid "Save changes"
+msgstr ""
+
+#. translators: date
+#: inc/settings.php:410
+#, php-format
+msgid "Last imported %s."
+msgstr ""
+
+#. translators: date
+#: inc/settings.php:410
+msgid "Not imported yet."
+msgstr ""
+
+#. translators: date
+#: inc/settings.php:411
+msgid "Import missing items"
+msgstr ""
+
+#: inc/settings.php:413
+msgid "Delete all demo content imported by this theme? This cannot be undone."
+msgstr ""
+
+#: inc/settings.php:413
+msgid "Delete demo content now"
+msgstr ""
+
+#: inc/settings.php:414
+msgid "This overwrites the seeded posts, pages and menus with the versions in seed/content.json. Continue?"
+msgstr ""
+
+#: inc/settings.php:414
+msgid "Re-import and overwrite"
+msgstr ""
+
+#: inc/settings.php:415
+msgid "Seed content lives in seed/content.json inside the theme. Posts, pages and menus are matched by slug, so importing never creates duplicates."
+msgstr ""
+
+#: inc/settings.php:439
+msgid "Enabled"
+msgstr ""
+
+#: inc/setup.php:31
+msgid "Sections designed for suaramalaysia.online."
+msgstr ""
+
+#: inc/setup.php:37
+msgid "Suara Malaysia pages"
+msgstr ""
+
+#: inc/setup.php:38
+msgid "Full page layouts: About, Contact, Donate, Legal."
+msgstr ""
+
+#: inc/setup.php:46
+msgid "Rose panel"
+msgstr ""
+
+#: inc/setup.php:53
+msgid "Section heading with rule"
+msgstr ""
+
+#: inc/setup.php:60
+msgid "Yellow tag"
+msgstr ""
+
+#: inc/setup.php:67
+msgid "Outline"
+msgstr ""
+
+#: inc/setup.php:74
+msgid "Rounded"
+msgstr ""
+
+#: inc/setup.php:114
+msgid "Search from the footer"
+msgstr ""
+
+#: inc/setup.php:116
+msgid "Search the site"
+msgstr ""
+
+#. translators: %d: number of this search form on the page
+#: inc/setup.php:119
+#, php-format
+msgid "Search articles %d"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Suara Malaysia footer"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern description"
+msgid "Search, sitemap of top sections with recent stories, then a brand band with social links and a contact prompt."
+msgstr ""
+
+#: patterns/footer.php:52
+msgid "Got a story or a correction?"
+msgstr ""
+
+#: patterns/footer.php:55
+msgid "Tell the editors. We read every message."
+msgstr ""
+
+#: patterns/footer.php:60
+msgid "Contact the editors"
+msgstr ""
+
+#: patterns/footer.php:72
+msgid "Made in Malaysia"
+msgstr ""
+
+#: patterns/footer.php:81
+msgid "Back to top"
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "Suara Malaysia header"
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern description"
+msgid "Serif masthead, utility links, red category bar with search."
+msgstr ""
+
+#: patterns/header.php:42
+msgid "Open search"
+msgstr ""
+
+#: patterns/header.php:54
+msgid "Search"
+msgstr ""
+
+#: patterns/header.php:54
+msgid "Search Suara Malaysia…"
+msgstr ""
+
+#: patterns/home-intro.php
+msgctxt "Pattern title"
+msgid "Homepage intro"
+msgstr ""
+
+#: patterns/home-intro.php
+msgctxt "Pattern description"
+msgid "Tagline and mission statement shown above the featured stories."
+msgstr ""
+
+#: patterns/home-intro.php:15
+msgid "Social commentary webzine on Malaysian issues."
+msgstr ""
+
+#: patterns/home-intro.php:20
+msgid "is a dedicated online platform where you can access a wealth of insightful and thought-provoking Malaysian social commentary. Our mission is to engage and empower individuals like you in meaningful discussions that contribute to creating a Better Malaysia for all."
+msgstr ""
+
+#: patterns/home-intro.php:23
+msgid "Learn more about us"
+msgstr ""
+
+#: patterns/newsletter.php
+msgctxt "Pattern title"
+msgid "Newsletter panel"
+msgstr ""
+
+#: patterns/newsletter.php
+msgctxt "Pattern description"
+msgid "Rose \"Subscribe to our latest news & update\" panel."
+msgstr ""
+
+#: patterns/page-about.php
+msgctxt "Pattern title"
+msgid "About page"
+msgstr ""
+
+#: patterns/page-about.php
+msgctxt "Pattern description"
+msgid "Two-column About layout with phone contact and image collage."
+msgstr ""
+
+#: patterns/page-about.php:18
+msgid "About Us"
+msgstr ""
+
+#: patterns/page-about.php:32
+msgid "Have any questions? Contact us!"
+msgstr ""
+
+#: patterns/page-contact.php
+msgctxt "Pattern title"
+msgid "Contact page"
+msgstr ""
+
+#: patterns/page-contact.php
+msgctxt "Pattern description"
+msgid "Contact form beside the contact details and social links."
+msgstr ""
+
+#: patterns/page-contact.php:15
+msgid "Contact Us"
+msgstr ""
+
+#: patterns/page-contact.php:34
+msgid "Follow on:"
+msgstr ""
+
+#: patterns/page-donate.php
+msgctxt "Pattern title"
+msgid "Donate page"
+msgstr ""
+
+#: patterns/page-donate.php
+msgctxt "Pattern description"
+msgid "Hashtag visual beside the donation chooser."
+msgstr ""
+
+#: patterns/page-donate.php:28
+msgid "Support Suara Malaysia. Your gift helps keep the magazine online and publishing."
+msgstr ""
+
+#: patterns/page-editorial.php
+msgctxt "Pattern title"
+msgid "Editorial policy page"
+msgstr ""
+
+#: patterns/page-editorial.php
+msgctxt "Pattern description"
+msgid "Editorial standards page with a sticky section navigation."
+msgstr ""
+
+#: patterns/page-editorial.php:19
+#: patterns/page-privacy.php:19
+msgid "Sections"
+msgstr ""
+
+#: patterns/page-editorial.php:20
+#: patterns/page-editorial.php:30
+msgid "What we publish"
+msgstr ""
+
+#: patterns/page-editorial.php:21
+#: patterns/page-editorial.php:37
+msgid "Opinion"
+msgstr ""
+
+#: patterns/page-editorial.php:22
+#: patterns/page-editorial.php:44
+msgid "Contributions"
+msgstr ""
+
+#: patterns/page-editorial.php:23
+#: patterns/page-editorial.php:51
+msgid "Corrections"
+msgstr ""
+
+#: patterns/page-editorial.php:33
+msgid "Suara Malaysia is an online magazine of social commentary about Malaysia and Malaysian issues, owned and edited by MENJ."
+msgstr ""
+
+#: patterns/page-editorial.php:40
+msgid "Articles express the views of their authors. Guest pieces appear under the author’s name and do not necessarily reflect the views of the editor."
+msgstr ""
+
+#: patterns/page-editorial.php:47
+msgid "We publish guest articles that support our objectives for a better Malaysia, and contributions are welcome. Use the contact page for details."
+msgstr ""
+
+#: patterns/page-editorial.php:54
+msgid "If you believe something we published is inaccurate, please tell us through the contact page."
+msgstr ""
+
+#: patterns/page-privacy.php
+msgctxt "Pattern title"
+msgid "Privacy policy page"
+msgstr ""
+
+#: patterns/page-privacy.php
+msgctxt "Pattern description"
+msgid "Legal page with a sticky section navigation. Edit the text to match your practices."
+msgstr ""
+
+#: patterns/page-privacy.php:20
+#: patterns/page-privacy.php:31
+msgid "What we collect"
+msgstr ""
+
+#: patterns/page-privacy.php:21
+#: patterns/page-privacy.php:38
+msgid "How we use it"
+msgstr ""
+
+#: patterns/page-privacy.php:22
+#: patterns/page-privacy.php:45
+msgid "Cookies"
+msgstr ""
+
+#: patterns/page-privacy.php:23
+#: patterns/page-privacy.php:52
+msgid "Your rights"
+msgstr ""
+
+#: patterns/page-privacy.php:34
+msgid "When you subscribe to our newsletter we store the name and email address you give us. When you send a message through the contact form we store the message, your name and email address, and the IP address it was sent from. Our web server keeps standard access logs."
+msgstr ""
+
+#: patterns/page-privacy.php:41
+msgid "We use your email address only to send the newsletter you asked for and to reply to messages you send us."
+msgstr ""
+
+#: patterns/page-privacy.php:48
+msgid "WordPress sets cookies when you log in or leave a comment. Analytics tools, embedded media and other third-party services the site owner enables may set their own cookies."
+msgstr ""
+
+#: patterns/page-privacy.php:55
+msgid "Under the Personal Data Protection Act 2010 you may ask what personal data we hold about you, ask us to correct it, or ask us to delete it. Unsubscribe links are included in every newsletter."
+msgstr ""
+
+#. translators: email
+#: patterns/page-privacy.php:62
+#, php-format
+msgid "Privacy questions can be sent to %s."
+msgstr ""
+
+#: patterns/query-grid.php
+msgctxt "Pattern title"
+msgid "Three-column story grid (query loop)"
+msgstr ""
+
+#: patterns/query-grid.php:22
+msgid "Nothing found. Try a different search."
+msgstr ""
+
+#: patterns/query-grid.php:27
+msgid "Newer"
+msgstr ""
+
+#: patterns/query-grid.php:29
+msgid "Older"
+msgstr ""
+
+#: assets/js/editor.js:40
+msgid "Settings"
+msgstr ""
+
+#: assets/js/editor.js:48
+msgid "The sticky (or latest) story with two side stories."
+msgstr ""
+
+#: assets/js/editor.js:49
+msgid "Side stories"
+msgstr ""
+
+#: assets/js/editor.js:52
+msgid "Homepage sections"
+msgstr ""
+
+#: assets/js/editor.js:52
+msgid "One block per category chosen in Appearance → Theme Options → Homepage."
+msgstr ""
+
+#: assets/js/editor.js:54
+msgid "Columns"
+msgstr ""
+
+#: assets/js/editor.js:55
+msgid "Stories per section (0 = use setting)"
+msgstr ""
+
+#: assets/js/editor.js:59
+msgid "You may be interested"
+msgstr ""
+
+#: assets/js/editor.js:59
+msgid "Related stories from the same category."
+msgstr ""
+
+#: assets/js/editor.js:61
+#: assets/js/editor.js:84
+#: assets/js/editor.js:92
+msgid "Title"
+msgstr ""
+
+#: assets/js/editor.js:62
+msgid "Stories"
+msgstr ""
+
+#: assets/js/editor.js:66
+msgid "Rose sign-up panel. Subscribers are stored under Appearance → Subscribers."
+msgstr ""
+
+#: assets/js/editor.js:67
+msgid "Heading (leave empty for the setting)"
+msgstr ""
+
+#: assets/js/editor.js:70
+msgid "Form fields are configured under Appearance → Theme Options → Contact form."
+msgstr ""
+
+#: assets/js/editor.js:71
+msgid "Donate form"
+msgstr ""
+
+#: assets/js/editor.js:71
+msgid "Amount, type and frequency chooser that hands off to your checkout URL."
+msgstr ""
+
+#: assets/js/editor.js:73
+msgid "Social icons"
+msgstr ""
+
+#: assets/js/editor.js:73
+msgid "Icons for the profiles set under Appearance → Theme Options → Social."
+msgstr ""
+
+#: assets/js/editor.js:76
+msgid "Style"
+msgstr ""
+
+#: assets/js/editor.js:76
+msgid "Use setting"
+msgstr ""
+
+#: assets/js/editor.js:77
+msgid "Size (0 = use setting)"
+msgstr ""
+
+#: assets/js/editor.js:78
+msgid "Label"
+msgstr ""
+
+#: assets/js/editor.js:82
+msgid "Section heading"
+msgstr ""
+
+#: assets/js/editor.js:82
+msgid "Title with the red rule and a \"View All\" link."
+msgstr ""
+
+#: assets/js/editor.js:85
+msgid "Link URL"
+msgstr ""
+
+#: assets/js/editor.js:86
+msgid "Heading level"
+msgstr ""
+
+#: assets/js/editor.js:93
+msgid "Items"
+msgstr ""
+
+#: assets/js/editor.js:97
+msgid "Posts tagged “editors-pick”, topped up with the latest stories."
+msgstr ""
+
+#: assets/js/editor.js:98
+msgid "Footer sitemap"
+msgstr ""
+
+#: assets/js/editor.js:98
+msgid "Top sections with their latest stories, plus site links."
+msgstr ""
+
+#: assets/js/editor.js:99
+msgid "Ranked list of the most read stories."
+msgstr ""
+
+#: assets/js/editor.js:100
+msgid "Categories with the most stories."
+msgstr ""
+
+#: assets/js/editor.js:101
+msgid "Share buttons"
+msgstr ""
+
+#: assets/js/editor.js:101
+msgid "WhatsApp, Facebook, X and copy-link buttons for the current article."
+msgstr ""
+
+#: assets/js/editor.js:102
+msgid "Reading time"
+msgstr ""
+
+#: assets/js/editor.js:102
+msgid "Estimated minutes to read the current article."
+msgstr ""
+
+#: assets/js/editor.js:115
+msgid "Hidden from lists, search and feeds. Reachable by direct link only."
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Base"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary (Red)"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Tag (Yellow)"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Newsletter panel (Navy)"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Link (Navy)"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Surface (Light grey)"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Line"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Manrope"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Sabon Next LT"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Kagnue"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Kagnue Outline"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Special Elite"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Ferments"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Tiny"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra Extra Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Front Page"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "About page"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Contact page"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Donate page"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Legal page (with section nav)"
+msgstr ""

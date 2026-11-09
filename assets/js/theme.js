@@ -64,7 +64,6 @@
 			var max = doc.scrollHeight - window.innerHeight;
 			var pct = max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0;
 			bar.style.width = pct + '%';
-			progress.setAttribute('aria-valuenow', Math.round(pct));
 		};
 		window.addEventListener('scroll', update, { passive: true });
 		window.addEventListener('resize', update);
@@ -84,10 +83,12 @@
 		};
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
-			qsa('.is-invalid', form).forEach(function (el) { el.classList.remove('is-invalid'); });
+			qsa('.is-invalid', form).forEach(function (el) { el.classList.remove('is-invalid'); el.removeAttribute('aria-invalid'); });
 			var firstInvalid = qsa('[required]', form).filter(function (el) { return !el.value.trim() || (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value)); })[0];
 			if (firstInvalid) {
 				firstInvalid.classList.add('is-invalid');
+				firstInvalid.setAttribute('aria-invalid', 'true');
+				if (msg && msg.id) { firstInvalid.setAttribute('aria-describedby', msg.id); }
 				firstInvalid.focus();
 				setMsg(firstInvalid.type === 'email' ? 'Please enter a valid email address.' : 'Please fill in the required fields.', 'error');
 				return;
@@ -108,7 +109,7 @@
 						if (json && json.data && json.data.errors) {
 							Object.keys(json.data.errors).forEach(function (name) {
 								var el = form.elements[name];
-								if (el) { el.classList.add('is-invalid'); }
+								if (el) { el.classList.add('is-invalid'); el.setAttribute('aria-invalid', 'true'); if (msg && msg.id) { el.setAttribute('aria-describedby', msg.id); } }
 							});
 						}
 					}
@@ -137,10 +138,18 @@
 		form.addEventListener('submit', function (e) {
 			if (form.dataset.noCheckout === '1') { e.preventDefault(); return; }
 			var chosen = radios.filter(function (r) { return r.checked; })[0];
+			var amount = chosen ? chosen.value : '';
 			if (chosen && chosen.value === 'custom' && custom) {
 				if (!custom.value || Number(custom.value) < 1) { e.preventDefault(); custom.focus(); return; }
+				amount = custom.value;
 				chosen.value = custom.value;
 				custom.disabled = true;
+			}
+			// PayPal.Me takes the amount in the path: https://www.paypal.com/paypalme/name/25MYR
+			var code = form.dataset.paypalme;
+			if (code && /^\d+(\.\d{1,2})?$/.test(amount) && /^https:\/\/www\.paypal\.com\/paypalme\//.test(form.action)) {
+				e.preventDefault();
+				window.location.href = form.action.replace(/\/$/, '') + '/' + amount + code;
 			}
 		});
 	});
@@ -169,4 +178,14 @@
 		}, { rootMargin: '-20% 0px -70% 0px' });
 		targets.forEach(function (t) { io.observe(t); });
 	}
+	/* Skip link: move focus into the main content, not just the scroll position. */
+	qsa('a.skip-link').forEach(function (link) {
+		link.addEventListener('click', function () {
+			var target = document.getElementById((link.getAttribute('href') || '').slice(1)) || qs('main');
+			if (!target) { return; }
+			if (!target.hasAttribute('tabindex')) { target.setAttribute('tabindex', '-1'); }
+			target.focus({ preventScroll: false });
+		});
+	});
+
 })();

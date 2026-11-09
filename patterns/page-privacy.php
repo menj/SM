@@ -38,14 +38,14 @@
 		<h2 class="wp-block-heading" id="how-we-use-it"><?php esc_html_e( 'How we use it', 'sm' ); ?></h2>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph -->
-		<p><?php esc_html_e( 'We use your email address only to send the newsletter you asked for and to reply to messages you send us. We do not sell, rent or share personal data with advertisers.', 'sm' ); ?></p>
+		<p><?php esc_html_e( 'We use your email address only to send the newsletter you asked for and to reply to messages you send us.', 'sm' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:heading {"level":2,"anchor":"cookies"} -->
 		<h2 class="wp-block-heading" id="cookies"><?php esc_html_e( 'Cookies', 'sm' ); ?></h2>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph -->
-		<p><?php esc_html_e( 'This site sets only the cookies WordPress needs to function, such as a session cookie when you log in or leave a comment. Embedded media from third parties may set their own cookies.', 'sm' ); ?></p>
+		<p><?php esc_html_e( 'WordPress sets cookies when you log in or leave a comment. Analytics tools, embedded media and other third-party services the site owner enables may set their own cookies.', 'sm' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:heading {"level":2,"anchor":"your-rights"} -->
