@@ -3,7 +3,7 @@
 | Family | Role | Files |
 | --- | --- | --- |
 | Sabon Next LT | Editorial serif: headlines, navigation, quotes | `sabon-next/` (Regular, Italic, Bold, Bold Italic) |
-| Kagnue | Display: site title, section and page headings | `kagnue/` (Regular, Outline) |
+| Kagnue | Display: site title, section and page headings | `kagnue/` (Regular) |
 | Special Elite | Press labels: tags, dates, bylines, footer | `special-elite/` |
 | Ferments | Script accent: donate visual, quote credits | `ferments/` (Regular, Slant) |
 | Dropcaps | Illuminated initials for article openings | `dropcaps/` (SIL OFL, letter outlines derived from Almendra) |

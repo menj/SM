@@ -535,7 +535,7 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-fcol li a { position: relative; padding-left: 14px; }
 .sm-fcol li a::before { content: ""; position: absolute; left: 0; top: .55em; width: 5px; height: 5px; border-radius: 1px; background: var(--sm-cat, var(--sm-primary)); transform: rotate(45deg); }
 .sm-footer__base { position: relative; overflow: hidden; padding-bottom: clamp(96px, 15vw, 190px); }
-.sm-footer__base::after { content: "SUARA MALAYSIA"; position: absolute; left: 50%; bottom: -.18em; transform: translateX(-50%); font-family: "Kagnue Outline", var(--sm-display); font-size: clamp(3rem, 12.5vw, 11.5rem); line-height: 1; white-space: nowrap; color: rgba(255, 255, 255, .13); letter-spacing: .02em; pointer-events: none; user-select: none; }
+.sm-footer__base::after { content: "SUARA MALAYSIA"; content: "SUARA MALAYSIA" / ""; position: absolute; left: 50%; bottom: -.18em; transform: translateX(-50%); font-family: var(--sm-display); font-size: clamp(3rem, 12.5vw, 11.5rem); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, .16); letter-spacing: .02em; pointer-events: none; user-select: none; }
 .sm-footer__base-inner, .sm-footer__copy { position: relative; z-index: 1; }
 .sm-footer__logo { box-shadow: 0 0 0 6px rgba(255, 255, 255, .14); }
 .sm-footer__copy { border-top-color: rgba(255, 255, 255, .2); }
