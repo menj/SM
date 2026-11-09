@@ -43,7 +43,8 @@ function sm_default_settings() {
 		// Contact and donate.
 		'contact_to'        => '',
 		'contact_intro'     => 'Have a story, a tip or a correction? Send us a message and we will get back to you.',
-		'donate_url'        => '',
+		'donate_url'        => 'https://www.paypal.com/paypalme/menj',
+		'donate_currency_code' => 'MYR',
 		'donate_amounts'    => '25,50,100',
 		'donate_currency'   => 'RM',
 		'donate_types'      => 'General support',
@@ -308,6 +309,25 @@ add_action(
 		update_option( 'sm_settings_repaired', 1, false );
 	},
 	1
+);
+
+/**
+ * One-time: sites that have no checkout URL yet get the PayPal.Me link. Runs once, so clearing
+ * the field later is respected.
+ */
+add_action(
+	'init',
+	function () {
+		if ( get_option( 'sm_paypal_default_set' ) ) {
+			return;
+		}
+		$s = (array) get_option( 'sm_settings', array() );
+		if ( empty( $s['donate_url'] ) ) {
+			update_option( 'sm_settings', array( 'donate_url' => 'https://www.paypal.com/paypalme/menj', 'donate_currency_code' => 'MYR' ) );
+		}
+		update_option( 'sm_paypal_default_set', 1, false );
+	},
+	2
 );
 
 /**

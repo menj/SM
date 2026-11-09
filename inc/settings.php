@@ -118,10 +118,11 @@ function sm_settings_tabs() {
 		'donate'     => array(
 			'label'  => __( 'Donate', 'sm' ),
 			'icon'   => 'heart',
-			'desc'   => __( '1. Paste your payment provider\'s checkout URL; until then the button shows a notice to editors only. 2. Set the currency symbol, preset amounts and donation types.', 'sm' ),
+			'desc'   => __( '1. Paste your PayPal.Me link (or another checkout URL). 2. Set the currency symbol shown on the buttons and the three-letter PayPal currency code (MYR). 3. Set the preset amounts. Donation types and frequency apply to non-PayPal.Me checkouts only.', 'sm' ),
 			'fields' => array(
 				array( 'id' => 'card_checkout', 'type' => 'card', 'label' => __( 'Checkout', 'sm' ), 'text' => __( 'Where the Donate button sends readers.', 'sm' ) ),
-				array( 'id' => 'donate_url', 'label' => __( 'Checkout URL', 'sm' ), 'type' => 'url', 'help' => __( 'Where "Go to checkout" sends the reader. The chosen amount, type and frequency are appended as query parameters.', 'sm' ) ),
+				array( 'id' => 'donate_url', 'label' => __( 'Checkout URL', 'sm' ), 'type' => 'url', 'help' => __( 'A PayPal.Me link (for example https://www.paypal.com/paypalme/yourname) sends the reader to PayPal with the chosen amount filled in; PayPal.Me gifts are one-time, so the type and frequency choices are hidden. Any other URL gets the amount, type and frequency as query parameters.', 'sm' ) ),
+				array( 'id' => 'donate_currency_code', 'label' => __( 'PayPal currency code', 'sm' ), 'type' => 'text', 'help' => __( 'Three letters, for example MYR. Used with PayPal.Me links.', 'sm' ) ),
 				array( 'id' => 'donate_currency', 'label' => __( 'Currency symbol', 'sm' ), 'type' => 'text' ),
 				array( 'id' => 'card_choices_on_offer', 'type' => 'card', 'label' => __( 'Choices on offer', 'sm' ), 'text' => __( 'The amounts and types readers can pick from.', 'sm' ) ),
 				array( 'id' => 'donate_amounts', 'label' => __( 'Preset amounts', 'sm' ), 'type' => 'text', 'help' => __( 'Comma separated, e.g. 25,50,100', 'sm' ) ),
@@ -324,6 +325,8 @@ function sm_sanitize_settings( $input ) {
 		$clean['login_slug'] = 'login';
 		add_settings_error( 'sm_settings', 'login_slug', __( 'That login slug is reserved. Reverted to "login".', 'sm' ) );
 	}
+	$code                         = strtoupper( preg_replace( '/[^A-Za-z]/', '', (string) ( $clean['donate_currency_code'] ?? '' ) ) );
+	$clean['donate_currency_code'] = 3 === strlen( $code ) ? $code : 'MYR';
 	$clean['login_redirect'] = ltrim( sanitize_text_field( $clean['login_redirect'] ?? '404' ), '/' ) ?: '404';
 
 	// Apply the preset scheme colours unless the custom scheme is chosen.

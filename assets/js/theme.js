@@ -138,10 +138,18 @@
 		form.addEventListener('submit', function (e) {
 			if (form.dataset.noCheckout === '1') { e.preventDefault(); return; }
 			var chosen = radios.filter(function (r) { return r.checked; })[0];
+			var amount = chosen ? chosen.value : '';
 			if (chosen && chosen.value === 'custom' && custom) {
 				if (!custom.value || Number(custom.value) < 1) { e.preventDefault(); custom.focus(); return; }
+				amount = custom.value;
 				chosen.value = custom.value;
 				custom.disabled = true;
+			}
+			// PayPal.Me takes the amount in the path: https://www.paypal.com/paypalme/name/25MYR
+			var code = form.dataset.paypalme;
+			if (code && /^\d+(\.\d{1,2})?$/.test(amount) && /^https:\/\/www\.paypal\.com\/paypalme\//.test(form.action)) {
+				e.preventDefault();
+				window.location.href = form.action.replace(/\/$/, '') + '/' + amount + code;
 			}
 		});
 	});
