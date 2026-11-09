@@ -92,9 +92,9 @@ function sm_contact_form_html( $args = array() ) {
 		$req  = $f['required'] ? ' required aria-required="true"' : '';
 		$wide = in_array( $f['type'], array( 'textarea' ), true ) || ( 'text' === $f['type'] && 'subject' === $f['name'] ) ? ' is-wide' : '';
 		$html .= '<div class="sm-field-wrap' . $wide . '">';
-		$html .= '<label class="screen-reader-text" for="' . esc_attr( $id ) . '">' . esc_html( $f['label'] ) . '</label>';
+		$html .= '<label class="sm-label" for="' . esc_attr( $id ) . '">' . esc_html( $f['label'] ) . ( $f['required'] ? ' <span class="sm-label__req">' . esc_html__( '(required)', 'sm' ) . '</span>' : '' ) . '</label>';
 		if ( 'textarea' === $f['type'] ) {
-			$html .= '<textarea id="' . esc_attr( $id ) . '" name="' . esc_attr( $f['name'] ) . '" rows="6" placeholder="' . esc_attr( $f['label'] ) . '"' . $req . '></textarea>';
+			$html .= '<textarea id="' . esc_attr( $id ) . '" name="' . esc_attr( $f['name'] ) . '" rows="6"' . $req . '></textarea>';
 		} elseif ( 'select' === $f['type'] ) {
 			$html .= '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $f['name'] ) . '"' . $req . '><option value="">' . esc_html( $f['label'] ) . '</option>';
 			foreach ( $f['options'] as $o ) {
@@ -102,17 +102,16 @@ function sm_contact_form_html( $args = array() ) {
 			}
 			$html .= '</select>';
 		} else {
-			$html .= '<input id="' . esc_attr( $id ) . '" type="' . esc_attr( $f['type'] ) . '" name="' . esc_attr( $f['name'] ) . '" placeholder="' . esc_attr( $f['label'] ) . '"' . $req . ' />';
+			$html .= '<input id="' . esc_attr( $id ) . '" type="' . esc_attr( $f['type'] ) . '" name="' . esc_attr( $f['name'] ) . '"' . $req . ' />';
 		}
 		$html .= '</div>';
 	}
 	$html .= '</div>';
 	$html .= '<input type="text" name="website" class="sm-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />';
 	$html .= '<input type="hidden" name="action" value="sm_contact" />';
-	$html .= '<input type="hidden" name="nonce" value="' . esc_attr( wp_create_nonce( 'sm_front' ) ) . '" />';
 	$html .= '<input type="hidden" name="page" value="' . esc_attr( get_the_ID() ) . '" />';
 	$html .= '<button type="submit" class="wp-element-button sm-contact-form__submit">' . esc_html__( 'Send message', 'sm' ) . '</button>';
-	$html .= '<p class="sm-form__message" role="status" aria-live="polite"></p>';
+	$html .= '<p class="sm-form__message" id="' . esc_attr( $uid ) . '-msg" role="status" aria-live="polite"></p>';
 	$html .= '</form>';
 	return $html;
 }

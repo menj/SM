@@ -69,7 +69,8 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-catbar .wp-block-navigation__responsive-container.is-menu-open a { font-size: 1.25rem; }
 
 .sm-search-toggle { appearance: none; background: none; border: 0; color: inherit; cursor: pointer; padding: 8px; display: inline-flex; border-radius: 50%; }
-.sm-search-toggle:hover, .sm-search-toggle:focus-visible { background: rgba(255,255,255,.18); outline: 0; }
+.sm-search-toggle:hover, .sm-search-toggle:focus-visible { background: rgba(255,255,255,.18); }
+.sm-search-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .sm-search-toggle svg { width: 22px; height: 22px; }
 .sm-search-panel { background: var(--sm-surface); }
 .sm-search-panel[hidden] { display: none; }
@@ -825,3 +826,36 @@ body { -webkit-font-smoothing: antialiased; }
 .sm-footer__base::before { content: ""; position: absolute; inset: 0 0 auto; height: clamp(60px, 9vw, 110px); background: var(--sm-skyline) center bottom / cover no-repeat; pointer-events: none; }
 /* ::after is already the outline watermark, so the tumpal band is a second background layer. */
 .sm-footer__base { background: var(--sm-tumpal) 0 100% / auto 10px repeat-x, var(--sm-link); }
+
+/* ==========================================================================
+   WCAG 2.2 AA baseline
+   ========================================================================== */
+/* Visible labels for the public forms (placeholders are no longer the only label). */
+.sm-label { display: block; margin: 0 0 6px; font-size: .875rem; font-weight: 600; line-height: 1.4; text-align: left; }
+.sm-label__req { font-weight: 400; opacity: .85; }
+.sm-field-wrap { text-align: left; }
+.sm-newsletter .sm-label { color: var(--sm-on-newsletter); padding-inline: 6px; }
+.sm-contact-form .is-invalid, .sm-newsletter__form .is-invalid { outline: 3px solid var(--sm-primary); outline-offset: 1px; }
+.sm-newsletter__form .is-invalid { outline-color: #fff; }
+.sm-form__message.is-error::before { content: "Error: "; font-weight: 700; }
+
+/* Pill search fields hide the native outline, so the wrapper carries the focus ring. */
+.wp-block-search__inside-wrapper:focus-within { outline: 2px solid var(--sm-link); outline-offset: 2px; }
+.sm-catbar .wp-block-search__inside-wrapper:focus-within, .sm-footer .wp-block-search__inside-wrapper:focus-within { outline-color: #fff; }
+
+/* Links inside body and comment content are underlined, not distinguished by colour alone. */
+.wp-block-post-content a:not(.wp-element-button):not(.wp-block-button__link):not(.sm-tag):not(.sm-cat-tab),
+.wp-block-comment-content a { text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: from-font; }
+
+/* Focused elements are never hidden behind the fixed back-to-top button or admin bar. */
+html { scroll-padding-top: 48px; scroll-padding-bottom: 72px; }
+@media (pointer: coarse) { .sm-totop { width: 44px; height: 44px; } }
+
+/* Text spacing (1.4.12): text containers grow with their content. */
+.sm-card__title, .sm-hero__title, .sm-hero__item-title, .sm-pick__title, .sm-rank__title { height: auto; max-height: none; }
+
+/* Hero: the headline overlay grows with its text instead of being clipped (1.4.4, 1.4.12). */
+.sm-hero__main { display: flex; }
+.sm-hero__overlay { position: relative; inset: auto; width: 100%; min-height: inherit; }
+.sm-newsletter .sm-form__message.is-error { color: #fff; background: rgba(0, 0, 0, .28); border-radius: 8px; padding: 8px 12px; }
+.sm-newsletter .sm-form__message.is-error::before { color: #ffd4d6; }

@@ -43,12 +43,16 @@ function sm_settings_tabs() {
 		'general'    => array(
 			'label'  => __( 'General', 'sm' ),
 			'icon'   => 'admin-generic',
+			'desc'   => __( '1. Fill in the contact details. 2. Set the copyright line (use {year}). 3. Write a 150 to 160 character description for search engines. 4. Decide whether demo content is removed when you switch themes.', 'sm' ),
 			'fields' => array(
+				array( 'id' => 'card_site_details', 'type' => 'card', 'label' => __( 'Site details', 'sm' ), 'text' => __( 'Contact details and the footer line shown across the site.', 'sm' ) ),
 				array( 'id' => 'phone', 'label' => __( 'Phone number', 'sm' ), 'type' => 'text', 'help' => __( 'Shown on the About and Contact pages.', 'sm' ) ),
 				array( 'id' => 'email', 'label' => __( 'Public email', 'sm' ), 'type' => 'email' ),
 				array( 'id' => 'copyright', 'label' => __( 'Copyright line', 'sm' ), 'type' => 'text', 'help' => __( 'Use {year} to insert the current year.', 'sm' ) ),
 				array( 'id' => 'back_to_top', 'label' => __( 'Back-to-top button', 'sm' ), 'type' => 'toggle', 'help' => __( 'Show the small red scroll-to-top button in the footer.', 'sm' ) ),
+				array( 'id' => 'card_search_engines', 'type' => 'card', 'label' => __( 'Search engines', 'sm' ), 'text' => __( 'How the homepage appears in search results.', 'sm' ) ),
 				array( 'id' => 'meta_description', 'label' => __( 'Homepage meta description', 'sm' ), 'type' => 'textarea', 'help' => __( 'Shown to search engines for the homepage. Aim for 150 to 160 characters.', 'sm' ) ),
+				array( 'id' => 'card_demo_content', 'type' => 'card', 'label' => __( 'Demo content', 'sm' ), 'text' => __( 'Control the sample stories, pages and menus that come with the theme.', 'sm' ) ),
 				array( 'id' => 'autodelete_demo', 'label' => __( 'Delete demo content on deactivation', 'sm' ), 'type' => 'toggle', 'help' => __( 'When another theme is activated, the demo posts, pages, categories, menus and images this theme imported are deleted permanently. Content you added yourself is never touched.', 'sm' ) ),
 				array( 'id' => 'seed_import', 'label' => __( 'Seed content', 'sm' ), 'type' => 'seed' ),
 			),
@@ -56,8 +60,11 @@ function sm_settings_tabs() {
 		'colours'    => array(
 			'label'  => __( 'Colours', 'sm' ),
 			'icon'   => 'art',
+			'desc'   => __( '1. Click a preset to try a colour scheme. 2. Or adjust any colour below; the scheme switches to Custom. 3. Save, then check the homepage. Text colours are checked against their background for readability.', 'sm' ),
 			'fields' => array(
+				array( 'id' => 'card_preset_scheme', 'type' => 'card', 'label' => __( 'Preset scheme', 'sm' ), 'text' => __( 'Pick a preset. Every colour below updates to match.', 'sm' ) ),
 				array( 'id' => 'scheme', 'label' => __( 'Colour scheme', 'sm' ), 'type' => 'scheme', 'options' => $scheme_options, 'help' => __( 'Pick a preset, or choose Custom and set each colour below.', 'sm' ) ),
+				array( 'id' => 'card_custom_colours', 'type' => 'card', 'label' => __( 'Custom colours', 'sm' ), 'text' => __( 'Fine-tune individual colours. Changing one switches the scheme to Custom.', 'sm' ), 'grid' => true ),
 				array( 'id' => 'color_primary', 'label' => __( 'Primary (category bar, buttons)', 'sm' ), 'type' => 'color' ),
 				array( 'id' => 'color_tag', 'label' => __( 'Category tag', 'sm' ), 'type' => 'color' ),
 				array( 'id' => 'color_newsletter', 'label' => __( 'Newsletter panel', 'sm' ), 'type' => 'color' ),
@@ -69,19 +76,25 @@ function sm_settings_tabs() {
 		'homepage'   => array(
 			'label'  => __( 'Homepage', 'sm' ),
 			'icon'   => 'layout',
+			'desc'   => __( '1. Choose how the hero story is picked. 2. Tick the categories to feature and drag to reorder (leave all unticked to show every category). 3. Set how many stories each section shows.', 'sm' ),
 			'fields' => array(
-				array( 'id' => 'hero_source', 'label' => __( 'Hero story', 'sm' ), 'type' => 'select', 'options' => array( 'sticky' => __( 'Sticky post, otherwise latest', 'sm' ), 'latest' => __( 'Always the latest post', 'sm' ) ) ),
+				array( 'id' => 'card_top_of_the_page', 'type' => 'card', 'label' => __( 'Top of the page', 'sm' ), 'text' => __( 'Which story leads the homepage.', 'sm' ) ),
+				array( 'id' => 'hero_source', 'label' => __( 'Hero story', 'sm' ), 'type' => 'choice', 'options' => array( 'sticky' => __( 'Sticky post, otherwise latest', 'sm' ), 'latest' => __( 'Always the latest post', 'sm' ) ) ),
+				array( 'id' => 'card_category_sections', 'type' => 'card', 'label' => __( 'Category sections', 'sm' ), 'text' => __( 'Choose which categories appear below the hero, and in what order.', 'sm' ) ),
 				array( 'id' => 'home_sections', 'label' => __( 'Sections and order', 'sm' ), 'type' => 'categories', 'help' => __( 'Tick the categories to show as homepage sections and drag to reorder. Leave all unticked to show every non-empty category.', 'sm' ) ),
-				array( 'id' => 'section_posts', 'label' => __( 'Stories per section', 'sm' ), 'type' => 'number', 'min' => 1, 'max' => 6 ),
+				array( 'id' => 'section_posts', 'label' => __( 'Stories per section', 'sm' ), 'type' => 'range', 'min' => 1, 'max' => 6 ),
 				array( 'id' => 'show_excerpt', 'label' => __( 'Show excerpts on cards', 'sm' ), 'type' => 'toggle' ),
 			),
 		),
 		'newsletter' => array(
 			'label'  => __( 'Newsletter', 'sm' ),
 			'icon'   => 'email-alt',
+			'desc'   => __( '1. Edit the heading and success message. 2. Optionally paste an external form URL (Mailchimp, Brevo). Without one, subscribers are stored in WordPress and can be exported as CSV.', 'sm' ),
 			'fields' => array(
+				array( 'id' => 'card_panel_text', 'type' => 'card', 'label' => __( 'Panel text', 'sm' ), 'text' => __( 'What readers see in the subscribe panel.', 'sm' ) ),
 				array( 'id' => 'nl_heading', 'label' => __( 'Heading', 'sm' ), 'type' => 'textarea', 'help' => __( 'Line breaks are kept.', 'sm' ) ),
 				array( 'id' => 'nl_success', 'label' => __( 'Success message', 'sm' ), 'type' => 'text' ),
+				array( 'id' => 'card_where_subscribers_go', 'type' => 'card', 'label' => __( 'Where subscribers go', 'sm' ), 'text' => __( 'Store subscribers in WordPress, or send them to an email service.', 'sm' ) ),
 				array( 'id' => 'nl_action', 'label' => __( 'External form action URL', 'sm' ), 'type' => 'url', 'help' => __( 'Optional. Paste a Mailchimp, Brevo or similar form action URL to post subscribers there instead of storing them in WordPress.', 'sm' ) ),
 				array( 'id' => 'nl_notify', 'label' => __( 'Email the admin on each new subscriber', 'sm' ), 'type' => 'toggle' ),
 				array( 'id' => 'nl_list', 'label' => __( 'Subscribers', 'sm' ), 'type' => 'link', 'href' => 'edit.php?post_type=sm_subscriber', 'text' => __( 'View and export subscribers', 'sm' ) ),
@@ -90,8 +103,11 @@ function sm_settings_tabs() {
 		'forms'      => array(
 			'label'  => __( 'Contact form', 'sm' ),
 			'icon'   => 'feedback',
+			'desc'   => __( '1. Set who receives messages. 2. Edit the form fields, one per line as type|name|label|required. 3. Choose whether submissions are also stored; view them under Form entries.', 'sm' ),
 			'fields' => array(
+				array( 'id' => 'card_delivery', 'type' => 'card', 'label' => __( 'Delivery', 'sm' ), 'text' => __( 'Where contact messages are sent and kept.', 'sm' ) ),
 				array( 'id' => 'contact_to', 'label' => __( 'Send messages to', 'sm' ), 'type' => 'email', 'help' => __( 'Leave empty to use the site admin email.', 'sm' ) ),
+				array( 'id' => 'card_form_layout', 'type' => 'card', 'label' => __( 'Form layout', 'sm' ), 'text' => __( 'The text beside the form and the fields it asks for.', 'sm' ) ),
 				array( 'id' => 'contact_intro', 'label' => __( 'Intro text beside the form', 'sm' ), 'type' => 'textarea' ),
 				array( 'id' => 'contact_fields', 'label' => __( 'Fields', 'sm' ), 'type' => 'textarea', 'code' => true, 'help' => __( 'One field per line: type|name|label|required. Types: text, email, tel, textarea, select (options separated by commas after a colon, e.g. select|topic|Topic|yes:Tip,Correction,Other).', 'sm' ) ),
 				array( 'id' => 'contact_success', 'label' => __( 'Success message', 'sm' ), 'type' => 'text' ),
@@ -102,9 +118,12 @@ function sm_settings_tabs() {
 		'donate'     => array(
 			'label'  => __( 'Donate', 'sm' ),
 			'icon'   => 'heart',
+			'desc'   => __( '1. Paste your payment provider\'s checkout URL; until then the button shows a notice to editors only. 2. Set the currency symbol, preset amounts and donation types.', 'sm' ),
 			'fields' => array(
+				array( 'id' => 'card_checkout', 'type' => 'card', 'label' => __( 'Checkout', 'sm' ), 'text' => __( 'Where the Donate button sends readers.', 'sm' ) ),
 				array( 'id' => 'donate_url', 'label' => __( 'Checkout URL', 'sm' ), 'type' => 'url', 'help' => __( 'Where "Go to checkout" sends the reader. The chosen amount, type and frequency are appended as query parameters.', 'sm' ) ),
 				array( 'id' => 'donate_currency', 'label' => __( 'Currency symbol', 'sm' ), 'type' => 'text' ),
+				array( 'id' => 'card_choices_on_offer', 'type' => 'card', 'label' => __( 'Choices on offer', 'sm' ), 'text' => __( 'The amounts and types readers can pick from.', 'sm' ) ),
 				array( 'id' => 'donate_amounts', 'label' => __( 'Preset amounts', 'sm' ), 'type' => 'text', 'help' => __( 'Comma separated, e.g. 25,50,100', 'sm' ) ),
 				array( 'id' => 'donate_types', 'label' => __( 'Donation types', 'sm' ), 'type' => 'textarea', 'help' => __( 'One per line.', 'sm' ) ),
 			),
@@ -112,26 +131,34 @@ function sm_settings_tabs() {
 		'reading'    => array(
 			'label'  => __( 'Reading', 'sm' ),
 			'icon'   => 'book',
+			'desc'   => __( '1. Switch features on or off with the toggles; their settings appear when enabled. 2. Pick a bar position, lightbox behaviour and drop cap style. 3. Image format controls how new uploads are saved.', 'sm' ),
 			'fields' => array(
+				array( 'id' => 'card_reading_progress_bar', 'type' => 'card', 'label' => __( 'Reading progress bar', 'sm' ), 'text' => __( 'A thin bar that fills as readers scroll through an article.', 'sm' ) ),
 				array( 'id' => 'rp_enabled', 'label' => __( 'Reading progress bar', 'sm' ), 'type' => 'toggle', 'help' => __( 'A thin bar that fills as the reader scrolls.', 'sm' ) ),
-				array( 'id' => 'rp_position', 'label' => __( 'Position', 'sm' ), 'type' => 'select', 'options' => array( 'top' => __( 'Top of page', 'sm' ), 'bottom' => __( 'Bottom of page', 'sm' ) ) ),
-				array( 'id' => 'rp_height', 'label' => __( 'Height (px)', 'sm' ), 'type' => 'number', 'min' => 1, 'max' => 20 ),
+				array( 'id' => 'rp_position', 'label' => __( 'Position', 'sm' ), 'type' => 'choice', 'options' => array( 'top' => __( 'Top of page', 'sm' ), 'bottom' => __( 'Bottom of page', 'sm' ) ) ),
+				array( 'id' => 'rp_height', 'label' => __( 'Height (px)', 'sm' ), 'type' => 'range', 'min' => 1, 'max' => 20 ),
 				array( 'id' => 'rp_color', 'label' => __( 'Bar colour', 'sm' ), 'type' => 'color', 'help' => __( 'Leave empty to use the primary colour.', 'sm' ) ),
 				array( 'id' => 'rp_post_types', 'label' => __( 'Show on', 'sm' ), 'type' => 'checkboxes', 'options' => $pt_options ),
+				array( 'id' => 'card_image_lightbox', 'type' => 'card', 'label' => __( 'Image lightbox', 'sm' ), 'text' => __( 'Open linked images in an overlay, with gallery navigation.', 'sm' ) ),
 				array( 'id' => 'lb_enabled', 'label' => __( 'Image lightbox', 'sm' ), 'type' => 'toggle', 'help' => __( 'Open images that link to their full-size file in an overlay (Lightbox2). Galleries become slideshows.', 'sm' ) ),
 				array( 'id' => 'lb_wrap', 'label' => __( 'Wrap around at the end of a gallery', 'sm' ), 'type' => 'toggle' ),
 				array( 'id' => 'lb_captions', 'label' => __( 'Show captions', 'sm' ), 'type' => 'toggle' ),
-				array( 'id' => 'image_format', 'label' => __( 'Image format', 'sm' ), 'type' => 'select', 'options' => array( 'avif' => __( 'AVIF', 'sm' ), 'original' => __( 'Keep original format', 'sm' ) ), 'help' => __( 'New uploads and their sizes are written as AVIF for much smaller files. Originals are kept.', 'sm' ) ),
+				array( 'id' => 'card_images', 'type' => 'card', 'label' => __( 'Images', 'sm' ), 'text' => __( 'The format used for new uploads.', 'sm' ) ),
+				array( 'id' => 'image_format', 'label' => __( 'Image format', 'sm' ), 'type' => 'choice', 'options' => array( 'avif' => __( 'AVIF', 'sm' ), 'original' => __( 'Keep original format', 'sm' ) ), 'help' => __( 'New uploads and their sizes are written as AVIF for much smaller files. Originals are kept.', 'sm' ) ),
+				array( 'id' => 'card_drop_caps', 'type' => 'card', 'label' => __( 'Drop caps', 'sm' ), 'text' => __( 'An illuminated first letter at the start of each article.', 'sm' ) ),
 				array( 'id' => 'dc_enabled', 'label' => __( 'Drop cap on article openings', 'sm' ), 'type' => 'toggle', 'help' => __( 'Sets the first letter of an article in the Dropcaps illuminated-initial font. You can also apply the "Drop cap" style to any paragraph.', 'sm' ) ),
-				array( 'id' => 'dc_variant', 'label' => __( 'Drop cap style', 'sm' ), 'type' => 'select', 'options' => array( 'framed' => __( 'Framed initial', 'sm' ), 'open' => __( 'Open initial', 'sm' ) ) ),
-				array( 'id' => 'dc_lines', 'label' => __( 'Drop cap height (lines)', 'sm' ), 'type' => 'number', 'min' => 2, 'max' => 5 ),
+				array( 'id' => 'dc_variant', 'label' => __( 'Drop cap style', 'sm' ), 'type' => 'choice', 'options' => array( 'framed' => __( 'Framed initial', 'sm' ), 'open' => __( 'Open initial', 'sm' ) ) ),
+				array( 'id' => 'dc_lines', 'label' => __( 'Drop cap height (lines)', 'sm' ), 'type' => 'range', 'min' => 2, 'max' => 5 ),
 			),
 		),
 		'site'       => array(
 			'label'  => __( 'Search & Login', 'sm' ),
 			'icon'   => 'shield',
+			'desc'   => __( '1. Optionally change the search address. 2. To hide the login page, bookmark the new login address first, then switch it on. Blocked visitors are redirected to the path you set.', 'sm' ),
 			'fields' => array(
+				array( 'id' => 'card_search', 'type' => 'card', 'label' => __( 'Search', 'sm' ), 'text' => __( 'Cleaner search URLs.', 'sm' ) ),
 				array( 'id' => 'search_base', 'label' => __( 'Search permalink base', 'sm' ), 'type' => 'text', 'help' => __( 'Search URLs become /base/your-terms/ instead of ?s=your-terms. Default: search.', 'sm' ) ),
+				array( 'id' => 'card_login_page', 'type' => 'card', 'label' => __( 'Login page', 'sm' ), 'text' => __( 'Move the login form away from the default address.', 'sm' ) ),
 				array( 'id' => 'login_enabled', 'label' => __( 'Hide the login page', 'sm' ), 'type' => 'toggle', 'help' => __( 'Blocks wp-login.php and wp-admin for visitors who are not logged in, and serves the login form at the slug below. Bookmark the new URL before enabling.', 'sm' ) ),
 				array( 'id' => 'login_slug', 'label' => __( 'Login slug', 'sm' ), 'type' => 'text', 'help' => __( 'The login form will be at /slug/. Default: login.', 'sm' ) ),
 				array( 'id' => 'login_redirect', 'label' => __( 'Redirect blocked requests to', 'sm' ), 'type' => 'text', 'help' => __( 'Path visitors are sent to when they hit the hidden pages. Default: 404.', 'sm' ) ),
@@ -140,11 +167,13 @@ function sm_settings_tabs() {
 		'social'     => array(
 			'label'  => __( 'Social', 'sm' ),
 			'icon'   => 'share',
+			'desc'   => __( '1. Pick an icon style and size. 2. Enter a URL for each profile you use; empty ones are hidden. 3. Place icons with the Social icons block or the [sm_social] shortcode.', 'sm' ),
 			'fields' => array_merge(
 				array(
-					array( 'id' => 'social_style', 'label' => __( 'Icon style', 'sm' ), 'type' => 'select', 'options' => array( 'plain' => __( 'Plain glyph', 'sm' ), 'boxed' => __( 'Boxed (as in the design)', 'sm' ), 'round' => __( 'Round', 'sm' ) ) ),
-					array( 'id' => 'social_size', 'label' => __( 'Icon size (px)', 'sm' ), 'type' => 'number', 'min' => 12, 'max' => 64 ),
-					array( 'id' => 'social_heading', 'label' => __( 'Profiles', 'sm' ), 'type' => 'heading', 'text' => __( 'Enter a URL for each profile you want shown. Empty profiles are hidden. Use the "Social icons" block or [sm_social] shortcode to place them anywhere.', 'sm' ) ),
+					array( 'id' => 'card_appearance', 'type' => 'card', 'label' => __( 'Appearance', 'sm' ), 'text' => __( 'How the icons look wherever they are shown.', 'sm' ) ),
+				array( 'id' => 'social_style', 'label' => __( 'Icon style', 'sm' ), 'type' => 'choice', 'options' => array( 'plain' => __( 'Plain glyph', 'sm' ), 'boxed' => __( 'Boxed (as in the design)', 'sm' ), 'round' => __( 'Round', 'sm' ) ) ),
+					array( 'id' => 'social_size', 'label' => __( 'Icon size (px)', 'sm' ), 'type' => 'range', 'min' => 12, 'max' => 64 ),
+					array( 'id' => 'social_heading', 'label' => __( 'Profiles', 'sm' ), 'type' => 'card', 'text' => __( 'Enter a URL for each profile you want shown. Empty profiles are hidden. Use the "Social icons" block or [sm_social] shortcode to place them anywhere.', 'sm' ) ),
 				),
 				$social
 			),
@@ -197,7 +226,7 @@ add_action(
 		add_theme_page(
 			__( 'SM Theme Options', 'sm' ),
 			__( 'Theme Options', 'sm' ),
-			'manage_options',
+			'edit_theme_options',
 			'sm-settings',
 			'sm_render_settings_page'
 		);
@@ -239,7 +268,7 @@ function sm_sanitize_settings( $input ) {
 	foreach ( sm_settings_tabs() as $tab ) {
 		foreach ( $tab['fields'] as $f ) {
 			$id = $f['id'];
-			if ( in_array( $f['type'], array( 'link', 'heading', 'seed' ), true ) ) {
+			if ( in_array( $f['type'], array( 'link', 'heading', 'seed', 'card' ), true ) ) {
 				continue;
 			}
 			$v = isset( $input[ $id ] ) ? $input[ $id ] : null;
@@ -248,6 +277,7 @@ function sm_sanitize_settings( $input ) {
 					$clean[ $id ] = empty( $v ) ? 0 : 1;
 					break;
 				case 'number':
+				case 'range':
 					$n = (int) $v;
 					if ( isset( $f['min'] ) ) {
 						$n = max( (int) $f['min'], $n );
@@ -270,6 +300,7 @@ function sm_sanitize_settings( $input ) {
 					$clean[ $id ] = sanitize_textarea_field( (string) $v );
 					break;
 				case 'select':
+				case 'choice':
 				case 'scheme':
 					$clean[ $id ] = ( is_string( $v ) && isset( $f['options'][ $v ] ) ) ? $v : array_key_first( $f['options'] );
 					break;
@@ -336,6 +367,8 @@ add_action(
 			'smAdmin',
 			array(
 				'schemes' => sm_color_schemes(),
+				'on'      => __( 'On', 'sm' ),
+				'off'     => __( 'Off', 'sm' ),
 			)
 		);
 	}
@@ -345,7 +378,7 @@ add_action(
  * Render the settings screen.
  */
 function sm_render_settings_page() {
-	if ( ! current_user_can( 'manage_options' ) ) {
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
 		return;
 	}
 	$tabs   = sm_settings_tabs();
@@ -355,34 +388,67 @@ function sm_render_settings_page() {
 	}
 	?>
 	<div class="wrap sm-settings">
-		<h1 class="sm-settings__title"><?php esc_html_e( 'SM Theme Options', 'sm' ); ?> <span><?php echo esc_html( SM_VERSION ); ?></span></h1>
+		<header class="sm-header-bar">
+			<span class="sm-header-bar__icon dashicons dashicons-admin-appearance" aria-hidden="true"></span>
+			<div class="sm-header-bar__text">
+				<h1 class="sm-settings__title"><?php esc_html_e( 'SM Theme Options', 'sm' ); ?></h1>
+				<p><?php esc_html_e( 'Colours, homepage, forms and reading features for Suara Malaysia. Changes apply after you save.', 'sm' ); ?></p>
+			</div>
+			<span class="sm-badge"><?php echo esc_html( 'v' . SM_VERSION ); ?></span>
+		</header>
 		<?php settings_errors( 'sm_settings' ); ?>
 		<form method="post" action="options.php" class="sm-settings__form">
 			<?php settings_fields( 'sm_settings_group' ); ?>
 			<input type="hidden" name="sm_settings[__form]" value="1" />
 			<input type="hidden" name="_wp_http_referer" value="<?php echo esc_attr( admin_url( 'themes.php?page=sm-settings&tab=' . $active ) ); ?>" />
-			<div class="sm-settings__layout">
-				<nav class="sm-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Settings sections', 'sm' ); ?>">
-					<?php foreach ( $tabs as $key => $tab ) : ?>
-						<button type="button" role="tab" class="sm-tabs__tab<?php echo $key === $active ? ' is-active' : ''; ?>" data-tab="<?php echo esc_attr( $key ); ?>" aria-selected="<?php echo $key === $active ? 'true' : 'false'; ?>" aria-controls="sm-panel-<?php echo esc_attr( $key ); ?>">
-							<span class="dashicons dashicons-<?php echo esc_attr( $tab['icon'] ); ?>" aria-hidden="true"></span>
-							<?php echo esc_html( $tab['label'] ); ?>
-						</button>
-					<?php endforeach; ?>
-				</nav>
-				<div class="sm-panels">
-					<?php foreach ( $tabs as $key => $tab ) : ?>
-						<section id="sm-panel-<?php echo esc_attr( $key ); ?>" role="tabpanel" class="sm-panel<?php echo $key === $active ? ' is-active' : ''; ?>" <?php echo $key === $active ? '' : 'hidden'; ?>>
-							<h2 class="sm-panel__title"><?php echo esc_html( $tab['label'] ); ?></h2>
-							<?php foreach ( $tab['fields'] as $f ) { sm_render_field( $f ); } ?>
-						</section>
-					<?php endforeach; ?>
-					<div class="sm-settings__actions">
-						<?php submit_button( __( 'Save changes', 'sm' ), 'primary', 'submit', false ); ?>
-					</div>
+			<div class="sm-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Settings sections', 'sm' ); ?>">
+				<?php foreach ( $tabs as $key => $tab ) : ?>
+					<button type="button" role="tab" id="sm-tab-<?php echo esc_attr( $key ); ?>" class="sm-tabs__tab<?php echo $key === $active ? ' is-active' : ''; ?>" data-tab="<?php echo esc_attr( $key ); ?>" aria-selected="<?php echo $key === $active ? 'true' : 'false'; ?>" aria-controls="sm-panel-<?php echo esc_attr( $key ); ?>" tabindex="<?php echo $key === $active ? '0' : '-1'; ?>">
+						<span class="dashicons dashicons-<?php echo esc_attr( $tab['icon'] ); ?>" aria-hidden="true"></span>
+						<?php echo esc_html( $tab['label'] ); ?>
+					</button>
+				<?php endforeach; ?>
+			</div>
+			<div class="sm-panels">
+				<?php foreach ( $tabs as $key => $tab ) : ?>
+					<section id="sm-panel-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="sm-tab-<?php echo esc_attr( $key ); ?>" class="sm-panel<?php echo $key === $active ? ' is-active' : ''; ?>" <?php echo $key === $active ? '' : 'hidden'; ?>>
+						<h2 class="sm-panel__title"><?php echo esc_html( $tab['label'] ); ?></h2>
+						<?php if ( ! empty( $tab['desc'] ) ) : ?>
+							<p class="sm-panel__desc"><?php echo esc_html( $tab['desc'] ); ?></p>
+						<?php endif; ?>
+						<?php
+						$open = false;
+						foreach ( $tab['fields'] as $f ) {
+							if ( 'card' === $f['type'] ) {
+								if ( $open ) {
+									echo '</div></div>';
+								}
+								echo '<div class="sm-card"><div class="sm-card__head"><h3>' . esc_html( $f['label'] ) . '</h3>' . ( ! empty( $f['text'] ) ? '<p>' . esc_html( $f['text'] ) . '</p>' : '' ) . '</div><div class="sm-card__body' . ( ! empty( $f['grid'] ) ? ' sm-card__body--grid' : '' ) . '">';
+								$open = true;
+								continue;
+							}
+							if ( ! $open ) {
+								echo '<div class="sm-card"><div class="sm-card__body">';
+								$open = true;
+							}
+							sm_render_field( $f );
+						}
+						if ( $open ) {
+							echo '</div></div>';
+						}
+						?>
+					</section>
+				<?php endforeach; ?>
+				<div class="sm-settings__actions">
+					<?php submit_button( __( 'Save changes', 'sm' ), 'primary', 'submit', false ); ?>
 				</div>
 			</div>
 		</form>
+		<footer class="sm-settings__footer">
+			<a href="https://github.com/menj/SM#readme" target="_blank" rel="noopener"><?php esc_html_e( 'Documentation', 'sm' ); ?></a>
+			<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=sm_entry' ) ); ?>"><?php esc_html_e( 'Contact form entries', 'sm' ); ?></a>
+			<span><?php esc_html_e( 'Made for Suara Malaysia', 'sm' ); ?></span>
+		</footer>
 	</div>
 	<?php
 }
@@ -421,13 +487,19 @@ function sm_render_field( $f ) {
 		return;
 	}
 
+	$grouped = in_array( $f['type'], array( 'choice', 'scheme', 'checkboxes', 'categories' ), true );
 	echo '<div class="sm-field sm-field--' . esc_attr( $f['type'] ) . '" data-field="' . esc_attr( $id ) . '">';
-	echo '<label class="sm-field__label" for="sm-' . esc_attr( $id ) . '">';
-	if ( ! empty( $f['icon'] ) ) {
-		echo '<span class="sm-field__icon">' . sm_social_icon_svg( $f['icon'] ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	if ( $grouped ) {
+		echo '<div class="sm-field__label" id="sm-lbl-' . esc_attr( $id ) . '">' . esc_html( $f['label'] ) . '</div>';
+		echo '<div class="sm-field__control" role="group" aria-labelledby="sm-lbl-' . esc_attr( $id ) . '">';
+	} else {
+		echo '<label class="sm-field__label" for="sm-' . esc_attr( $id ) . '">';
+		if ( ! empty( $f['icon'] ) ) {
+			echo '<span class="sm-field__icon">' . sm_social_icon_svg( $f['icon'] ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+		echo esc_html( $f['label'] ) . '</label>';
+		echo '<div class="sm-field__control">';
 	}
-	echo esc_html( $f['label'] ) . '</label>';
-	echo '<div class="sm-field__control">';
 
 	switch ( $f['type'] ) {
 		case 'toggle':
@@ -436,8 +508,32 @@ function sm_render_field( $f ) {
 				esc_attr( $id ),
 				esc_attr( $name ),
 				checked( ! empty( $value ), true, false ),
-				esc_html__( 'Enabled', 'sm' )
+				! empty( $value ) ? esc_html__( 'On', 'sm' ) : esc_html__( 'Off', 'sm' )
 			);
+			break;
+		case 'range':
+			printf(
+				'<div class="sm-range"><input type="range" id="sm-%1$s" name="%2$s" value="%3$s" min="%4$s" max="%5$s" step="1" /><output class="sm-range__value" for="sm-%1$s">%3$s</output></div>',
+				esc_attr( $id ),
+				esc_attr( $name ),
+				esc_attr( $value ),
+				esc_attr( $f['min'] ?? 0 ),
+				esc_attr( $f['max'] ?? 100 )
+			);
+			break;
+		case 'choice':
+			echo '<div class="sm-choices">';
+			foreach ( $f['options'] as $k => $label ) {
+				printf(
+					'<label class="sm-choice"><input type="radio" name="%1$s" value="%2$s" %3$s /><span class="sm-choice__body"><span class="sm-choice__preview sm-pv sm-pv--%4$s" aria-hidden="true"></span><span class="sm-choice__title">%5$s</span></span></label>',
+					esc_attr( $name ),
+					esc_attr( $k ),
+					checked( (string) $value, (string) $k, false ),
+					esc_attr( sanitize_html_class( $id . '-' . $k ) ),
+					esc_html( $label )
+				);
+			}
+			echo '</div>';
 			break;
 		case 'number':
 			printf(
@@ -467,27 +563,32 @@ function sm_render_field( $f ) {
 				! empty( $f['code'] ) ? ' code' : ''
 			);
 			break;
-		case 'select':
 		case 'scheme':
-			echo '<select id="sm-' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '"' . ( 'scheme' === $f['type'] ? ' class="sm-scheme-select"' : '' ) . '>';
+			echo '<div class="sm-choices sm-choices--schemes">';
+			foreach ( sm_color_schemes() as $k => $sch ) {
+				printf(
+					'<label class="sm-choice"><input type="radio" name="%1$s" value="%2$s" %3$s /><span class="sm-choice__body"><span class="sm-choice__preview sm-swatchrow" aria-hidden="true">',
+					esc_attr( $name ),
+					esc_attr( $k ),
+					checked( (string) $value, (string) $k, false )
+				);
+				if ( 'custom' === $k ) {
+					echo '<span class="sm-swatchrow__custom dashicons dashicons-admin-customizer"></span>';
+				} else {
+					foreach ( array( 'color_primary', 'color_tag', 'color_newsletter', 'color_link' ) as $ck ) {
+						echo '<span style="background:' . esc_attr( $sch[ $ck ] ) . '"></span>';
+					}
+				}
+				echo '</span><span class="sm-choice__title">' . esc_html( $sch['label'] ) . '</span></span></label>';
+			}
+			echo '</div>';
+			break;
+		case 'select':
+			echo '<select id="sm-' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '">';
 			foreach ( $f['options'] as $k => $label ) {
 				echo '<option value="' . esc_attr( $k ) . '" ' . selected( $value, $k, false ) . '>' . esc_html( $label ) . '</option>';
 			}
 			echo '</select>';
-			if ( 'scheme' === $f['type'] ) {
-				echo '<div class="sm-swatches">';
-				foreach ( sm_color_schemes() as $k => $s ) {
-					if ( 'custom' === $k ) {
-						continue;
-					}
-					echo '<button type="button" class="sm-swatch" data-scheme="' . esc_attr( $k ) . '" title="' . esc_attr( $s['label'] ) . '">';
-					foreach ( array( 'color_primary', 'color_tag', 'color_newsletter', 'color_link' ) as $ck ) {
-						echo '<span style="background:' . esc_attr( $s[ $ck ] ) . '"></span>';
-					}
-					echo '</button>';
-				}
-				echo '</div>';
-			}
 			break;
 		case 'checkboxes':
 			$value = (array) $value;
@@ -550,7 +651,7 @@ function sm_render_field( $f ) {
 add_action(
 	'admin_bar_menu',
 	function ( $bar ) {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
 			return;
 		}
 		$bar->add_node(

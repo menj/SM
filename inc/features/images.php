@@ -66,7 +66,7 @@ add_action(
 	function () {
 		$screen = get_current_screen();
 		if ( $screen && 'appearance_page_sm-settings' === $screen->id && 'avif' === sm_get( 'image_format' ) && ! sm_avif_supported() ) {
-			echo '<div class="notice notice-error"><p>' . esc_html__( 'AVIF is selected but this server cannot write AVIF images. Enable AVIF in GD (PHP 8.1 or newer with libavif) or Imagick, or choose "Keep original format".', 'sm' ) . '</p></div>';
+			echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'AVIF is selected but this server cannot write AVIF images. Enable AVIF in GD (PHP 8.1 or newer with libavif) or Imagick, or choose "Keep original format".', 'sm' ) . '</p></div>';
 		}
 	}
 );

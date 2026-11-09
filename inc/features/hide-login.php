@@ -242,7 +242,7 @@ add_action(
 			return;
 		}
 		printf(
-			'<div class="notice notice-info"><p>%s <code>%s</code></p></div>',
+			'<div class="notice notice-info is-dismissible"><p>%s <code>%s</code></p></div>',
 			esc_html__( 'Your login page is now at:', 'sm' ),
 			esc_html( sm_login_url() )
 		);

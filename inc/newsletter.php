@@ -48,15 +48,14 @@ function sm_newsletter_form_html( $args = array() ) {
 	$html  = '<aside class="sm-newsletter alignwide ' . esc_attr( $args['class'] ) . '" aria-labelledby="' . $uid . '-h">';
 	$html .= '<h2 class="sm-newsletter__heading" id="' . $uid . '-h">' . $heading . '</h2>';
 	$html .= '<form class="sm-newsletter__form sm-ajax-form" method="post" action="' . esc_url( $action ? $action : admin_url( 'admin-ajax.php' ) ) . '" data-sm-form="newsletter"' . ( $action ? ' data-external="1" target="_blank"' : '' ) . ' novalidate>';
-	$html .= '<label class="screen-reader-text" for="' . $uid . '-name">' . esc_html__( 'Name', 'sm' ) . '</label>';
-	$html .= '<input id="' . $uid . '-name" type="text" name="' . ( $action ? 'FNAME' : 'name' ) . '" placeholder="' . esc_attr__( 'Name', 'sm' ) . '" autocomplete="name" />';
-	$html .= '<label class="screen-reader-text" for="' . $uid . '-email">' . esc_html__( 'E-mail', 'sm' ) . '</label>';
-	$html .= '<input id="' . $uid . '-email" type="email" name="' . ( $action ? 'EMAIL' : 'email' ) . '" placeholder="' . esc_attr__( 'E-mail', 'sm' ) . '" autocomplete="email" required />';
+	$html .= '<div class="sm-field-wrap"><label class="sm-label" for="' . $uid . '-name">' . esc_html__( 'Name', 'sm' ) . '</label>';
+	$html .= '<input id="' . $uid . '-name" type="text" name="' . ( $action ? 'FNAME' : 'name' ) . '" autocomplete="name" /></div>';
+	$html .= '<div class="sm-field-wrap"><label class="sm-label" for="' . $uid . '-email">' . esc_html__( 'E-mail', 'sm' ) . ' <span class="sm-label__req">' . esc_html__( '(required)', 'sm' ) . '</span></label>';
+	$html .= '<input id="' . $uid . '-email" type="email" name="' . ( $action ? 'EMAIL' : 'email' ) . '" autocomplete="email" required aria-required="true" /></div>';
 	$html .= '<input type="text" name="website" class="sm-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />';
 	$html .= '<input type="hidden" name="action" value="sm_subscribe" />';
-	$html .= '<input type="hidden" name="nonce" value="' . esc_attr( wp_create_nonce( 'sm_front' ) ) . '" />';
 	$html .= '<button type="submit" class="sm-newsletter__submit">' . esc_html__( 'Submit', 'sm' ) . '</button>';
-	$html .= '<p class="sm-form__message" role="status" aria-live="polite"></p>';
+	$html .= '<p class="sm-form__message" id="' . $uid . '-msg" role="status" aria-live="polite"></p>';
 	$html .= '</form></aside>';
 	return $html;
 }

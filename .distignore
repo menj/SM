@@ -1,0 +1,9 @@
+.git
+.gitattributes
+.github
+.svn
+.hg
+.bzr
+phpcs.xml.dist
+node_modules
+*.zip

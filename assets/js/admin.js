@@ -9,7 +9,7 @@
 		var $panels = $('.sm-panel');
 
 		function activate(key, push) {
-			$tabs.removeClass('is-active').attr('aria-selected', 'false').filter('[data-tab="' + key + '"]').addClass('is-active').attr('aria-selected', 'true');
+			$tabs.attr('tabindex', '-1').removeClass('is-active').attr('aria-selected', 'false').filter('[data-tab="' + key + '"]').attr('tabindex', '0').addClass('is-active').attr('aria-selected', 'true');
 			$panels.attr('hidden', '').removeClass('is-active').filter('#sm-panel-' + key).removeAttr('hidden').addClass('is-active');
 			$('input[name="_wp_http_referer"]').val($('input[name="_wp_http_referer"]').val().replace(/tab=[a-z_]+/, 'tab=' + key));
 			if (push && window.history && history.replaceState) {
@@ -21,15 +21,19 @@
 
 		$tabs.on('click', function () { activate($(this).data('tab'), true); });
 		$tabs.on('keydown', function (e) {
-			var i = $tabs.index(this);
-			if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); $tabs.eq((i + 1) % $tabs.length).trigger('click').focus(); }
-			if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); $tabs.eq((i - 1 + $tabs.length) % $tabs.length).trigger('click').focus(); }
+			var i = $tabs.index(this), n = null;
+			if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { n = (i + 1) % $tabs.length; }
+			if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { n = (i - 1 + $tabs.length) % $tabs.length; }
+			if (e.key === 'Home') { n = 0; }
+			if (e.key === 'End') { n = $tabs.length - 1; }
+			if (n !== null) { e.preventDefault(); $tabs.eq(n).trigger('click').trigger('focus'); }
 		});
 
-		// Colour pickers.
+		// Colour pickers: editing one switches the scheme to Custom.
+		function setScheme(key) { $('input[name="sm_settings[scheme]"][value="' + key + '"]').prop('checked', true); }
 		$('.sm-color').wpColorPicker({
-			change: function () { $('.sm-scheme-select').val('custom'); },
-			clear: function () { $('.sm-scheme-select').val('custom'); }
+			change: function () { setScheme('custom'); },
+			clear: function () { setScheme('custom'); }
 		});
 
 		// Scheme presets fill the pickers.
@@ -41,10 +45,13 @@
 				var $input = $('#sm-' + k);
 				if ($input.length) { $input.wpColorPicker('color', scheme[k]); }
 			});
-			$('.sm-scheme-select').val(key);
+			setScheme(key);
 		}
-		$('.sm-scheme-select').on('change', function () { applyScheme(this.value); });
-		$('.sm-swatch').on('click', function () { applyScheme($(this).data('scheme')); });
+		$('input[name="sm_settings[scheme]"]').on('change', function () { if (this.checked && this.value !== 'custom') { applyScheme(this.value); } });
+
+		// Range sliders show their value live; toggles show On/Off.
+		$('.sm-range input[type="range"]').on('input change', function () { $(this).siblings('.sm-range__value').text(this.value); });
+		$('.sm-toggle input').on('change', function () { $(this).siblings('.sm-toggle__text').text(this.checked ? smAdmin.on : smAdmin.off); });
 
 		// Sortable homepage sections.
 		$('.sm-sortable').sortable({ handle: '.sm-sortable__handle', axis: 'y', placeholder: 'ui-sortable-placeholder' });

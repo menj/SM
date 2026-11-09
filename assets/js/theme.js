@@ -83,10 +83,12 @@
 		};
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
-			qsa('.is-invalid', form).forEach(function (el) { el.classList.remove('is-invalid'); });
+			qsa('.is-invalid', form).forEach(function (el) { el.classList.remove('is-invalid'); el.removeAttribute('aria-invalid'); });
 			var firstInvalid = qsa('[required]', form).filter(function (el) { return !el.value.trim() || (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value)); })[0];
 			if (firstInvalid) {
 				firstInvalid.classList.add('is-invalid');
+				firstInvalid.setAttribute('aria-invalid', 'true');
+				if (msg && msg.id) { firstInvalid.setAttribute('aria-describedby', msg.id); }
 				firstInvalid.focus();
 				setMsg(firstInvalid.type === 'email' ? 'Please enter a valid email address.' : 'Please fill in the required fields.', 'error');
 				return;
@@ -107,7 +109,7 @@
 						if (json && json.data && json.data.errors) {
 							Object.keys(json.data.errors).forEach(function (name) {
 								var el = form.elements[name];
-								if (el) { el.classList.add('is-invalid'); }
+								if (el) { el.classList.add('is-invalid'); el.setAttribute('aria-invalid', 'true'); if (msg && msg.id) { el.setAttribute('aria-describedby', msg.id); } }
 							});
 						}
 					}
@@ -168,4 +170,14 @@
 		}, { rootMargin: '-20% 0px -70% 0px' });
 		targets.forEach(function (t) { io.observe(t); });
 	}
+	/* Skip link: move focus into the main content, not just the scroll position. */
+	qsa('a.skip-link').forEach(function (link) {
+		link.addEventListener('click', function () {
+			var target = document.getElementById((link.getAttribute('href') || '').slice(1)) || qs('main');
+			if (!target) { return; }
+			if (!target.hasAttribute('tabindex')) { target.setAttribute('tabindex', '-1'); }
+			target.focus({ preventScroll: false });
+		});
+	});
+
 })();

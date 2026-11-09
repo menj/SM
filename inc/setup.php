@@ -121,3 +121,20 @@ add_filter(
 		return preg_replace( '/<form role="search"/', '<form role="search" aria-label="' . esc_attr( $label ) . '"', $html, 1 );
 	}
 );
+
+/**
+ * Tell site owners what this theme stores, in Settings > Privacy > Policy Guide.
+ */
+add_action(
+	'admin_init',
+	function () {
+		if ( ! function_exists( 'wp_add_privacy_policy_content' ) ) {
+			return;
+		}
+		$text  = '<p class="privacy-policy-tutorial">' . esc_html__( 'The SM theme does not use cookies, analytics or any third-party service on its own. Suggested text:', 'sm' ) . '</p>';
+		$text .= '<p>' . esc_html__( 'Contact form: when you send us a message we receive your name, email address, message text, the page you sent it from, your IP address and browser details. We keep them so we can reply and to prevent abuse.', 'sm' ) . '</p>';
+		$text .= '<p>' . esc_html__( 'Newsletter: when you subscribe we store your name, email address and IP address until you ask us to remove them.', 'sm' ) . '</p>';
+		$text .= '<p>' . esc_html__( 'Article views: we count how many times each article is opened. The count is not linked to you.', 'sm' ) . '</p>';
+		wp_add_privacy_policy_content( 'SM', wp_kses_post( wpautop( $text, false ) ) );
+	}
+);
