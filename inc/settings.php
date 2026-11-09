@@ -142,7 +142,7 @@ function sm_settings_tabs() {
 				array( 'id' => 'rp_color', 'label' => __( 'Bar colour', 'sm' ), 'type' => 'color', 'help' => __( 'Leave empty to use the primary colour.', 'sm' ) ),
 				array( 'id' => 'rp_post_types', 'label' => __( 'Show on', 'sm' ), 'type' => 'checkboxes', 'options' => $pt_options ),
 				array( 'id' => 'card_image_lightbox', 'type' => 'card', 'label' => __( 'Image lightbox', 'sm' ), 'text' => __( 'Open linked images in an overlay, with gallery navigation.', 'sm' ) ),
-				array( 'id' => 'lb_enabled', 'label' => __( 'Image lightbox', 'sm' ), 'type' => 'toggle', 'help' => __( 'Open images that link to their full-size file in an overlay (Lightbox2). Galleries become slideshows.', 'sm' ) ),
+				array( 'id' => 'lb_enabled', 'label' => __( 'Image lightbox', 'sm' ), 'type' => 'toggle', 'help' => __( 'Open images that link to their full-size file in an overlay. Galleries become slideshows.', 'sm' ) ),
 				array( 'id' => 'lb_wrap', 'label' => __( 'Wrap around at the end of a gallery', 'sm' ), 'type' => 'toggle' ),
 				array( 'id' => 'lb_captions', 'label' => __( 'Show captions', 'sm' ), 'type' => 'toggle' ),
 				array( 'id' => 'card_images', 'type' => 'card', 'label' => __( 'Images', 'sm' ), 'text' => __( 'The format used for new uploads.', 'sm' ) ),

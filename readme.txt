@@ -20,7 +20,7 @@ SM is the Suara Malaysia news theme. It needs Twenty Twenty-Five (the parent the
 * Homepage: intro, featured hero with four side stories, per-category sections, editor's picks, most read, active topics and a newsletter panel. No story repeats across these blocks.
 * Colour schemes (six presets plus custom) from Appearance > Theme Options > Colours.
 * Contact form with stored entries and CSV export, newsletter with stored subscribers and CSV export, donate form that hands off to your payment page.
-* Reading progress bar, image lightbox, drop caps, social icons, pretty search URLs, optional hidden login page and unlisted posts.
+* Reading progress bar, image lightbox (dependency-free, no jQuery), drop caps, social icons, pretty search URLs, optional hidden login page and unlisted posts.
 * AVIF image output for new uploads (needs AVIF support in GD or Imagick).
 * Seeded demo content in `seed/content.json`, removable with one click (or automatically when you switch themes).
 * Malaysian identity: tumpal (pucuk rebung) bands, songket lattice and a KL skyline footer, drawn as SVG.
@@ -96,7 +96,6 @@ SM WordPress Theme, (C) 2025 Suara Malaysia. SM is distributed under the terms o
 Bundled resources and their licences:
 
 * Twenty Twenty-Five (parent theme), GPLv2 or later, WordPress contributors. Not bundled: install separately.
-* Lightbox2 2.11.4, MIT, (C) 2015 Lokesh Dhakar. https://lokeshdhakar.com/projects/lightbox2/ . Minified files in assets/vendor/lightbox2/js and /css, unminified sources in assets/vendor/lightbox2/src. Licence: assets/vendor/lightbox2/LICENSE. Needs jQuery from WordPress core.
 * Social icons (assets/icons/social): GPL pack of 24x24 single-path icons, mostly from CC0 sources. LinkedIn and Scribd icons by Font Awesome, CC BY 4.0. https://fontawesome.com . Details in assets/icons/social/LICENSE.txt.
 * Fonts (assets/fonts, see assets/fonts/README.md):
   * Special Elite, Apache License 2.0, Astigmatic.
