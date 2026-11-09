@@ -720,3 +720,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 48px; scroll-padding-bottom:
 .sm-pdf-copy .wp-block-post-content > *, .sm-pdf-copy .wp-block-post-featured-image { margin-inline: 0 !important; padding-inline: 0 !important; width: 100% !important; }
 .sm-pdf-copy img { height: auto !important; border-radius: 0; }
 .sm-share, .sm-share__list { flex-wrap: wrap; }
+
+/* Lightbox2 defaults fail contrast on the dark caption bar; focus is made visible on its controls. */
+.lb-data .lb-number { color: #e8e8e8; }
+.lb-data .lb-caption { color: #fff; }
+#lightbox .lb-close:focus-visible, #lightbox .lb-prev:focus-visible, #lightbox .lb-next:focus-visible { outline: 3px solid #fff; outline-offset: -3px; opacity: 1; }
