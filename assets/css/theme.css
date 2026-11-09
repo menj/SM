@@ -788,3 +788,40 @@ body { -webkit-font-smoothing: antialiased; }
 	.page-numbers, .wp-block-query-pagination-next, .wp-block-query-pagination-previous { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; }
 	.sm-pick__cat, .sm-footer__links a, .sm-footer__links .wp-block-navigation-item__content, .sm-topic-list a, .sm-tags a, .wp-block-post-terms a { display: inline-flex; align-items: center; min-height: 32px; }
 }
+
+/* ==========================================================================
+   Malaysian identity: tumpal (pucuk rebung) band, songket lattice, KL skyline.
+   Motifs are SVG files in assets/images/motifs/; the photo is AVIF in assets/images/malaysia/.
+   Everything is decorative (CSS backgrounds), so it never affects content or tab order.
+   ========================================================================== */
+:root {
+	--sm-tumpal: url("../images/motifs/tumpal.svg");
+	--sm-songket: url("../images/motifs/songket.svg");
+	--sm-skyline: url("../images/motifs/skyline.svg");
+}
+.sm-header { position: relative; }
+.sm-header::before { content: ""; display: block; height: 10px; background: var(--sm-tumpal) 0 0 / auto 10px repeat-x; }
+.sm-catbar { position: relative; }
+.sm-catbar::after { content: ""; position: absolute; inset: auto 0 -8px; height: 8px; background: var(--sm-tumpal) 0 0 / auto 8px repeat-x; z-index: 3; pointer-events: none; }
+
+/* Intro: tagline, mission text, photo */
+.sm-intro::before { width: 56px; height: 8px; background: var(--sm-tumpal) 0 0 / auto 8px repeat-x; }
+.sm-intro__visual { margin: 0; position: relative; overflow: hidden; border-radius: var(--sm-radius-l); order: 5; aspect-ratio: 16 / 9; background: var(--sm-link); }
+.sm-intro__visual::before { content: ""; position: absolute; inset: 0 0 auto; height: 8px; background: var(--sm-tumpal) 0 0 / auto 8px repeat-x; z-index: 2; }
+.sm-intro__visual img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.sm-intro__visual figcaption { position: absolute; inset: auto 0 0; margin: 0; padding: 28px 14px 10px; font-size: .75rem; font-weight: 600; line-height: 1.3; color: #fff; background: linear-gradient(transparent, rgba(0, 0, 0, .62)); }
+@media (min-width: 821px) {
+	.sm-intro { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, .9fr); }
+	.sm-intro__visual { grid-column: 3; grid-row: 2; order: 0; aspect-ratio: auto; align-self: stretch; min-height: 220px; }
+}
+
+/* Songket lattice behind the newsletter, donate visual and 404 */
+.sm-newsletter { background-image: var(--sm-songket); background-size: 36px 36px; }
+.sm-donate-page__visual { background-image: var(--sm-songket), linear-gradient(180deg, #9b4b4b 0%, #a37a7a 100%); background-size: 36px 36px, auto; }
+.sm-404 { background: var(--sm-songket) 0 0 / 36px 36px; border-radius: var(--sm-radius-l); padding-inline: clamp(16px, 5vw, 56px); }
+
+/* Footer: skyline above the brand band, tumpal along the bottom edge */
+.sm-footer__base { position: relative; padding-top: clamp(76px, 9vw, 116px); padding-bottom: 40px; }
+.sm-footer__base::before { content: ""; position: absolute; inset: 0 0 auto; height: clamp(60px, 9vw, 110px); background: var(--sm-skyline) center bottom / cover no-repeat; pointer-events: none; }
+/* ::after is already the outline watermark, so the tumpal band is a second background layer. */
+.sm-footer__base { background: var(--sm-tumpal) 0 100% / auto 10px repeat-x, var(--sm-link); }

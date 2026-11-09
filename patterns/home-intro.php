@@ -24,5 +24,8 @@
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
+	<!-- wp:image {"className":"sm-intro__visual","sizeSlug":"full","linkDestination":"none"} -->
+	<figure class="wp-block-image sm-intro__visual"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/malaysia/sultan-abdul-samad.avif' ) ); ?>" alt="<?php esc_attr_e( 'Bangunan Sultan Abdul Samad in Kuala Lumpur, lit up at night', 'sm' ); ?>" width="960" height="541" fetchpriority="low" decoding="async"/><figcaption class="wp-element-caption"><?php esc_html_e( 'Bangunan Sultan Abdul Samad, Kuala Lumpur', 'sm' ); ?></figcaption></figure>
+	<!-- /wp:image -->
 </div>
 <!-- /wp:group -->

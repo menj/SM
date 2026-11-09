@@ -86,3 +86,12 @@ SM/
 ## Licences
 
 Theme code: GPL v2 or later. Lora: SIL Open Font License 1.1. Lightbox2: MIT. Social icons: GPL / CC0, except LinkedIn and Scribd which are Font Awesome CC BY 4.0 (credit is emitted in the page footer when either is shown).
+
+## Malaysian identity
+
+- **Tumpal (pucuk rebung) band**: top of the header, under the red menu bar, above the intro heading and along the footer edge.
+- **Songket lattice**: faint background on the newsletter panel, donate visual and 404 page.
+- **KL skyline**: silhouette above the footer brand band (Masjid Negara, KL Tower, Petronas Towers, Merdeka 118, Sultan Abdul Samad).
+- **Photo**: the homepage intro uses a CC0 photo of Bangunan Sultan Abdul Samad. See `assets/images/malaysia/CREDITS.md`.
+
+Motifs are SVG files in `assets/images/motifs/` and are applied with CSS custom properties (`--sm-tumpal`, `--sm-songket`, `--sm-skyline`) in `assets/css/theme.css`, so they can be swapped without touching templates. All are decorative and hidden from assistive technology.
