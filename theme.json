@@ -126,21 +126,6 @@
 					]
 				},
 				{
-					"name": "Kagnue Outline",
-					"slug": "kagnue-outline",
-					"fontFamily": "\"Kagnue Outline\", Kagnue, serif",
-					"fontFace": [
-						{
-							"src": [
-								"file:./assets/fonts/kagnue/Kagnue-Outline.woff2"
-							],
-							"fontWeight": "400",
-							"fontStyle": "normal",
-							"fontFamily": "Kagnue Outline"
-						}
-					]
-				},
-				{
 					"name": "Special Elite",
 					"slug": "special-elite",
 					"fontFamily": "\"Special Elite\", \"Courier New\", monospace",

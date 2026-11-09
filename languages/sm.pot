@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM 1.0.0\n"
+"Project-Id-Version: SM 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-09T00:30:50+00:00\n"
+"POT-Creation-Date: 2026-11-09T02:42:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sm\n"
@@ -37,168 +37,192 @@ msgstr ""
 msgid "Suara Malaysia"
 msgstr ""
 
-#: inc/assets.php:58
+#: inc/assets.php:62
 msgid "Sending…"
 msgstr ""
 
-#: inc/assets.php:59
+#: inc/assets.php:63
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: inc/blocks.php:141
+#: inc/blocks.php:206
 msgid "View All"
 msgstr ""
 
-#: inc/blocks.php:147
+#: inc/blocks.php:212
 msgid "Section"
 msgstr ""
 
-#: inc/blocks.php:178
+#: inc/blocks.php:243
 #: assets/js/editor.js:48
 msgid "Featured stories"
 msgstr ""
 
-#: inc/blocks.php:191
+#: inc/blocks.php:256
 msgid "More top stories"
 msgstr ""
 
-#: inc/blocks.php:267
+#: inc/blocks.php:332
 msgid "You may be interested…"
 msgstr ""
 
-#: inc/blocks.php:308
+#: inc/blocks.php:392
 msgid "Choose a donation type"
 msgstr ""
 
-#: inc/blocks.php:314
+#: inc/blocks.php:398
 msgid "Choose a donation amount"
 msgstr ""
 
-#: inc/blocks.php:320
+#: inc/blocks.php:404
 msgid "Enter a custom donation amount"
 msgstr ""
 
-#: inc/blocks.php:321
+#: inc/blocks.php:405
 msgid "Custom amount"
 msgstr ""
 
-#: inc/blocks.php:323
+#: inc/blocks.php:408
 msgid "Choose a donation frequency"
 msgstr ""
 
-#: inc/blocks.php:324
+#: inc/blocks.php:409
 msgid "Monthly"
 msgstr ""
 
-#: inc/blocks.php:325
+#: inc/blocks.php:410
 msgid "One time"
 msgstr ""
 
-#: inc/blocks.php:327
+#: inc/blocks.php:413
+msgid "Donations help us keep independent Malaysian journalism free for everyone. You will be taken to PayPal to complete your gift. No PayPal account is needed to pay one-time gifts by card."
+msgstr ""
+
+#: inc/blocks.php:413
 msgid "Donations help us keep independent Malaysian journalism free for everyone. You will be taken to our secure payment partner to complete your gift."
 msgstr ""
 
-#: inc/blocks.php:328
+#: inc/blocks.php:414
 msgid "Cancel"
 msgstr ""
 
-#: inc/blocks.php:329
+#: inc/blocks.php:415
+msgid "Donate with PayPal"
+msgstr ""
+
+#: inc/blocks.php:415
 msgid "Go to checkout"
 msgstr ""
 
-#: inc/blocks.php:332
+#: inc/blocks.php:418
 msgid "Admins only: no checkout URL is set yet (Appearance → Theme Options → Donate)."
 msgstr ""
 
-#: inc/blocks.php:333
+#: inc/blocks.php:419
 msgid "Online donations are opening soon. To support us in the meantime, please contact the editors."
 msgstr ""
 
-#: inc/blocks.php:353
+#: inc/blocks.php:439
 msgid "Plain"
 msgstr ""
 
-#: inc/blocks.php:353
+#: inc/blocks.php:439
 msgid "Boxed"
 msgstr ""
 
-#: inc/blocks.php:353
-#: inc/settings.php:145
+#: inc/blocks.php:439
+#: inc/settings.php:180
 msgid "Round"
 msgstr ""
 
 #. translators: minutes
-#: inc/blocks.php:368
+#: inc/blocks.php:454
 #, php-format
 msgid "%d min read"
 msgid_plural "%d min read"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/blocks.php:386
+#: inc/blocks.php:472
 msgid "Share"
 msgstr ""
 
 #. translators: network
-#: inc/blocks.php:388
+#: inc/blocks.php:474
 #, php-format
 msgid "Share on %s"
 msgstr ""
 
-#: inc/blocks.php:390
+#: inc/blocks.php:476
 msgid "Link copied"
 msgstr ""
 
-#: inc/blocks.php:390
+#: inc/blocks.php:476
 msgid "Copy link"
 msgstr ""
 
-#: inc/blocks.php:436
+#: inc/blocks.php:478
+msgid "Save this article as PDF"
+msgstr ""
+
+#: inc/blocks.php:478
+msgid "Preparing PDF…"
+msgstr ""
+
+#: inc/blocks.php:478
+msgid "PDF saved"
+msgstr ""
+
+#: inc/blocks.php:478
+msgid "Could not make the PDF. Try printing the page instead."
+msgstr ""
+
+#: inc/blocks.php:525
 #: assets/js/editor.js:97
 msgid "Editor’s Picks"
 msgstr ""
 
-#: inc/blocks.php:461
+#: inc/blocks.php:550
 #: assets/js/editor.js:100
 msgid "Active Topics"
 msgstr ""
 
-#: inc/blocks.php:478
+#: inc/blocks.php:567
 #: assets/js/editor.js:99
 msgid "Most Read"
 msgstr ""
 
-#: inc/blocks.php:496
+#: inc/blocks.php:585
 msgid "Sitemap"
 msgstr ""
 
-#: inc/blocks.php:508
+#: inc/blocks.php:597
 msgid "About"
 msgstr ""
 
-#: inc/blocks.php:508
+#: inc/blocks.php:597
 #: patterns/page-privacy.php:24
 #: patterns/page-privacy.php:59
 msgid "Contact"
 msgstr ""
 
-#: inc/blocks.php:508
-#: inc/settings.php:103
+#: inc/blocks.php:597
+#: inc/settings.php:119
 #: patterns/page-donate.php:25
 msgid "Donate"
 msgstr ""
 
-#: inc/blocks.php:508
+#: inc/blocks.php:597
 #: patterns/page-privacy.php:13
 msgid "Privacy Policy"
 msgstr ""
 
-#: inc/blocks.php:508
+#: inc/blocks.php:597
 #: patterns/page-editorial.php:13
 msgid "Editorial Policy"
 msgstr ""
 
-#: inc/blocks.php:517
+#: inc/blocks.php:606
 msgid "Support us"
 msgstr ""
 
@@ -215,6 +239,23 @@ msgid "AVIF is selected but this server cannot write AVIF images. Enable AVIF in
 msgstr ""
 
 #: inc/features/lightbox.php:28
+msgid "Image viewer"
+msgstr ""
+
+#: inc/features/lightbox.php:29
+msgid "Close"
+msgstr ""
+
+#: inc/features/lightbox.php:30
+msgid "Previous image"
+msgstr ""
+
+#: inc/features/lightbox.php:31
+msgid "Next image"
+msgstr ""
+
+#. translators: 1: current image number, 2: total images
+#: inc/features/lightbox.php:33
 msgid "Image %1 of %2"
 msgstr ""
 
@@ -249,147 +290,150 @@ msgstr ""
 msgid "Form entry"
 msgstr ""
 
-#: inc/forms.php:114
+#: inc/forms.php:95
+#: inc/newsletter.php:53
+msgid "(required)"
+msgstr ""
+
+#: inc/forms.php:113
 msgid "Send message"
 msgstr ""
 
-#: inc/forms.php:133
-#: inc/newsletter.php:77
+#: inc/forms.php:132
+#: inc/newsletter.php:76
 msgid "Too many attempts. Please wait a few minutes and try again."
 msgstr ""
 
-#: inc/forms.php:147
-#: inc/newsletter.php:86
+#: inc/forms.php:146
+#: inc/newsletter.php:85
 msgid "Please enter a valid email address."
 msgstr ""
 
 #. translators: field label
-#: inc/forms.php:163
+#: inc/forms.php:162
 #, php-format
 msgid "%s is required."
 msgstr ""
 
-#: inc/forms.php:172
+#: inc/forms.php:171
 msgid "Visitor"
 msgstr ""
 
-#: inc/forms.php:191
+#: inc/forms.php:190
 msgid "New contact message"
 msgstr ""
 
 #. translators: page url
-#: inc/forms.php:196
+#: inc/forms.php:195
 #, php-format
 msgid "Sent from: %s"
 msgstr ""
 
-#: inc/forms.php:216
+#: inc/forms.php:215
 msgid "Entry"
 msgstr ""
 
-#: inc/forms.php:217
-#: inc/newsletter.php:139
+#: inc/forms.php:216
+#: inc/newsletter.php:138
 msgid "Email"
 msgstr ""
 
-#: inc/forms.php:218
+#: inc/forms.php:217
 msgid "Message"
 msgstr ""
 
-#: inc/forms.php:219
+#: inc/forms.php:218
 msgid "Received"
 msgstr ""
 
-#: inc/forms.php:241
+#: inc/forms.php:240
 msgid "Submission"
 msgstr ""
 
-#: inc/forms.php:249
+#: inc/forms.php:248
 msgid "Page"
 msgstr ""
 
-#: inc/helpers.php:76
+#: inc/helpers.php:78
 msgid "Suara Brand (default, from the SM logo)"
 msgstr ""
 
-#: inc/helpers.php:85
+#: inc/helpers.php:87
 msgid "Brand with rose panel"
 msgstr ""
 
-#: inc/helpers.php:94
+#: inc/helpers.php:96
 msgid "Mockup Red (brighter)"
 msgstr ""
 
-#: inc/helpers.php:103
+#: inc/helpers.php:105
 msgid "Navy"
 msgstr ""
 
-#: inc/helpers.php:112
+#: inc/helpers.php:114
 msgid "Forest"
 msgstr ""
 
-#: inc/helpers.php:121
+#: inc/helpers.php:123
 msgid "Monochrome"
 msgstr ""
 
-#: inc/helpers.php:129
+#: inc/helpers.php:131
 msgid "Custom"
 msgstr ""
 
 #: inc/newsletter.php:17
 #: inc/newsletter.php:19
 #: inc/newsletter.php:20
-#: inc/settings.php:87
+#: inc/settings.php:100
 msgid "Subscribers"
 msgstr ""
 
 #: inc/newsletter.php:18
-#: inc/newsletter.php:138
+#: inc/newsletter.php:137
 msgid "Subscriber"
 msgstr ""
 
 #: inc/newsletter.php:51
-#: inc/newsletter.php:52
-#: inc/newsletter.php:140
+#: inc/newsletter.php:139
 msgid "Name"
 msgstr ""
 
 #: inc/newsletter.php:53
-#: inc/newsletter.php:54
 msgid "E-mail"
 msgstr ""
 
-#: inc/newsletter.php:58
+#: inc/newsletter.php:57
 msgid "Submit"
 msgstr ""
 
-#: inc/newsletter.php:100
+#: inc/newsletter.php:99
 msgid "You are already subscribed. Thank you!"
 msgstr ""
 
-#: inc/newsletter.php:112
+#: inc/newsletter.php:111
 msgid "Could not save your subscription. Please try again."
 msgstr ""
 
-#: inc/newsletter.php:121
+#: inc/newsletter.php:120
 msgid "New newsletter subscriber"
 msgstr ""
 
-#: inc/newsletter.php:141
+#: inc/newsletter.php:140
 msgid "Subscribed"
 msgstr ""
 
-#: inc/newsletter.php:163
+#: inc/newsletter.php:162
 msgid "Export CSV"
 msgstr ""
 
-#: inc/newsletter.php:172
+#: inc/newsletter.php:171
 #: inc/seed.php:329
 #: inc/seed.php:476
 msgid "Not allowed."
 msgstr ""
 
-#: inc/newsletter.php:177
+#: inc/newsletter.php:176
 msgid "Unknown export."
 msgstr ""
 
@@ -439,441 +483,714 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: inc/settings.php:47
-msgid "Phone number"
-msgstr ""
-
-#: inc/settings.php:47
-msgid "Shown on the About and Contact pages."
+#: inc/settings.php:46
+msgid "1. Fill in the contact details. 2. Set the copyright line (use {year}). 3. Write a 150 to 160 character description for search engines. 4. Decide whether demo content is removed when you switch themes."
 msgstr ""
 
 #: inc/settings.php:48
+msgid "Site details"
+msgstr ""
+
+#: inc/settings.php:48
+msgid "Contact details and the footer line shown across the site."
+msgstr ""
+
+#: inc/settings.php:49
+msgid "Phone number"
+msgstr ""
+
+#: inc/settings.php:49
+msgid "Shown on the About and Contact pages."
+msgstr ""
+
+#: inc/settings.php:50
 msgid "Public email"
 msgstr ""
 
-#: inc/settings.php:49
+#: inc/settings.php:51
 msgid "Copyright line"
 msgstr ""
 
-#: inc/settings.php:49
+#: inc/settings.php:51
 msgid "Use {year} to insert the current year."
 msgstr ""
 
-#: inc/settings.php:50
+#: inc/settings.php:52
 msgid "Back-to-top button"
 msgstr ""
 
-#: inc/settings.php:50
+#: inc/settings.php:52
 msgid "Show the small red scroll-to-top button in the footer."
 msgstr ""
 
-#: inc/settings.php:51
-msgid "Homepage meta description"
-msgstr ""
-
-#: inc/settings.php:51
-msgid "Shown to search engines for the homepage. Aim for 150 to 160 characters."
-msgstr ""
-
-#: inc/settings.php:52
-msgid "Delete demo content on deactivation"
-msgstr ""
-
-#: inc/settings.php:52
-msgid "When another theme is activated, the demo posts, pages, categories, menus and images this theme imported are deleted permanently. Content you added yourself is never touched."
+#: inc/settings.php:53
+msgid "Search engines"
 msgstr ""
 
 #: inc/settings.php:53
-msgid "Seed content"
+msgid "How the homepage appears in search results."
+msgstr ""
+
+#: inc/settings.php:54
+msgid "Homepage meta description"
+msgstr ""
+
+#: inc/settings.php:54
+msgid "Shown to search engines for the homepage. Aim for 150 to 160 characters."
+msgstr ""
+
+#: inc/settings.php:55
+msgid "Demo content"
+msgstr ""
+
+#: inc/settings.php:55
+msgid "Control the sample stories, pages and menus that come with the theme."
+msgstr ""
+
+#: inc/settings.php:56
+msgid "Delete demo content on deactivation"
+msgstr ""
+
+#: inc/settings.php:56
+msgid "When another theme is activated, the demo posts, pages, categories, menus and images this theme imported are deleted permanently. Content you added yourself is never touched."
 msgstr ""
 
 #: inc/settings.php:57
-msgid "Colours"
-msgstr ""
-
-#: inc/settings.php:60
-msgid "Colour scheme"
-msgstr ""
-
-#: inc/settings.php:60
-msgid "Pick a preset, or choose Custom and set each colour below."
+msgid "Seed content"
 msgstr ""
 
 #: inc/settings.php:61
-msgid "Primary (category bar, buttons)"
-msgstr ""
-
-#: inc/settings.php:62
-msgid "Category tag"
+msgid "Colours"
 msgstr ""
 
 #: inc/settings.php:63
+msgid "1. Click a preset to try a colour scheme. 2. Or adjust any colour below; the scheme switches to Custom. 3. Save, then check the homepage. Text colours are checked against their background for readability."
+msgstr ""
+
+#: inc/settings.php:65
+msgid "Preset scheme"
+msgstr ""
+
+#: inc/settings.php:65
+msgid "Pick a preset. Every colour below updates to match."
+msgstr ""
+
+#: inc/settings.php:66
+msgid "Colour scheme"
+msgstr ""
+
+#: inc/settings.php:66
+msgid "Pick a preset, or choose Custom and set each colour below."
+msgstr ""
+
+#: inc/settings.php:67
+msgid "Custom colours"
+msgstr ""
+
+#: inc/settings.php:67
+msgid "Fine-tune individual colours. Changing one switches the scheme to Custom."
+msgstr ""
+
+#: inc/settings.php:68
+msgid "Primary (category bar, buttons)"
+msgstr ""
+
+#: inc/settings.php:69
+msgid "Category tag"
+msgstr ""
+
+#: inc/settings.php:70
 #: assets/js/editor.js:66
 msgid "Newsletter panel"
 msgstr ""
 
-#: inc/settings.php:64
+#: inc/settings.php:71
 msgid "Headline links"
 msgstr ""
 
-#: inc/settings.php:65
+#: inc/settings.php:72
 msgid "Body text"
 msgstr ""
 
-#: inc/settings.php:66
+#: inc/settings.php:73
 msgid "Surface (quotes, placeholders)"
 msgstr ""
 
-#: inc/settings.php:70
+#: inc/settings.php:77
 msgid "Homepage"
 msgstr ""
 
-#: inc/settings.php:73
+#: inc/settings.php:79
+msgid "1. Choose how the hero story is picked. 2. Tick the categories to feature and drag to reorder (leave all unticked to show every category). 3. Set how many stories each section shows."
+msgstr ""
+
+#: inc/settings.php:81
+msgid "Top of the page"
+msgstr ""
+
+#: inc/settings.php:81
+msgid "Which story leads the homepage."
+msgstr ""
+
+#: inc/settings.php:82
 msgid "Hero story"
 msgstr ""
 
-#: inc/settings.php:73
+#: inc/settings.php:82
 msgid "Sticky post, otherwise latest"
 msgstr ""
 
-#: inc/settings.php:73
+#: inc/settings.php:82
 msgid "Always the latest post"
 msgstr ""
 
-#: inc/settings.php:74
-msgid "Sections and order"
-msgstr ""
-
-#: inc/settings.php:74
-msgid "Tick the categories to show as homepage sections and drag to reorder. Leave all unticked to show every non-empty category."
-msgstr ""
-
-#: inc/settings.php:75
-msgid "Stories per section"
-msgstr ""
-
-#: inc/settings.php:76
-msgid "Show excerpts on cards"
-msgstr ""
-
-#: inc/settings.php:80
-msgid "Newsletter"
+#: inc/settings.php:83
+msgid "Category sections"
 msgstr ""
 
 #: inc/settings.php:83
-msgid "Heading"
-msgstr ""
-
-#: inc/settings.php:83
-msgid "Line breaks are kept."
+msgid "Choose which categories appear below the hero, and in what order."
 msgstr ""
 
 #: inc/settings.php:84
-#: inc/settings.php:97
-msgid "Success message"
+msgid "Sections and order"
+msgstr ""
+
+#: inc/settings.php:84
+msgid "Tick the categories to show as homepage sections and drag to reorder. Leave all unticked to show every non-empty category."
 msgstr ""
 
 #: inc/settings.php:85
-msgid "External form action URL"
-msgstr ""
-
-#: inc/settings.php:85
-msgid "Optional. Paste a Mailchimp, Brevo or similar form action URL to post subscribers there instead of storing them in WordPress."
+msgid "Stories per section"
 msgstr ""
 
 #: inc/settings.php:86
+msgid "Show excerpts on cards"
+msgstr ""
+
+#: inc/settings.php:90
+msgid "Newsletter"
+msgstr ""
+
+#: inc/settings.php:92
+msgid "1. Edit the heading and success message. 2. Optionally paste an external form URL (Mailchimp, Brevo). Without one, subscribers are stored in WordPress and can be exported as CSV."
+msgstr ""
+
+#: inc/settings.php:94
+msgid "Panel text"
+msgstr ""
+
+#: inc/settings.php:94
+msgid "What readers see in the subscribe panel."
+msgstr ""
+
+#: inc/settings.php:95
+msgid "Heading"
+msgstr ""
+
+#: inc/settings.php:95
+msgid "Line breaks are kept."
+msgstr ""
+
+#: inc/settings.php:96
+#: inc/settings.php:113
+msgid "Success message"
+msgstr ""
+
+#: inc/settings.php:97
+msgid "Where subscribers go"
+msgstr ""
+
+#: inc/settings.php:97
+msgid "Store subscribers in WordPress, or send them to an email service."
+msgstr ""
+
+#: inc/settings.php:98
+msgid "External form action URL"
+msgstr ""
+
+#: inc/settings.php:98
+msgid "Optional. Paste a Mailchimp, Brevo or similar form action URL to post subscribers there instead of storing them in WordPress."
+msgstr ""
+
+#: inc/settings.php:99
 msgid "Email the admin on each new subscriber"
 msgstr ""
 
-#: inc/settings.php:87
+#: inc/settings.php:100
 msgid "View and export subscribers"
 msgstr ""
 
-#: inc/settings.php:91
+#: inc/settings.php:104
 #: assets/js/editor.js:70
 msgid "Contact form"
 msgstr ""
 
-#: inc/settings.php:94
+#: inc/settings.php:106
+msgid "1. Set who receives messages. 2. Edit the form fields, one per line as type|name|label|required. 3. Choose whether submissions are also stored; view them under Form entries."
+msgstr ""
+
+#: inc/settings.php:108
+msgid "Delivery"
+msgstr ""
+
+#: inc/settings.php:108
+msgid "Where contact messages are sent and kept."
+msgstr ""
+
+#: inc/settings.php:109
 msgid "Send messages to"
 msgstr ""
 
-#: inc/settings.php:94
+#: inc/settings.php:109
 msgid "Leave empty to use the site admin email."
 msgstr ""
 
-#: inc/settings.php:95
+#: inc/settings.php:110
+msgid "Form layout"
+msgstr ""
+
+#: inc/settings.php:110
+msgid "The text beside the form and the fields it asks for."
+msgstr ""
+
+#: inc/settings.php:111
 msgid "Intro text beside the form"
 msgstr ""
 
-#: inc/settings.php:96
+#: inc/settings.php:112
 msgid "Fields"
 msgstr ""
 
-#: inc/settings.php:96
+#: inc/settings.php:112
 msgid "One field per line: type|name|label|required. Types: text, email, tel, textarea, select (options separated by commas after a colon, e.g. select|topic|Topic|yes:Tip,Correction,Other)."
 msgstr ""
 
-#: inc/settings.php:98
+#: inc/settings.php:114
 msgid "Store submissions in the database"
 msgstr ""
 
-#: inc/settings.php:99
+#: inc/settings.php:115
 msgid "Submissions"
 msgstr ""
 
-#: inc/settings.php:99
+#: inc/settings.php:115
 msgid "View and export submissions"
 msgstr ""
 
-#: inc/settings.php:106
-msgid "Checkout URL"
-msgstr ""
-
-#: inc/settings.php:106
-msgid "Where \"Go to checkout\" sends the reader. The chosen amount, type and frequency are appended as query parameters."
-msgstr ""
-
-#: inc/settings.php:107
-msgid "Currency symbol"
-msgstr ""
-
-#: inc/settings.php:108
-msgid "Preset amounts"
-msgstr ""
-
-#: inc/settings.php:108
-msgid "Comma separated, e.g. 25,50,100"
-msgstr ""
-
-#: inc/settings.php:109
-msgid "Donation types"
-msgstr ""
-
-#: inc/settings.php:109
-msgid "One per line."
-msgstr ""
-
-#: inc/settings.php:113
-msgid "Reading"
-msgstr ""
-
-#: inc/settings.php:116
-msgid "Reading progress bar"
-msgstr ""
-
-#: inc/settings.php:116
-msgid "A thin bar that fills as the reader scrolls."
-msgstr ""
-
-#: inc/settings.php:117
-msgid "Position"
-msgstr ""
-
-#: inc/settings.php:117
-msgid "Top of page"
-msgstr ""
-
-#: inc/settings.php:117
-msgid "Bottom of page"
-msgstr ""
-
-#: inc/settings.php:118
-msgid "Height (px)"
-msgstr ""
-
-#: inc/settings.php:119
-msgid "Bar colour"
-msgstr ""
-
-#: inc/settings.php:119
-msgid "Leave empty to use the primary colour."
-msgstr ""
-
-#: inc/settings.php:120
-msgid "Show on"
-msgstr ""
-
 #: inc/settings.php:121
-msgid "Image lightbox"
-msgstr ""
-
-#: inc/settings.php:121
-msgid "Open images that link to their full-size file in an overlay (Lightbox2). Galleries become slideshows."
-msgstr ""
-
-#: inc/settings.php:122
-msgid "Wrap around at the end of a gallery"
+msgid "1. Paste your PayPal.Me link (or another checkout URL). 2. Set the currency symbol shown on the buttons and the three-letter PayPal currency code (MYR). 3. Set the preset amounts. Donation types apply to non-PayPal.Me checkouts only; add a monthly gift link to offer monthly giving."
 msgstr ""
 
 #: inc/settings.php:123
-msgid "Show captions"
+msgid "Checkout"
+msgstr ""
+
+#: inc/settings.php:123
+msgid "Where the Donate button sends readers."
 msgstr ""
 
 #: inc/settings.php:124
-msgid "Image format"
+msgid "Checkout URL"
 msgstr ""
 
 #: inc/settings.php:124
-msgid "AVIF"
-msgstr ""
-
-#: inc/settings.php:124
-msgid "Keep original format"
-msgstr ""
-
-#: inc/settings.php:124
-msgid "New uploads and their sizes are written as AVIF for much smaller files. Originals are kept."
+msgid "A PayPal.Me link (for example https://www.paypal.com/paypalme/yourname) sends the reader to PayPal with the chosen amount filled in; PayPal.Me gifts are one-time, so the type and frequency choices are hidden. Any other URL gets the amount, type and frequency as query parameters."
 msgstr ""
 
 #: inc/settings.php:125
-msgid "Drop cap on article openings"
+msgid "Monthly gift link (optional)"
 msgstr ""
 
 #: inc/settings.php:125
-msgid "Sets the first letter of an article in the Dropcaps illuminated-initial font. You can also apply the \"Drop cap\" style to any paragraph."
+msgid "A PayPal subscription or hosted-button link. When set, readers can choose One time (PayPal.Me, amount filled in) or Monthly (this link). Create it in PayPal: Pay & Get Paid, Subscriptions, Create plan."
 msgstr ""
 
 #: inc/settings.php:126
-msgid "Drop cap style"
+msgid "PayPal currency code"
 msgstr ""
 
 #: inc/settings.php:126
-msgid "Framed initial"
-msgstr ""
-
-#: inc/settings.php:126
-msgid "Open initial"
+msgid "Three letters, for example MYR. Used with PayPal.Me links."
 msgstr ""
 
 #: inc/settings.php:127
-msgid "Drop cap height (lines)"
+msgid "Currency symbol"
 msgstr ""
 
-#: inc/settings.php:131
-msgid "Search & Login"
+#: inc/settings.php:128
+msgid "Choices on offer"
+msgstr ""
+
+#: inc/settings.php:128
+msgid "The amounts and types readers can pick from."
+msgstr ""
+
+#: inc/settings.php:129
+msgid "Preset amounts"
+msgstr ""
+
+#: inc/settings.php:129
+msgid "Comma separated, e.g. 25,50,100"
+msgstr ""
+
+#: inc/settings.php:130
+msgid "Donation types"
+msgstr ""
+
+#: inc/settings.php:130
+msgid "One per line."
 msgstr ""
 
 #: inc/settings.php:134
-msgid "Search permalink base"
-msgstr ""
-
-#: inc/settings.php:134
-msgid "Search URLs become /base/your-terms/ instead of ?s=your-terms. Default: search."
-msgstr ""
-
-#: inc/settings.php:135
-msgid "Hide the login page"
-msgstr ""
-
-#: inc/settings.php:135
-msgid "Blocks wp-login.php and wp-admin for visitors who are not logged in, and serves the login form at the slug below. Bookmark the new URL before enabling."
+msgid "Reading"
 msgstr ""
 
 #: inc/settings.php:136
-msgid "Login slug"
+msgid "1. Switch features on or off with the toggles; their settings appear when enabled. 2. Pick a bar position, lightbox behaviour and drop cap style. 3. Turn the Save as PDF button on or off. 4. Image format controls how new uploads are saved."
 msgstr ""
 
-#: inc/settings.php:136
-msgid "The login form will be at /slug/. Default: login."
+#: inc/settings.php:138
+#: inc/settings.php:139
+msgid "Reading progress bar"
 msgstr ""
 
-#: inc/settings.php:137
-msgid "Redirect blocked requests to"
+#: inc/settings.php:138
+msgid "A thin bar that fills as readers scroll through an article."
 msgstr ""
 
-#: inc/settings.php:137
-msgid "Path visitors are sent to when they hit the hidden pages. Default: 404."
+#: inc/settings.php:139
+msgid "A thin bar that fills as the reader scrolls."
+msgstr ""
+
+#: inc/settings.php:140
+msgid "Position"
+msgstr ""
+
+#: inc/settings.php:140
+msgid "Top of page"
+msgstr ""
+
+#: inc/settings.php:140
+msgid "Bottom of page"
 msgstr ""
 
 #: inc/settings.php:141
-msgid "Social"
+msgid "Height (px)"
+msgstr ""
+
+#: inc/settings.php:142
+msgid "Bar colour"
+msgstr ""
+
+#: inc/settings.php:142
+msgid "Leave empty to use the primary colour."
+msgstr ""
+
+#: inc/settings.php:143
+msgid "Show on"
+msgstr ""
+
+#: inc/settings.php:144
+#: inc/settings.php:145
+msgid "Image lightbox"
+msgstr ""
+
+#: inc/settings.php:144
+msgid "Open linked images in an overlay, with gallery navigation."
 msgstr ""
 
 #: inc/settings.php:145
-msgid "Icon style"
-msgstr ""
-
-#: inc/settings.php:145
-msgid "Plain glyph"
-msgstr ""
-
-#: inc/settings.php:145
-msgid "Boxed (as in the design)"
+msgid "Open images that link to their full-size file in an overlay. Galleries become slideshows."
 msgstr ""
 
 #: inc/settings.php:146
-msgid "Icon size (px)"
+msgid "Wrap around at the end of a gallery"
 msgstr ""
 
 #: inc/settings.php:147
-msgid "Profiles"
+msgid "Show captions"
 msgstr ""
 
-#: inc/settings.php:147
-msgid "Enter a URL for each profile you want shown. Empty profiles are hidden. Use the \"Social icons\" block or [sm_social] shortcode to place them anywhere."
+#: inc/settings.php:148
+msgid "Images"
+msgstr ""
+
+#: inc/settings.php:148
+msgid "The format used for new uploads."
+msgstr ""
+
+#: inc/settings.php:149
+msgid "Save as PDF"
+msgstr ""
+
+#: inc/settings.php:149
+msgid "A button under each article that saves it as a PDF in the reader's browser (html2pdf.js, loaded only when clicked)."
+msgstr ""
+
+#: inc/settings.php:150
+msgid "Save as PDF button"
+msgstr ""
+
+#: inc/settings.php:150
+msgid "Appears next to the share icons on articles. Nothing is loaded until a reader clicks it."
+msgstr ""
+
+#: inc/settings.php:151
+msgid "Image format"
+msgstr ""
+
+#: inc/settings.php:151
+msgid "AVIF"
+msgstr ""
+
+#: inc/settings.php:151
+msgid "Keep original format"
+msgstr ""
+
+#: inc/settings.php:151
+msgid "New uploads and their sizes are written as AVIF for much smaller files. Originals are kept."
+msgstr ""
+
+#: inc/settings.php:152
+msgid "Drop caps"
+msgstr ""
+
+#: inc/settings.php:152
+msgid "An illuminated first letter at the start of each article."
+msgstr ""
+
+#: inc/settings.php:153
+msgid "Drop cap on article openings"
+msgstr ""
+
+#: inc/settings.php:153
+msgid "Sets the first letter of an article in the Dropcaps illuminated-initial font. You can also apply the \"Drop cap\" style to any paragraph."
+msgstr ""
+
+#: inc/settings.php:154
+msgid "Drop cap style"
+msgstr ""
+
+#: inc/settings.php:154
+msgid "Framed initial"
+msgstr ""
+
+#: inc/settings.php:154
+msgid "Open initial"
+msgstr ""
+
+#: inc/settings.php:155
+msgid "Drop cap height (lines)"
+msgstr ""
+
+#: inc/settings.php:159
+msgid "Search & Login"
+msgstr ""
+
+#: inc/settings.php:161
+msgid "1. Optionally change the search address. 2. Leave security headers on unless your host already sends them. 3. To hide the login page, bookmark the new login address first, then switch it on. Blocked visitors are redirected to the path you set."
+msgstr ""
+
+#: inc/settings.php:163
+#: patterns/header.php:54
+msgid "Search"
+msgstr ""
+
+#: inc/settings.php:163
+msgid "Cleaner search URLs."
+msgstr ""
+
+#: inc/settings.php:164
+msgid "Search permalink base"
+msgstr ""
+
+#: inc/settings.php:164
+msgid "Search URLs become /base/your-terms/ instead of ?s=your-terms. Default: search."
+msgstr ""
+
+#: inc/settings.php:165
+msgid "Login page"
+msgstr ""
+
+#: inc/settings.php:165
+msgid "Move the login form away from the default address."
 msgstr ""
 
 #: inc/settings.php:166
+msgid "Security headers"
+msgstr ""
+
+#: inc/settings.php:166
+msgid "Extra protection sent with every public page."
+msgstr ""
+
+#: inc/settings.php:167
+msgid "Send security headers"
+msgstr ""
+
+#: inc/settings.php:167
+msgid "Stops other sites framing yours, stops browsers guessing file types and limits what referrer information is shared. Turn off if your host already sets these."
+msgstr ""
+
+#: inc/settings.php:168
+msgid "Hide the login page"
+msgstr ""
+
+#: inc/settings.php:168
+msgid "Blocks wp-login.php and wp-admin for visitors who are not logged in, and serves the login form at the slug below. Bookmark the new URL before enabling."
+msgstr ""
+
+#: inc/settings.php:169
+msgid "Login slug"
+msgstr ""
+
+#: inc/settings.php:169
+msgid "The login form will be at /slug/. Default: login."
+msgstr ""
+
+#: inc/settings.php:170
+msgid "Redirect blocked requests to"
+msgstr ""
+
+#: inc/settings.php:170
+msgid "Path visitors are sent to when they hit the hidden pages. Default: 404."
+msgstr ""
+
+#: inc/settings.php:174
+msgid "Social"
+msgstr ""
+
+#: inc/settings.php:176
+msgid "1. Pick an icon style and size. 2. Optionally add your Mastodon handle. 3. Enter a URL for each profile you use; empty ones are hidden. 3. Place icons with the Social icons block or the [sm_social] shortcode."
+msgstr ""
+
+#: inc/settings.php:179
+msgid "Appearance"
+msgstr ""
+
+#: inc/settings.php:179
+msgid "How the icons look wherever they are shown."
+msgstr ""
+
+#: inc/settings.php:180
+msgid "Icon style"
+msgstr ""
+
+#: inc/settings.php:180
+msgid "Plain glyph"
+msgstr ""
+
+#: inc/settings.php:180
+msgid "Boxed (as in the design)"
+msgstr ""
+
+#: inc/settings.php:181
+msgid "Icon size (px)"
+msgstr ""
+
+#: inc/settings.php:182
+msgid "Mastodon handle"
+msgstr ""
+
+#: inc/settings.php:182
+msgid "Optional, for example @name@mastodon.social. Adds the fediverse:creator tag so Mastodon can credit your articles to this account."
+msgstr ""
+
+#: inc/settings.php:183
+msgid "Profiles"
+msgstr ""
+
+#: inc/settings.php:183
+msgid "Enter a URL for each profile you want shown. Empty profiles are hidden. Use the \"Social icons\" block or [sm_social] shortcode to place them anywhere."
+msgstr ""
+
+#: inc/settings.php:202
 msgid "Thank you. Your message has been sent."
 msgstr ""
 
-#: inc/settings.php:198
-#: inc/settings.php:199
-#: inc/settings.php:358
+#: inc/settings.php:237
+#: inc/settings.php:406
 msgid "SM Theme Options"
 msgstr ""
 
-#: inc/settings.php:294
+#: inc/settings.php:238
+#: inc/settings.php:673
+msgid "Theme Options"
+msgstr ""
+
+#: inc/settings.php:335
 msgid "That login slug is reserved. Reverted to \"login\"."
 msgstr ""
 
-#: inc/settings.php:365
+#: inc/settings.php:382
+#: inc/settings.php:523
+msgid "On"
+msgstr ""
+
+#: inc/settings.php:383
+#: inc/settings.php:523
+msgid "Off"
+msgstr ""
+
+#: inc/settings.php:407
+msgid "Colours, homepage, forms and reading features for Suara Malaysia. Changes apply after you save."
+msgstr ""
+
+#: inc/settings.php:416
 msgid "Settings sections"
 msgstr ""
 
-#: inc/settings.php:381
+#: inc/settings.php:455
 msgid "Save changes"
 msgstr ""
 
+#: inc/settings.php:460
+msgid "Documentation"
+msgstr ""
+
+#: inc/settings.php:461
+msgid "Contact form entries"
+msgstr ""
+
+#: inc/settings.php:462
+msgid "Made for Suara Malaysia"
+msgstr ""
+
 #. translators: date
-#: inc/settings.php:410
+#: inc/settings.php:488
 #, php-format
 msgid "Last imported %s."
 msgstr ""
 
 #. translators: date
-#: inc/settings.php:410
+#: inc/settings.php:488
 msgid "Not imported yet."
 msgstr ""
 
 #. translators: date
-#: inc/settings.php:411
+#: inc/settings.php:489
 msgid "Import missing items"
 msgstr ""
 
-#: inc/settings.php:413
+#: inc/settings.php:491
 msgid "Delete all demo content imported by this theme? This cannot be undone."
 msgstr ""
 
-#: inc/settings.php:413
+#: inc/settings.php:491
 msgid "Delete demo content now"
 msgstr ""
 
-#: inc/settings.php:414
+#: inc/settings.php:492
 msgid "This overwrites the seeded posts, pages and menus with the versions in seed/content.json. Continue?"
 msgstr ""
 
-#: inc/settings.php:414
+#: inc/settings.php:492
 msgid "Re-import and overwrite"
 msgstr ""
 
-#: inc/settings.php:415
+#: inc/settings.php:493
 msgid "Seed content lives in seed/content.json inside the theme. Posts, pages and menus are matched by slug, so importing never creates duplicates."
-msgstr ""
-
-#: inc/settings.php:439
-msgid "Enabled"
 msgstr ""
 
 #: inc/setup.php:31
@@ -922,6 +1239,22 @@ msgstr ""
 msgid "Search articles %d"
 msgstr ""
 
+#: inc/setup.php:134
+msgid "The SM theme does not use cookies, analytics or any third-party service on its own. Suggested text:"
+msgstr ""
+
+#: inc/setup.php:135
+msgid "Contact form: when you send us a message we receive your name, email address, message text, the page you sent it from, your IP address and browser details. We keep them so we can reply and to prevent abuse."
+msgstr ""
+
+#: inc/setup.php:136
+msgid "Newsletter: when you subscribe we store your name, email address and IP address until you ask us to remove them."
+msgstr ""
+
+#: inc/setup.php:137
+msgid "Article views: we count how many times each article is opened. The count is not linked to you."
+msgstr ""
+
 #: patterns/footer.php
 msgctxt "Pattern title"
 msgid "Suara Malaysia footer"
@@ -967,10 +1300,6 @@ msgid "Open search"
 msgstr ""
 
 #: patterns/header.php:54
-msgid "Search"
-msgstr ""
-
-#: patterns/header.php:54
 msgid "Search Suara Malaysia…"
 msgstr ""
 
@@ -994,6 +1323,14 @@ msgstr ""
 
 #: patterns/home-intro.php:23
 msgid "Learn more about us"
+msgstr ""
+
+#: patterns/home-intro.php:28
+msgid "Bangunan Sultan Abdul Samad in Kuala Lumpur, lit up at night"
+msgstr ""
+
+#: patterns/home-intro.php:28
+msgid "Bangunan Sultan Abdul Samad, Kuala Lumpur"
 msgstr ""
 
 #: patterns/newsletter.php
@@ -1379,11 +1716,6 @@ msgstr ""
 #: theme.json
 msgctxt "Font family name"
 msgid "Kagnue"
-msgstr ""
-
-#: theme.json
-msgctxt "Font family name"
-msgid "Kagnue Outline"
 msgstr ""
 
 #: theme.json

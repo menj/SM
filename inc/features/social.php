@@ -151,7 +151,17 @@ function sm_social_icons_html( $args = array() ) {
 add_shortcode(
 	'sm_social',
 	function ( $atts ) {
-		return sm_social_icons_html( shortcode_atts( array( 'style' => sm_get( 'social_style' ), 'size' => sm_get( 'social_size' ), 'class' => '', 'label' => '' ), $atts ) );
+		return sm_social_icons_html(
+			shortcode_atts(
+				array(
+					'style' => sm_get( 'social_style' ),
+					'size' => sm_get( 'social_size' ),
+					'class' => '',
+					'label' => '',
+				),
+				$atts
+			)
+		);
 	}
 );
 

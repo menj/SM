@@ -37,19 +37,87 @@ add_action(
 			'footer-sections' => 'sm_render_footer_sections',
 			'reading-time'    => 'sm_render_reading_time_block',
 		);
+		// Blocks whose output only changes when content changes are cached briefly.
+		$cached = array( 'hero', 'sections', 'editors-picks', 'active-topics', 'most-read', 'footer-sections' );
 		foreach ( $blocks as $name => $cb ) {
+			if ( in_array( $name, $cached, true ) ) {
+				$cb = sm_cached_block( $name, $cb );
+			}
 			register_block_type(
 				'sm/' . $name,
 				array(
 					'api_version'     => 3,
 					'render_callback' => $cb,
 					'attributes'      => sm_block_attributes( $name ),
-					'supports'        => array( 'html' => false, 'align' => array( 'wide', 'full' ) ),
+					'supports'        => array(
+						'html' => false,
+						'align' => array( 'wide', 'full' ),
+					),
 				)
 			);
 		}
 	}
 );
+
+/**
+ * Wrap a block renderer in a short-lived cache.
+ *
+ * The homepage blocks de-duplicate stories through sm_shown_ids(), which is a side effect of
+ * rendering. The cache therefore (a) keys on the IDs already shown, and (b) stores and replays
+ * the IDs each block adds. Entries are dropped when posts, terms or settings change (see
+ * sm_cache_bump) and expire after ten minutes so "Most read" stays fresh.
+ *
+ * @param string   $name Block short name.
+ * @param callable $cb   Original render callback.
+ * @return callable
+ */
+function sm_cached_block( $name, $cb ) {
+	return function ( $attrs = array(), $content = '', $block = null ) use ( $name, $cb ) {
+		if ( defined( 'REST_REQUEST' ) || is_preview() || is_customize_preview() || is_admin() || sm_cache_disabled() ) {
+			return call_user_func( $cb, $attrs, $content, $block );
+		}
+		$before_all  = sm_shown_ids();
+		$before_hero = sm_shown_ids( array(), 'hero' );
+		$key         = 'sm_bc_' . md5( $name . '|' . wp_json_encode( $attrs ) . '|' . get_option( 'sm_cache_gen', '0' ) . '|' . implode( ',', $before_all ) . '|' . implode( ',', $before_hero ) . '|' . get_locale() . '|' . SM_VERSION );
+		$hit         = get_transient( $key );
+		if ( is_array( $hit ) && isset( $hit['html'] ) ) {
+			sm_shown_ids( $hit['all'], 'all' );
+			sm_shown_ids( $hit['hero'], 'hero' );
+			return $hit['html'];
+		}
+		$html = call_user_func( $cb, $attrs, $content, $block );
+		set_transient(
+			$key,
+			array(
+				'html' => $html,
+				'all'  => array_values( array_diff( sm_shown_ids(), $before_all ) ),
+				'hero' => array_values( array_diff( sm_shown_ids( array(), 'hero' ), $before_hero ) ),
+			),
+			10 * MINUTE_IN_SECONDS
+		);
+		return $html;
+	};
+}
+
+/**
+ * Turn the block cache off with define( 'SM_NO_BLOCK_CACHE', true ) or the sm_block_cache filter.
+ *
+ * @return bool
+ */
+function sm_cache_disabled() {
+	return ( defined( 'SM_NO_BLOCK_CACHE' ) && SM_NO_BLOCK_CACHE ) || ! apply_filters( 'sm_block_cache', true );
+}
+
+/**
+ * Invalidate every cached block by changing the generation number in the cache key.
+ */
+function sm_cache_bump() {
+	update_option( 'sm_cache_gen', (string) microtime( true ) );
+}
+foreach ( array( 'save_post', 'deleted_post', 'trashed_post', 'untrashed_post', 'set_object_terms', 'created_term', 'edited_term', 'delete_term', 'update_option_sm_settings', 'add_option_sm_settings', 'switch_theme', 'wp_update_nav_menu' ) as $sm_hook ) {
+	add_action( $sm_hook, 'sm_cache_bump' );
+}
+unset( $sm_hook );
 
 /**
  * Attribute schema per block.
@@ -59,46 +127,104 @@ add_action(
  */
 function sm_block_attributes( $name ) {
 	$common = array(
-		'align'     => array( 'type' => 'string', 'default' => 'wide' ),
-		'className' => array( 'type' => 'string', 'default' => '' ),
+		'align'     => array(
+			'type' => 'string',
+			'default' => 'wide',
+		),
+		'className' => array(
+			'type' => 'string',
+			'default' => '',
+		),
 	);
 	switch ( $name ) {
 		case 'hero':
-			return $common + array( 'sideCount' => array( 'type' => 'number', 'default' => 5 ) );
+			return $common + array(
+				'sideCount' => array(
+					'type' => 'number',
+					'default' => 5,
+				),
+			);
 		case 'sections':
 			return $common + array(
-				'columns' => array( 'type' => 'number', 'default' => 3 ),
-				'perSection' => array( 'type' => 'number', 'default' => 0 ),
+				'columns' => array(
+					'type' => 'number',
+					'default' => 3,
+				),
+				'perSection' => array(
+					'type' => 'number',
+					'default' => 0,
+				),
 			);
 		case 'related':
 			return $common + array(
-				'count' => array( 'type' => 'number', 'default' => 3 ),
-				'title' => array( 'type' => 'string', 'default' => '' ),
+				'count' => array(
+					'type' => 'number',
+					'default' => 3,
+				),
+				'title' => array(
+					'type' => 'string',
+					'default' => '',
+				),
 			);
 		case 'newsletter':
-			return $common + array( 'heading' => array( 'type' => 'string', 'default' => '' ) );
+			return $common + array(
+				'heading' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+			);
 		case 'social-icons':
 			return $common + array(
-				'style' => array( 'type' => 'string', 'default' => '' ),
-				'size'  => array( 'type' => 'number', 'default' => 0 ),
-				'label' => array( 'type' => 'string', 'default' => '' ),
+				'style' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'size'  => array(
+					'type' => 'number',
+					'default' => 0,
+				),
+				'label' => array(
+					'type' => 'string',
+					'default' => '',
+				),
 			);
 		case 'editors-picks':
 			return $common + array(
-				'title' => array( 'type' => 'string', 'default' => '' ),
-				'count' => array( 'type' => 'number', 'default' => 5 ),
+				'title' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'count' => array(
+					'type' => 'number',
+					'default' => 5,
+				),
 			);
 		case 'most-read':
 		case 'active-topics':
 			return $common + array(
-				'title' => array( 'type' => 'string', 'default' => '' ),
-				'count' => array( 'type' => 'number', 'default' => 5 ),
+				'title' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'count' => array(
+					'type' => 'number',
+					'default' => 5,
+				),
 			);
 		case 'section-heading':
 			return $common + array(
-				'title' => array( 'type' => 'string', 'default' => '' ),
-				'link'  => array( 'type' => 'string', 'default' => '' ),
-				'level' => array( 'type' => 'number', 'default' => 2 ),
+				'title' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'link'  => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'level' => array(
+					'type' => 'number',
+					'default' => 2,
+				),
 			);
 		default:
 			return $common;
@@ -161,7 +287,14 @@ function sm_render_hero( $attrs ) {
 	if ( 'sticky' === sm_get( 'hero_source' ) ) {
 		$sticky = array_values( array_filter( array_map( 'intval', (array) get_option( 'sticky_posts' ) ) ) );
 		if ( $sticky ) {
-			$lead = get_posts( array( 'post__in' => $sticky, 'posts_per_page' => 1, 'orderby' => 'date', 'post_type' => 'post' ) );
+			$lead = get_posts(
+				array(
+					'post__in' => $sticky,
+					'posts_per_page' => 1,
+					'orderby' => 'date',
+					'post_type' => 'post',
+				)
+			);
 			if ( $lead ) {
 				$args['post__not_in']   = array( $lead[0]->ID );
 				$args['posts_per_page'] = $side_count;
@@ -258,7 +391,14 @@ function sm_render_related( $attrs ) {
 	}
 	$posts = get_posts( $args );
 	if ( count( $posts ) < $count ) {
-		$more = get_posts( array( 'post_type' => 'post', 'posts_per_page' => $count - count( $posts ), 'post__not_in' => array_merge( array( $post->ID ), wp_list_pluck( $posts, 'ID' ) ), 'no_found_rows' => true ) );
+		$more = get_posts(
+			array(
+				'post_type' => 'post',
+				'posts_per_page' => $count - count( $posts ),
+				'post__not_in' => array_merge( array( $post->ID ), wp_list_pluck( $posts, 'ID' ) ),
+				'no_found_rows' => true,
+			)
+		);
 		$posts = array_merge( $posts, $more );
 	}
 	if ( ! $posts ) {
@@ -275,7 +415,12 @@ function sm_render_related( $attrs ) {
 }
 
 function sm_render_newsletter_block( $attrs ) {
-	return sm_newsletter_form_html( array( 'heading' => $attrs['heading'] ?: sm_get( 'nl_heading' ), 'class' => trim( ( $attrs['className'] ?? '' ) . ' align' . ( $attrs['align'] ?? 'wide' ) ) ) );
+	return sm_newsletter_form_html(
+		array(
+			'heading' => $attrs['heading'] ?: sm_get( 'nl_heading' ),
+			'class' => trim( ( $attrs['className'] ?? '' ) . ' align' . ( $attrs['align'] ?? 'wide' ) ),
+		)
+	);
 }
 
 function sm_render_contact_block( $attrs ) {
@@ -318,9 +463,10 @@ function sm_render_donate_block( $attrs ) {
 	$code     = strtoupper( preg_replace( '/[^A-Za-z]/', '', (string) sm_get( 'donate_currency_code' ) ) );
 	$code     = 3 === strlen( $code ) ? $code : 'MYR';
 	$url      = $paypal ?: $url;
+	$monthly  = $paypal ? esc_url_raw( (string) sm_get( 'donate_monthly_url' ), array( 'https' ) ) : '';
 	$uid      = wp_unique_id( 'sm-donate-' );
 
-	$html  = '<form class="sm-donate ' . esc_attr( $attrs['className'] ?? '' ) . '" method="get" action="' . esc_url( $url ?: home_url( '/' ) ) . '" data-sm-form="donate"' . ( $url ? '' : ' data-no-checkout="1"' ) . ( $paypal ? ' data-paypalme="' . esc_attr( $code ) . '"' : '' ) . '>';
+	$html  = '<form class="sm-donate ' . esc_attr( $attrs['className'] ?? '' ) . '" method="get" action="' . esc_url( $url ?: home_url( '/' ) ) . '" data-sm-form="donate"' . ( $url ? '' : ' data-no-checkout="1"' ) . ( $paypal ? ' data-paypalme="' . esc_attr( $code ) . '"' : '' ) . ( $monthly ? ' data-monthly="' . esc_url( $monthly ) . '"' : '' ) . '>';
 	// PayPal.Me takes an amount only: it is one-time and cannot carry a donation type.
 	if ( $types && ! $paypal ) {
 		$html .= '<div class="sm-donate__group"><label for="' . $uid . '-type">' . esc_html__( 'Choose a donation type', 'sm' ) . '</label><select id="' . $uid . '-type" name="type">';
@@ -329,22 +475,22 @@ function sm_render_donate_block( $attrs ) {
 		}
 		$html .= '</select></div>';
 	}
-	$html .= '<fieldset class="sm-donate__group"><legend>' . esc_html__( 'Choose a donation amount', 'sm' ) . '</legend><div class="sm-donate__amounts">';
+	$html .= '<fieldset class="sm-donate__group sm-donate__group--amount"><legend>' . esc_html__( 'Choose a donation amount', 'sm' ) . '</legend><div class="sm-donate__amounts">';
 	$i = 0;
 	foreach ( $amounts as $a ) {
 		$html .= '<label class="sm-radio"><input type="radio" name="amount" value="' . (int) $a . '"' . ( 0 === $i ? ' checked' : '' ) . ' /><span>' . esc_html( $currency . $a ) . '</span></label>';
-		$i++;
+		++$i;
 	}
 	$html .= '<label class="sm-radio sm-radio--custom"><input type="radio" name="amount" value="custom" /><span>' . esc_html__( 'Enter a custom donation amount', 'sm' ) . '</span></label>';
 	$html .= '<input class="sm-donate__custom" type="number" name="custom_amount" min="1" step="1" placeholder="' . esc_attr( $currency ) . '" aria-label="' . esc_attr__( 'Custom amount', 'sm' ) . '" hidden />';
 	$html .= '</div></fieldset>';
-	if ( ! $paypal ) {
+	if ( ! $paypal || $monthly ) {
 		$html .= '<fieldset class="sm-donate__group"><legend>' . esc_html__( 'Choose a donation frequency', 'sm' ) . '</legend><div class="sm-donate__freq">';
-		$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="monthly" checked /><span>' . esc_html__( 'Monthly', 'sm' ) . '</span></label>';
-		$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="once" /><span>' . esc_html__( 'One time', 'sm' ) . '</span></label>';
+		$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="monthly"' . ( $monthly ? '' : ' checked' ) . ' /><span>' . esc_html__( 'Monthly', 'sm' ) . '</span></label>';
+		$html .= '<label class="sm-pill"><input type="radio" name="frequency" value="once"' . ( $monthly ? ' checked' : '' ) . ' /><span>' . esc_html__( 'One time', 'sm' ) . '</span></label>';
 		$html .= '</div></fieldset>';
 	}
-	$html .= '<p class="sm-donate__note">' . esc_html( $paypal ? __( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to PayPal to complete your one-time gift. No PayPal account is needed to pay by card.', 'sm' ) : __( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to our secure payment partner to complete your gift.', 'sm' ) ) . '</p>';
+	$html .= '<p class="sm-donate__note">' . esc_html( $paypal ? __( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to PayPal to complete your gift. No PayPal account is needed to pay one-time gifts by card.', 'sm' ) : __( 'Donations help us keep independent Malaysian journalism free for everyone. You will be taken to our secure payment partner to complete your gift.', 'sm' ) ) . '</p>';
 	$html .= '<div class="sm-donate__actions"><a class="wp-element-button is-style-sm-outline" href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Cancel', 'sm' ) . '</a>';
 	$html .= '<button type="submit" class="wp-element-button">' . esc_html( $paypal ? __( 'Donate with PayPal', 'sm' ) : __( 'Go to checkout', 'sm' ) ) . '</button></div>';
 	if ( ! $url ) {
@@ -370,7 +516,11 @@ add_action(
 			'sm-editor',
 			'smEditor',
 			array(
-				'socialStyles' => array( 'plain' => __( 'Plain', 'sm' ), 'boxed' => __( 'Boxed', 'sm' ), 'round' => __( 'Round', 'sm' ) ),
+				'socialStyles' => array(
+					'plain' => __( 'Plain', 'sm' ),
+					'boxed' => __( 'Boxed', 'sm' ),
+					'round' => __( 'Round', 'sm' ),
+				),
 				'unlistMeta'   => SM_UNLIST_META,
 			)
 		);
@@ -408,6 +558,9 @@ function sm_render_share_block( $attrs ) {
 		$html .= '<li><a href="' . esc_url( $it[1] ) . '" target="_blank" rel="noopener noreferrer" aria-label="' . esc_attr( sprintf( /* translators: network */ __( 'Share on %s', 'sm' ), $it[0] ) ) . '">' . sm_social_icon_svg( $slug ) . '</a></li>';
 	}
 	$html .= '<li><button type="button" class="sm-share__copy" data-url="' . esc_url( get_permalink( $post ) ) . '" data-done="' . esc_attr__( 'Link copied', 'sm' ) . '" aria-label="' . esc_attr__( 'Copy link', 'sm' ) . '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></button></li>';
+	if ( sm_get( 'pdf_enabled' ) && is_singular( 'post' ) ) {
+		$html .= '<li><button type="button" class="sm-share__pdf" aria-label="' . esc_attr__( 'Save this article as PDF', 'sm' ) . '" data-busy="' . esc_attr__( 'Preparing PDF…', 'sm' ) . '" data-done="' . esc_attr__( 'PDF saved', 'sm' ) . '" data-fail="' . esc_attr__( 'Could not make the PDF. Try printing the page instead.', 'sm' ) . '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 19h14"/></svg></button></li>';
+	}
 	return $html . '</ul><span class="sm-share__status" role="status" aria-live="polite"></span></div>';
 }
 
@@ -516,7 +669,14 @@ function sm_render_footer_sections() {
 	$html = '<nav class="sm-fcols" aria-label="' . esc_attr__( 'Sitemap', 'sm' ) . '">';
 	if ( ! is_wp_error( $terms ) ) {
 		foreach ( $terms as $t ) {
-			$posts = get_posts( array( 'post_type' => 'post', 'posts_per_page' => 3, 'cat' => $t->term_id, 'no_found_rows' => true ) );
+			$posts = get_posts(
+				array(
+					'post_type' => 'post',
+					'posts_per_page' => 3,
+					'cat' => $t->term_id,
+					'no_found_rows' => true,
+				)
+			);
 			$html .= '<div class="sm-fcol" style="--sm-cat:' . esc_attr( sm_cat_color( $t ) ) . '"><h3 class="sm-fcol__title"><a href="' . esc_url( get_category_link( $t ) ) . '">' . esc_html( $t->name ) . '</a></h3><ul>';
 			foreach ( $posts as $p ) {
 				$html .= '<li><a href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a></li>';
@@ -525,7 +685,13 @@ function sm_render_footer_sections() {
 		}
 	}
 	$links = array();
-	foreach ( array( 'about' => __( 'About', 'sm' ), 'contact' => __( 'Contact', 'sm' ), 'donate' => __( 'Donate', 'sm' ), 'privacy-policy' => __( 'Privacy Policy', 'sm' ), 'editorial-policy' => __( 'Editorial Policy', 'sm' ) ) as $slug => $label ) {
+	foreach ( array(
+		'about' => __( 'About', 'sm' ),
+		'contact' => __( 'Contact', 'sm' ),
+		'donate' => __( 'Donate', 'sm' ),
+		'privacy-policy' => __( 'Privacy Policy', 'sm' ),
+		'editorial-policy' => __( 'Editorial Policy', 'sm' ),
+	) as $slug => $label ) {
 		$pg = get_page_by_path( $slug );
 		if ( $pg ) {
 			$links[] = '<li><a href="' . esc_url( get_permalink( $pg ) ) . '">' . esc_html( $label ) . '</a></li>';

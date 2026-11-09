@@ -47,13 +47,26 @@ add_action(
 		wp_enqueue_style( 'sm-theme', SM_URI . 'assets/css/theme.css', array( 'twentytwentyfive-style' ), SM_VERSION );
 		wp_add_inline_style( 'sm-theme', sm_color_css() );
 
-		wp_enqueue_script( 'sm-theme', SM_URI . 'assets/js/theme.js', array(), SM_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+		wp_enqueue_script(
+			'sm-theme',
+			SM_URI . 'assets/js/theme.js',
+			array(),
+			SM_VERSION,
+			array(
+				'strategy' => 'defer',
+				'in_footer' => true,
+			)
+		);
 		wp_localize_script(
 			'sm-theme',
 			'smTheme',
 			array(
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				'nonce'   => wp_create_nonce( 'sm_front' ),
+				// Count views from the browser, so cached pages are counted too (see inc/features/views.php).
+				'view'    => is_singular( 'post' ) && ! is_user_logged_in() ? array(
+					'id'  => get_queried_object_id(),
+					'url' => rest_url( 'sm/v1/view' ),
+				) : null,
 				'i18n'    => array(
 					'sending' => __( 'Sending…', 'sm' ),
 					'error'   => __( 'Something went wrong. Please try again.', 'sm' ),

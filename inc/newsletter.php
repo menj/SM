@@ -40,7 +40,13 @@ add_action(
  * @return string
  */
 function sm_newsletter_form_html( $args = array() ) {
-	$args    = wp_parse_args( $args, array( 'heading' => sm_get( 'nl_heading' ), 'class' => '' ) );
+	$args    = wp_parse_args(
+		$args,
+		array(
+			'heading' => sm_get( 'nl_heading' ),
+			'class' => '',
+		)
+	);
 	$action  = sm_get( 'nl_action' );
 	$heading = nl2br( esc_html( $args['heading'] ) );
 	$uid     = wp_unique_id( 'sm-nl-' );
@@ -63,7 +69,15 @@ function sm_newsletter_form_html( $args = array() ) {
 add_shortcode(
 	'sm_newsletter',
 	function ( $atts ) {
-		return sm_newsletter_form_html( shortcode_atts( array( 'heading' => sm_get( 'nl_heading' ), 'class' => '' ), $atts ) );
+		return sm_newsletter_form_html(
+			shortcode_atts(
+				array(
+					'heading' => sm_get( 'nl_heading' ),
+					'class' => '',
+				),
+				$atts
+			)
+		);
 	}
 );
 
@@ -175,7 +189,15 @@ add_action(
 		if ( ! in_array( $type, array( 'sm_subscriber', 'sm_entry' ), true ) ) {
 			wp_die( esc_html__( 'Unknown export.', 'sm' ) );
 		}
-		$posts = get_posts( array( 'post_type' => $type, 'posts_per_page' => -1, 'post_status' => 'any', 'orderby' => 'date', 'order' => 'DESC' ) );
+		$posts = get_posts(
+			array(
+				'post_type' => $type,
+				'posts_per_page' => -1,
+				'post_status' => 'any',
+				'orderby' => 'date',
+				'order' => 'DESC',
+			)
+		);
 
 		nocache_headers();
 		header( 'Content-Type: text/csv; charset=utf-8' );

@@ -52,9 +52,33 @@ function sm_unlisted_ids() {
 $sm_unlist_refresh = function () {
 	delete_option( 'sm_unlisted_ids' );
 };
-add_action( 'updated_post_meta', function ( $mid, $pid, $key ) use ( $sm_unlist_refresh ) { if ( SM_UNLIST_META === $key ) { $sm_unlist_refresh(); } }, 10, 3 );
-add_action( 'added_post_meta', function ( $mid, $pid, $key ) use ( $sm_unlist_refresh ) { if ( SM_UNLIST_META === $key ) { $sm_unlist_refresh(); } }, 10, 3 );
-add_action( 'deleted_post_meta', function ( $mids, $pid, $key ) use ( $sm_unlist_refresh ) { if ( SM_UNLIST_META === $key ) { $sm_unlist_refresh(); } }, 10, 3 );
+add_action(
+	'updated_post_meta',
+	function ( $mid, $pid, $key ) use ( $sm_unlist_refresh ) {
+		if ( SM_UNLIST_META === $key ) {
+			$sm_unlist_refresh();
+		} },
+	10,
+	3
+);
+add_action(
+	'added_post_meta',
+	function ( $mid, $pid, $key ) use ( $sm_unlist_refresh ) {
+		if ( SM_UNLIST_META === $key ) {
+			$sm_unlist_refresh();
+		} },
+	10,
+	3
+);
+add_action(
+	'deleted_post_meta',
+	function ( $mids, $pid, $key ) use ( $sm_unlist_refresh ) {
+		if ( SM_UNLIST_META === $key ) {
+			$sm_unlist_refresh();
+		} },
+	10,
+	3
+);
 add_action( 'deleted_post', $sm_unlist_refresh );
 
 /**

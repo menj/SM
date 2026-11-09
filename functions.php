@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_VERSION', '1.0.0' );
+define( 'SM_VERSION', '1.1.0' );
 define( 'SM_DIR', trailingslashit( get_stylesheet_directory() ) );
 define( 'SM_URI', trailingslashit( get_stylesheet_directory_uri() ) );
 
@@ -28,6 +28,8 @@ require_once SM_DIR . 'inc/features/lightbox.php';
 require_once SM_DIR . 'inc/features/dropcaps.php';
 require_once SM_DIR . 'inc/features/views.php';
 require_once SM_DIR . 'inc/features/images.php';
+require_once SM_DIR . 'inc/features/feed.php';
+require_once SM_DIR . 'inc/features/pdf.php';
 require_once SM_DIR . 'inc/features/search-permalinks.php';
 require_once SM_DIR . 'inc/features/hide-login.php';
 require_once SM_DIR . 'inc/favicon.php';

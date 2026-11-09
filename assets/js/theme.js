@@ -42,6 +42,20 @@
 		});
 	});
 
+	/* View counter: a beacon, so pages served from a cache are counted too. Once per tab session per article. */
+	if (cfg.view && cfg.view.id && cfg.view.url) {
+		var seenKey = 'sm_seen_' + cfg.view.id, seen = false;
+		try { seen = !!window.sessionStorage.getItem(seenKey); window.sessionStorage.setItem(seenKey, '1'); } catch (e) {}
+		if (!seen) {
+			var payload = JSON.stringify({ id: cfg.view.id });
+			if (navigator.sendBeacon) {
+				navigator.sendBeacon(cfg.view.url, new Blob([payload], { type: 'application/json' }));
+			} else {
+				fetch(cfg.view.url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload, keepalive: true });
+			}
+		}
+	}
+
 	/* Back to top */
 	var toTop = qs('.sm-totop');
 	if (toTop) {
@@ -135,8 +149,23 @@
 		};
 		radios.forEach(function (r) { r.addEventListener('change', sync); });
 		sync();
+		// Monthly gifts go to the subscription link, whose amount is set in PayPal, so hide the amounts.
+		var freqs = qsa('input[name="frequency"]', form);
+		var amountGroup = qs('.sm-donate__group--amount', form);
+		var syncFreq = function () {
+			if (!form.dataset.monthly || !amountGroup) { return; }
+			var monthly = freqs.some(function (r) { return r.checked && r.value === 'monthly'; });
+			amountGroup.hidden = monthly;
+		};
+		freqs.forEach(function (r) { r.addEventListener('change', syncFreq); });
+		syncFreq();
 		form.addEventListener('submit', function (e) {
 			if (form.dataset.noCheckout === '1') { e.preventDefault(); return; }
+			if (form.dataset.monthly && freqs.some(function (r) { return r.checked && r.value === 'monthly'; }) && /^https:\/\//.test(form.dataset.monthly)) {
+				e.preventDefault();
+				window.location.href = form.dataset.monthly;
+				return;
+			}
 			var chosen = radios.filter(function (r) { return r.checked; })[0];
 			var amount = chosen ? chosen.value : '';
 			if (chosen && chosen.value === 'custom' && custom) {

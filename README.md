@@ -35,7 +35,7 @@ These replace plugins the site previously relied on. No plugin is required.
 | --- | --- |
 | Contact form with stored entries and CSV export | `inc/forms.php`, Appearance → Form entries |
 | Newsletter sign-up with subscriber list and CSV export | `inc/newsletter.php`, Appearance → Subscribers |
-| Image lightbox (Lightbox2, MIT) | `inc/features/lightbox.php`, `assets/vendor/lightbox2` |
+| Image lightbox (own script, no jQuery) | `inc/features/lightbox.php`, `assets/js/lightbox.js`, `assets/css/lightbox.css` |
 | Reading progress bar | `inc/features/progress-bar.php` |
 | Unlisted posts and pages | `inc/features/unlist.php` — toggle in the editor sidebar |
 | Pretty search permalinks | `inc/features/search-permalinks.php` |
@@ -68,7 +68,6 @@ SM/
 │   ├── js/         theme.js, editor.js, admin.js
 │   ├── fonts/lora  Lora variable fonts (SIL OFL)
 │   ├── icons/social  SVG glyphs
-│   └── vendor/lightbox2
 ├── inc/            PHP modules (settings, blocks, forms, newsletter, seo, seed, features/)
 ├── parts/          header.html, footer.html
 ├── patterns/       header, footer, newsletter, query grid, page layouts
@@ -85,7 +84,7 @@ SM/
 
 ## Licences
 
-Theme code: GPL v2 or later. Lora: SIL Open Font License 1.1. Lightbox2: MIT. Social icons: GPL / CC0, except LinkedIn and Scribd which are Font Awesome CC BY 4.0 (credit is emitted in the page footer when either is shown).
+Theme code: GPL v2 or later. Lora: SIL Open Font License 1.1. Social icons: GPL / CC0, except LinkedIn and Scribd which are Font Awesome CC BY 4.0 (credit is emitted in the page footer when either is shown).
 
 ## Malaysian identity
 

@@ -82,7 +82,15 @@ function sm_seed_import( $overwrite = false ) {
 		$term      = get_term_by( 'slug', $c['slug'], 'category' );
 		$parent_id = ! empty( $c['parent'] ) ? (int) ( $cat_ids[ $c['parent'] ] ?? 0 ) : 0;
 		if ( ! $term ) {
-			$r = wp_insert_term( $c['name'], 'category', array( 'slug' => $c['slug'], 'description' => $c['description'] ?? '', 'parent' => $parent_id ) );
+			$r = wp_insert_term(
+				$c['name'],
+				'category',
+				array(
+					'slug' => $c['slug'],
+					'description' => $c['description'] ?? '',
+					'parent' => $parent_id,
+				)
+			);
 			if ( ! is_wp_error( $r ) ) {
 				$cat_ids[ $c['slug'] ] = (int) $r['term_id'];
 				sm_seed_track_term( (int) $r['term_id'], 'category' );
@@ -90,7 +98,15 @@ function sm_seed_import( $overwrite = false ) {
 		} else {
 			$cat_ids[ $c['slug'] ] = (int) $term->term_id;
 			if ( $overwrite ) {
-				wp_update_term( $term->term_id, 'category', array( 'name' => $c['name'], 'description' => $c['description'] ?? '', 'parent' => $parent_id ) );
+				wp_update_term(
+					$term->term_id,
+					'category',
+					array(
+						'name' => $c['name'],
+						'description' => $c['description'] ?? '',
+						'parent' => $parent_id,
+					)
+				);
 			}
 		}
 	}
@@ -130,7 +146,15 @@ function sm_seed_import( $overwrite = false ) {
 			'post_excerpt'  => $p['excerpt'] ?? '',
 			'post_date'     => $p['date'],
 			'post_date_gmt' => get_gmt_from_date( $p['date'] ),
-			'post_category' => array_values( array_filter( array_map( function ( $s ) use ( $cat_ids ) { return $cat_ids[ $s ] ?? 0; }, (array) ( $p['categories'] ?? array() ) ) ) ),
+			'post_category' => array_values(
+				array_filter(
+					array_map(
+						function ( $s ) use ( $cat_ids ) {
+							return $cat_ids[ $s ] ?? 0; },
+						(array) ( $p['categories'] ?? array() )
+					)
+				)
+			),
 			'tags_input'    => (array) ( $p['tags'] ?? array() ),
 		);
 		$new_tags = array();
@@ -170,7 +194,7 @@ function sm_seed_import( $overwrite = false ) {
 		if ( ! empty( $p['sticky'] ) ) {
 			stick_post( $id );
 		}
-		$count++;
+		++$count;
 	}
 	$log[] = sprintf( /* translators: count */ __( '%d posts imported.', 'sm' ), $count );
 
@@ -222,7 +246,7 @@ function sm_seed_import( $overwrite = false ) {
 		if ( ! empty( $pg['privacy_page'] ) ) {
 			update_option( 'wp_page_for_privacy_policy', $id );
 		}
-		$count++;
+		++$count;
 	}
 	$log[] = sprintf( /* translators: count */ __( '%d pages imported.', 'sm' ), $count );
 
@@ -308,7 +332,14 @@ function sm_seed_sideload( $file, $alt = '', $post_id = 0 ) {
 	}
 	$tmp = wp_tempnam( basename( $file ) );
 	copy( $path, $tmp );
-	$id = media_handle_sideload( array( 'name' => basename( $path ), 'tmp_name' => $tmp ), $post_id, $alt );
+	$id = media_handle_sideload(
+		array(
+			'name' => basename( $path ),
+			'tmp_name' => $tmp,
+		),
+		$post_id,
+		$alt
+	);
 	if ( is_wp_error( $id ) ) {
 		wp_delete_file( $tmp );
 		return 0;
@@ -365,15 +396,31 @@ function sm_seed_nav_item( $item, $page_ids ) {
 	if ( 'category' === $item['type'] ) {
 		$term = get_term_by( 'slug', $item['slug'], 'category' );
 		if ( $term ) {
-			$attrs = array( 'label' => $item['label'] ?? $term->name, 'type' => 'category', 'id' => (int) $term->term_id, 'url' => get_category_link( $term ), 'kind' => 'taxonomy' );
+			$attrs = array(
+				'label' => $item['label'] ?? $term->name,
+				'type' => 'category',
+				'id' => (int) $term->term_id,
+				'url' => get_category_link( $term ),
+				'kind' => 'taxonomy',
+			);
 		}
 	} elseif ( 'page' === $item['type'] ) {
 		$pid = $page_ids[ $item['slug'] ] ?? 0;
 		if ( $pid ) {
-			$attrs = array( 'label' => $item['label'] ?? get_the_title( $pid ), 'type' => 'page', 'id' => (int) $pid, 'url' => get_permalink( $pid ), 'kind' => 'post-type' );
+			$attrs = array(
+				'label' => $item['label'] ?? get_the_title( $pid ),
+				'type' => 'page',
+				'id' => (int) $pid,
+				'url' => get_permalink( $pid ),
+				'kind' => 'post-type',
+			);
 		}
 	} elseif ( 'custom' === $item['type'] ) {
-		$attrs = array( 'label' => $item['label'], 'url' => $item['url'], 'kind' => 'custom' );
+		$attrs = array(
+			'label' => $item['label'],
+			'url' => $item['url'],
+			'kind' => 'custom',
+		);
 	}
 	if ( ! $attrs ) {
 		return '';
@@ -425,7 +472,7 @@ function sm_seed_remove() {
 	$deleted = 0;
 	foreach ( $posts as $id ) {
 		if ( get_post( $id ) && wp_delete_post( $id, true ) ) {
-			$deleted++;
+			++$deleted;
 		}
 	}
 	$terms_deleted = 0;
@@ -433,7 +480,7 @@ function sm_seed_remove() {
 		list( $tid, $tax ) = array_pad( explode( ':', $key, 2 ), 2, 'category' );
 		if ( term_exists( (int) $tid, $tax ) && (int) get_option( 'default_category' ) !== (int) $tid ) {
 			wp_delete_term( (int) $tid, $tax );
-			$terms_deleted++;
+			++$terms_deleted;
 		}
 	}
 	// Options and theme mods that pointed at deleted content.

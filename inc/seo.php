@@ -95,8 +95,18 @@ add_action(
 				'datePublished'    => get_the_date( 'c' ),
 				'dateModified'     => get_the_modified_date( 'c' ),
 				'mainEntityOfPage' => get_permalink(),
-				'author'           => array( '@type' => 'Person', 'name' => get_the_author() ),
-				'publisher'        => array( '@type' => 'Organization', 'name' => get_bloginfo( 'name' ), 'logo' => $image ? array( '@type' => 'ImageObject', 'url' => $image ) : null ),
+				'author'           => array(
+					'@type' => 'Person',
+					'name' => get_the_author(),
+				),
+				'publisher'        => array(
+					'@type' => 'Organization',
+					'name' => get_bloginfo( 'name' ),
+					'logo' => $image ? array(
+						'@type' => 'ImageObject',
+						'url' => $image,
+					) : null,
+				),
 				'image'            => $image ? array( $image ) : null,
 			);
 			echo '<script type="application/ld+json">' . wp_json_encode( array_filter( $ld ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP ) . '</script>' . "\n";

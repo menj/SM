@@ -12,7 +12,15 @@ add_action(
 	'after_setup_theme',
 	function () {
 		load_child_theme_textdomain( 'sm', SM_DIR . 'languages' );
-		add_theme_support( 'custom-logo', array( 'height' => 80, 'width' => 260, 'flex-height' => true, 'flex-width' => true ) );
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height' => 80,
+				'width' => 260,
+				'flex-height' => true,
+				'flex-width' => true,
+			)
+		);
 		add_image_size( 'sm-hero', 1200, 800, true );
 		add_image_size( 'sm-card', 640, 400, true );
 		add_image_size( 'sm-thumb', 400, 250, true );
