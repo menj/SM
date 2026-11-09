@@ -96,3 +96,28 @@ add_filter(
 		return $parsed;
 	}
 );
+
+/**
+ * Give every search form an accessible name. Core omits it, so two search forms on one page
+ * (for example the page's and the footer's) cannot be told apart by screen readers.
+ */
+add_filter(
+	'render_block_core/search',
+	function ( $html ) {
+		static $n = 0;
+		// Only look at the <form> tag itself: the field and button inside carry their own labels.
+		if ( ! preg_match( '/<form role="search"[^>]*>/', $html, $m ) || false !== strpos( $m[0], 'aria-label=' ) ) {
+			return $html;
+		}
+		$n++;
+		if ( false !== strpos( $m[0], 'sm-footer__search' ) ) {
+			$label = __( 'Search from the footer', 'sm' );
+		} elseif ( 1 === $n ) {
+			$label = __( 'Search the site', 'sm' );
+		} else {
+			/* translators: %d: number of this search form on the page */
+			$label = sprintf( __( 'Search articles %d', 'sm' ), $n );
+		}
+		return preg_replace( '/<form role="search"/', '<form role="search" aria-label="' . esc_attr( $label ) . '"', $html, 1 );
+	}
+);

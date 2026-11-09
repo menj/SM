@@ -30,7 +30,7 @@ add_action(
 		}
 		$color = sanitize_hex_color( sm_get( 'rp_color' ) );
 		printf(
-			'<div class="sm-progress sm-progress--%1$s" role="progressbar" aria-label="%2$s" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="--sm-progress-height:%3$dpx;%4$s"><span class="sm-progress__bar"></span></div>',
+			'<div class="sm-progress sm-progress--%1$s" aria-hidden="true" data-label="%2$s" style="--sm-progress-height:%3$dpx;%4$s"><span class="sm-progress__bar"></span></div>',
 			esc_attr( 'bottom' === sm_get( 'rp_position' ) ? 'bottom' : 'top' ),
 			esc_attr__( 'Reading progress', 'sm' ),
 			(int) sm_get( 'rp_height' ),

@@ -64,7 +64,6 @@
 			var max = doc.scrollHeight - window.innerHeight;
 			var pct = max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0;
 			bar.style.width = pct + '%';
-			progress.setAttribute('aria-valuenow', Math.round(pct));
 		};
 		window.addEventListener('scroll', update, { passive: true });
 		window.addEventListener('resize', update);

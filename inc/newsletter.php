@@ -72,7 +72,10 @@ add_shortcode(
  * AJAX: store a subscriber.
  */
 function sm_ajax_subscribe() {
-	check_ajax_referer( 'sm_front', 'nonce' );
+	// Public form: no nonce (it would be frozen into cached pages). Honeypot below plus a rate limit instead.
+	if ( sm_rate_limited( 'newsletter' ) ) {
+		wp_send_json_error( array( 'message' => __( 'Too many attempts. Please wait a few minutes and try again.', 'sm' ) ), 429 );
+	}
 
 	if ( ! empty( $_POST['website'] ) ) { // Honeypot.
 		wp_send_json_success( array( 'message' => sm_get( 'nl_success' ) ) );

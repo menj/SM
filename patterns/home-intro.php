@@ -11,8 +11,8 @@
 ?>
 <!-- wp:group {"align":"wide","className":"sm-intro","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide sm-intro">
-	<!-- wp:heading {"level":2,"className":"sm-intro__tagline"} -->
-	<h2 class="wp-block-heading sm-intro__tagline"><?php esc_html_e( 'Social commentary webzine on Malaysian issues.', 'sm' ); ?></h2>
+	<!-- wp:heading {"level":1,"className":"sm-intro__tagline"} -->
+	<h1 class="wp-block-heading sm-intro__tagline"><?php esc_html_e( 'Social commentary webzine on Malaysian issues.', 'sm' ); ?></h1>
 	<!-- /wp:heading -->
 	<!-- wp:group {"className":"sm-intro__body","layout":{"type":"default"}} -->
 	<div class="wp-block-group sm-intro__body">

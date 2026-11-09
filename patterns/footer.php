@@ -11,13 +11,13 @@
 
 $sm_copyright = str_replace( '{year}', gmdate( 'Y' ), (string) sm_get( 'copyright' ) );
 ?>
-<!-- wp:group {"tagName":"footer","align":"full","className":"sm-footer","layout":{"type":"default"}} -->
-<footer class="wp-block-group alignfull sm-footer">
+<!-- wp:group {"align":"full","className":"sm-footer","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull sm-footer">
 	<!-- wp:group {"align":"full","className":"sm-footer__top","layout":{"type":"constrained"}} -->
 	<div class="wp-block-group alignfull sm-footer__top">
 		<!-- wp:group {"align":"wide","layout":{"type":"default"}} -->
 		<div class="wp-block-group alignwide">
-			<!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search Suara Malaysia","buttonText":"Go","buttonPosition":"button-inside","className":"sm-footer__search"} /-->
+			<!-- wp:search {"label":"Search from the footer","showLabel":false,"placeholder":"Search Suara Malaysia","buttonText":"Go","buttonPosition":"button-inside","className":"sm-footer__search"} /-->
 			<!-- wp:sm/footer-sections {"align":""} /-->
 		</div>
 		<!-- /wp:group -->
@@ -41,7 +41,7 @@ $sm_copyright = str_replace( '{year}', gmdate( 'Y' ), (string) sm_get( 'copyrigh
 				</div>
 				<!-- /wp:group -->
 				<!-- wp:site-tagline {"className":"sm-footer__tagline"} /-->
-				<!-- wp:navigation {"smMenu":"sm-footer","overlayMenu":"never","className":"sm-footer__links","layout":{"type":"flex","flexWrap":"wrap"}} /-->
+				<!-- wp:navigation {"smMenu":"sm-footer","ariaLabel":"Footer links","overlayMenu":"never","className":"sm-footer__links","layout":{"type":"flex","flexWrap":"wrap"}} /-->
 			</div>
 			<!-- /wp:group -->
 
@@ -81,5 +81,5 @@ $sm_copyright = str_replace( '{year}', gmdate( 'Y' ), (string) sm_get( 'copyrigh
 	<button class="sm-totop" type="button" aria-label="<?php esc_attr_e( 'Back to top', 'sm' ); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
 	<!-- /wp:html -->
 	<?php endif; ?>
-</footer>
+</div>
 <!-- /wp:group -->

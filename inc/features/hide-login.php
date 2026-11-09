@@ -118,6 +118,13 @@ add_action(
 		}
 		global $pagenow;
 
+		// Logged-out visitors never get sent to the login page from the dashboard: that redirect would reveal the hidden address.
+		// AJAX and admin-post stay open because the front-end forms use them.
+		if ( is_admin() && ! is_user_logged_in() && ! wp_doing_ajax() && ! in_array( $pagenow, array( 'admin-post.php', 'admin-ajax.php' ), true ) ) {
+			wp_safe_redirect( sm_login_blocked_url(), 302 );
+			exit;
+		}
+
 		$path     = sm_request_path();
 		$is_login = ( 'wp-login.php' === $pagenow ) || false !== strpos( $path, 'wp-login.php' ) || '/wp-login' === $path;
 

@@ -352,3 +352,25 @@ function sm_shown_ids( $add = array(), $scope = 'all' ) {
 	}
 	return 'hero' === $scope ? $hero : $all;
 }
+
+/**
+ * Simple per-visitor rate limit for the public forms.
+ *
+ * Page caches freeze nonces into the HTML, which breaks forms after the nonce expires,
+ * and an anonymous nonce adds no real protection. A honeypot plus this limit does the job.
+ *
+ * @param string $bucket Name of the form.
+ * @param int    $max    Submissions allowed per window.
+ * @param int    $window Window in seconds.
+ * @return bool True when the visitor has sent too many.
+ */
+function sm_rate_limited( $bucket, $max = 5, $window = 600 ) {
+	$ip  = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
+	$key = 'sm_rl_' . md5( $bucket . '|' . $ip );
+	$n   = (int) get_transient( $key );
+	if ( $n >= $max ) {
+		return true;
+	}
+	set_transient( $key, $n + 1, $window );
+	return false;
+}
