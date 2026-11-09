@@ -49,7 +49,10 @@ add_action(
 					'api_version'     => 3,
 					'render_callback' => $cb,
 					'attributes'      => sm_block_attributes( $name ),
-					'supports'        => array( 'html' => false, 'align' => array( 'wide', 'full' ) ),
+					'supports'        => array(
+						'html' => false,
+						'align' => array( 'wide', 'full' ),
+					),
 				)
 			);
 		}
@@ -124,46 +127,104 @@ unset( $sm_hook );
  */
 function sm_block_attributes( $name ) {
 	$common = array(
-		'align'     => array( 'type' => 'string', 'default' => 'wide' ),
-		'className' => array( 'type' => 'string', 'default' => '' ),
+		'align'     => array(
+			'type' => 'string',
+			'default' => 'wide',
+		),
+		'className' => array(
+			'type' => 'string',
+			'default' => '',
+		),
 	);
 	switch ( $name ) {
 		case 'hero':
-			return $common + array( 'sideCount' => array( 'type' => 'number', 'default' => 5 ) );
+			return $common + array(
+				'sideCount' => array(
+					'type' => 'number',
+					'default' => 5,
+				),
+			);
 		case 'sections':
 			return $common + array(
-				'columns' => array( 'type' => 'number', 'default' => 3 ),
-				'perSection' => array( 'type' => 'number', 'default' => 0 ),
+				'columns' => array(
+					'type' => 'number',
+					'default' => 3,
+				),
+				'perSection' => array(
+					'type' => 'number',
+					'default' => 0,
+				),
 			);
 		case 'related':
 			return $common + array(
-				'count' => array( 'type' => 'number', 'default' => 3 ),
-				'title' => array( 'type' => 'string', 'default' => '' ),
+				'count' => array(
+					'type' => 'number',
+					'default' => 3,
+				),
+				'title' => array(
+					'type' => 'string',
+					'default' => '',
+				),
 			);
 		case 'newsletter':
-			return $common + array( 'heading' => array( 'type' => 'string', 'default' => '' ) );
+			return $common + array(
+				'heading' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+			);
 		case 'social-icons':
 			return $common + array(
-				'style' => array( 'type' => 'string', 'default' => '' ),
-				'size'  => array( 'type' => 'number', 'default' => 0 ),
-				'label' => array( 'type' => 'string', 'default' => '' ),
+				'style' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'size'  => array(
+					'type' => 'number',
+					'default' => 0,
+				),
+				'label' => array(
+					'type' => 'string',
+					'default' => '',
+				),
 			);
 		case 'editors-picks':
 			return $common + array(
-				'title' => array( 'type' => 'string', 'default' => '' ),
-				'count' => array( 'type' => 'number', 'default' => 5 ),
+				'title' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'count' => array(
+					'type' => 'number',
+					'default' => 5,
+				),
 			);
 		case 'most-read':
 		case 'active-topics':
 			return $common + array(
-				'title' => array( 'type' => 'string', 'default' => '' ),
-				'count' => array( 'type' => 'number', 'default' => 5 ),
+				'title' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'count' => array(
+					'type' => 'number',
+					'default' => 5,
+				),
 			);
 		case 'section-heading':
 			return $common + array(
-				'title' => array( 'type' => 'string', 'default' => '' ),
-				'link'  => array( 'type' => 'string', 'default' => '' ),
-				'level' => array( 'type' => 'number', 'default' => 2 ),
+				'title' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'link'  => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'level' => array(
+					'type' => 'number',
+					'default' => 2,
+				),
 			);
 		default:
 			return $common;
@@ -226,7 +287,14 @@ function sm_render_hero( $attrs ) {
 	if ( 'sticky' === sm_get( 'hero_source' ) ) {
 		$sticky = array_values( array_filter( array_map( 'intval', (array) get_option( 'sticky_posts' ) ) ) );
 		if ( $sticky ) {
-			$lead = get_posts( array( 'post__in' => $sticky, 'posts_per_page' => 1, 'orderby' => 'date', 'post_type' => 'post' ) );
+			$lead = get_posts(
+				array(
+					'post__in' => $sticky,
+					'posts_per_page' => 1,
+					'orderby' => 'date',
+					'post_type' => 'post',
+				)
+			);
 			if ( $lead ) {
 				$args['post__not_in']   = array( $lead[0]->ID );
 				$args['posts_per_page'] = $side_count;
@@ -323,7 +391,14 @@ function sm_render_related( $attrs ) {
 	}
 	$posts = get_posts( $args );
 	if ( count( $posts ) < $count ) {
-		$more = get_posts( array( 'post_type' => 'post', 'posts_per_page' => $count - count( $posts ), 'post__not_in' => array_merge( array( $post->ID ), wp_list_pluck( $posts, 'ID' ) ), 'no_found_rows' => true ) );
+		$more = get_posts(
+			array(
+				'post_type' => 'post',
+				'posts_per_page' => $count - count( $posts ),
+				'post__not_in' => array_merge( array( $post->ID ), wp_list_pluck( $posts, 'ID' ) ),
+				'no_found_rows' => true,
+			)
+		);
 		$posts = array_merge( $posts, $more );
 	}
 	if ( ! $posts ) {
@@ -340,7 +415,12 @@ function sm_render_related( $attrs ) {
 }
 
 function sm_render_newsletter_block( $attrs ) {
-	return sm_newsletter_form_html( array( 'heading' => $attrs['heading'] ?: sm_get( 'nl_heading' ), 'class' => trim( ( $attrs['className'] ?? '' ) . ' align' . ( $attrs['align'] ?? 'wide' ) ) ) );
+	return sm_newsletter_form_html(
+		array(
+			'heading' => $attrs['heading'] ?: sm_get( 'nl_heading' ),
+			'class' => trim( ( $attrs['className'] ?? '' ) . ' align' . ( $attrs['align'] ?? 'wide' ) ),
+		)
+	);
 }
 
 function sm_render_contact_block( $attrs ) {
@@ -399,7 +479,7 @@ function sm_render_donate_block( $attrs ) {
 	$i = 0;
 	foreach ( $amounts as $a ) {
 		$html .= '<label class="sm-radio"><input type="radio" name="amount" value="' . (int) $a . '"' . ( 0 === $i ? ' checked' : '' ) . ' /><span>' . esc_html( $currency . $a ) . '</span></label>';
-		$i++;
+		++$i;
 	}
 	$html .= '<label class="sm-radio sm-radio--custom"><input type="radio" name="amount" value="custom" /><span>' . esc_html__( 'Enter a custom donation amount', 'sm' ) . '</span></label>';
 	$html .= '<input class="sm-donate__custom" type="number" name="custom_amount" min="1" step="1" placeholder="' . esc_attr( $currency ) . '" aria-label="' . esc_attr__( 'Custom amount', 'sm' ) . '" hidden />';
@@ -436,7 +516,11 @@ add_action(
 			'sm-editor',
 			'smEditor',
 			array(
-				'socialStyles' => array( 'plain' => __( 'Plain', 'sm' ), 'boxed' => __( 'Boxed', 'sm' ), 'round' => __( 'Round', 'sm' ) ),
+				'socialStyles' => array(
+					'plain' => __( 'Plain', 'sm' ),
+					'boxed' => __( 'Boxed', 'sm' ),
+					'round' => __( 'Round', 'sm' ),
+				),
 				'unlistMeta'   => SM_UNLIST_META,
 			)
 		);
@@ -585,7 +669,14 @@ function sm_render_footer_sections() {
 	$html = '<nav class="sm-fcols" aria-label="' . esc_attr__( 'Sitemap', 'sm' ) . '">';
 	if ( ! is_wp_error( $terms ) ) {
 		foreach ( $terms as $t ) {
-			$posts = get_posts( array( 'post_type' => 'post', 'posts_per_page' => 3, 'cat' => $t->term_id, 'no_found_rows' => true ) );
+			$posts = get_posts(
+				array(
+					'post_type' => 'post',
+					'posts_per_page' => 3,
+					'cat' => $t->term_id,
+					'no_found_rows' => true,
+				)
+			);
 			$html .= '<div class="sm-fcol" style="--sm-cat:' . esc_attr( sm_cat_color( $t ) ) . '"><h3 class="sm-fcol__title"><a href="' . esc_url( get_category_link( $t ) ) . '">' . esc_html( $t->name ) . '</a></h3><ul>';
 			foreach ( $posts as $p ) {
 				$html .= '<li><a href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a></li>';
@@ -594,7 +685,13 @@ function sm_render_footer_sections() {
 		}
 	}
 	$links = array();
-	foreach ( array( 'about' => __( 'About', 'sm' ), 'contact' => __( 'Contact', 'sm' ), 'donate' => __( 'Donate', 'sm' ), 'privacy-policy' => __( 'Privacy Policy', 'sm' ), 'editorial-policy' => __( 'Editorial Policy', 'sm' ) ) as $slug => $label ) {
+	foreach ( array(
+		'about' => __( 'About', 'sm' ),
+		'contact' => __( 'Contact', 'sm' ),
+		'donate' => __( 'Donate', 'sm' ),
+		'privacy-policy' => __( 'Privacy Policy', 'sm' ),
+		'editorial-policy' => __( 'Editorial Policy', 'sm' ),
+	) as $slug => $label ) {
 		$pg = get_page_by_path( $slug );
 		if ( $pg ) {
 			$links[] = '<li><a href="' . esc_url( get_permalink( $pg ) ) . '">' . esc_html( $label ) . '</a></li>';

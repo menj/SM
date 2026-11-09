@@ -17,7 +17,16 @@ add_action(
 			return;
 		}
 		wp_enqueue_style( 'sm-lightbox', SM_URI . 'assets/css/lightbox.css', array(), SM_VERSION );
-		wp_enqueue_script( 'sm-lightbox', SM_URI . 'assets/js/lightbox.js', array(), SM_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+		wp_enqueue_script(
+			'sm-lightbox',
+			SM_URI . 'assets/js/lightbox.js',
+			array(),
+			SM_VERSION,
+			array(
+				'strategy' => 'defer',
+				'in_footer' => true,
+			)
+		);
 		wp_add_inline_script(
 			'sm-lightbox',
 			'window.smLightboxCfg = ' . wp_json_encode(

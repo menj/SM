@@ -16,7 +16,16 @@ add_action(
 		if ( ! sm_get( 'pdf_enabled' ) || ! is_singular( 'post' ) ) {
 			return;
 		}
-		wp_enqueue_script( 'sm-pdf', SM_URI . 'assets/js/pdf.js', array(), SM_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+		wp_enqueue_script(
+			'sm-pdf',
+			SM_URI . 'assets/js/pdf.js',
+			array(),
+			SM_VERSION,
+			array(
+				'strategy' => 'defer',
+				'in_footer' => true,
+			)
+		);
 		wp_add_inline_script(
 			'sm-pdf',
 			'window.smPdfCfg = ' . wp_json_encode(

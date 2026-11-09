@@ -324,7 +324,13 @@ add_action(
 		}
 		$s = (array) get_option( 'sm_settings', array() );
 		if ( empty( $s['donate_url'] ) ) {
-			update_option( 'sm_settings', array( 'donate_url' => 'https://www.paypal.com/paypalme/menj', 'donate_currency_code' => 'MYR' ) );
+			update_option(
+				'sm_settings',
+				array(
+					'donate_url' => 'https://www.paypal.com/paypalme/menj',
+					'donate_currency_code' => 'MYR',
+				)
+			);
 		}
 		update_option( 'sm_paypal_default_set', 1, false );
 	},

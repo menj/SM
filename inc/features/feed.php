@@ -50,7 +50,16 @@ add_filter(
 			return $content;
 		}
 		add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
-		$img = get_the_post_thumbnail( $post->ID, 'large', array( 'fetchpriority' => false, 'decoding' => false, 'class' => false, 'style' => 'margin-bottom:15px;' ) );
+		$img = get_the_post_thumbnail(
+			$post->ID,
+			'large',
+			array(
+				'fetchpriority' => false,
+				'decoding' => false,
+				'class' => false,
+				'style' => 'margin-bottom:15px;',
+			)
+		);
 		remove_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
 		return '<div>' . $img . '</div>' . $content;
 	}

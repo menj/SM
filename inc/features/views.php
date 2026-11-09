@@ -26,7 +26,11 @@ add_action(
 				'methods'             => 'POST',
 				'permission_callback' => '__return_true',
 				'args'                => array(
-					'id' => array( 'type' => 'integer', 'required' => true, 'sanitize_callback' => 'absint' ),
+					'id' => array(
+						'type' => 'integer',
+						'required' => true,
+						'sanitize_callback' => 'absint',
+					),
 				),
 				'callback'            => function ( WP_REST_Request $req ) {
 					$id   = (int) $req['id'];
@@ -70,7 +74,14 @@ function sm_most_read_posts( $count = 5 ) {
 			'ignore_sticky_posts' => true,
 			'post__not_in'        => sm_shown_ids( array(), 'hero' ),
 			'no_found_rows'       => true,
-			'meta_query'          => array( array( 'key' => SM_VIEWS_META, 'value' => 0, 'compare' => '>', 'type' => 'NUMERIC' ) ), // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+			'meta_query'          => array(
+		array(
+		'key' => SM_VIEWS_META,
+		'value' => 0,
+		'compare' => '>',
+		'type' => 'NUMERIC',
+			),
+		), // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 		)
 	);
 	if ( count( $posts ) < $count ) {

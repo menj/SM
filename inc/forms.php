@@ -164,7 +164,13 @@ function sm_ajax_contact() {
 		$data[ $f['name'] ] = $val;
 	}
 	if ( $errors ) {
-		wp_send_json_error( array( 'message' => reset( $errors ), 'errors' => $errors ), 400 );
+		wp_send_json_error(
+			array(
+				'message' => reset( $errors ),
+				'errors' => $errors,
+			),
+			400
+		);
 	}
 
 	$page = isset( $_POST['page'] ) ? absint( $_POST['page'] ) : 0;
@@ -190,7 +196,7 @@ function sm_ajax_contact() {
 	$subject = sprintf( '[%s] %s', get_bloginfo( 'name' ), $data['subject'] ?? __( 'New contact message', 'sm' ) );
 	$body    = '';
 	foreach ( sm_contact_fields() as $f ) {
-		$body .= $f['label'] . ": " . $data[ $f['name'] ] . "\n";
+		$body .= $f['label'] . ': ' . $data[ $f['name'] ] . "\n";
 	}
 	$body   .= "\n" . sprintf( /* translators: page url */ __( 'Sent from: %s', 'sm' ), $page ? get_permalink( $page ) : home_url( '/' ) );
 	$headers = array();

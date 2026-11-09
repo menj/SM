@@ -47,7 +47,16 @@ add_action(
 		wp_enqueue_style( 'sm-theme', SM_URI . 'assets/css/theme.css', array( 'twentytwentyfive-style' ), SM_VERSION );
 		wp_add_inline_style( 'sm-theme', sm_color_css() );
 
-		wp_enqueue_script( 'sm-theme', SM_URI . 'assets/js/theme.js', array(), SM_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+		wp_enqueue_script(
+			'sm-theme',
+			SM_URI . 'assets/js/theme.js',
+			array(),
+			SM_VERSION,
+			array(
+				'strategy' => 'defer',
+				'in_footer' => true,
+			)
+		);
 		wp_localize_script(
 			'sm-theme',
 			'smTheme',
