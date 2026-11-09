@@ -3,7 +3,7 @@ Contributors: suaramalaysia
 Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: news, block-patterns, full-site-editing, custom-colors, custom-logo, featured-images, wide-blocks, three-columns, accessibility-ready
@@ -78,6 +78,11 @@ Suggested wording is added to Settings > Privacy > Policy Guide. Delete entries 
 
 == Changelog ==
 
+= 1.1.0 =
+* Donations through PayPal.Me, with an optional monthly gift link.
+* Lightbox rewritten without jQuery; Kagnue Outline font removed; view counts work behind page caches; homepage blocks cached for ten minutes.
+* Save as PDF button (html2pdf.js), featured images in RSS feeds, optional security headers and Mastodon verification tag.
+
 = 1.0.0 =
 * Initial release: design system, seeded content, integrated features (contact form, newsletter, lightbox, progress bar, unlisted posts, search permalinks, hidden login, social icons, drop caps, view counts).
 * Theme Options screen redesigned: cards, toggle switches, visual selectors, range sliders with live values, per-tab instructions, keyboard-accessible tabs. Requires the edit_theme_options capability.
@@ -85,6 +90,9 @@ Suggested wording is added to Settings > Privacy > Policy Guide. Delete entries 
 * WCAG 2.2 AA pass: visible form labels, focus indicators, skip link focus, hero text growth, 44px touch targets.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Security headers are now on by default (Theme Options > Search & Login). Turn them off if your host already sets them.
 
 = 1.0.0 =
 First release. Theme Options now needs the edit_theme_options capability (administrators have it by default).
@@ -96,6 +104,9 @@ SM WordPress Theme, (C) 2025 Suara Malaysia. SM is distributed under the terms o
 Bundled resources and their licences:
 
 * Twenty Twenty-Five (parent theme), GPLv2 or later, WordPress contributors. Not bundled: install separately.
+* html2pdf.js 0.14.0, MIT, (C) 2026 Erik Koopmans (bundles html2canvas 1.4.1 MIT and jsPDF, plus further MIT/BSD-licensed parts listed in assets/vendor/html2pdf/LICENSE-third-party.txt). https://github.com/eKoopmans/html2pdf.js . Minified file loaded only when a reader clicks Save as PDF; unminified bundle in assets/vendor/html2pdf/src.
+* Feed images, security headers and the Mastodon tag (inc/features/feed.php) are adapted from the "ChrisWiegman.com" plugin by Chris Wiegman, GPLv2.
+* Lightbox: own dependency-free script (assets/js/lightbox.js), written for this theme and modelled on the behaviour of Lightbox2 by Lokesh Dhakar (MIT). No Lightbox2 code is bundled.
 * Social icons (assets/icons/social): GPL pack of 24x24 single-path icons, mostly from CC0 sources. LinkedIn and Scribd icons by Font Awesome, CC BY 4.0. https://fontawesome.com . Details in assets/icons/social/LICENSE.txt.
 * Fonts (assets/fonts, see assets/fonts/README.md):
   * Special Elite, Apache License 2.0, Astigmatic.

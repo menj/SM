@@ -474,6 +474,9 @@ function sm_render_share_block( $attrs ) {
 		$html .= '<li><a href="' . esc_url( $it[1] ) . '" target="_blank" rel="noopener noreferrer" aria-label="' . esc_attr( sprintf( /* translators: network */ __( 'Share on %s', 'sm' ), $it[0] ) ) . '">' . sm_social_icon_svg( $slug ) . '</a></li>';
 	}
 	$html .= '<li><button type="button" class="sm-share__copy" data-url="' . esc_url( get_permalink( $post ) ) . '" data-done="' . esc_attr__( 'Link copied', 'sm' ) . '" aria-label="' . esc_attr__( 'Copy link', 'sm' ) . '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></button></li>';
+	if ( sm_get( 'pdf_enabled' ) && is_singular( 'post' ) ) {
+		$html .= '<li><button type="button" class="sm-share__pdf" aria-label="' . esc_attr__( 'Save this article as PDF', 'sm' ) . '" data-busy="' . esc_attr__( 'Preparing PDF…', 'sm' ) . '" data-done="' . esc_attr__( 'PDF saved', 'sm' ) . '" data-fail="' . esc_attr__( 'Could not make the PDF. Try printing the page instead.', 'sm' ) . '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 19h14"/></svg></button></li>';
+	}
 	return $html . '</ul><span class="sm-share__status" role="status" aria-live="polite"></span></div>';
 }
 

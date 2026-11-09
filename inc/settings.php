@@ -133,7 +133,7 @@ function sm_settings_tabs() {
 		'reading'    => array(
 			'label'  => __( 'Reading', 'sm' ),
 			'icon'   => 'book',
-			'desc'   => __( '1. Switch features on or off with the toggles; their settings appear when enabled. 2. Pick a bar position, lightbox behaviour and drop cap style. 3. Image format controls how new uploads are saved.', 'sm' ),
+			'desc'   => __( '1. Switch features on or off with the toggles; their settings appear when enabled. 2. Pick a bar position, lightbox behaviour and drop cap style. 3. Turn the Save as PDF button on or off. 4. Image format controls how new uploads are saved.', 'sm' ),
 			'fields' => array(
 				array( 'id' => 'card_reading_progress_bar', 'type' => 'card', 'label' => __( 'Reading progress bar', 'sm' ), 'text' => __( 'A thin bar that fills as readers scroll through an article.', 'sm' ) ),
 				array( 'id' => 'rp_enabled', 'label' => __( 'Reading progress bar', 'sm' ), 'type' => 'toggle', 'help' => __( 'A thin bar that fills as the reader scrolls.', 'sm' ) ),
@@ -146,6 +146,8 @@ function sm_settings_tabs() {
 				array( 'id' => 'lb_wrap', 'label' => __( 'Wrap around at the end of a gallery', 'sm' ), 'type' => 'toggle' ),
 				array( 'id' => 'lb_captions', 'label' => __( 'Show captions', 'sm' ), 'type' => 'toggle' ),
 				array( 'id' => 'card_images', 'type' => 'card', 'label' => __( 'Images', 'sm' ), 'text' => __( 'The format used for new uploads.', 'sm' ) ),
+				array( 'id' => 'card_pdf', 'type' => 'card', 'label' => __( 'Save as PDF', 'sm' ), 'text' => __( 'A button under each article that saves it as a PDF in the reader\'s browser (html2pdf.js, loaded only when clicked).', 'sm' ) ),
+				array( 'id' => 'pdf_enabled', 'label' => __( 'Save as PDF button', 'sm' ), 'type' => 'toggle', 'help' => __( 'Appears next to the share icons on articles. Nothing is loaded until a reader clicks it.', 'sm' ) ),
 				array( 'id' => 'image_format', 'label' => __( 'Image format', 'sm' ), 'type' => 'choice', 'options' => array( 'avif' => __( 'AVIF', 'sm' ), 'original' => __( 'Keep original format', 'sm' ) ), 'help' => __( 'New uploads and their sizes are written as AVIF for much smaller files. Originals are kept.', 'sm' ) ),
 				array( 'id' => 'card_drop_caps', 'type' => 'card', 'label' => __( 'Drop caps', 'sm' ), 'text' => __( 'An illuminated first letter at the start of each article.', 'sm' ) ),
 				array( 'id' => 'dc_enabled', 'label' => __( 'Drop cap on article openings', 'sm' ), 'type' => 'toggle', 'help' => __( 'Sets the first letter of an article in the Dropcaps illuminated-initial font. You can also apply the "Drop cap" style to any paragraph.', 'sm' ) ),
@@ -156,11 +158,13 @@ function sm_settings_tabs() {
 		'site'       => array(
 			'label'  => __( 'Search & Login', 'sm' ),
 			'icon'   => 'shield',
-			'desc'   => __( '1. Optionally change the search address. 2. To hide the login page, bookmark the new login address first, then switch it on. Blocked visitors are redirected to the path you set.', 'sm' ),
+			'desc'   => __( '1. Optionally change the search address. 2. Leave security headers on unless your host already sends them. 3. To hide the login page, bookmark the new login address first, then switch it on. Blocked visitors are redirected to the path you set.', 'sm' ),
 			'fields' => array(
 				array( 'id' => 'card_search', 'type' => 'card', 'label' => __( 'Search', 'sm' ), 'text' => __( 'Cleaner search URLs.', 'sm' ) ),
 				array( 'id' => 'search_base', 'label' => __( 'Search permalink base', 'sm' ), 'type' => 'text', 'help' => __( 'Search URLs become /base/your-terms/ instead of ?s=your-terms. Default: search.', 'sm' ) ),
 				array( 'id' => 'card_login_page', 'type' => 'card', 'label' => __( 'Login page', 'sm' ), 'text' => __( 'Move the login form away from the default address.', 'sm' ) ),
+				array( 'id' => 'card_security', 'type' => 'card', 'label' => __( 'Security headers', 'sm' ), 'text' => __( 'Extra protection sent with every public page.', 'sm' ) ),
+				array( 'id' => 'security_headers', 'label' => __( 'Send security headers', 'sm' ), 'type' => 'toggle', 'help' => __( 'Stops other sites framing yours, stops browsers guessing file types and limits what referrer information is shared. Turn off if your host already sets these.', 'sm' ) ),
 				array( 'id' => 'login_enabled', 'label' => __( 'Hide the login page', 'sm' ), 'type' => 'toggle', 'help' => __( 'Blocks wp-login.php and wp-admin for visitors who are not logged in, and serves the login form at the slug below. Bookmark the new URL before enabling.', 'sm' ) ),
 				array( 'id' => 'login_slug', 'label' => __( 'Login slug', 'sm' ), 'type' => 'text', 'help' => __( 'The login form will be at /slug/. Default: login.', 'sm' ) ),
 				array( 'id' => 'login_redirect', 'label' => __( 'Redirect blocked requests to', 'sm' ), 'type' => 'text', 'help' => __( 'Path visitors are sent to when they hit the hidden pages. Default: 404.', 'sm' ) ),
@@ -169,12 +173,13 @@ function sm_settings_tabs() {
 		'social'     => array(
 			'label'  => __( 'Social', 'sm' ),
 			'icon'   => 'share',
-			'desc'   => __( '1. Pick an icon style and size. 2. Enter a URL for each profile you use; empty ones are hidden. 3. Place icons with the Social icons block or the [sm_social] shortcode.', 'sm' ),
+			'desc'   => __( '1. Pick an icon style and size. 2. Optionally add your Mastodon handle. 3. Enter a URL for each profile you use; empty ones are hidden. 3. Place icons with the Social icons block or the [sm_social] shortcode.', 'sm' ),
 			'fields' => array_merge(
 				array(
 					array( 'id' => 'card_appearance', 'type' => 'card', 'label' => __( 'Appearance', 'sm' ), 'text' => __( 'How the icons look wherever they are shown.', 'sm' ) ),
 				array( 'id' => 'social_style', 'label' => __( 'Icon style', 'sm' ), 'type' => 'choice', 'options' => array( 'plain' => __( 'Plain glyph', 'sm' ), 'boxed' => __( 'Boxed (as in the design)', 'sm' ), 'round' => __( 'Round', 'sm' ) ) ),
 					array( 'id' => 'social_size', 'label' => __( 'Icon size (px)', 'sm' ), 'type' => 'range', 'min' => 12, 'max' => 64 ),
+					array( 'id' => 'fediverse_handle', 'label' => __( 'Mastodon handle', 'sm' ), 'type' => 'text', 'help' => __( 'Optional, for example @name@mastodon.social. Adds the fediverse:creator tag so Mastodon can credit your articles to this account.', 'sm' ) ),
 					array( 'id' => 'social_heading', 'label' => __( 'Profiles', 'sm' ), 'type' => 'card', 'text' => __( 'Enter a URL for each profile you want shown. Empty profiles are hidden. Use the "Social icons" block or [sm_social] shortcode to place them anywhere.', 'sm' ) ),
 				),
 				$social
@@ -206,6 +211,9 @@ add_filter(
 			'lb_captions'     => 1,
 			'image_format'    => 'avif',
 			'autodelete_demo' => 1,
+			'pdf_enabled'     => 1,
+			'security_headers' => 1,
+			'fediverse_handle' => '',
 			'dc_enabled'      => 1,
 			'dc_variant'      => 'framed',
 			'dc_lines'        => 3,
