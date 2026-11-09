@@ -42,6 +42,20 @@
 		});
 	});
 
+	/* View counter: a beacon, so pages served from a cache are counted too. Once per tab session per article. */
+	if (cfg.view && cfg.view.id && cfg.view.url) {
+		var seenKey = 'sm_seen_' + cfg.view.id, seen = false;
+		try { seen = !!window.sessionStorage.getItem(seenKey); window.sessionStorage.setItem(seenKey, '1'); } catch (e) {}
+		if (!seen) {
+			var payload = JSON.stringify({ id: cfg.view.id });
+			if (navigator.sendBeacon) {
+				navigator.sendBeacon(cfg.view.url, new Blob([payload], { type: 'application/json' }));
+			} else {
+				fetch(cfg.view.url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload, keepalive: true });
+			}
+		}
+	}
+
 	/* Back to top */
 	var toTop = qs('.sm-totop');
 	if (toTop) {

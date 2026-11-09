@@ -53,7 +53,11 @@ add_action(
 			'smTheme',
 			array(
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				'nonce'   => wp_create_nonce( 'sm_front' ),
+				// Count views from the browser, so cached pages are counted too (see inc/features/views.php).
+				'view'    => is_singular( 'post' ) && ! is_user_logged_in() ? array(
+					'id'  => get_queried_object_id(),
+					'url' => rest_url( 'sm/v1/view' ),
+				) : null,
 				'i18n'    => array(
 					'sending' => __( 'Sending…', 'sm' ),
 					'error'   => __( 'Something went wrong. Please try again.', 'sm' ),
